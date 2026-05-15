@@ -168,7 +168,7 @@ Uniswap 會計算需要的 Gas 費用，並顯示最終交易細節。
 
 ### 支援的區塊鏈
 
-ArcSign 支援 22 條區塊鏈，包括：
+ArcSign 支援 7 條主流區塊鏈，包括：
 
 - **Layer 1：**Bitcoin、Ethereum、BNB Chain、Polygon、Avalanche、Arbitrum、Optimism、Base 及更多
 

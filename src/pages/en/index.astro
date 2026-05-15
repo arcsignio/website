@@ -14,8 +14,8 @@ const schema = [
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     description: 'Free USB cold wallet. Store private keys on USB drive - unplug it and it becomes a cold wallet. Supports WalletConnect to connect all dApps.',
     url: 'https://arcsign.io/en/',
-    downloadUrl: 'https://arcsign.io/en/#download',
-    softwareVersion: '1.2.3',
+    downloadUrl: 'https://github.com/arcsignio/arcsign/releases/latest',
+    softwareVersion: '1.4.0',
   },
   {
     '@context': 'https://schema.org',
@@ -353,7 +353,7 @@ const schema = [
         <div class="feature-card">
           <div class="feature-icon">🔗</div>
           <h3>Multi-chain Support</h3>
-          <p>BTC + 21 EVM chains — 22 blockchains all in one</p>
+          <p>Bitcoin + 6 major EVM chains — covers most everyday assets</p>
           <div class="feature-chains">
             <span class="chain-badge eth">BTC</span>
             <span class="chain-badge eth">ETH</span>
@@ -362,7 +362,6 @@ const schema = [
             <span class="chain-badge arb">Arbitrum</span>
             <span class="chain-badge op">Optimism</span>
             <span class="chain-badge base">Base</span>
-            <span class="chain-badge" style="background: rgba(255,255,255,0.1)">+15</span>
           </div>
         </div>
         <div class="feature-card">
@@ -379,8 +378,7 @@ const schema = [
         <div class="feature-card">
           <div class="feature-icon">💱</div>
           <h3>Token Swap</h3>
-          <p>One-click token exchange, auto-find best price</p>
-          <div class="feature-badge">Pro: No Fee</div>
+          <p>Aggregates multiple DEXes to automatically find the best route</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🔑</div>
@@ -493,8 +491,7 @@ const schema = [
           <ul class="pricing-features">
             <li><strong>All Free Features</strong></li>
             <li><strong>4+ Wallets</strong><span> (+3 per NFT)</span></li>
-            <li>2x Points Bonus</li>
-            <li>3x Airdrop Weight</li>
+            <li>Batch revoke Token Approvals</li>
             <li>Priority Support</li>
             <li>Early Access to New Features</li>
           </ul>
@@ -559,39 +556,6 @@ const schema = [
   </section>
 
   <!-- Early Bird Section -->
-  <section class="early-bird">
-    <div class="container">
-      <div class="early-bird-content">
-        <span class="early-badge">🎁 Early Bird Only</span>
-        <h2>First 500 Users Get Exclusive Perks</h2>
-        <div class="early-benefits">
-          <div class="benefit">
-            <span class="benefit-icon">🆓</span>
-            <div>
-              <strong>First 100</strong>
-              <p>Free 1 Year Pro (Worth $30)</p>
-            </div>
-          </div>
-          <div class="benefit">
-            <span class="benefit-icon">💰</span>
-            <div>
-              <strong>101-500</strong>
-              <p>50% Off Pro Plan</p>
-            </div>
-          </div>
-          <div class="benefit">
-            <span class="benefit-icon">🪂</span>
-            <div>
-              <strong>All Early Birds</strong>
-              <p>3x Future Airdrop Weight</p>
-            </div>
-          </div>
-        </div>
-        <a href="#download" class="btn btn-primary btn-lg">Join Early Bird Now</a>
-      </div>
-    </div>
-  </section>
-
   <!-- Newsletter Section -->
   <section class="newsletter" id="newsletter">
     <div class="container">
@@ -662,7 +626,7 @@ const schema = [
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
-            <p>ArcSign uses <strong>industry-leading encryption standards</strong> to protect your private keys, security comparable to professional products. Private keys never leave your USB drive, never sent to any server.</p>
+            <p>ArcSign uses <strong>AES-256-GCM</strong> to encrypt the wallet files on your USB. Private keys never leave the drive and are never sent to any server. The source is published under Apache 2.0 on GitHub, so anyone can audit or reproduce the build: <a href="https://github.com/arcsignio/arcsign" style="color:var(--primary);">github.com/arcsignio/arcsign</a>.</p>
           </div>
         </div>
         <div class="faq-item">
@@ -689,7 +653,7 @@ const schema = [
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
-            <p>Free users pay a <strong>0.1%</strong> swap fee. Pro users get <strong>completely free</strong> swaps with auto-comparison across multiple aggregators for the best route. You always pay blockchain network Gas Fee separately.</p>
+            <p>ArcSign itself does not charge a swap fee — the aggregator (KyberSwap, 1inch) handles routing, and you pay the standard blockchain network Gas Fee. We compare multiple DEX aggregators automatically to find the best route.</p>
           </div>
         </div>
         <div class="faq-item">
@@ -736,7 +700,7 @@ const schema = [
         </div>
         <div class="download-buttons">
           <div class="download-btn-group">
-            <a href="https://dl.arcsign.io/v1.2.3/ArcSign-1.2.3-macOS-ARM64.dmg" class="download-btn macos">
+            <a href="https://github.com/arcsignio/arcsign/releases/latest/download/ArcSign-macOS-ARM64.dmg" class="download-btn macos">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
               </svg>
@@ -746,11 +710,11 @@ const schema = [
               </div>
             </a>
             <div class="download-format-options">
-              <a href="https://dl.arcsign.io/v1.2.3/ArcSign-1.2.3-macOS-ARM64.dmg" class="format-btn active">.dmg</a>
+              <a href="https://github.com/arcsignio/arcsign/releases/latest/download/ArcSign-macOS-ARM64.dmg" class="format-btn active">.dmg</a>
             </div>
           </div>
           <div class="download-btn-group">
-            <a href="https://dl.arcsign.io/v1.2.3/ArcSign-1.2.3-Windows-x64.msi" class="download-btn windows">
+            <a href="https://github.com/arcsignio/arcsign/releases/latest/download/ArcSign-Windows-x64.msi" class="download-btn windows">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M3 12V6.75l6-1.32v6.48L3 12zm17-9v8.75l-10 .15V5.21L20 3zM3 13l6 .09v6.81l-6-1.15V13zm17 .25V22l-10-1.91V13.1l10 .15z"/>
               </svg>
@@ -760,12 +724,12 @@ const schema = [
               </div>
             </a>
             <div class="download-format-options">
-              <a href="https://dl.arcsign.io/v1.2.3/ArcSign-1.2.3-Windows-x64.msi" class="format-btn active">.msi</a>
-              <a href="https://dl.arcsign.io/v1.2.3/ArcSign-1.2.3-Windows-x64-Setup.exe" class="format-btn">.exe</a>
+              <a href="https://github.com/arcsignio/arcsign/releases/latest/download/ArcSign-Windows-x64.msi" class="format-btn active">.msi</a>
+              <a href="https://github.com/arcsignio/arcsign/releases/latest/download/ArcSign-Windows-x64-Setup.exe" class="format-btn">.exe</a>
             </div>
           </div>
           <div class="download-btn-group">
-            <a href="https://dl.arcsign.io/v1.2.3/ArcSign-1.2.3-Linux-x64.deb" class="download-btn linux">
+            <a href="https://github.com/arcsignio/arcsign/releases/latest/download/ArcSign-Linux-x64.deb" class="download-btn linux">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12.504 0c-.155 0-.315.008-.48.021-4.226.333-3.105 4.807-3.17 6.298-.076 1.092-.3 1.953-1.05 3.02-.885 1.051-2.127 2.75-2.716 4.521-.278.832-.41 1.684-.287 2.489a.424.424 0 00-.11.135c-.26.268-.45.6-.663.839-.199.199-.485.267-.797.4-.313.136-.658.269-.864.68-.09.189-.136.394-.132.602 0 .199.027.4.055.536.058.399.116.728.04.97-.249.68-.28 1.145-.106 1.484.174.334.535.47.94.601.81.2 1.91.135 2.774.6.926.466 1.866.67 2.616.47.526-.116.97-.464 1.208-.946.587-.003 1.23-.269 2.26-.334.699-.058 1.574.267 2.577.2.025.134.063.198.114.333l.003.003c.391.778 1.113 1.132 1.884 1.071.771-.06 1.592-.536 2.257-1.306.631-.765 1.683-1.084 2.378-1.503.348-.199.629-.469.649-.853.023-.4-.2-.811-.714-1.376v-.097l-.003-.003c-.17-.2-.25-.535-.338-.926-.085-.401-.182-.786-.492-1.046h-.003c-.059-.054-.123-.067-.188-.135a.357.357 0 00-.19-.064c.431-1.278.264-2.55-.173-3.694-.533-1.41-1.465-2.638-2.175-3.483-.796-1.005-1.576-1.957-1.56-3.368.026-2.152.236-6.133-3.544-6.139zm.529 3.405h.013c.213 0 .396.062.584.198.19.135.33.332.438.533.105.259.158.459.166.724 0-.02.006-.04.006-.06v.105a.086.086 0 01-.004-.021l-.004-.024a1.807 1.807 0 01-.15.706.953.953 0 01-.213.335.71.71 0 00-.088-.042c-.104-.045-.198-.064-.284-.133a1.312 1.312 0 00-.22-.066c.05-.06.146-.133.183-.198.053-.128.082-.264.088-.402v-.02a1.21 1.21 0 00-.061-.4c-.045-.134-.101-.2-.183-.333-.084-.066-.167-.132-.267-.132h-.016c-.093 0-.176.03-.262.132a.8.8 0 00-.205.334 1.18 1.18 0 00-.09.4v.019c.002.089.008.179.02.267-.193-.067-.438-.135-.607-.202a1.635 1.635 0 01-.018-.2v-.02a1.772 1.772 0 01.15-.768c.082-.22.232-.406.43-.533a.985.985 0 01.594-.2zm-2.962.059h.036c.142 0 .27.048.399.135.146.129.264.288.344.465.09.199.14.4.153.667v.004c.007.134.006.2-.002.266v.08c-.03.007-.056.018-.083.024-.152.055-.274.135-.393.2.012-.09.013-.18.003-.267v-.015c-.012-.133-.04-.2-.082-.333a.613.613 0 00-.166-.267.248.248 0 00-.183-.064h-.021c-.071.006-.13.04-.186.132a.552.552 0 00-.12.27.944.944 0 00-.023.33v.015c.012.135.037.2.08.334.046.134.098.2.166.268.01.009.02.018.034.024-.07.057-.117.07-.176.136a.304.304 0 01-.131.068 2.62 2.62 0 01-.275-.402 1.772 1.772 0 01-.155-.667 1.759 1.759 0 01.08-.668 1.43 1.43 0 01.283-.535c.128-.133.26-.2.418-.2zm1.37 1.706c.332 0 .733.065 1.216.399.293.2.523.269 1.052.468h.003c.255.136.405.266.478.399v-.131a.571.571 0 01.016.47c-.123.31-.516.643-1.063.842v.002c-.268.135-.501.333-.775.465-.276.135-.588.292-1.012.267a1.139 1.139 0 01-.448-.067 3.566 3.566 0 01-.322-.198c-.195-.135-.363-.332-.612-.465v-.005h-.005c-.4-.246-.616-.512-.686-.71-.07-.268-.005-.47.193-.6.224-.135.38-.271.483-.336.104-.074.143-.102.176-.131h.002v-.003c.169-.202.436-.47.839-.601.139-.036.294-.065.466-.065zm2.8 2.142c.358 1.417 1.196 3.475 1.735 4.473.286.534.855 1.659 1.102 3.024.156-.005.33.018.513.064.646-1.671-.546-3.467-1.089-3.966-.22-.2-.232-.335-.123-.335.59.534 1.365 1.572 1.646 2.757.13.535.16 1.104.021 1.67.067.028.135.06.205.067 1.032.534 1.413.938 1.23 1.537v-.002c-.06-.135-.12-.2-.181-.2-.66.869-1.593 1.07-2.388 1.07-.795 0-1.448-.268-1.645-.399-.432-.2-1.005-.468-1.522-.334-.517.135-1.048.335-1.748.202-.268-.068-.622-.202-.967-.47a.965.965 0 01-.226-.232c-.235-.067-.503-.467-.702-.935-.06-.135-.24-.668-.24-.668.025.266.14.534.296.735.017.028.033.058.054.09-.064-.034-.141-.067-.186-.067-.167 0-.333.67-.5.938-.4.268-1.133.535-1.766.802-.634.268-1.2.535-1.4.668-.367.2-.767.202-1.133-.067-.367-.27-.467-.67-.367-1.002.1-.268.267-.468.667-.669.4-.2.867-.268 1.233-.6.335-.268.535-.802.535-1.27v-.065c-.5.468-.9.468-1.133.402-.367-.135-.667-.402-.8-.87-.067-.2-.117-.468.033-.935.017-.065.167-.4.167-.4-.167.667.233.668.6.468.334-.134.586-.334.686-.535l.001-.002c.134-.333.067-.6-.067-.868-.133-.268-.4-.668-.6-.935-.267-.333-.534-.733-.668-1.202-.1-.4-.133-.867 0-1.335.1-.335.333-.735.667-1.068.267-.268.667-.502 1-.668-.033.132-.267.335-.2.6.067.134.2.267.4.2.267-.134.533-.67.533-1.27 0-.467-.133-.867-.267-1.135v-.003a1.876 1.876 0 01-.196-.467c0-.066-.024-.131-.035-.2-.067-.468.2-.669.533-.869.3-.134.667-.2.667-.4 0-.166-.267-.332-.4-.4-.133-.066-.267-.132-.4-.2v-.065c.067-.268.267-.735.867-1.202.6-.468 1.133-.535 1.067-.202-.065.269-.332.602-.332.869 0 .135.2.267.4.135.2-.134.267-.6.267-1.202v-.003c.267.268.534.6.467 1.068-.067.401-.267.669-.4.869-.1.135-.267.135-.333.333a.76.76 0 00.067.535c.1.135.333.2.6.2.267 0 .6-.066 1-.066s1.067.066 1.267.266c.2.134.4.934.467 1.469v.002l.003.003c.133 0 .333-.135.533-.27.135-.065.333-.2.6-.066.267.133.6.268.7.535 0 0 .001 0 0 .002-.1.265-.234.531-.267.731-.033.2.067.335.333.335.268 0 .667-.135 1.133-.2.6-.134 1-.067 1.267.133.267.2.4.535.4.869 0 .4-.167.801-.4 1.068-.267.267-.667.469-1.2.602-.534.132-1.267.065-2.001-.135z"/>
               </svg>
@@ -775,8 +739,8 @@ const schema = [
               </div>
             </a>
             <div class="download-format-options">
-              <a href="https://dl.arcsign.io/v1.2.3/ArcSign-1.2.3-Linux-x64.deb" class="format-btn active">.deb</a>
-              <a href="https://dl.arcsign.io/v1.2.3/ArcSign-1.2.3-Linux-x64.AppImage" class="format-btn">.AppImage</a>
+              <a href="https://github.com/arcsignio/arcsign/releases/latest/download/ArcSign-Linux-x64.deb" class="format-btn active">.deb</a>
+              <a href="https://github.com/arcsignio/arcsign/releases/latest/download/ArcSign-Linux-x64.AppImage" class="format-btn">.AppImage</a>
             </div>
           </div>
         </div>

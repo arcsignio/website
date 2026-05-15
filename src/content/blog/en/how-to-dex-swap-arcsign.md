@@ -1,6 +1,6 @@
 ---
 title: "How to DEX Swap on ArcSign (Step-by-Step Tutorial)"
-description: "Swap tokens on-chain with ArcSign using OpenOcean and KyberSwap for best rates. Supports 22 blockchains including Ethereum, BSC, Polygon, and Arbitrum."
+description: "Swap tokens on-chain with ArcSign using OpenOcean and KyberSwap for best rates. Supports 7 chains including Ethereum, BSC, Polygon, and Arbitrum."
 pubDate: 2026-03-16
 locale: en
 tags: ["Tutorial"]
@@ -41,7 +41,7 @@ Benefits of this approach:
 
 ## Supported Blockchains
 
-ArcSign supports swaps on 22 blockchains, covering all major ecosystems:
+ArcSign supports swaps on 7 chains, covering all major ecosystems:
 
 | Blockchain | Network Name | Characteristics |
 | --- | --- | --- |

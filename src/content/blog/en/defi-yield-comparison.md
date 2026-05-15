@@ -157,7 +157,7 @@ ArcSign's DeFi positions page shows real-time APY for Lido (stETH), Ankr (ankrET
 
             Further Reading
 
-Want to see how ArcSign manages DeFi assets across multiple chains with one mnemonic? Check our [cross-chain guide](/blog/arcsign-cross-chain-guide) — one seed manages BTC + 21 EVM chains. For an [ETH staking](/blog/eth-staking-arcsign) walkthrough, see [Earn Passive Income by Staking ETH with ArcSign](/blog/eth-staking-arcsign).
+Want to see how ArcSign manages DeFi assets across multiple chains with one mnemonic? Check our [cross-chain guide](/blog/arcsign-cross-chain-guide) — one seed manages BTC + 6 EVM chains. For an [ETH staking](/blog/eth-staking-arcsign) walkthrough, see [Earn Passive Income by Staking ETH with ArcSign](/blog/eth-staking-arcsign).
 
 ## Practical 2026 Allocation Suggestions
 

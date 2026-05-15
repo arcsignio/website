@@ -199,7 +199,7 @@ All your private keys are encrypted with [AES-256](/blog/aes256-encryption-simpl
 
 ### Multi-Chain Compliance-Ready
 
-[ArcSign supports 22 blockchains](/blog/../multi-chain-support-arcsign) — Bitcoin, Ethereum, and 20 EVM chains including Polygon, Arbitrum, Optimism, BSC, and Avalanche. This gives you flexibility to distribute holdings across multiple chains if regulations in your jurisdiction target specific blockchains.
+[ArcSign supports 7 chains](/blog/../multi-chain-support-arcsign) — Bitcoin, Ethereum, and 6 major EVM chains including Polygon, Arbitrum, Optimism, BSC, and Avalanche. This gives you flexibility to distribute holdings across multiple chains if regulations in your jurisdiction target specific blockchains.
 
 ### Travel Rule Ready: Built-in DEX Swap and WalletConnect
 

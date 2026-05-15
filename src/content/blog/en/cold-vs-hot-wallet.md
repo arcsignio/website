@@ -77,7 +77,7 @@ ArcSign solves this with built-in [WalletConnect v2](/blog/../walletconnect-dapp
 
 Hot wallets typically excel at multi-chain support. MetaMask can manually add any EVM chain, and Trust Wallet supports dozens of chains. But you may need to switch between different apps.
 
-ArcSign supports BTC and 21 EVM chains, [managing all assets in a single interface](/blog/../multi-chain-management). This includes Ethereum, BSC, Polygon, Arbitrum, Optimism, and other major chains. You can view all balances, NFTs, and DeFi positions across every chain in one app.
+ArcSign supports BTC and 6 major EVM chains, [managing all assets in a single interface](/blog/../multi-chain-management). This includes Ethereum, BSC, Polygon, Arbitrum, Optimism, and other major chains. You can view all balances, NFTs, and DeFi positions across every chain in one app.
 
 ## Cost Analysis: From Free to Thousands of Dollars
 
@@ -91,7 +91,7 @@ Completely free to download and use. But the price of "free" is that your privat
             $0
             ArcSign USB Cold Wallet
 
-Software is completely free — you just need a standard USB drive you already own. All core security features — XOR three-shard encryption, [mlock](/blog/mlock-memory-protection) memory protection, [AES-256](/blog/aes256-encryption-simple) encrypted backups — are provided at no cost. Supports 22 chains with built-in [DEX swap](/blog/how-to-dex-swap-arcsign).
+Software is completely free — you just need a standard USB drive you already own. All core security features — XOR three-shard encryption, [mlock](/blog/mlock-memory-protection) memory protection, [AES-256](/blog/aes256-encryption-simple) encrypted backups — are provided at no cost. Supports 7 chains with built-in [DEX swap](/blog/how-to-dex-swap-arcsign).
 
             $$
             Hardware Wallets (Ledger, Trezor, etc.)
@@ -114,7 +114,7 @@ The following table compares hot wallets, traditional hardware cold wallets, and
 | **Purchase Cost** | Free | $60-$150+ | Free (use existing USB) |
 | **DApp Interaction** | Native support | Via bridge software | Built-in WalletConnect v2 |
 | **DEX Swap** | Via separate DApps | Not directly supported | Built-in DEX Swap |
-| **Multi-Chain Support** | Extensive (varies by wallet) | Multi-chain support | BTC + 21 EVM chains |
+| **Multi-Chain Support** | Extensive (varies by wallet) | Multi-chain support | BTC + 6 EVM chains |
 | **Backup Method** | Seed phrase (plaintext risk) | Seed phrase (plaintext risk) | Seed phrase + .arcsign encrypted backup |
 
 ## Best 2026 Strategy: Use Both Together
@@ -152,7 +152,7 @@ Private keys are stored on USB via [XOR three-shard encryption](/blog/../xor-enc
 
 ### Convenience: Near Hot Wallet Level
 
-Built-in WalletConnect v2 lets you connect to thousands of DApps directly from cold storage. Built-in DEX Swap (OpenOcean + KyberSwap) lets you swap tokens without leaving ArcSign. [22 chains](/blog/../multi-chain-management) of assets, NFTs, and DeFi positions — all managed in one interface.
+Built-in WalletConnect v2 lets you connect to thousands of DApps directly from cold storage. Built-in DEX Swap (OpenOcean + KyberSwap) lets you swap tokens without leaving ArcSign. [7 chains](/blog/../multi-chain-management) of assets, NFTs, and DeFi positions — all managed in one interface.
 
 ### Cost: Free
 

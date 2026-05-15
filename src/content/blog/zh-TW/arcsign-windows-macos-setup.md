@@ -13,7 +13,7 @@ relatedSlugs: ["ledger-vs-trezor-vs-arcsign", "multi-chain-management", "web3-wa
 
             💡 ArcSign 特色
 
-ArcSign 是免費的 USB [冷錢包](/blog/what-is-cold-storage)，採用 **[XOR 三分片](/blog/xor-encryption-explained)金鑰保護**，確保你的[私鑰](/blog/private-key-management-best-practices)永遠不會離開裝置。支援 22 條區塊鏈、內建 [DEX Swap](/blog/how-to-dex-swap-arcsign)、[WalletConnect](/blog/walletconnect-dapp-tutorial) v2 簽名，以及 [AES-256](/blog/aes256-encryption-simple) 加密備份。
+ArcSign 是免費的 USB [冷錢包](/blog/what-is-cold-storage)，採用 **[XOR 三分片](/blog/xor-encryption-explained)金鑰保護**，確保你的[私鑰](/blog/private-key-management-best-practices)永遠不會離開裝置。支援 7 條主流區塊鏈、內建 [DEX Swap](/blog/how-to-dex-swap-arcsign)、[WalletConnect](/blog/walletconnect-dapp-tutorial) v2 簽名，以及 [AES-256](/blog/aes256-encryption-simple) 加密備份。
 
 ## 系統需求
 
@@ -51,7 +51,7 @@ ArcSign 是免費的 USB [冷錢包](/blog/what-is-cold-storage)，採用 **[XOR
 
                     下載 ArcSign 安裝程式
 
-造訪 `https://dl.arcsign.io` 並下載最新版本的 Windows 安裝程式（.exe 檔案）。
+造訪 `https://github.com/arcsignio/arcsign/releases/latest` 並下載最新版本的 Windows 安裝程式（.exe 檔案）。
 
                 2
 
@@ -85,7 +85,7 @@ ArcSign 是免費的 USB [冷錢包](/blog/what-is-cold-storage)，採用 **[XOR
 
                     下載 ArcSign DMG 檔案
 
-造訪 `https://dl.arcsign.io` 並下載最新版本的 macOS 安裝程式（.dmg 檔案）。
+造訪 `https://github.com/arcsignio/arcsign/releases/latest` 並下載最新版本的 macOS 安裝程式（.dmg 檔案）。
 
                 2
 

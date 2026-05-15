@@ -90,7 +90,7 @@ DeFi protocols across APAC markets exhibit differences in yield rates and liquid
 
 ### Opportunity 2: First-Mover Advantage in RWA Tokenization
 
-Real World Asset (RWA) tokenization is the hottest institutional focus area in 2026. Singapore has already begun piloting tokenized real estate and bond trading, while Japan has launched its Digital Securities (Security Token) framework. Taiwanese users can position themselves early in these emerging asset classes through multi-chain cold wallets. ArcSign supports 22 blockchains, covering the major platforms where RWA tokens are being issued.
+Real World Asset (RWA) tokenization is the hottest institutional focus area in 2026. Singapore has already begun piloting tokenized real estate and bond trading, while Japan has launched its Digital Securities (Security Token) framework. Taiwanese users can position themselves early in these emerging asset classes through multi-chain cold wallets. ArcSign supports 7 chains, covering the major platforms where RWA tokens are being issued.
 
 ### Opportunity 3: Becoming an APAC Web3 Talent Exporter
 
@@ -98,7 +98,7 @@ Taiwan's software engineering talent ranks among the best in APAC. As Web3 compa
 
             Practical Tip
 
-To participate in cross-chain DeFi opportunities across APAC, use a multi-chain self-custody cold wallet. ArcSign supports BTC + 21 EVM chains, and with [WalletConnect](/blog/../walletconnect-dapp-tutorial), you can flexibly interact with DeFi protocols on any chain while keeping your assets in secure [cold storage](/blog/what-is-cold-storage).
+To participate in cross-chain DeFi opportunities across APAC, use a multi-chain self-custody cold wallet. ArcSign supports BTC + 6 EVM chains, and with [WalletConnect](/blog/../walletconnect-dapp-tutorial), you can flexibly interact with DeFi protocols on any chain while keeping your assets in secure [cold storage](/blog/what-is-cold-storage).
 
 ## Four Challenges You Must Address
 
@@ -132,7 +132,7 @@ In the APAC region, demand for self-custody wallets is growing rapidly. Reasons 
 | **Exchange Collapse Risk** | Assets may be completely lost | Unaffected |
 | **Privacy** | All operations logged | On-chain records only |
 
-ArcSign, as a free USB cold wallet, is particularly well-suited for APAC user scenarios. It supports **22 blockchains** (BTC + 21 EVM chains), covering the most commonly used networks in the APAC region. Through [WalletConnect v2](/blog/../walletconnect-dapp-tutorial), users can connect to DeFi protocols on any chain while maintaining cold storage security. Combined with [XOR three-shard encryption](/blog/../xor-encryption-explained) and [AES-256](/blog/aes256-encryption-simple) encrypted .arcsign backup files, your private keys receive multi-layered protection.
+ArcSign, as a free USB cold wallet, is particularly well-suited for APAC user scenarios. It supports **7 chains** (BTC + 6 EVM chains), covering the most commonly used networks in the APAC region. Through [WalletConnect v2](/blog/../walletconnect-dapp-tutorial), users can connect to DeFi protocols on any chain while maintaining cold storage security. Combined with [XOR three-shard encryption](/blog/../xor-encryption-explained) and [AES-256](/blog/aes256-encryption-simple) encrypted .arcsign backup files, your private keys receive multi-layered protection.
 
 ## Action Plan for Taiwanese Users
 
@@ -175,7 +175,7 @@ Singapore and Hong Kong are the most crypto-friendly markets in the Asia-Pacific
 
 ### Q: How can Taiwanese users safely manage their crypto assets?
 
-Taiwanese users should use self-custody cold wallets like ArcSign to secure the majority of their assets, keeping only small trading amounts on exchanges. ArcSign provides XOR three-shard encryption, [AES-256](/blog/aes256-encryption-simple) encrypted backup files, and [mlock](/blog/mlock-memory-protection) memory protection — all for free, with support for 22 blockchains, making it ideal for APAC users who need to manage assets across multiple chains.
+Taiwanese users should use self-custody cold wallets like ArcSign to secure the majority of their assets, keeping only small trading amounts on exchanges. ArcSign provides XOR three-shard encryption, [AES-256](/blog/aes256-encryption-simple) encrypted backup files, and [mlock](/blog/mlock-memory-protection) memory protection — all for free, with support for 7 chains, making it ideal for APAC users who need to manage assets across multiple chains.
 
 ### Q: What are the key trends in the Asia-Pacific crypto market for 2026?
 

@@ -148,7 +148,7 @@ relatedSlugs: ["web3-wallet-future", "asia-pacific-crypto-report", "stablecoin-s
 
 - **DApp 互動**：你可以自由使用任何 DApp（DeFi、NFT 市場等），無需任何許可。ArcSign 內建 [WalletConnect](/blog/walletconnect-dapp-tutorial) 讓你可以直接從冷錢包連接 DApp。
 
-- **跨鏈操作**：你可以在任何支援的區塊鏈上操作，ArcSign 支援 BTC 和 21 條 EVM 鏈的 [多鏈資產管理](/blog/multi-chain-management)。
+- **跨鏈操作**：你可以在任何支援的區塊鏈上操作，ArcSign 支援 BTC 和 6 條主流 EVM 鏈的 [多鏈資產管理](/blog/multi-chain-management)。
 
 ### 託管錢包或交易所用戶
 

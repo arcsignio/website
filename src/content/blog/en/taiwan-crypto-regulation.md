@@ -301,7 +301,7 @@ ArcSign's design includes several features that support regulatory compliance:
 
 - **Encrypted Backups:** [AES-256 encrypted .arcsign backup files](/blog/../seed-phrase-backup-guide) protect recovery data even if stolen
 
-- **Multi-Chain Support:** Manage 22 chains (BTC + 21 EVMs) in one interface, simplifying tax record-keeping
+- **Multi-Chain Support:** Manage 7 chains (BTC + 6 EVMs) in one interface, simplifying tax record-keeping
 
 - **Transaction History:** Built-in transaction logging for easy record-keeping and tax reporting
 

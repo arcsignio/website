@@ -103,7 +103,7 @@ ArcSign 將你的私鑰拆分為三個隨機片段（Shard A、B、C），使用
 | **價格** | ✓ 免費 | $79 USD | $169 USD |
 | **私鑰儲存** | ✓ XOR 三分片 + AES-256 | 安全晶片 | 通用 MCU |
 | **記憶體保護** | ✓ mlock（1-5ms 曝露窗口） | ✓ SE 隔離 | 有限 |
-| **支援鏈數** | ✓ 22 條（BTC + 21 EVM） | ✓ 5000+ 幣種 | ✓ 1000+ 幣種 |
+| **支援鏈數** | ✓ 22 條（BTC + 6 EVM） | ✓ 5000+ 幣種 | ✓ 1000+ 幣種 |
 | **內建 DEX Swap** | ✓ OpenOcean + KyberSwap | 透過第三方 | 透過第三方 |
 | **WalletConnect v2** | ✓ 原生支援 | 需透過 Ledger Live | 有限支援 |
 | **備份方式** | ✓ .arcsign 加密備份檔 + 助記詞 | 助記詞（紙筆抄寫） | 助記詞（紙筆抄寫） |
@@ -167,4 +167,4 @@ ArcSign 絕不收集或出售用戶資料。其商業模式來自可選的 Pro N
 
 ### Q：我已經有 Ledger/Trezor，還需要換成 ArcSign 嗎？
 
-不需要「換掉」，可以同時使用。事實上，許多用戶將 ArcSign 作為硬體錢包的互補方案：用 ArcSign 管理日常的 DeFi 操作和跨鏈交易（支援 22 條鏈 + 內建 DEX Swap + WalletConnect），大額長期持倉繼續放在 Ledger/Trezor。兩者搭配可以兼顧便利性和分散風險。
+不需要「換掉」，可以同時使用。事實上，許多用戶將 ArcSign 作為硬體錢包的互補方案：用 ArcSign 管理日常的 DeFi 操作和跨鏈交易（支援 7 條鏈 + 內建 DEX Swap + WalletConnect），大額長期持倉繼續放在 Ledger/Trezor。兩者搭配可以兼顧便利性和分散風險。

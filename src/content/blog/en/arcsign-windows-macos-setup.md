@@ -11,7 +11,7 @@ relatedSlugs: ["ledger-vs-trezor-vs-arcsign", "multi-chain-management", "web3-wa
 
 Quick Start
 
-**Get ArcSign running in 10 minutes.** Download from dl.arcsign.io, run the installer, and you'll have a fully operational USB cold wallet ready to secure your crypto across 22 blockchain networks.
+**Get ArcSign running in 10 minutes.** Download from github.com/arcsignio/arcsign/releases, run the installer, and you'll have a fully operational USB cold wallet ready to secure your crypto across 22 blockchain networks.
 
 ## System Requirements
 
@@ -49,7 +49,7 @@ Follow these steps to install ArcSign on your Windows machine. The entire proces
             1
             Download ArcSign Installer
 
-Visit **dl.arcsign.io** and download the latest Windows installer (.exe file). Your browser may show a security warning—this is normal. ArcSign is digitally signed by our development team and is completely safe. Save the file to your Downloads folder.
+Visit **github.com/arcsignio/arcsign/releases** and download the latest Windows installer (.exe file). Your browser may show a security warning—this is normal. ArcSign is digitally signed by our development team and is completely safe. Save the file to your Downloads folder.
 
             2
             Handle Windows SmartScreen (if prompted)
@@ -73,7 +73,7 @@ Installing ArcSign on macOS is straightforward. Follow these steps for a smooth 
             1
             Download ArcSign DMG
 
-Go to **dl.arcsign.io** and download the latest macOS installer (.dmg file). This works on both Intel and Apple Silicon (M1/M2/M3) Macs. Save the file to your Downloads folder.
+Go to **github.com/arcsignio/arcsign/releases** and download the latest macOS installer (.dmg file). This works on both Intel and Apple Silicon (M1/M2/M3) Macs. Save the file to your Downloads folder.
 
             2
             Open the DMG File
@@ -173,7 +173,7 @@ Your Alchemy API key is stored locally on your device (on your USB). ArcSign nev
 
 **Symptom:** Your antivirus software blocks or deletes the ArcSign installer.
 
-**Solution:** This is a false positive. ArcSign is safe and tested. Temporarily disable your antivirus during installation, or add ArcSign to your antivirus whitelist. Download ArcSign only from the official **dl.arcsign.io** domain to ensure you have the authentic installer.
+**Solution:** This is a false positive. ArcSign is safe and tested. Temporarily disable your antivirus during installation, or add ArcSign to your antivirus whitelist. Download ArcSign only from the official **github.com/arcsignio/arcsign/releases** domain to ensure you have the authentic installer.
 
 ### Issue: Alchemy API Not Working
 
@@ -185,7 +185,7 @@ Your Alchemy API key is stored locally on your device (on your USB). ArcSign nev
 
 **Symptom:** ArcSign crashes or closes immediately after opening.
 
-**Solution:** (1) Uninstall ArcSign completely and reinstall the latest version from dl.arcsign.io. (2) Ensure your operating system is fully updated. (3) Check that your system meets the minimum requirements (Windows 10+ or macOS 12+). (4) If the issue persists, report it with your system details on our support channel.
+**Solution:** (1) Uninstall ArcSign completely and reinstall the latest version from github.com/arcsignio/arcsign/releases. (2) Ensure your operating system is fully updated. (3) Check that your system meets the minimum requirements (Windows 10+ or macOS 12+). (4) If the issue persists, report it with your system details on our support channel.
 
 ## Windows vs macOS Comparison
 
@@ -199,7 +199,7 @@ While [ArcSign Pro](/blog/arcsign-pro-nft-membership)vides the same core functio
 | Memory Protection | ✓ mlock | ✓ mlock |
 | Private Key Exposure | 1-5ms max | 1-5ms max |
 | XOR 3-Shard Protection | ✓ Yes | ✓ Yes |
-| Supported Chains | 22 (BTC + 21 EVM) | 22 (BTC + 21 EVM) |
+| Supported Chains | 22 (BTC + 6 EVM) | 22 (BTC + 6 EVM) |
 | WalletConnect v2 | ✓ Yes | ✓ Yes |
 | DEX Swap (OpenOcean + KyberSwap) | ✓ Yes | ✓ Yes |
 | Token Approval Management | ✓ Yes | ✓ Yes |
@@ -223,7 +223,7 @@ ArcSign uses Alchemy to read on-chain data like token balances, NFTs, and transa
 
 ### What if my antivirus blocks the ArcSign installation?
 
-ArcSign is digitally signed and safe. Antivirus software sometimes flags new applications as suspicious because they haven't accumulated a large install history yet. If this happens, whitelist ArcSign in your antivirus settings or temporarily disable scanning during installation. Always verify you're downloading from the official **dl.arcsign.io** URL to ensure you have the authentic installer.
+ArcSign is digitally signed and safe. Antivirus software sometimes flags new applications as suspicious because they haven't accumulated a large install history yet. If this happens, whitelist ArcSign in your antivirus settings or temporarily disable scanning during installation. Always verify you're downloading from the official **github.com/arcsignio/arcsign/releases** URL to ensure you have the authentic installer.
 
 ### Can I use the same .arcsign backup file on both Windows and macOS?
 

@@ -159,7 +159,7 @@ In your formal will, name the crypto assets explicitly: "I authorize [heir name]
 | --- | --- | --- | --- | --- |
 | **Single-point failure risk** | High (paper theft = total loss) | Medium (need N shares) | Low (multiple keys) | Low (need file + password) |
 | **Heir's technical bar** | Low (but phishing-prone) | High (must know SLIP-39) | High (must know multisig) | Low (GUI restore) |
-| **Chain coverage** | Wallet-dependent | Hardware-dependent | EVM-mostly | BTC + 21 EVM chains |
+| **Chain coverage** | Wallet-dependent | Hardware-dependent | EVM-mostly | BTC + 6 EVM chains |
 | **Hardware purchase required** | No | Yes (Trezor etc.) | No | No (any USB) |
 | **Legal integration** | Easy (paper attaches to will) | Medium (special clauses) | Hard (smart contract) | Easy (file attaches to will) |
 | **Day-to-day usability** | Annoying | Annoying | High (daily usable) | High (USB plug & play) |

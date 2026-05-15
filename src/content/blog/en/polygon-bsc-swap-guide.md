@@ -77,7 +77,7 @@ The swap process on Polygon is nearly identical to BSC, with the main difference
 
 ### Step 1: Switch to Polygon Network
 
-Select **Polygon** from ArcSign's network selector. All 21 EVM chains supported by ArcSign can be switched with a single tap.
+Select **Polygon** from ArcSign's network selector. All 6 major EVM chains supported by ArcSign can be switched with a single tap.
 
 ### Step 2: Check Your POL Balance
 
@@ -135,7 +135,7 @@ Each time you use a [DEX swap](/blog/how-to-dex-swap-arcsign), you need to "appr
 
 ### Q: Which chains does ArcSign's DEX Swap support?
 
-ArcSign's built-in DEX Swap supports all 21 EVM chains, including Ethereum, Polygon, BSC (BNB Chain), Arbitrum, Optimism, Base, and more. Swaps are powered by OpenOcean and KyberSwap aggregators, automatically searching multiple liquidity pools for the best price.
+ArcSign's built-in DEX Swap supports all 6 major EVM chains, including Ethereum, Polygon, BSC (BNB Chain), Arbitrum, Optimism, Base, and more. Swaps are powered by OpenOcean and KyberSwap aggregators, automatically searching multiple liquidity pools for the best price.
 
 ### Q: How much are Gas Fees for swaps on BSC and Polygon?
 

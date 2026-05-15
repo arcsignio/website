@@ -1,6 +1,6 @@
 ---
 title: "BTC + ETH + BSC All-in-One Management: ArcSign Multi-Chain Tutorial"
-description: "Manage BTC, ETH, and BSC simultaneously with ArcSign across 22 chains. Complete guide to wallet setup, cross-chain transfers, and DEX swaps step by step."
+description: "Manage BTC, ETH, and BSC simultaneously with ArcSign across 7 chains. Complete guide to wallet setup, cross-chain transfers, and DEX swaps step by step."
 pubDate: 2026-03-20
 locale: en
 tags: ["Tutorial"]
@@ -17,11 +17,11 @@ The challenge is: **how do you securely manage assets scattered across multiple 
 
             ArcSign's Solution
 
-**One USB, one mnemonic, 22 chains**. Through HD wallet standards ([BIP-39](/blog/key-derivation-bip39-44)/[BIP-44](/blog/key-derivation-bip39-44)), ArcSign lets you manage Bitcoin and all major EVM chain assets in a single cold wallet interface, with all private keys securely stored on your USB device.
+**One USB, one mnemonic, 7 chains**. Through HD wallet standards ([BIP-39](/blog/key-derivation-bip39-44)/[BIP-44](/blog/key-derivation-bip39-44)), ArcSign lets you manage Bitcoin and all major EVM chain assets in a single cold wallet interface, with all private keys securely stored on your USB device.
 
 ## ArcSign's 22 Supported Chains
 
-ArcSign currently supports Bitcoin plus 21 EVM-compatible chains. Balances, tokens, NFTs, and transaction history for each chain can be viewed and managed directly from the Dashboard.
+ArcSign currently supports Bitcoin plus 6 major EVM-compatible chains. Balances, tokens, NFTs, and transaction history for each chain can be viewed and managed directly from the Dashboard.
 
                 Bitcoin (BTC)
                 Native UTXO chain
@@ -133,7 +133,7 @@ There are several multi-chain management solutions on the market. Here's how the
 
 | Feature | ArcSign | MetaMask | Ledger | Trust Wallet |
 | --- | --- | --- | --- | --- |
-| **BTC + EVM Support** | ✓ 22 chains | EVM only | ✓ Multi-chain | ✓ Multi-chain |
+| **BTC + EVM Support** | ✓ 7 chains | EVM only | ✓ Multi-chain | ✓ Multi-chain |
 | **Cold Storage** | ✓ USB offline | ✗ Hot wallet | ✓ Hardware | ✗ Mobile |
 | **Cost** | ✓ Free | ✓ Free | $79-149 USD | ✓ Free |
 | **XOR Three-Shard** | ✓ | ✗ | ✗ | ✗ |
@@ -165,7 +165,7 @@ No matter how many chains you manage, **backup is always the most important thin
 
 ### Q: Which blockchains does ArcSign support?
 
-ArcSign supports 22 chains: Bitcoin (BTC) plus 21 EVM-compatible chains including Ethereum, BSC, Polygon, Arbitrum, Optimism, Avalanche, Base, Fantom, and more. All chains share a single mnemonic phrase, with independent addresses derived via BIP-44.
+ArcSign supports 7 chains: Bitcoin (BTC) plus 6 major EVM-compatible chains including Ethereum, BSC, Polygon, Arbitrum, Optimism, Avalanche, Base, Fantom, and more. All chains share a single mnemonic phrase, with independent addresses derived via BIP-44.
 
 ### Q: Is a multi-chain wallet less secure than a single-chain wallet?
 

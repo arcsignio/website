@@ -86,9 +86,9 @@ For international users: a Ledger Nano X costs $149 USD plus $10-25 shipping, wi
 
 | Feature | Ledger | Trezor | ArcSign |
 | --- | --- | --- | --- |
-| **Supported Blockchains** | 5,500+ tokens | 1,200+ tokens | 22 chains (BTC + 21 EVM) |
+| **Supported Blockchains** | 5,500+ tokens | 1,200+ tokens | 7 chains (BTC + 6 EVM) |
 | **BTC Support** | ✓ | ✓ | ✓ |
-| **EVM Chains** | ✓ Most EVM | ✓ Major EVM | ✓ 21 EVM chains |
+| **EVM Chains** | ✓ Most EVM | ✓ Major EVM | ✓ 6 major EVM chains |
 | **Built-in DEX Swap** | ✓ Paraswap | ✓ 1inch | ✓ OpenOcean + KyberSwap |
 | **WalletConnect** | ✓ | ✓ | ✓ v2 |
 | **NFT Display** | ✓ | Limited | ✓ Cross-chain NFT Gallery |
@@ -96,7 +96,7 @@ For international users: a Ledger Nano X costs $149 USD plus $10-25 shipping, wi
 | **DeFi Position Tracking** | ✗ | ✗ | ✓ Real-time APY |
 | **Cross-Platform** | Desktop + Mobile | Desktop (+ limited mobile) | Desktop (mobile planned) |
 
-In terms of chain support, Ledger is unquestionably the leader. If you hold significant non-EVM chain assets (Solana, Cardano, Polkadot, etc.), Ledger or Trezor may be better suited for you. However, for mainstream BTC + EVM ecosystem users, ArcSign's 22 chains cover the vast majority of needs, and it offers **[token approval](/blog/token-approval-revoke) management** and **DeFi position tracking** that neither Ledger nor Trezor provide.
+In terms of chain support, Ledger is unquestionably the leader. If you hold significant non-EVM chain assets (Solana, Cardano, Polkadot, etc.), Ledger or Trezor may be better suited for you. However, for mainstream BTC + EVM ecosystem users, ArcSign's 7 chains cover the vast majority of needs, and it offers **[token approval](/blog/token-approval-revoke) management** and **DeFi position tracking** that neither Ledger nor Trezor provide.
 
 ## Backup & Recovery Methods
 
@@ -136,7 +136,7 @@ In 2021, users received counterfeit Ledger devices (convincing packaging) that d
 | **4. Supply Chain Risk** | Medium (specialized hardware) | Medium (specialized hardware) | Very low (use own USB) |
 | **5. Key Protection** | Secure Element isolation | PIN + passphrase | XOR 3-shard + mlock |
 | **6. Backup Encryption** | ✗ Plaintext seed phrase | ✗ Plaintext seed phrase | ✓ AES-256 encrypted backup |
-| **7. Chain Support** | 5,500+ tokens | 1,200+ tokens | 22 chains |
+| **7. Chain Support** | 5,500+ tokens | 1,200+ tokens | 7 chains |
 | **8. Token Approvals** | ✗ | ✗ | ✓ View + Revoke |
 | **9. DeFi Positions** | ✗ | ✗ | ✓ Real-time APY |
 | **10. Setup Time** | 15 min after delivery | 15 min after delivery | 10 min (immediate) |

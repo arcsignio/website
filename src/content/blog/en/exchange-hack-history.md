@@ -135,7 +135,7 @@ Worried about USB damage or loss? ArcSign's .arcsign backup file is encrypted on
             4
             22 Chains + WalletConnect Support
 
-Supports BTC and 21 EVM chains, with built-in [DEX swap](/blog/how-to-dex-swap-arcsign) (OpenOcean + KyberSwap) and [WalletConnect](/blog/walletconnect-dapp-tutorial) v2 for connecting to DApps. Self-custody no longer means sacrificing convenience.
+Supports BTC and 6 major EVM chains, with built-in [DEX swap](/blog/how-to-dex-swap-arcsign) (OpenOcean + KyberSwap) and [WalletConnect](/blog/walletconnect-dapp-tutorial) v2 for connecting to DApps. Self-custody no longer means sacrificing convenience.
 
             Free with Zero Supply Chain Risk
 

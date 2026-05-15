@@ -17,7 +17,7 @@ Before troubleshooting, ask yourself three questions: **(1)** Is my USB being de
 
             ArcSign Is Free Software
 
-Before troubleshooting, confirm you downloaded the **official build**. ArcSign is completely free. All legitimate download sources are `arcsign.io` or `dl.arcsign.io`. If you downloaded a version that asks for payment to unlock basic features, it is almost certainly a counterfeit.
+Before troubleshooting, confirm you downloaded the **official build**. ArcSign is completely free. All legitimate download sources are `arcsign.io` or `github.com/arcsignio/arcsign/releases`. If you downloaded a version that asks for payment to unlock basic features, it is almost certainly a counterfeit.
 
 ## Issue 1: USB Detection Failures (The Most Common)
 
@@ -154,7 +154,7 @@ If the backup file was truncated or modified during transfer (for example, via a
 
 ### Case C: Version Mismatch
 
-Backups exported from older ArcSign versions will always import into newer versions (backward compatible), but not vice versa. If you exported on v1.2 and try to import into v1.0, it will fail. Fix: upgrade ArcSign to the latest version from `dl.arcsign.io`, then import.
+Backups exported from older ArcSign versions will always import into newer versions (backward compatible), but not vice versa. If you exported on v1.2 and try to import into v1.0, it will fail. Fix: upgrade ArcSign to the latest version from `github.com/arcsignio/arcsign/releases`, then import.
 
             Best Backup Practice
 

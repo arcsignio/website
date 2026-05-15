@@ -118,7 +118,7 @@ For small [stablecoin](/blog/stablecoin-storage-guide) transfers and routine swa
 - **BNB Smart Chain**: PancakeSwap's home ground; swap fees usually 
             Risk Reminder
 
-L2s and alternative chains come with their own trust assumptions: sequencer centralization, bridge contract risk, validator concentration. **Keep large holdings on mainnet inside your cold wallet** and migrate day-to-day operations and experimental positions to L2. ArcSign lets you manage 22 chains from a single [seed phrase](/blog/seed-phrase-backup-guide), making a layered storage strategy easy.
+L2s and alternative chains come with their own trust assumptions: sequencer centralization, bridge contract risk, validator concentration. **Keep large holdings on mainnet inside your cold wallet** and migrate day-to-day operations and experimental positions to L2. ArcSign lets you manage 7 chains from a single [seed phrase](/blog/seed-phrase-backup-guide), making a layered storage strategy easy.
 
 ## Strategy 5-8: ArcSign in Practice
 

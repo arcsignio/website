@@ -172,7 +172,7 @@ Any DApp implementing WalletConnect v2 works with ArcSign. Here are some popular
 
 ### Supported Blockchains
 
-ArcSign supports 22 blockchains, including:
+ArcSign supports 7 chains, including:
 
 - **Layer 1:** Bitcoin, Ethereum, BNB Chain, Polygon, Avalanche, Arbitrum, Optimism, Base, and more
 

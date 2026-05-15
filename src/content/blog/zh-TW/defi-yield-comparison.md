@@ -157,7 +157,7 @@ ArcSign 的 DeFi 持倉頁面支援即時顯示 Lido（stETH）、Ankr（ankrETH
 
             延伸閱讀
 
-想更深入了解 ArcSign 如何同時管理多條鏈的 DeFi 資產？參考我們的[跨鏈操作教學](/blog/arcsign-cross-chain-guide)，了解如何用同一組助記詞管理 BTC + 21 條 EVM 鏈的資產。對於 ETH 質押的完整教學，可參考[用 ArcSign 質押 ETH 賺取被動收入](/blog/eth-staking-arcsign)。
+想更深入了解 ArcSign 如何同時管理多條鏈的 DeFi 資產？參考我們的[跨鏈操作教學](/blog/arcsign-cross-chain-guide)，了解如何用同一組助記詞管理 BTC + 6 條主流 EVM 鏈的資產。對於 ETH 質押的完整教學，可參考[用 ArcSign 質押 ETH 賺取被動收入](/blog/eth-staking-arcsign)。
 
 ## 2026 實戰配置建議
 

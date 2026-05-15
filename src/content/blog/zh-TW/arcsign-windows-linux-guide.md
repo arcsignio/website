@@ -41,7 +41,7 @@ ArcSign 的硬體需求很低，幾乎所有近年的筆電與桌機都能跑。
             1
             只從 arcsign.io 下載
 
-打開瀏覽器，手動輸入 arcsign.io，不要點搜尋結果中的廣告連結。下載頁面會根據你的作業系統自動顯示對應檔案：Windows 是 ArcSign-Setup-x.y.z.exe，macOS 是 ArcSign-x.y.z.dmg，Linux 是 ArcSign-x.y.z.AppImage（另有 deb/rpm 供進階用戶）。所有檔案都託管在 Cloudflare R2（dl.arcsign.io），且強制 HTTPS。
+打開瀏覽器，手動輸入 arcsign.io，不要點搜尋結果中的廣告連結。下載頁面會根據你的作業系統自動顯示對應檔案：Windows 是 ArcSign-Setup-x.y.z.exe，macOS 是 ArcSign-x.y.z.dmg，Linux 是 ArcSign-x.y.z.AppImage（另有 deb/rpm 供進階用戶）。所有檔案都託管在 Cloudflare R2（github.com/arcsignio/arcsign/releases），且強制 HTTPS。
 
             2
             驗證 SHA-256 雜湊值

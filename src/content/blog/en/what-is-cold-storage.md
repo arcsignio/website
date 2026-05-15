@@ -56,7 +56,7 @@ The ideal security strategy: **Keep 90% of assets in cold storage (your vault) a
 
 **How it works:** Ordinary USB drive + encryption software achieves hardware-level security. Private keys are split into 3 XOR shards + [AES-256](/blog/aes256-encryption-simple) encrypted and stored on the USB.
 
-**Pros:** Zero cost (any USB works), encrypted backup files, military-grade encryption, supports 22 blockchains
+**Pros:** Zero cost (any USB works), encrypted backup files, military-grade encryption, supports 7 chains
 
 **Cons:** Depends on computer security (not fully isolated like hardware, but vastly better than hot wallets)
 
@@ -131,7 +131,7 @@ During signing, the private key exists in protected memory for only 1-5 millisec
 
 - **AES-256 Encrypted Backup Files:** Export your wallet to a .arcsign backup file in one click — safer and more convenient than paper seed phrases. Backup files can be copied to multiple locations.
 
-- **22 Blockchain Support:** Bitcoin + 21 EVM chains (Ethereum, BSC, Polygon, etc.) — manage everything from one wallet.
+- **22 Blockchain Support:** Bitcoin + 6 major EVM chains (Ethereum, BSC, Polygon, etc.) — manage everything from one wallet.
 
 - **Built-in WalletConnect:** Even as a cold wallet, connect to DEX, Staking, NFT markets, and other DApps via WalletConnect.
 
@@ -224,7 +224,7 @@ As long as you have your encrypted backup file or [seed phrase](/blog/seed-phras
 
 #### How many blockchains does a cold wallet support?
 
-ArcSign supports 22 blockchains: Bitcoin + 21 EVM-compatible chains (Ethereum, BSC, Polygon, Arbitrum, and others). Using the same seed phrase, you can derive addresses on all chains from one wallet.
+ArcSign supports 7 chains: Bitcoin + 6 major EVM-compatible chains (Ethereum, BSC, Polygon, Arbitrum, and others). Using the same seed phrase, you can derive addresses on all chains from one wallet.
 
 #### Is cold storage free?
 

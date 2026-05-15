@@ -92,7 +92,7 @@ Circle 對凍結態度更為保守但也更透明：
 
             和 BTC / ETH 的存放一樣嗎？
 
-原則相同但有一個重要差異：穩定幣「幣本位」，不受市場波動影響，所以更適合「放一段時間」。但也因為穩定幣是合約代幣，你需要同時記住「合約地址 + 鏈」而不只是「錢包地址」。ArcSign 內建 22 條鏈的原生代幣辨識，不會出現「鏈選錯、代幣消失」的常見新手錯誤。延伸閱讀：[USB 冷錢包的 5 大優勢](/blog/usb-cold-wallet-benefits)、[冷錢包 vs 熱錢包完整比較](/blog/cold-vs-hot-wallet)。
+原則相同但有一個重要差異：穩定幣「幣本位」，不受市場波動影響，所以更適合「放一段時間」。但也因為穩定幣是合約代幣，你需要同時記住「合約地址 + 鏈」而不只是「錢包地址」。ArcSign 內建 7 條鏈的原生代幣辨識，不會出現「鏈選錯、代幣消失」的常見新手錯誤。延伸閱讀：[USB 冷錢包的 5 大優勢](/blog/usb-cold-wallet-benefits)、[冷錢包 vs 熱錢包完整比較](/blog/cold-vs-hot-wallet)。
 
 ## 多鏈存放：成本、速度、安全的三角平衡
 
@@ -201,4 +201,4 @@ USDT 市值最大、流動性最好，但儲備透明度相對較低，依賴 BD
 
 ### Q：穩定幣放在哪一條鏈最划算？
 
-以 USDT / USDC 為例：Ethereum 主網安全性最高但轉帳 Gas 可能到 5–20 美元；BNB Chain 與 Polygon 轉帳約 0.01–0.1 美元，速度快但去中心化程度較低；Arbitrum / Base / Optimism L2 轉帳約 0.05–0.5 美元，兼顧安全與成本；Tron（TRC20 USDT）幾乎免費、但合規與去中心化爭議較多。建議策略：大筆長期存放在 Ethereum（搭配冷錢包），中額日常在 Arbitrum / Base，小額高頻在 BNB / Polygon / Tron。ArcSign 同一支 USB 支援 22 條鏈，自由切換。
+以 USDT / USDC 為例：Ethereum 主網安全性最高但轉帳 Gas 可能到 5–20 美元；BNB Chain 與 Polygon 轉帳約 0.01–0.1 美元，速度快但去中心化程度較低；Arbitrum / Base / Optimism L2 轉帳約 0.05–0.5 美元，兼顧安全與成本；Tron（TRC20 USDT）幾乎免費、但合規與去中心化爭議較多。建議策略：大筆長期存放在 Ethereum（搭配冷錢包），中額日常在 Arbitrum / Base，小額高頻在 BNB / Polygon / Tron。ArcSign 同一支 USB 支援 7 條鏈，自由切換。

@@ -104,7 +104,7 @@ Here's a comprehensive comparison of three mainstream wallet types to help you u
 | **Supply Chain Attack** | ✓ Not applicable | ✗ Documented cases exist | ✓ Not applicable |
 | **Key Protection** | ✓ XOR 3-shard + AES-256 | Secure Element (SE) | ✗ Single password encryption |
 | **Memory Protection** | ✓ mlock, 1-5ms exposure | Depends on chip design | ✗ Persistent in memory |
-| **Multi-Chain** | ✓ BTC + 21 EVM chains | ✓ Multi-chain | EVM chains only |
+| **Multi-Chain** | ✓ BTC + 6 EVM chains | ✓ Multi-chain | EVM chains only |
 | **Backup Cost** | ✓ Near $0 | ✗ Buy another device | ✓ Write down seed phrase |
 | **Stealth** | ✓ Looks completely ordinary | ✗ Instantly recognizable | ✓ Software, no physical form |
 | **WalletConnect** | ✓ v2 supported | ✓ Supported | ✓ Supported |
@@ -132,7 +132,7 @@ After setup, be sure to export your .arcsign backup file to a second USB. The ba
 
             Pro Tip
 
-Want to manage assets across multiple chains? ArcSign supports BTC and 21 EVM chains, all from a single USB. Check out our [multi-chain management tutorial](/blog/multi-chain-management) to learn more.
+Want to manage assets across multiple chains? ArcSign supports BTC and 6 major EVM chains, all from a single USB. Check out our [multi-chain management tutorial](/blog/multi-chain-management) to learn more.
 
 ## Frequently Asked Questions
 

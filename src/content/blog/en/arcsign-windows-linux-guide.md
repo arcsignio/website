@@ -41,7 +41,7 @@ The number-one enemy of a cold wallet is a **tampered installer**. If you downlo
             1
             Only download from arcsign.io
 
-Type arcsign.io into the address bar by hand — never click search ads. The download page will auto-detect your OS and surface the right file: ArcSign-Setup-x.y.z.exe on Windows, ArcSign-x.y.z.dmg on macOS, and ArcSign-x.y.z.AppImage on Linux (with deb/rpm options for advanced users). Every artifact is hosted on Cloudflare R2 at dl.arcsign.io over HTTPS.
+Type arcsign.io into the address bar by hand — never click search ads. The download page will auto-detect your OS and surface the right file: ArcSign-Setup-x.y.z.exe on Windows, ArcSign-x.y.z.dmg on macOS, and ArcSign-x.y.z.AppImage on Linux (with deb/rpm options for advanced users). Every artifact is hosted on Cloudflare R2 at github.com/arcsignio/arcsign/releases over HTTPS.
 
             2
             Verify the SHA-256 hash

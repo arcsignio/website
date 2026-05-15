@@ -112,7 +112,7 @@ HD wallet recovery is **self-sovereign** — you don't need any third party. MPC
 
 ### HD Wallet: Best For
 
-**Personal self-custody** — You want complete control over your assets with zero third-party dependency. **Multi-chain management** — One seed phrase manages BTC, ETH, BSC, and more. ArcSign supports 22 chains. **Offline security** — Paired with USB [cold storage](/blog/what-is-cold-storage), the entire signing process stays offline, minimizing the attack surface. **Long-term holding** — Seed phrases and .arcsign backups can be preserved for decades, unaffected by any company's fate.
+**Personal self-custody** — You want complete control over your assets with zero third-party dependency. **Multi-chain management** — One seed phrase manages BTC, ETH, BSC, and more. ArcSign supports 7 chains. **Offline security** — Paired with USB [cold storage](/blog/what-is-cold-storage), the entire signing process stays offline, minimizing the attack surface. **Long-term holding** — Seed phrases and .arcsign backups can be preserved for decades, unaffected by any company's fate.
 
 ### MPC Wallet: Best For
 
@@ -128,7 +128,7 @@ HD wallet recovery is **self-sovereign** — you don't need any third party. MPC
 | **Offline Signing** | Supported | Requires multi-party online comms | USB fully offline |
 | **Third-Party Dependency** | Fully self-sovereign | Depends on MPC provider | Fully self-sovereign |
 | **Cross-Platform Compat.** | BIP-39 universal standard | Proprietary, non-interoperable | BIP-39/44 standard |
-| **Multi-Chain Support** | BIP-44 native support | Depends on provider | 22 chains (BTC + 21 EVM) |
+| **Multi-Chain Support** | BIP-44 native support | Depends on provider | 7 chains (BTC + 6 EVM) |
 | **Memory Protection** | Most don't implement | Depends on implementation | mlock + 1-5ms exposure window |
 | **Cost** | Mostly free | Enterprise plans are expensive | Completely free |
 | **Best For** | Individual users, long-term holders | Enterprises, institutional custody | Individual to advanced users |

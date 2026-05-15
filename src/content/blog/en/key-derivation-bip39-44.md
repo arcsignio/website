@@ -1,6 +1,6 @@
 ---
 title: "BIP-39 / BIP-44 Explained: How HD Wallets Derive Keys"
-description: "Why 12 words recover assets across every chain: from BIP-39 entropy to BIP-44 derivation path (m/44'/60'/0'/0/0) and how ArcSign manages 22 chains from"
+description: "Why 12 words recover assets across every chain: from BIP-39 entropy to BIP-44 derivation path (m/44'/60'/0'/0/0) and how ArcSign manages 7 chains from"
 pubDate: 2026-04-22
 locale: en
 tags: ["Security", "Cryptography"]
@@ -161,9 +161,9 @@ When you create a wallet, ArcSign shows the 12-word BIP-39 mnemonic for you to w
 The moment BIP-39 produces the 512-bit seed, ArcSign immediately splits it into three shards using **XOR three-shard encryption** and stores them back on the USB. At signing time, the three shards briefly reassemble inside [mlock](/blog/mlock-memory-protection)-protected memory, derive the private key for the current path, sign, and the whole memory region is zeroed. The private-key exposure window is held under 1–5 milliseconds.
 
             3
-            One seed, 22 chains of private keys
+            One seed, 7 chains of private keys
 
-ArcSign ships with a BIP-44 path table for 22 chains (Bitcoin mainnet + 21 EVM-compatible chains). Switching chains in the Dashboard simply switches the derivation path — from `m/44'/0'/0'/0/0` (BTC) to `m/44'/60'/0'/0/0` (ETH), for example. No re-generation. No re-backup. Every chain's assets share the same 12-word seed.
+ArcSign ships with a BIP-44 path table for 7 chains (Bitcoin mainnet + 6 major EVM-compatible chains). Switching chains in the Dashboard simply switches the derivation path — from `m/44'/0'/0'/0/0` (BTC) to `m/44'/60'/0'/0/0` (ETH), for example. No re-generation. No re-backup. Every chain's assets share the same 12-word seed.
 
 ### Watch-only addresses: xpub's practical payoff
 

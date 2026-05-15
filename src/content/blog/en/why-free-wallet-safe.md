@@ -103,7 +103,7 @@ Let's put ArcSign (free) side by side with mainstream paid hardware wallets for 
 | **Price** | ✓ Free | $79 USD | $169 USD |
 | **Key Storage** | ✓ XOR 3-shard + AES-256 | Secure Element | General MCU |
 | **Memory Protection** | ✓ mlock (1-5ms exposure) | ✓ SE isolation | Limited |
-| **Supported Chains** | ✓ 22 (BTC + 21 EVM) | ✓ 5000+ coins | ✓ 1000+ coins |
+| **Supported Chains** | ✓ 22 (BTC + 6 EVM) | ✓ 5000+ coins | ✓ 1000+ coins |
 | **Built-in DEX Swap** | ✓ OpenOcean + KyberSwap | Via third party | Via third party |
 | **WalletConnect v2** | ✓ Native support | Via Ledger Live | Limited support |
 | **Backup Method** | ✓ Encrypted .arcsign file + mnemonic | Mnemonic (paper) | Mnemonic (paper) |
@@ -167,4 +167,4 @@ ArcSign never collects or sells user data. Its business model relies on optional
 
 ### Q: I already have a Ledger/Trezor. Should I switch to ArcSign?
 
-You don't need to "switch" — you can use both. Many users keep ArcSign as a complementary solution: use ArcSign for daily DeFi operations and cross-chain transactions (supporting 22 chains + built-in [DEX swap](/blog/how-to-dex-swap-arcsign) + [WalletConnect](/blog/walletconnect-dapp-tutorial)), while keeping large long-term holdings on Ledger/Trezor. Using both together provides the best balance of convenience and risk diversification.
+You don't need to "switch" — you can use both. Many users keep ArcSign as a complementary solution: use ArcSign for daily DeFi operations and cross-chain transactions (supporting 7 chains + built-in [DEX swap](/blog/how-to-dex-swap-arcsign) + [WalletConnect](/blog/walletconnect-dapp-tutorial)), while keeping large long-term holdings on Ledger/Trezor. Using both together provides the best balance of convenience and risk diversification.

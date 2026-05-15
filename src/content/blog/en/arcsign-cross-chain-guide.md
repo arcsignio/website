@@ -1,6 +1,6 @@
 ---
 title: "Cross-Chain Made Easy: Managing BTC + EVM Chains with ArcSign"
-description: "Manage Bitcoin and 21 EVM chains from one USB cold wallet. Complete guide to cross-chain operations, DEX swaps, and WalletConnect integration with ArcSign."
+description: "Manage Bitcoin and 6 major EVM chains from one USB cold wallet. Complete guide to cross-chain operations, DEX swaps, and WalletConnect integration with ArcSign."
 pubDate: 2026-04-12
 locale: en
 tags: ["Tutorial", "Cross-Chain"]
@@ -25,11 +25,11 @@ But managing assets across multiple chains using traditional methods is a securi
 
 - **WalletConnect fatigue:** DApp interactions require constant switching between wallets or browser extensions.
 
-**ArcSign solves this:** One USB device, one [seed phrase](/blog/seed-phrase-backup-guide), 22 blockchains. Bitcoin, Ethereum, BSC, Polygon, Arbitrum, Optimism, Avalanche, Fantom, Linea, Scroll, and more—all derived from the same [HD wallet](/blog/key-derivation-bip39-44).
+**ArcSign solves this:** One USB device, one [seed phrase](/blog/seed-phrase-backup-guide), 7 chains. Bitcoin, Ethereum, BSC, Polygon, Arbitrum, Optimism, Avalanche, Fantom, Linea, Scroll, and more—all derived from the same [HD wallet](/blog/key-derivation-bip39-44).
 
             What is HD Wallet?
 
-HD (Hierarchical Deterministic) wallets use [BIP-39](/blog/key-derivation-bip39-44) and BIP-44 standards to derive an unlimited number of addresses from a single [seed phrase](/blog/seed-phrase-backup-guide). Different derivation paths generate addresses for different blockchains. One backup, infinite addresses across 22 chains.
+HD (Hierarchical Deterministic) wallets use [BIP-39](/blog/key-derivation-bip39-44) and BIP-44 standards to derive an unlimited number of addresses from a single [seed phrase](/blog/seed-phrase-backup-guide). Different derivation paths generate addresses for different blockchains. One backup, infinite addresses across 7 chains.
 
 ## ArcSign's Cross-Chain Architecture: One Seed, Many Chains
 
@@ -47,9 +47,9 @@ ArcSign applies BIP-44 derivation paths to this seed:
 
 - **BSC:** Uses the same Ethereum path (compatible EVM chain)
 
-- **Other EVM chains:** Standard Ethereum paths for all 21 EVM networks
+- **Other EVM chains:** Standard Ethereum paths for all 6 major EVM networks
 
-The beauty of this design: **you never need to remember multiple seed phrases**. One backup file (your `.arcsign` encrypted archive) contains all the information needed to recover every address on all 22 chains.
+The beauty of this design: **you never need to remember multiple seed phrases**. One backup file (your `.arcsign` encrypted archive) contains all the information needed to recover every address on all 7 chains.
 
 ### Key Protection: XOR 3-Shard Encryption
 
@@ -67,7 +67,7 @@ When you sign a transaction, ArcSign combines the shards, signs locally on your 
 
 ### Backup & Recovery
 
-Your `.arcsign` backup file contains your encrypted wallet data. It is **[AES-256](/blog/aes256-encryption-simple) encrypted** by default—no separate password step needed. When you export your backup, you get an encrypted file immediately. Store it on cloud storage, an external hard drive, or printed as a QR code. If you lose your USB device, import the backup into a new ArcSign instance and regain access to all 22 chains.
+Your `.arcsign` backup file contains your encrypted wallet data. It is **[AES-256](/blog/aes256-encryption-simple) encrypted** by default—no separate password step needed. When you export your backup, you get an encrypted file immediately. Store it on cloud storage, an external hard drive, or printed as a QR code. If you lose your USB device, import the backup into a new ArcSign instance and regain access to all 7 chains.
 
 ## Step-by-Step: Managing BTC + ETH + BSC in ArcSign
 
@@ -76,7 +76,7 @@ Let's walk through a practical example: you want to check your Bitcoin balance, 
             1
             Set Up Your Wallet
 
-Plug your ArcSign USB device into your computer and open the ArcSign dashboard. If this is your first time, click **"Create New Wallet"**. ArcSign generates a 24-word BIP-39 mnemonic and displays it once. Write it down on paper (or use the encrypted backup file). This single phrase is your master key to all 22 blockchains.
+Plug your ArcSign USB device into your computer and open the ArcSign dashboard. If this is your first time, click **"Create New Wallet"**. ArcSign generates a 24-word BIP-39 mnemonic and displays it once. Write it down on paper (or use the encrypted backup file). This single phrase is your master key to all 7 chains.
 
             2
             Switch Chains in the Dashboard
@@ -96,7 +96,7 @@ To send BSC tokens, switch to the BSC chain and click **"Send"**. Enter the reci
             5
             Monitor Balances Across All Chains
 
-ArcSign's dashboard integrates with Alchemy and NodeReal APIs to fetch real-time balances for all 22 chains. Switch between chains quickly to see your total portfolio. Check individual token balances, NFTs, and staking positions all from one interface.
+ArcSign's dashboard integrates with Alchemy and NodeReal APIs to fetch real-time balances for all 7 chains. Switch between chains quickly to see your total portfolio. Check individual token balances, NFTs, and staking positions all from one interface.
 
             Provider Setup
 
@@ -219,13 +219,13 @@ Managing assets across multiple chains requires careful attention to security. L
 
 **4. Transparent Transaction Approval:** Before ArcSign signs anything, it shows you the full transaction details on the USB device screen. You verify what you're signing with your eyes, not a potentially-spoofed browser popup.
 
-**5. Single Backup, Infinite Recovery:** One `.arcsign` backup file ([AES-256](/blog/aes256-encryption-simple) encrypted) recovers all 22 chains. No need to manage multiple seed phrases or hardware backups.
+**5. Single Backup, Infinite Recovery:** One `.arcsign` backup file ([AES-256](/blog/aes256-encryption-simple) encrypted) recovers all 7 chains. No need to manage multiple seed phrases or hardware backups.
 
 ### Best Practices for Cross-Chain Management
 
 - **Store your .arcsign backup securely:** Cloud storage (iCloud, Google Drive) with strong password, external hard drive, or printed as a QR code. AES-256 encryption means even cloud providers cannot read it.
 
-- **Never share your 24-word mnemonic:** If someone gets this phrase, they can recover your entire wallet on all 22 chains.
+- **Never share your 24-word mnemonic:** If someone gets this phrase, they can recover your entire wallet on all 7 chains.
 
 - **Verify DApp URLs before WalletConnect:** Phishing sites can still trick you. Always check the address bar.
 

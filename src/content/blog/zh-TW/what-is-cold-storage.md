@@ -55,7 +55,7 @@ relatedSlugs: ["exchange-hack-history", "ledger-recover-controversy", "crypto-wa
 
 **原理：**利用普通 USB + 加密軟體，實現冷儲存級別的安全。私鑰經過 [XOR 三分片](/blog/xor-encryption-explained) + [AES-256](/blog/aes256-encryption-simple) 加密，存在 USB 上。
 
-**優點：** 零成本（只需任何 USB）、加密備份、強加密保護、支援 22 條區塊鏈
+**優點：** 零成本（只需任何 USB）、加密備份、強加密保護、支援 7 條主流區塊鏈
 
 **缺點：** 依賴於電腦的安全性（不如專用硬體，但遠優於熱錢包）
 
@@ -130,7 +130,7 @@ ArcSign 核心創新：**用普通 USB + 強加密，實現硬體錢包級別的
 
 - **AES-256 加密備份檔**：一鍵匯出 .arcsign 備份檔，比紙筆更安全、更方便。備份檔可複製到多個位置
 
-- **22 條區塊鏈支援**：Bitcoin + 21 條 EVM 鏈（Ethereum、BSC、Polygon 等）一個錢包管理
+- **7 條主流區塊鏈支援**：Bitcoin + 6 條主流 EVM 鏈（Ethereum、BSC、Polygon 等）一個錢包管理
 
 - **內建 WalletConnect**：即使是冷錢包，也能透過 WalletConnect 連接 DEX、Staking、NFT 市場等 DApp
 
@@ -223,7 +223,7 @@ ArcSign 核心創新：**用普通 USB + 強加密，實現硬體錢包級別的
 
 #### 冷錢包支援多少條區塊鏈？
 
-ArcSign 支援 22 條區塊鏈：Bitcoin + 21 條 EVM 相容鏈（Ethereum、BSC、Polygon、Arbitrum 等）。使用同一組助記詞，可衍生所有鏈的地址。
+ArcSign 支援 7 條主流區塊鏈：Bitcoin + 6 條主流 EVM 相容鏈（Ethereum、BSC、Polygon、Arbitrum 等）。使用同一組助記詞，可衍生所有鏈的地址。
 
 #### 冷錢包需要付費嗎？
 

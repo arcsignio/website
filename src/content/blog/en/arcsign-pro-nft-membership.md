@@ -31,7 +31,7 @@ Before evaluating whether to upgrade, it's important to understand just how powe
 | **XOR Three-Shard Encryption** | ✓ Full support | ✓ Full support |
 | **mlock Memory Protection** | ✓ Full support | ✓ Full support |
 | **.arcsign Encrypted Backup** | ✓ Full support | ✓ Full support |
-| **Multi-Chain Management (22 chains)** | ✓ Full support | ✓ Full support |
+| **Multi-Chain Management (7 chains)** | ✓ Full support | ✓ Full support |
 | **Transaction Signing & Sending** | ✓ Full support | ✓ Full support |
 | **WalletConnect v2** | ✓ Full support | ✓ Full support |
 | **DEX Swap (OpenOcean + KyberSwap)** | ✓ Full support | ✓ Full support |
