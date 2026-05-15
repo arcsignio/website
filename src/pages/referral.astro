@@ -1,0 +1,360 @@
+---
+// zh-TW Referral page — served at /referral
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'ArcSign 推薦計畫',
+  description: '推薦 ArcSign 給朋友，永久從他們的 swap 手續費和 Pro 訂閱費中賺取 10-20% 佣金。',
+  url: 'https://arcsign.io/referral',
+};
+---
+
+<BaseLayout
+  title="推薦計畫 - ArcSign | 永久 10-20% 佣金分潤"
+  description="推薦 ArcSign 給朋友，永久從他們的 swap 手續費和 Pro 訂閱費中賺取 10-20% 佣金。沒有到期日，沒有上限。Free 用戶 10%，Pro 用戶 20%。"
+  locale="zh-TW"
+  canonical="https://arcsign.io/referral"
+  schema={schema}
+>
+  <style>
+    /* ===== Hero ===== */
+    .referral-hero {
+      padding: 120px 0 80px;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(13,148,136,0.08) 0%, rgba(45,212,191,0.04) 100%);
+    }
+    .referral-hero .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(45,212,191,0.12);
+      border: 1px solid rgba(45,212,191,0.3);
+      color: var(--primary);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .referral-hero h1 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    .referral-hero p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      margin-top: 48px;
+    }
+    .hero-stat {
+      text-align: center;
+    }
+    .hero-stat-value {
+      display: block;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1;
+    }
+    .hero-stat-label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-top: 6px;
+    }
+
+    /* ===== Steps ===== */
+    .referral-steps {
+      padding: 80px 0;
+    }
+    .referral-steps h2 {
+      text-align: center;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      margin-bottom: 56px;
+    }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    @media (max-width: 768px) {
+      .steps-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .step-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 32px 28px;
+      position: relative;
+    }
+    .step-number {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #0d9488, #2dd4bf);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--bg-dark);
+      margin-bottom: 20px;
+    }
+    .step-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+    }
+    .step-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ===== Rates Table ===== */
+    .referral-rates {
+      padding: 80px 0;
+      background: rgba(13,148,136,0.04);
+      border-top: 1px solid rgba(45,212,191,0.08);
+      border-bottom: 1px solid rgba(45,212,191,0.08);
+    }
+    .referral-rates h2 {
+      text-align: center;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      margin-bottom: 40px;
+    }
+    .rates-table {
+      width: 100%;
+      border-collapse: collapse;
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+    }
+    .rates-table th,
+    .rates-table td {
+      padding: 16px 20px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .rates-table th:first-child,
+    .rates-table td:first-child { text-align: left; font-weight: 600; }
+    .rates-table thead th {
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid rgba(45,212,191,0.2);
+    }
+    .rates-table .rate-highlight {
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .rates-table .kol-row td { opacity: 0.65; font-style: italic; }
+    .rates-table .kol-badge {
+      display: inline-block;
+      background: rgba(45,212,191,0.12);
+      color: var(--primary);
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-left: 8px;
+      font-style: normal;
+    }
+
+    /* ===== FAQ ===== */
+    .referral-faq {
+      padding: 80px 0;
+    }
+    .referral-faq h2 {
+      text-align: center;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      margin-bottom: 40px;
+    }
+    .referral-faq .faq-list {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* ===== CTA ===== */
+    .referral-cta {
+      padding: 80px 0;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(13,148,136,0.1) 0%, rgba(45,212,191,0.05) 100%);
+      border-top: 1px solid rgba(45,212,191,0.1);
+    }
+    .referral-cta h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      margin-bottom: 16px;
+    }
+    .referral-cta p {
+      color: var(--text-secondary);
+      max-width: 500px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+    .referral-cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  </style>
+
+  <!-- Hero -->
+  <section class="referral-hero">
+    <div class="container">
+      <div class="badge">💸 <span data-i18n="referral.hero.badge">永久分潤</span></div>
+      <h1>
+        <span data-i18n="referral.hero.title">推薦 ArcSign，</span><span class="gradient-text" data-i18n="referral.hero.title.gradient">永久賺取佣金</span>
+      </h1>
+      <p data-i18n="referral.hero.desc">邀請朋友使用 ArcSign，永久從他們的 swap 手續費和 Pro 訂閱費中抽取 10-20% 佣金。沒有到期日，沒有上限。</p>
+      <div class="referral-cta-buttons" style="justify-content:center;margin-bottom:0;">
+        <a href="/#download" class="btn btn-primary" data-i18n="referral.cta.download">免費下載 ArcSign</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-value">10–20%</span>
+          <span class="hero-stat-label" data-i18n="referral.rates.rate">佣金比例</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">∞</span>
+          <span class="hero-stat-label">永久有效</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">$0</span>
+          <span class="hero-stat-label">加入門檻</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="referral-steps">
+    <div class="container">
+      <h2 data-i18n="referral.steps.title">三步驟開始賺取</h2>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3 data-i18n="referral.step1.title">生成推薦碼</h3>
+          <p data-i18n="referral.step1.desc">下載 ArcSign，進入 Membership Settings → 推薦計畫，點擊「建立推薦碼」。</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3 data-i18n="referral.step2.title">分享推薦連結</h3>
+          <p data-i18n="referral.step2.desc">複製你的專屬推薦連結，分享給朋友、社群或貼文中。</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3 data-i18n="referral.step3.title">永久賺取佣金</h3>
+          <p data-i18n="referral.step3.desc">朋友綁定你的推薦碼後，你永久從他們所有的平台費用中抽取佣金。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Commission Rates -->
+  <section class="referral-rates">
+    <div class="container">
+      <h2 data-i18n="referral.rates.title">佣金比例</h2>
+      <table class="rates-table">
+        <thead>
+          <tr>
+            <th data-i18n="referral.rates.plan">方案</th>
+            <th data-i18n="referral.rates.rate">佣金比例</th>
+            <th data-i18n="referral.rates.basis">計算基礎</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-i18n="referral.rates.free">Free</td>
+            <td class="rate-highlight" data-i18n="referral.rates.free.rate">10%</td>
+            <td data-i18n="referral.rates.free.basis">Swap 手續費 + Pro 訂閱費</td>
+          </tr>
+          <tr>
+            <td data-i18n="referral.rates.pro">Pro</td>
+            <td class="rate-highlight" data-i18n="referral.rates.pro.rate">20%</td>
+            <td data-i18n="referral.rates.pro.basis">同上（Pro 會員專屬福利）</td>
+          </tr>
+          <tr class="kol-row">
+            <td>
+              <span data-i18n="referral.rates.kol">KOL（Q4 2026）</span>
+              <span class="kol-badge">即將推出</span>
+            </td>
+            <td class="rate-highlight" data-i18n="referral.rates.kol.rate">20-30%</td>
+            <td data-i18n="referral.rates.kol.basis">所有平台費用</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="referral-faq">
+    <div class="container">
+      <h2 data-i18n="referral.faq.title">常見問題</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span data-i18n="referral.faq.q1">佣金什麼時候發放？</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p data-i18n="referral.faq.a1">Q4 2026 開始，系統每日計算佣金並批次發放 BNB/USDT 到你的錢包地址。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span data-i18n="referral.faq.q2">推薦關係可以更改嗎？</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p data-i18n="referral.faq.a2">不行。推薦關係一旦設定，永久記錄在 BSC 鏈上，無法更改或撤銷。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span data-i18n="referral.faq.q3">Free 用戶也能推薦嗎？</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p data-i18n="referral.faq.a3">可以。Free 用戶推薦佣金為 10%，Pro 用戶佣金為 20%。升級 Pro 可以賺更多。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span data-i18n="referral.faq.q4">推薦連結有效期嗎？</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p data-i18n="referral.faq.a4">沒有。你的推薦碼永久有效，只要朋友持續使用 ArcSign，你就持續賺取佣金。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="referral-cta">
+    <div class="container">
+      <h2 data-i18n="referral.cta.title">立即開始推薦</h2>
+      <p data-i18n="referral.cta.desc">免費下載 ArcSign，生成你的推薦碼，開始建立被動收入。</p>
+      <div class="referral-cta-buttons">
+        <a href="/#download" class="btn btn-primary" data-i18n="referral.cta.download">免費下載 ArcSign</a>
+        <a href="/pricing" class="btn btn-secondary" data-i18n="referral.cta.pricing">了解 Pro 方案</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

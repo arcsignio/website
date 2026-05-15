@@ -1,0 +1,412 @@
+---
+// English Pricing page — served at /en/pricing
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const locale = 'en' as const;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'ArcSign Pricing',
+  description: 'Compare ArcSign Free and Pro plans for USB cold wallet.',
+  url: 'https://arcsign.io/en/pricing',
+  mainEntity: {
+    '@type': 'Product',
+    name: 'ArcSign Pro Membership',
+    description: 'Multiple wallets, batch token revoke, best-route DEX swaps, priority support',
+    offers: [
+      { '@type': 'Offer', name: 'Free', price: '0', priceCurrency: 'USD' },
+      { '@type': 'Offer', name: 'Pro', price: '30', priceCurrency: 'USD', priceValidUntil: '2027-12-31' },
+    ],
+  },
+};
+---
+
+<BaseLayout
+  title="ArcSign Pricing | Free vs Pro USB Cold Wallet Plans (2026)"
+  description="Compare ArcSign Free and Pro plans. Free: 1 wallet, multi-chain support, DEX swap. Pro ($30/year): 4+ wallets, batch revoke, best-route swaps, priority support. No hardware required."
+  locale={locale}
+  canonical="https://arcsign.io/en/pricing"
+  schema={schema}
+>
+  <style>
+    .pricing-hero {
+      padding: 120px 0 60px;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(13, 148, 136, 0.08) 0%, rgba(45, 212, 191, 0.04) 100%);
+    }
+    .pricing-hero h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 16px;
+    }
+    .pricing-hero p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* Comparison Table */
+    .comparison { padding: 60px 0 80px; }
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 40px;
+      font-size: 0.95rem;
+    }
+    .comparison-table th,
+    .comparison-table td {
+      padding: 16px 20px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .comparison-table th:first-child,
+    .comparison-table td:first-child {
+      text-align: left;
+      color: var(--text-secondary);
+    }
+    .comparison-table thead th {
+      font-size: 1.1rem;
+      padding-bottom: 24px;
+      border-bottom: 2px solid rgba(45, 212, 191, 0.3);
+    }
+    .comparison-table thead th:nth-child(2) { color: var(--text-primary); }
+    .comparison-table thead th:nth-child(3) {
+      color: var(--primary);
+      position: relative;
+    }
+    .comparison-table thead th:nth-child(3)::after {
+      content: 'Recommended';
+      position: absolute;
+      top: -8px;
+      right: 8px;
+      background: var(--primary);
+      color: var(--bg-dark);
+      font-size: 0.6rem;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-weight: 700;
+    }
+    .comparison-table .price-row td {
+      font-size: 1.3rem;
+      font-weight: 700;
+      padding: 20px;
+      border-bottom: 2px solid rgba(45, 212, 191, 0.15);
+    }
+    .comparison-table .price-row td:nth-child(3) { color: var(--primary); }
+    .comparison-table .check { color: var(--success); font-size: 1.2rem; }
+    .comparison-table .cross { color: var(--text-secondary); opacity: 0.4; }
+    .comparison-table .highlight { color: var(--primary); font-weight: 600; }
+    .comparison-table .category-row td {
+      font-weight: 700;
+      color: var(--text-primary);
+      padding-top: 28px;
+      border-bottom: 1px solid rgba(45, 212, 191, 0.15);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .pricing-cta-section {
+      padding: 60px 0;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(13, 148, 136, 0.1) 0%, rgba(45, 212, 191, 0.05) 100%);
+      border-top: 1px solid rgba(45, 212, 191, 0.1);
+    }
+    .pricing-cta-section h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      margin-bottom: 16px;
+    }
+    .pricing-cta-section p {
+      color: var(--text-secondary);
+      max-width: 500px;
+      margin: 0 auto 32px;
+      line-height: 1.7;
+    }
+    .pricing-cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Pricing FAQ */
+    .pricing-faq { padding: 80px 0; }
+    .pricing-faq h2 {
+      text-align: center;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      margin-bottom: 40px;
+    }
+    .pricing-faq .faq-list { max-width: 720px; margin: 0 auto; }
+
+    @media (max-width: 768px) {
+      .comparison-table { font-size: 0.85rem; }
+      .comparison-table th, .comparison-table td { padding: 12px 10px; }
+      .comparison-table thead th:nth-child(3)::after { display: none; }
+    }
+  </style>
+
+  <!-- Pricing Hero -->
+  <section class="pricing-hero">
+    <div class="container">
+      <h1><span>Choose Your </span><span class="gradient-text">Security Plan</span></h1>
+      <p>ArcSign's free plan already includes complete cold wallet security. Pro unlocks advanced DeFi tools to take your asset management to the next level.</p>
+    </div>
+  </section>
+
+  <!-- Pricing Cards -->
+  <section class="pricing" style="padding-top: 40px;">
+    <div class="container">
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3>Free</h3>
+            <div class="price">
+              <span class="price-value">$0</span>
+              <span class="price-period">Forever free</span>
+            </div>
+          </div>
+          <ul class="pricing-features">
+            <li>USB offline storage</li>
+            <li>1 wallet</li>
+            <li>Multi-chain support</li>
+            <li>Token Swap</li>
+            <li>Transaction history</li>
+            <li>Auto-lock</li>
+          </ul>
+          <a href="/en/#download" class="btn btn-secondary btn-block">Free Download</a>
+        </div>
+        <div class="pricing-card featured">
+          <div class="pricing-badge">Recommended</div>
+          <div class="pricing-header">
+            <h3>Pro</h3>
+            <div class="price">
+              <span class="price-value">$30</span>
+              <span class="price-period">USDT / year</span>
+            </div>
+          </div>
+          <ul class="pricing-features">
+            <li><strong>All Free features</strong></li>
+            <li><strong>4+ wallets</strong><span> (each NFT adds 3)</span></li>
+            <li>2x points bonus</li>
+            <li>3x airdrop weight</li>
+            <li>Priority support</li>
+            <li>Early access to new features</li>
+          </ul>
+          <a href="/en/#download" class="btn btn-primary btn-block">Upgrade to Pro</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detailed Comparison Table -->
+  <section class="comparison">
+    <div class="container">
+      <h2 style="text-align:center;font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:8px;">Full Feature Comparison</h2>
+      <p style="text-align:center;color:var(--text-secondary);margin-bottom:0;">All core security features are free. Pro unlocks advanced DeFi tools.</p>
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Free</th>
+            <th>Pro</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="price-row">
+            <td>Price</td>
+            <td>$0</td>
+            <td>$30 USDT / year</td>
+          </tr>
+
+          <tr class="category-row"><td colspan="3">Security Fundamentals</td></tr>
+          <tr>
+            <td>USB offline private key storage</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td>XOR three-shard encryption</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td>mlock memory protection</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td>.arcsign encrypted backup</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td>Auto-lock + password protection</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+          </tr>
+
+          <tr class="category-row"><td colspan="3">Wallet Management</td></tr>
+          <tr>
+            <td>Number of wallets</td>
+            <td>1</td>
+            <td class="highlight">4+ (each NFT adds 3)</td>
+          </tr>
+          <tr>
+            <td>Supported chains</td>
+            <td>22</td>
+            <td>22</td>
+          </tr>
+          <tr>
+            <td>Address book</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td>Transaction labels</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+          </tr>
+
+          <tr class="category-row"><td colspan="3">DeFi Features</td></tr>
+          <tr>
+            <td>DEX Swap</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td>Swap fee</td>
+            <td>0.1%</td>
+            <td class="highlight">Free</td>
+          </tr>
+          <tr>
+            <td>Best-route auto price comparison</td>
+            <td class="cross">&#10005;</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td>WalletConnect dApps</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td>Token approval management</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td>Batch revoke approvals</td>
+            <td class="cross">&#10005;</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td>Cross-chain NFT gallery</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+          </tr>
+          <tr>
+            <td>DeFi positions display</td>
+            <td class="check">&#10003;</td>
+            <td class="check">&#10003;</td>
+          </tr>
+
+          <tr class="category-row"><td colspan="3">Extra Benefits</td></tr>
+          <tr>
+            <td>Points multiplier</td>
+            <td>1x</td>
+            <td class="highlight">2x</td>
+          </tr>
+          <tr>
+            <td>Airdrop weight</td>
+            <td>1x</td>
+            <td class="highlight">3x</td>
+          </tr>
+          <tr>
+            <td>Support</td>
+            <td>Community</td>
+            <td class="highlight">Priority</td>
+          </tr>
+          <tr>
+            <td>Early access to new features</td>
+            <td class="cross">&#10005;</td>
+            <td class="check">&#10003;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="pricing-cta-section">
+    <div class="container">
+      <h2>Ready to Get Started?</h2>
+      <p>Download ArcSign for free and upgrade to Pro anytime from within the app.</p>
+      <div class="pricing-cta-buttons">
+        <a href="/en/#download" class="btn btn-primary btn-lg">Free Download</a>
+        <a href="/en/blog/arcsign-pro-nft-membership" class="btn btn-secondary btn-lg">Learn About Pro NFT</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter" id="newsletter">
+    <div class="container">
+      <div class="newsletter-content">
+        <h2>Stay Up to Date</h2>
+        <p>Subscribe to the ArcSign newsletter for product updates, security tips, DeFi trends and exclusive offers.</p>
+        <form class="newsletter-form" id="newsletter-form">
+          <input type="email" id="newsletter-email" placeholder="you@example.com" required autocomplete="email" />
+          <button type="submit" class="btn btn-primary">Subscribe Free</button>
+        </form>
+        <p class="newsletter-status" id="newsletter-status"></p>
+        <p class="newsletter-privacy">No spam, unsubscribe anytime.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing FAQ -->
+  <section class="pricing-faq">
+    <div class="container">
+      <h2>Pricing FAQ</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What is the Pro membership NFT and how do I buy it?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Pro membership exists as an <strong>ERC-721 NFT</strong> on the BSC chain. Mint it directly in the app using USDT or BNB. The NFT is a digital asset you truly own — it can be transferred or sold. Each NFT is valid for 1 year and adds 3 wallet slots.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Are the Free and Pro plans equally secure?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p><strong>Absolutely.</strong> Free and Pro use the same encryption engine (XOR three-shard + AES-256 + mlock memory protection). Pro adds DeFi efficiency features (multiple wallets, batch revoke, best-route Swap) without affecting security level.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How are Swap fees calculated?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Free users: <strong>0.1%</strong> fee. Pro users: <strong>completely free</strong>, plus automatic price comparison across multiple aggregators to find the best rate.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What happens when my NFT expires?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>After expiry you revert to the Free plan — <strong>your wallets and assets are not affected</strong>. You simply cannot access more than 1 wallet. Purchase a new NFT to restore Pro benefits.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

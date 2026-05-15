@@ -1,0 +1,668 @@
+---
+// zh-TW Tutorial page — served at /tutorial
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Tutorial - ArcSign"
+  description="Learn how to use ArcSign USB cold wallet - complete guide from installation to daily usage."
+  locale="zh-TW"
+  canonical="https://arcsign.io/tutorial"
+>
+  <style>
+    .tutorial-hero {
+      padding: 120px 0 60px;
+      background: linear-gradient(135deg, #0a0a0a 0%, #0f2b46 100%);
+    }
+    .tutorial-hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .tutorial-content {
+      padding: 60px 0;
+    }
+    .tutorial-section {
+      margin-bottom: 60px;
+    }
+    .tutorial-section h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .tutorial-section h2 .step-number {
+      background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .tutorial-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+    .tutorial-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+    .tutorial-card p {
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    .tutorial-card ul {
+      list-style: none;
+      padding: 0;
+    }
+    .tutorial-card li {
+      padding: 12px 0;
+      padding-left: 28px;
+      position: relative;
+      color: rgba(255, 255, 255, 0.7);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .tutorial-card li:last-child {
+      border-bottom: none;
+    }
+    .tutorial-card li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #10b981;
+      font-weight: bold;
+    }
+    .warning-box {
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    .warning-box h4 {
+      color: #f59e0b;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .warning-box p {
+      color: rgba(255, 255, 255, 0.7);
+      margin: 0;
+    }
+    .tip-box {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    .tip-box h4 {
+      color: #10b981;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tip-box p {
+      color: rgba(255, 255, 255, 0.7);
+      margin: 0;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      margin-bottom: 20px;
+      transition: color 0.2s;
+    }
+    .back-link:hover {
+      color: #fff;
+    }
+
+    /* Security Highlight Card */
+    .tutorial-card.security-highlight {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(59, 130, 246, 0.08) 100%);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      padding: 0;
+      overflow: hidden;
+    }
+    .security-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 24px 32px;
+      background: rgba(16, 185, 129, 0.1);
+      border-bottom: 1px solid rgba(16, 185, 129, 0.15);
+    }
+    .security-icon {
+      font-size: 2.5rem;
+    }
+    .security-header h3 {
+      margin: 0;
+      font-size: 1.25rem;
+    }
+    .security-tagline {
+      margin: 4px 0 0 !important;
+      font-size: 0.875rem !important;
+      color: rgba(255, 255, 255, 0.6) !important;
+    }
+    .security-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .security-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 20px 24px;
+      background: rgba(15, 23, 42, 0.5);
+    }
+    .security-item .item-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .security-item strong {
+      display: block;
+      color: #fff;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+    .security-item p {
+      margin: 0 !important;
+      font-size: 0.85rem !important;
+      color: rgba(255, 255, 255, 0.6) !important;
+      line-height: 1.5 !important;
+    }
+    .security-footer {
+      padding: 20px 32px;
+      background: rgba(15, 23, 42, 0.3);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .security-badge {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .security-footer p {
+      margin: 0 !important;
+      font-size: 0.85rem !important;
+      color: rgba(255, 255, 255, 0.6) !important;
+      line-height: 1.5 !important;
+    }
+    @media (max-width: 640px) {
+      .security-grid {
+        grid-template-columns: 1fr;
+      }
+      .security-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+    }
+
+    /* Passphrase Box */
+    .passphrase-box {
+      background: linear-gradient(135deg, rgba(20, 184, 166, 0.08) 0%, rgba(13, 148, 136, 0.08) 100%);
+      border: 1px solid rgba(20, 184, 166, 0.25);
+      border-radius: 16px;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+    .passphrase-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 20px 24px;
+      background: rgba(20, 184, 166, 0.1);
+      border-bottom: 1px solid rgba(20, 184, 166, 0.15);
+    }
+    .passphrase-icon {
+      font-size: 1.75rem;
+    }
+    .passphrase-header h4 {
+      margin: 0;
+      color: #99f6e4;
+      font-size: 1rem;
+    }
+    .passphrase-subtitle {
+      margin: 4px 0 0 !important;
+      font-size: 0.8rem !important;
+      color: rgba(255, 255, 255, 0.5) !important;
+    }
+    .passphrase-benefits {
+      padding: 16px 24px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .passphrase-benefit {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .passphrase-benefit .benefit-icon {
+      font-size: 1.25rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .passphrase-benefit strong {
+      display: block;
+      color: #fff;
+      font-size: 0.9rem;
+      margin-bottom: 2px;
+    }
+    .passphrase-benefit p {
+      margin: 0 !important;
+      font-size: 0.8rem !important;
+      color: rgba(255, 255, 255, 0.6) !important;
+      line-height: 1.4 !important;
+    }
+
+    /* Backup Box - Recommended */
+    .backup-box {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+      border: 2px solid rgba(59, 130, 246, 0.3);
+      border-radius: 16px;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+    .backup-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 20px 24px;
+      background: rgba(59, 130, 246, 0.15);
+      border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+    }
+    .backup-icon {
+      font-size: 2rem;
+    }
+    .backup-header h4 {
+      margin: 0;
+      color: #60a5fa;
+      font-size: 1.1rem;
+    }
+    .backup-subtitle {
+      margin: 4px 0 0 !important;
+      font-size: 0.8rem !important;
+      color: rgba(255, 255, 255, 0.6) !important;
+    }
+    .backup-content {
+      padding: 20px 24px;
+    }
+    .backup-content > p {
+      margin: 0 0 16px !important;
+      color: rgba(255, 255, 255, 0.85) !important;
+      font-size: 0.95rem !important;
+    }
+    .backup-advantages {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .backup-advantage {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.75);
+    }
+    .backup-advantage span:first-child {
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .backup-note {
+      margin: 0 !important;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.85rem !important;
+      color: rgba(255, 255, 255, 0.5) !important;
+    }
+  </style>
+
+  <!-- Hero -->
+  <section class="tutorial-hero">
+    <div class="container">
+      <a href="/" class="back-link">← 返回首頁</a>
+      <h1><span class="gradient-text">使用教學</span></h1>
+      <p style="color: rgba(255,255,255,0.7); font-size: 1.125rem;">
+        從安裝到日常使用，完整的 ArcSign 使用指南
+      </p>
+    </div>
+  </section>
+
+  <!-- Tutorial Content -->
+  <section class="tutorial-content">
+    <div class="container">
+
+      <!-- Step 1: Installation -->
+      <div class="tutorial-section">
+        <h2><span class="step-number">1</span> <span>安裝 ArcSign 到 USB</span></h2>
+        <div class="tutorial-card">
+          <h3>下載與安裝（隨插即用）</h3>
+          <ul>
+            <li>準備一個專用的 USB 隨身碟（建議 16GB 以上）</li>
+            <li>前往 <a href="/#download" style="color: #2dd4bf;">下載頁面</a> 下載適合你系統的版本</li>
+            <li>將下載的 ArcSign 應用程式<strong>直接拷貝到 USB 隨身碟</strong></li>
+            <li>之後只要插入 USB，雙擊 ArcSign 即可使用</li>
+          </ul>
+          <div class="tip-box">
+            <h4>💡 隨插即用</h4>
+            <p>把 ArcSign 和錢包資料都放在 USB 內，你可以在任何電腦上（Windows、macOS、Linux）插入 USB 直接使用，真正實現「帶著錢包走」。</p>
+          </div>
+          <div class="warning-box">
+            <h4>⚠️ 首次開啟</h4>
+            <p>首次在新電腦上開啟時，macOS 可能會提示「無法驗證開發者」，請到「系統設定 → 隱私權與安全性」點擊「強制打開」。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: First Setup -->
+      <div class="tutorial-section">
+        <h2><span class="step-number">2</span> <span>首次設定</span></h2>
+        <div class="tutorial-card">
+          <h3>啟動 ArcSign</h3>
+          <ul>
+            <li>從 USB 隨身碟雙擊開啟 ArcSign</li>
+            <li>應用程式會自動偵測並使用 USB 作為錢包存儲位置</li>
+            <li>設定一個強密碼（至少 12 個字元，需包含大小寫英文和數字）</li>
+          </ul>
+          <div class="warning-box">
+            <h4>⚠️ 重要</h4>
+            <p>請務必記住你的密碼！密碼不會儲存在任何地方，忘記密碼將無法恢復錢包。</p>
+          </div>
+        </div>
+        <div class="tutorial-card">
+          <h3>設定區塊鏈節點 (RPC Provider)</h3>
+          <p style="color: rgba(255,255,255,0.7); margin-bottom: 16px;">ArcSign 需要透過 RPC Provider 與區塊鏈互動。目前需要手動設定 API Key：</p>
+          <ul>
+            <li>前往「設定 → Provider 設定」</li>
+            <li>選擇 Provider 類型並輸入你的 API Key</li>
+          </ul>
+          <div class="tip-box">
+            <h4>💡 支援的 Provider</h4>
+            <p>
+              <strong>Alchemy</strong> — Ethereum、Polygon、Arbitrum、Optimism、Base<br />
+              <strong>NodeReal</strong> — BNB Smart Chain (BSC)
+            </p>
+          </div>
+          <div class="warning-box">
+            <h4>⚠️ 如何取得 API Key</h4>
+            <p>
+              前往 <a href="https://dashboard.alchemy.com" target="_blank" style="color: #2dd4bf;">Alchemy</a> 以及
+              <a href="https://dashboard.nodereal.io" target="_blank" style="color: #2dd4bf;">NodeReal</a> 免費註冊帳號，
+              建立專案後即可取得 API Key。免費方案足夠一般使用。
+            </p>
+          </div>
+          <div class="tip-box" style="background: rgba(45, 212, 191, 0.1); border-color: rgba(45, 212, 191, 0.3);">
+            <h4 style="color: #14b8a6;">🚀 即將推出：內建節點</h4>
+            <p style="color: rgba(255, 255, 255, 0.7);">
+              未來版本將內建預設的 RPC 節點，讓你無需手動設定即可直接使用。敬請期待！
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3: Create/Import Wallet -->
+      <div class="tutorial-section">
+        <h2><span class="step-number">3</span> <span>建立或匯入錢包</span></h2>
+        <div class="tutorial-card">
+          <h3>建立新錢包</h3>
+          <ul>
+            <li>點擊「建立新錢包」</li>
+            <li>為錢包取一個名稱（選填，例如：主要錢包）</li>
+            <li>設定密碼（至少 12 個字元，需包含大小寫英文和數字）</li>
+            <li>選擇助記詞長度：<strong>12 個字</strong>或<strong>24 個字</strong>（預設 24 字，安全性較高）</li>
+            <li>進階選項：可設定 BIP39 Passphrase（選填，相當於第 25 個字，<strong>強烈建議設定</strong>）</li>
+            <li>系統產生助記詞後，將其抄寫在紙上妥善保管</li>
+            <li>依序輸入助記詞進行驗證，確認備份正確</li>
+          </ul>
+          <div class="tip-box">
+            <h4>💡 關於助記詞長度</h4>
+            <p>24 個字提供更高的安全性（256 位元熵），適合大額資產。12 個字（128 位元熵）也足夠安全，且更容易備份。</p>
+          </div>
+          <div class="passphrase-box">
+            <div class="passphrase-header">
+              <span class="passphrase-icon">🔐</span>
+              <div>
+                <h4>為什麼強烈建議設定 BIP39 Passphrase？</h4>
+                <p class="passphrase-subtitle">你的「第 25 個字」，提供雙重保險</p>
+              </div>
+            </div>
+            <div class="passphrase-benefits">
+              <div class="passphrase-benefit">
+                <span class="benefit-icon">🛡️</span>
+                <div>
+                  <strong>防止助記詞外洩</strong>
+                  <p>即使有人取得你的 24 個字，沒有 Passphrase 也無法存取資產</p>
+                </div>
+              </div>
+              <div class="passphrase-benefit">
+                <span class="benefit-icon">👻</span>
+                <div>
+                  <strong>隱藏錢包</strong>
+                  <p>同一組助記詞搭配不同 Passphrase 會產生完全不同的地址</p>
+                </div>
+              </div>
+              <div class="passphrase-benefit">
+                <span class="benefit-icon">🚨</span>
+                <div>
+                  <strong>對抗物理威脅</strong>
+                  <p>被迫交出助記詞時，可只交出沒有 Passphrase 的空錢包</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="backup-box">
+            <div class="backup-header">
+              <span class="backup-icon">💾</span>
+              <div>
+                <h4>備份你的錢包（推薦）</h4>
+                <p class="backup-subtitle">比傳統助記詞備份更安全的方式</p>
+              </div>
+            </div>
+            <div class="backup-content">
+              <p><strong>直接複製 USB 內的錢包資料夾</strong>到另一個 USB 或安全位置即可。</p>
+              <div class="backup-advantages">
+                <div class="backup-advantage">
+                  <span>🔒</span>
+                  <span>檔案已加密，只有知道密碼的人才能使用</span>
+                </div>
+                <div class="backup-advantage">
+                  <span>👁️</span>
+                  <span>不用擔心助記詞被他人看到或拍照</span>
+                </div>
+                <div class="backup-advantage">
+                  <span>☁️</span>
+                  <span>可安全儲存在雲端（Google Drive、iCloud）</span>
+                </div>
+                <div class="backup-advantage">
+                  <span>🔐</span>
+                  <span>即使是我們也<strong>無法在沒有密碼的情況下解密</strong></span>
+                </div>
+              </div>
+              <p class="backup-note">只要記得密碼，就能在任何電腦上用 ArcSign 恢復錢包。</p>
+            </div>
+          </div>
+          <div class="tip-box">
+            <h4>💡 傳統助記詞備份</h4>
+            <p>如果你偏好傳統方式，也可以將 12/24 個助記詞手寫在紙上保管。但請注意：任何看到助記詞的人都能存取你的資產，請確保紙本備份的安全。</p>
+          </div>
+        </div>
+        <div class="tutorial-card">
+          <h3>匯入現有錢包</h3>
+          <ul>
+            <li>點擊「匯入錢包」</li>
+            <li>輸入你的 12 或 24 個助記詞</li>
+            <li>如有設定 BIP39 Passphrase，請一併輸入</li>
+            <li>選擇要匯入的地址（可選擇多個）</li>
+            <li>設定錢包密碼</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Step 4: Daily Usage -->
+      <div class="tutorial-section">
+        <h2><span class="step-number">4</span> <span>日常使用</span></h2>
+        <div class="tutorial-card">
+          <h3>查看資產</h3>
+          <ul>
+            <li>開啟 ArcSign，選擇你的錢包</li>
+            <li>輸入密碼解鎖</li>
+            <li>在主畫面可以看到所有鏈的資產總覽</li>
+            <li>點擊任一鏈可以查看該鏈的代幣詳情</li>
+          </ul>
+        </div>
+        <div class="tutorial-card">
+          <h3>發送代幣</h3>
+          <ul>
+            <li>選擇要發送的代幣</li>
+            <li>點擊「Send」按鈕</li>
+            <li>輸入收款地址和金額</li>
+            <li>確認交易詳情和 Gas 費用</li>
+            <li>輸入密碼簽署交易</li>
+          </ul>
+          <div class="tip-box">
+            <h4>💡 提示</h4>
+            <p>首次發送前，建議先用小額測試，確認地址正確。</p>
+          </div>
+        </div>
+        <div class="tutorial-card">
+          <h3>兌換代幣 (Swap)</h3>
+          <ul>
+            <li>點擊「Swap」功能</li>
+            <li>選擇要兌換的代幣對</li>
+            <li>輸入兌換金額</li>
+            <li>查看預估收到的數量和滑點</li>
+            <li>確認並簽署交易</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Step 5: WalletConnect -->
+      <div class="tutorial-section">
+        <h2><span class="step-number">5</span> <span>連接 dApp (WalletConnect)</span></h2>
+        <div class="tutorial-card">
+          <h3>使用 WalletConnect 連接 dApp</h3>
+          <ul>
+            <li>在瀏覽器開啟你想使用的 dApp（如 Uniswap、OpenSea）</li>
+            <li>點擊 dApp 的「Connect Wallet」按鈕</li>
+            <li>選擇「WalletConnect」選項</li>
+            <li>複製顯示的連接連結或 QR Code 內容</li>
+            <li>在 ArcSign 中點擊「WalletConnect」</li>
+            <li>貼上連接連結</li>
+            <li>確認連接請求</li>
+          </ul>
+          <div class="warning-box">
+            <h4>⚠️ 連接前請務必確認</h4>
+            <p>
+              <strong>只連接你信任的 dApp！</strong>惡意網站可能偽裝成知名 dApp，誘騙你簽署惡意交易。
+              連接前請確認網址正確，例如 Uniswap 是 <code>app.uniswap.org</code>，不是 <code>uniswap-app.com</code>。
+            </p>
+          </div>
+          <div class="tip-box">
+            <h4>💡 簽名前仔細檢查</h4>
+            <p>連接後，dApp 發起的所有交易都會在 ArcSign 中彈出確認視窗。請仔細檢查交易內容、金額、合約地址後再決定是否簽署。<strong>不確定就拒絕！</strong></p>
+          </div>
+          <div class="tip-box" style="background: rgba(45, 212, 191, 0.1); border-color: rgba(45, 212, 191, 0.3);">
+            <h4 style="color: #14b8a6;">🚀 即將推出：智能風險檢測</h4>
+            <p style="color: rgba(255, 255, 255, 0.7);">
+              我們正在開發 <strong>dApp 黑白名單</strong>和<strong>交易風險分析</strong>功能，
+              自動識別惡意合約和高風險交易。<strong>Pro 會員</strong>將優先體驗此功能。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 6: Security Tips -->
+      <div class="tutorial-section">
+        <h2><span class="step-number">6</span> <span>安全建議</span></h2>
+        <div class="tutorial-card security-highlight">
+          <div class="security-header">
+            <span class="security-icon">🛡️</span>
+            <div>
+              <h3>ArcSign 的多層防護</h3>
+              <p class="security-tagline">專為「隨插即用、任何電腦都能用」設計</p>
+            </div>
+          </div>
+          <div class="security-grid">
+            <div class="security-item">
+              <span class="item-icon">🔐</span>
+              <div>
+                <strong>私鑰隔離</strong>
+                <p>私鑰只存在 USB，電腦硬碟上無任何痕跡</p>
+              </div>
+            </div>
+            <div class="security-item">
+              <span class="item-icon">🧠</span>
+              <div>
+                <strong>記憶體保護</strong>
+                <p>mlock + SecureZero，防止私鑰被換出或殘留</p>
+              </div>
+            </div>
+            <div class="security-item">
+              <span class="item-icon">🔑</span>
+              <div>
+                <strong>密碼不落地</strong>
+                <p>密碼永不儲存，每次操作重新輸入</p>
+              </div>
+            </div>
+            <div class="security-item">
+              <span class="item-icon">⏱️</span>
+              <div>
+                <strong>Session 時效控制</strong>
+                <p>閒置自動鎖定，降低被竊取風險</p>
+              </div>
+            </div>
+          </div>
+          <div class="security-footer">
+            <span class="security-badge">99%+ 攻擊阻擋率</span>
+            <p>即使電腦上有惡意軟體，攻擊者也需要在你操作的那幾分鐘內同時突破多層防護，難度極高。</p>
+          </div>
+        </div>
+        <div class="tutorial-card">
+          <h3>日常安全習慣</h3>
+          <ul>
+            <li>不使用時，拔掉 USB 隨身碟並妥善保管</li>
+            <li>定期備份助記詞（建議多份異地保管）</li>
+            <li>在陌生電腦上使用時，完成操作後立即拔掉 USB</li>
+            <li>仔細檢查每一筆交易的細節後再簽署</li>
+            <li>不要點擊來路不明的連結或下載可疑檔案</li>
+            <li>大額資產建議搭配硬體錢包使用</li>
+          </ul>
+        </div>
+        <div class="tutorial-card">
+          <h3>如果發現異常</h3>
+          <ul>
+            <li>立即拔掉 USB 並斷開網路</li>
+            <li>使用另一個安全設備將資產轉移到新地址</li>
+            <li>檢查是否有未授權的代幣授權（Approval）</li>
+            <li>考慮建立新錢包，將資產轉移過去</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

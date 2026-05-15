@@ -1,0 +1,49 @@
+---
+// Dynamic route for English blog articles — served at /en/blog/[slug]
+import { getCollection, render } from 'astro:content';
+import BlogLayout from '../../../layouts/BlogLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blogEn');
+  return posts.map(post => {
+    const slug = post.id.replace(/\.(md|mdx)$/, '');
+    return {
+      params: { slug },
+      props: { post, slug },
+    };
+  });
+}
+
+const { post, slug } = Astro.props;
+const { Content } = await render(post);
+
+// Resolve relatedSlugs → full article data
+const allPosts = await getCollection('blogEn');
+const postMap = Object.fromEntries(
+  allPosts.map(p => [p.id.replace(/\.(md|mdx)$/, ''), p])
+);
+const relatedArticles = (post.data.relatedSlugs ?? [])
+  .map(s => postMap[s])
+  .filter(Boolean)
+  .map(p => ({
+    slug: p.id.replace(/\.(md|mdx)$/, ''),
+    title: p.data.title,
+    tags: p.data.tags,
+  }));
+---
+
+<BlogLayout
+  title={post.data.title}
+  description={post.data.description}
+  locale="en"
+  pubDate={post.data.pubDate}
+  updatedDate={post.data.updatedDate}
+  heroImage={post.data.heroImage}
+  tags={post.data.tags}
+  author={post.data.author}
+  ogImage={post.data.ogImage}
+  slug={slug}
+  relatedArticles={relatedArticles}
+>
+  <Content />
+</BlogLayout>

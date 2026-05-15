@@ -1,0 +1,439 @@
+---
+// English FAQ page — served at /en/faq
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const locale = 'en' as const;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Is ArcSign safe? How does it protect my private keys?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'ArcSign uses industry-leading encryption standards to protect your private keys. Most importantly, your private keys never leave your USB drive and are never transmitted to any server. Unplug the USB and hackers cannot access your keys.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the difference between ArcSign and MetaMask?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The biggest difference is where private keys are stored. MetaMask stores private keys on your computer\'s hard drive, where any malware with file access can steal them. ArcSign stores private keys on a USB drive — unplug it and attackers cannot access files that don\'t exist on the computer.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What happens if my USB drive breaks or is lost?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'ArcSign supports two backup methods: (1) Mnemonic backup — write down your 12 or 24 seed words on paper and store multiple copies in different locations. Even if the USB is damaged, you can recover your assets using the seed phrase in ArcSign or any BIP39-compatible wallet. (2) Encrypted file backup — copy the wallet folder from the USB to another USB or safe location. The files are already encrypted and can only be used by someone who knows the password.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does ArcSign support WalletConnect?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes, ArcSign fully supports WalletConnect. You can connect to any WalletConnect-compatible dApp (Uniswap, Aave, OpenSea, etc.) by pasting the connection link. Your private key stays on the USB while you sign transactions — giving you cold wallet security with hot wallet convenience.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is ArcSign free? What does the Pro plan include?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes, ArcSign is completely free for individual use. The Pro plan ($30/year) includes multiple wallet management (each NFT adds 3 wallets), batch token approval revocation across 6 EVM chains, 2x points bonus, 3x airdrop weight, and priority support. The free plan covers all core wallet functions including multi-chain support, WalletConnect, and NFT display.',
+      },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="ArcSign FAQ: Cold Wallet Security, Setup & DeFi Questions Answered (2026)"
+  description="Got questions about ArcSign? We answer the most common ones: How safe is a USB cold wallet? Does it work with WalletConnect? How do I back up my wallet? Read our full FAQ."
+  locale={locale}
+  canonical="https://arcsign.io/en/faq"
+  schema={schema}
+>
+  <style>
+    .faq-hero {
+      padding: 120px 0 60px;
+      background: linear-gradient(135deg, #0a0a0a 0%, #0f2b46 100%);
+    }
+    .faq-hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .faq-content {
+      padding: 60px 0;
+    }
+    .faq-category {
+      margin-bottom: 48px;
+    }
+    .faq-category h2 {
+      font-size: 1.5rem;
+      margin-bottom: 24px;
+      color: #fff;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .faq-page-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .faq-page-item {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .faq-page-question {
+      width: 100%;
+      padding: 20px 24px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 500;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.2s;
+    }
+    .faq-page-question:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .faq-page-question .icon {
+      font-size: 1.5rem;
+      color: rgba(255, 255, 255, 0.5);
+      transition: transform 0.3s;
+    }
+    .faq-page-item.active .faq-page-question .icon {
+      transform: rotate(45deg);
+    }
+    .faq-page-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+    .faq-page-item.active .faq-page-answer {
+      max-height: 500px;
+    }
+    .faq-page-answer-content {
+      padding: 0 24px 20px;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.8;
+    }
+    .faq-page-answer-content p {
+      margin-bottom: 12px;
+    }
+    .faq-page-answer-content p:last-child {
+      margin-bottom: 0;
+    }
+    .faq-page-answer-content strong {
+      color: #fff;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      margin-bottom: 20px;
+      transition: color 0.2s;
+    }
+    .back-link:hover {
+      color: #fff;
+    }
+    .contact-box {
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+      border: 1px solid rgba(102, 126, 234, 0.3);
+      border-radius: 16px;
+      padding: 32px;
+      text-align: center;
+      margin-top: 60px;
+    }
+    .contact-box h3 {
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+    .contact-box p {
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 20px;
+    }
+  </style>
+
+  <!-- Hero -->
+  <section class="faq-hero">
+    <div class="container">
+      <a href="/en/" class="back-link">← Back to Home</a>
+      <h1><span class="gradient-text">Frequently Asked Questions</span></h1>
+      <p style="color: rgba(255,255,255,0.7); font-size: 1.125rem;">
+        Find answers to all your questions about ArcSign
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ Content -->
+  <section class="faq-content">
+    <div class="container">
+
+      <!-- Category: Basic -->
+      <div class="faq-category">
+        <h2>Basic Questions</h2>
+        <div class="faq-page-list">
+          <div class="faq-page-item">
+            <button class="faq-page-question">
+              <span>What is ArcSign?</span>
+              <span class="icon">+</span>
+            </button>
+            <div class="faq-page-answer">
+              <div class="faq-page-answer-content">
+                <p>ArcSign is a <strong>free USB cold wallet application</strong>. It stores your private keys on a USB drive instead of your computer's hard drive, dramatically reducing the risk of theft by malware.</p>
+                <p>ArcSign supports multiple blockchains (Ethereum, BSC, Polygon, etc.) and lets you securely connect to various dApps via WalletConnect.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-page-item">
+            <button class="faq-page-question">
+              <span>What is the difference between ArcSign and MetaMask?</span>
+              <span class="icon">+</span>
+            </button>
+            <div class="faq-page-answer">
+              <div class="faq-page-answer-content">
+                <p>The biggest difference is <strong>where private keys are stored</strong>:</p>
+                <p>• MetaMask stores private keys on your computer's hard drive, where any malware with file access can steal them</p>
+                <p>• ArcSign stores private keys on a USB drive — unplug it and it becomes a cold wallet; attackers cannot access files that don't exist on the computer</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-page-item">
+            <button class="faq-page-question">
+              <span>Is ArcSign equivalent to a hardware wallet?</span>
+              <span class="icon">+</span>
+            </button>
+            <div class="faq-page-answer">
+              <div class="faq-page-answer-content">
+                <p><strong>No, ArcSign is an "enhanced software wallet".</strong> The core difference is that private keys are stored on USB rather than a computer's hard drive — unplug the USB and hackers cannot access them. However, signing still happens on the computer and cannot achieve the complete isolation of a hardware wallet.</p>
+                <p><strong>Positioning:</strong> More secure than MetaMask, cheaper than a hardware wallet (free). For large long-term holdings, we recommend using ArcSign alongside a hardware wallet.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-page-item">
+            <button class="faq-page-question">
+              <span>Which operating systems are supported?</span>
+              <span class="icon">+</span>
+            </button>
+            <div class="faq-page-answer">
+              <div class="faq-page-answer-content">
+                <p>Currently supports <strong>macOS</strong> (Intel and Apple Silicon). Windows and Linux versions are coming soon.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category: Security -->
+      <div class="faq-category">
+        <h2>Security</h2>
+        <div class="faq-page-list">
+          <div class="faq-page-item">
+            <button class="faq-page-question">
+              <span>Is ArcSign safe? How can I be sure there are no backdoors?</span>
+              <span class="icon">+</span>
+            </button>
+            <div class="faq-page-answer">
+              <div class="faq-page-answer-content">
+                <p>ArcSign uses <strong>industry-leading encryption standards</strong> to protect your private keys — security that rivals professional-grade products.</p>
+                <p>Most importantly: <strong>your private keys never leave your USB drive</strong> and are never transmitted to any server. Unplug the USB and hackers cannot access your private keys.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-page-item">
+            <button class="faq-page-question">
+              <span>What happens if my USB drive breaks or is lost?</span>
+              <span class="icon">+</span>
+            </button>
+            <div class="faq-page-answer">
+              <div class="faq-page-answer-content">
+                <p>ArcSign provides <strong>two backup methods</strong>:</p>
+                <p>• <strong>Mnemonic backup</strong>: Write down your 12 or 24 seed words on paper and store multiple copies in different locations. Even if the USB is damaged, you can recover your assets using the seed phrase in ArcSign or any BIP39-compatible wallet.</p>
+                <p>• <strong>Encrypted file backup</strong>: Copy the wallet folder from the USB to another USB or safe location. The files are already encrypted and can only be used by someone who knows the password. This method is more convenient and you don't need to worry about seed phrase exposure.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-page-item">
+            <button class="faq-page-question">
+              <span>What if I forget my password?</span>
+              <span class="icon">+</span>
+            </button>
+            <div class="faq-page-answer">
+              <div class="faq-page-answer-content">
+                <p>ArcSign does not store your password, so <strong>we cannot reset it for you</strong>. However, if you have backed up your seed phrase, you can use it to re-import your wallet and set a new password.</p>
+                <p>This is why we repeatedly emphasize the importance of backing up your seed phrase.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-page-item">
+            <button class="faq-page-question">
+              <span>What is scam token filtering?</span>
+              <span class="icon">+</span>
+            </button>
+            <div class="faq-page-answer">
+              <div class="faq-page-answer-content">
+                <p>Some scammers airdrop fake tokens to your wallet to lure you into clicking malicious websites. ArcSign will <strong>automatically hide these suspicious tokens</strong>, displaying only known legitimate tokens.</p>
+                <p>You can always choose to view the filtered tokens.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category: Features -->
+      <div class="faq-category">
+        <h2>Features</h2>
+        <div class="faq-page-list">
+          <div class="faq-page-item">
+            <button class="faq-page-question">
+              <span>What is WalletConnect and how do I use it?</span>
+              <span class="icon">+</span>
+            </button>
+            <div class="faq-page-answer">
+              <div class="faq-page-answer-content">
+                <p>WalletConnect is an <strong>open protocol</strong> that lets your wallet securely connect to various dApps (such as Uniswap, OpenSea, PancakeSwap).</p>
+                <p>It's simple to use: on the dApp select "WalletConnect" as the connection method, then paste the connection link in ArcSign. All transactions are confirmed in ArcSign, keeping your private keys safe.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-page-item">
+            <button class="faq-page-question">
+              <span>Which dApps does ArcSign support?</span>
+              <span class="icon">+</span>
+            </button>
+            <div class="faq-page-answer">
+              <div class="faq-page-answer-content">
+                <p>ArcSign supports <strong>all mainstream dApps</strong> via WalletConnect, including but not limited to:</p>
+                <p>• DEX: Uniswap, PancakeSwap, SushiSwap</p>
+                <p>• NFT: OpenSea, Blur, LooksRare</p>
+                <p>• DeFi: Aave, Compound, Lido</p>
+                <p>Any dApp that supports WalletConnect can be used with ArcSign.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-page-item">
+            <button class="faq-page-question">
+              <span>Does Swap charge any fees?</span>
+              <span class="icon">+</span>
+            </button>
+            <div class="faq-page-answer">
+              <div class="faq-page-answer-content">
+                <p><strong>Currently completely free!</strong> You only need to pay the blockchain network's Gas Fee.</p>
+                <p>In the future we will launch a "Smart Routing" feature integrating more aggregators to automatically find the best trade path. This feature will charge a <strong>fixed low fee</strong> (not percentage-based), much cheaper than other software wallets that charge 0.5%~1% transaction fees.</p>
+                <p>The existing basic Swap feature will <strong>remain free</strong>.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-page-item">
+            <button class="faq-page-question">
+              <span>Which blockchains are supported?</span>
+              <span class="icon">+</span>
+            </button>
+            <div class="faq-page-answer">
+              <div class="faq-page-answer-content">
+                <p>Currently supported blockchains include:</p>
+                <p>• Ethereum (ETH)</p>
+                <p>• BNB Smart Chain (BSC)</p>
+                <p>• Polygon (MATIC)</p>
+                <p>• Arbitrum One</p>
+                <p>• Optimism</p>
+                <p>• Base</p>
+                <p>We continuously add support for more chains.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category: Membership -->
+      <div class="faq-category">
+        <h2>Membership & Pricing</h2>
+        <div class="faq-page-list">
+          <div class="faq-page-item">
+            <button class="faq-page-question">
+              <span>What are the limitations of the free plan?</span>
+              <span class="icon">+</span>
+            </button>
+            <div class="faq-page-answer">
+              <div class="faq-page-answer-content">
+                <p>The free plan allows <strong>1 wallet</strong>, with all other features fully available:</p>
+                <p>• USB offline storage</p>
+                <p>• Multi-chain support</p>
+                <p>• Token Swap</p>
+                <p>• WalletConnect</p>
+                <p>• Transaction history</p>
+                <p>For most users, the free plan is more than sufficient.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-page-item">
+            <button class="faq-page-question">
+              <span>What is the Pro membership NFT?</span>
+              <span class="icon">+</span>
+            </button>
+            <div class="faq-page-answer">
+              <div class="faq-page-answer-content">
+                <p>Pro membership exists as an NFT on the BSC chain. After purchase, the NFT is minted to your wallet address.</p>
+                <p>This means your membership is a <strong>digital asset that truly belongs to you</strong> — it can be transferred, sold, or kept. Each NFT adds 3 wallet slots (1 NFT = 4 total wallets).</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-page-item">
+            <button class="faq-page-question">
+              <span>How do I purchase Pro membership?</span>
+              <span class="icon">+</span>
+            </button>
+            <div class="faq-page-answer">
+              <div class="faq-page-answer-content">
+                <p>In the ArcSign application:</p>
+                <p>1. Go to "Settings" → "Membership"</p>
+                <p>2. Choose the number of NFTs to purchase</p>
+                <p>3. Complete payment using USDT (BSC)</p>
+                <p>4. NFT will be automatically minted to your wallet</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Box -->
+      <div class="contact-box">
+        <h3>Can't find your question?</h3>
+        <p>Join our community and we'll get back to you as quickly as possible</p>
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+          <a href="#" class="btn btn-secondary">Telegram</a>
+          <a href="#" class="btn btn-secondary">Discord</a>
+          <a href="https://x.com/ArcSignWallet" target="_blank" rel="noopener" class="btn btn-secondary">Twitter</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    // FAQ accordion functionality
+    document.querySelectorAll('.faq-page-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.parentElement;
+        item?.classList.toggle('active');
+      });
+    });
+  </script>
+</BaseLayout>

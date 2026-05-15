@@ -1,0 +1,740 @@
+---
+// zh-TW Enterprise page — served at /enterprise
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Enterprise Solutions - ArcSign"
+  description="ArcSign Enterprise Solutions — Secure your organization's digital assets with hierarchical authorization control, preventing private key theft by employees."
+  locale="zh-TW"
+  canonical="https://arcsign.io/enterprise"
+>
+  <style>
+    .enterprise-hero {
+      padding: 120px 0 80px;
+      background: linear-gradient(135deg, #0a0a0a 0%, #0f2b46 50%, #0f172a 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .enterprise-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(ellipse at top right, rgba(45, 212, 191, 0.15) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .enterprise-hero h1 {
+      font-size: 2.75rem;
+      margin-bottom: 1rem;
+    }
+    .enterprise-hero .hero-desc {
+      color: rgba(255,255,255,0.7);
+      font-size: 1.25rem;
+      max-width: 600px;
+    }
+    .enterprise-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.15) 0%, rgba(251, 191, 36, 0.05) 100%);
+      border: 1px solid rgba(251, 191, 36, 0.4);
+      border-radius: 100px;
+      font-size: 0.875rem;
+      color: #fbbf24;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    /* Main Content */
+    .enterprise-content {
+      padding: 80px 0;
+    }
+
+    /* Problem Section */
+    .enterprise-problem {
+      margin-bottom: 80px;
+    }
+    .enterprise-problem h2 {
+      font-size: 1.75rem;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+    .problem-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .problem-card {
+      background: rgba(239, 68, 68, 0.05);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      border-radius: 16px;
+      padding: 28px;
+      text-align: center;
+    }
+    .problem-card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+    .problem-card h3 {
+      font-size: 1.125rem;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+    .problem-card p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+    }
+
+    /* Solution Section */
+    .enterprise-solution {
+      margin-bottom: 80px;
+    }
+    .solution-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .solution-header h2 {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+    .solution-header p {
+      color: rgba(255,255,255,0.7);
+      font-size: 1.125rem;
+    }
+
+    /* Hierarchy Diagram */
+    .hierarchy-section {
+      background: linear-gradient(135deg, rgba(45, 212, 191, 0.08) 0%, rgba(20, 184, 166, 0.05) 100%);
+      border: 1px solid rgba(45, 212, 191, 0.2);
+      border-radius: 24px;
+      padding: 48px;
+      margin-bottom: 48px;
+    }
+    .hierarchy-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .hierarchy-title h3 {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+    .hierarchy-title p {
+      color: rgba(255,255,255,0.6);
+    }
+    .hierarchy-levels {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .hierarchy-level {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 24px 32px;
+      border-radius: 16px;
+      position: relative;
+    }
+    .hierarchy-level::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -20px;
+      width: 2px;
+      height: 20px;
+      background: rgba(45, 212, 191, 0.3);
+    }
+    .hierarchy-level:last-child::before {
+      display: none;
+    }
+    .hierarchy-level.owner {
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.15) 0%, rgba(251, 191, 36, 0.05) 100%);
+      border: 1px solid rgba(251, 191, 36, 0.4);
+    }
+    .hierarchy-level.admin {
+      background: linear-gradient(135deg, rgba(45, 212, 191, 0.15) 0%, rgba(45, 212, 191, 0.05) 100%);
+      border: 1px solid rgba(45, 212, 191, 0.3);
+    }
+    .hierarchy-level.operator {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    .level-icon {
+      font-size: 2rem;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      flex-shrink: 0;
+    }
+    .hierarchy-level.owner .level-icon {
+      background: rgba(251, 191, 36, 0.2);
+    }
+    .hierarchy-level.admin .level-icon {
+      background: rgba(45, 212, 191, 0.2);
+    }
+    .hierarchy-level.operator .level-icon {
+      background: rgba(16, 185, 129, 0.2);
+    }
+    .level-content {
+      flex: 1;
+    }
+    .level-content h4 {
+      font-size: 1.125rem;
+      margin-bottom: 4px;
+    }
+    .hierarchy-level.owner .level-content h4 {
+      color: #fbbf24;
+    }
+    .hierarchy-level.admin .level-content h4 {
+      color: #5eead4;
+    }
+    .hierarchy-level.operator .level-content h4 {
+      color: #10b981;
+    }
+    .level-content p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+    .level-permissions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .permission-tag {
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    .permission-tag.full {
+      background: rgba(251, 191, 36, 0.2);
+      color: #fbbf24;
+    }
+    .permission-tag.manage {
+      background: rgba(45, 212, 191, 0.2);
+      color: #5eead4;
+    }
+    .permission-tag.execute {
+      background: rgba(16, 185, 129, 0.2);
+      color: #10b981;
+    }
+    .permission-tag.restricted {
+      background: rgba(239, 68, 68, 0.15);
+      color: #f87171;
+    }
+
+    /* Key Features */
+    .key-features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .key-feature {
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid rgba(45, 212, 191, 0.15);
+      border-radius: 20px;
+      padding: 32px;
+      display: flex;
+      gap: 20px;
+    }
+    .key-feature:hover {
+      border-color: rgba(45, 212, 191, 0.4);
+      background: rgba(30, 41, 59, 0.8);
+    }
+    .feature-icon-box {
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(45, 212, 191, 0.2) 0%, rgba(20, 184, 166, 0.15) 100%);
+      border-radius: 14px;
+      font-size: 1.75rem;
+      flex-shrink: 0;
+    }
+    .feature-text h4 {
+      font-size: 1.125rem;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+    .feature-text p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Security Guarantee */
+    .security-guarantee {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      margin-bottom: 80px;
+    }
+    .guarantee-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    .security-guarantee h3 {
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+      color: #10b981;
+    }
+    .security-guarantee p {
+      color: rgba(255,255,255,0.7);
+      font-size: 1rem;
+      line-height: 1.8;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .security-guarantee strong {
+      color: #fff;
+    }
+
+    /* Roadmap Section */
+    .roadmap-section {
+      background: linear-gradient(135deg, rgba(20, 184, 166, 0.1) 0%, rgba(45, 212, 191, 0.05) 100%);
+      border: 1px solid rgba(20, 184, 166, 0.25);
+      border-radius: 20px;
+      padding: 32px 40px;
+      margin-bottom: 80px;
+    }
+    .roadmap-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .roadmap-header .roadmap-icon {
+      font-size: 2rem;
+    }
+    .roadmap-header h3 {
+      font-size: 1.25rem;
+      margin: 0 0 4px;
+      color: #99f6e4;
+    }
+    .roadmap-header p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+    }
+    .roadmap-phases {
+      display: flex;
+      gap: 20px;
+    }
+    .roadmap-phase {
+      flex: 1;
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid rgba(20, 184, 166, 0.2);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .phase-marker {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+    .phase-marker.phase-1 {
+      background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+      color: #fff;
+    }
+    .phase-marker.phase-2 {
+      background: rgba(20, 184, 166, 0.2);
+      color: #99f6e4;
+      border: 1px solid rgba(20, 184, 166, 0.3);
+    }
+    .phase-marker.phase-3 {
+      background: rgba(20, 184, 166, 0.1);
+      color: #5eead4;
+      border: 1px solid rgba(20, 184, 166, 0.2);
+    }
+    .phase-content h4 {
+      font-size: 1rem;
+      margin: 0 0 6px;
+      color: #fff;
+    }
+    .phase-content p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* Use Cases */
+    .use-cases {
+      margin-bottom: 80px;
+    }
+    .use-cases h2 {
+      font-size: 1.75rem;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+    .use-case-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .use-case-item {
+      background: rgba(30, 41, 59, 0.5);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 28px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+    .use-case-item:hover {
+      border-color: var(--primary);
+      transform: translateY(-4px);
+    }
+    .use-case-item .icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+    .use-case-item h4 {
+      font-size: 1.125rem;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+    .use-case-item p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+
+    /* CTA Section */
+    .enterprise-cta {
+      background: linear-gradient(135deg, rgba(45, 212, 191, 0.15) 0%, rgba(20, 184, 166, 0.1) 100%);
+      border: 1px solid rgba(45, 212, 191, 0.3);
+      border-radius: 24px;
+      padding: 48px;
+      text-align: center;
+    }
+    .enterprise-cta h3 {
+      font-size: 1.75rem;
+      margin-bottom: 16px;
+    }
+    .enterprise-cta p {
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 32px;
+      font-size: 1.1rem;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      margin-bottom: 20px;
+      transition: color 0.2s;
+    }
+    .back-link:hover {
+      color: #fff;
+    }
+
+    /* Coming Soon Badge */
+    .coming-soon-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background: linear-gradient(135deg, rgba(20, 184, 166, 0.3) 0%, rgba(45, 212, 191, 0.2) 100%);
+      border: 1px solid rgba(20, 184, 166, 0.5);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      color: #99f6e4;
+      font-weight: 600;
+      margin-left: 12px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .problem-cards,
+      .use-case-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .roadmap-phases {
+        flex-direction: column;
+      }
+    }
+    @media (max-width: 768px) {
+      .problem-cards,
+      .key-features,
+      .use-case-grid {
+        grid-template-columns: 1fr;
+      }
+      .hierarchy-level {
+        flex-direction: column;
+        text-align: center;
+      }
+      .level-permissions {
+        justify-content: center;
+      }
+      .enterprise-hero h1 {
+        font-size: 2rem;
+      }
+      .roadmap-section {
+        padding: 24px;
+      }
+      .roadmap-header {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+
+  <!-- Hero -->
+  <section class="enterprise-hero">
+    <div class="container">
+      <a href="/" class="back-link">← 返回首頁</a>
+      <span class="enterprise-badge">Enterprise Solution</span>
+      <h1><span class="gradient-text">企業級數位資產管理</span><span class="coming-soon-badge">Coming Soon</span></h1>
+      <p class="hero-desc">
+        透過層級授權控制機制，確保企業數位資產安全。員工可以操作錢包，但無法竊取私鑰。
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="enterprise-content">
+    <div class="container">
+
+      <!-- Problem Section -->
+      <div class="enterprise-problem">
+        <h2>企業管理加密資產面臨的<span class="gradient-text">挑戰</span></h2>
+        <div class="problem-cards">
+          <div class="problem-card">
+            <div class="problem-card-icon">🔓</div>
+            <h3>私鑰外洩風險</h3>
+            <p>傳統錢包需要把私鑰或助記詞交給員工，離職員工可能帶走公司資產。</p>
+          </div>
+          <div class="problem-card">
+            <div class="problem-card-icon">👥</div>
+            <h3>權限管理困難</h3>
+            <p>不同職位需要不同的操作權限，但傳統錢包只有「全有或全無」的控制。</p>
+          </div>
+          <div class="problem-card">
+            <div class="problem-card-icon">📋</div>
+            <h3>審計追蹤不足</h3>
+            <p>誰在何時進行了什麼操作？傳統錢包缺乏完整的審計日誌。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Solution Section -->
+      <div class="enterprise-solution">
+        <div class="solution-header">
+          <h2>ArcSign 的<span class="gradient-text">解決方案</span></h2>
+          <p>層級授權架構，讓操作權與所有權分離</p>
+        </div>
+
+        <!-- Hierarchy Diagram -->
+        <div class="hierarchy-section">
+          <div class="hierarchy-title">
+            <h3>三層授權架構</h3>
+            <p>每個層級只能存取其權限範圍內的功能</p>
+          </div>
+          <div class="hierarchy-levels">
+            <div class="hierarchy-level owner">
+              <div class="level-icon">👑</div>
+              <div class="level-content">
+                <h4>Owner 所有者</h4>
+                <p>持有主私鑰，可授權或撤銷下級權限</p>
+              </div>
+              <div class="level-permissions">
+                <span class="permission-tag full">完整控制</span>
+                <span class="permission-tag full">匯出私鑰</span>
+                <span class="permission-tag full">權限管理</span>
+              </div>
+            </div>
+            <div class="hierarchy-level admin">
+              <div class="level-icon">🛡️</div>
+              <div class="level-content">
+                <h4>Admin 管理員</h4>
+                <p>可管理日常營運，但無法存取私鑰</p>
+              </div>
+              <div class="level-permissions">
+                <span class="permission-tag manage">審批交易</span>
+                <span class="permission-tag manage">管理操作員</span>
+                <span class="permission-tag restricted">無私鑰存取</span>
+              </div>
+            </div>
+            <div class="hierarchy-level operator">
+              <div class="level-icon">⚙️</div>
+              <div class="level-content">
+                <h4>Operator 操作員</h4>
+                <p>執行日常操作，交易需上級審批</p>
+              </div>
+              <div class="level-permissions">
+                <span class="permission-tag execute">發起交易</span>
+                <span class="permission-tag execute">查看餘額</span>
+                <span class="permission-tag restricted">需審批執行</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Key Features -->
+        <div class="key-features">
+          <div class="key-feature">
+            <div class="feature-icon-box">🔐</div>
+            <div class="feature-text">
+              <h4>私鑰永不暴露</h4>
+              <p>員工只能透過授權介面操作錢包，私鑰始終保留在 Owner 的 USB 裝置中，即使是 Admin 也無法取得。</p>
+            </div>
+          </div>
+          <div class="key-feature">
+            <div class="feature-icon-box">✍️</div>
+            <div class="feature-text">
+              <h4>多簽錢包（Multi-Sig）</h4>
+              <p>支援 M-of-N 多簽機制，例如 3 人中需 2 人簽名才能執行交易。即使單一私鑰被盜，資產依然安全。</p>
+            </div>
+          </div>
+          <div class="key-feature">
+            <div class="feature-icon-box">✅</div>
+            <div class="feature-text">
+              <h4>多重審批流程</h4>
+              <p>大額交易可設定需要多人審批才能執行，降低單點故障風險。支援自訂審批流程與金額門檻。</p>
+            </div>
+          </div>
+          <div class="key-feature">
+            <div class="feature-icon-box">📊</div>
+            <div class="feature-text">
+              <h4>完整審計日誌</h4>
+              <p>所有操作都會記錄時間、操作者、IP 地址等資訊，方便事後追蹤與合規審計。</p>
+            </div>
+          </div>
+          <div class="key-feature">
+            <div class="feature-icon-box">🚫</div>
+            <div class="feature-text">
+              <h4>即時撤銷權限</h4>
+              <p>員工離職？一鍵撤銷授權，無需更換錢包地址，也不用擔心私鑰已被複製。</p>
+            </div>
+          </div>
+          <div class="key-feature">
+            <div class="feature-icon-box">⏰</div>
+            <div class="feature-text">
+              <h4>時間鎖定</h4>
+              <p>大額交易可設定延遲執行，給予管理層足夠時間審核與攔截可疑操作。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Security Guarantee -->
+        <div class="security-guarantee">
+          <div class="guarantee-icon">🛡️</div>
+          <h3>核心安全保證：操作權 ≠ 所有權</h3>
+          <p>
+            ArcSign 企業方案的核心設計理念：<strong>員工可以「使用」錢包，但永遠無法「擁有」它</strong>。
+            即使員工有惡意，他們也只能在授權範圍內操作，無法匯出私鑰、轉移所有權或繞過審批機制。
+            這就像銀行櫃員可以辦理業務，但無法搬走金庫。
+          </p>
+        </div>
+
+        <!-- Roadmap -->
+        <div class="roadmap-section">
+          <div class="roadmap-header">
+            <span class="roadmap-icon">🗺️</span>
+            <div>
+              <h3>開發路線圖</h3>
+              <p>企業方案目前正在規劃中，以下是預計的功能優先順序</p>
+            </div>
+          </div>
+          <div class="roadmap-phases">
+            <div class="roadmap-phase">
+              <div class="phase-marker phase-1">Phase 1</div>
+              <div class="phase-content">
+                <h4>多簽錢包</h4>
+                <p>M-of-N 多簽機制，多人共同管理資產</p>
+              </div>
+            </div>
+            <div class="roadmap-phase">
+              <div class="phase-marker phase-2">Phase 2</div>
+              <div class="phase-content">
+                <h4>層級授權</h4>
+                <p>Owner / Admin / Operator 三層權限架構</p>
+              </div>
+            </div>
+            <div class="roadmap-phase">
+              <div class="phase-marker phase-3">Phase 3</div>
+              <div class="phase-content">
+                <h4>審批流程與審計</h4>
+                <p>交易審批、金額門檻、完整操作日誌</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Use Cases -->
+      <div class="use-cases">
+        <h2>適用<span class="gradient-text">場景</span></h2>
+        <div class="use-case-grid">
+          <div class="use-case-item">
+            <div class="icon">🏢</div>
+            <h4>Web3 公司財務</h4>
+            <p>管理公司營運資金、支付員工薪資、處理日常支出，同時確保資產安全。</p>
+          </div>
+          <div class="use-case-item">
+            <div class="icon">🎮</div>
+            <h4>GameFi 營運</h4>
+            <p>遊戲道具發放、獎勵分配、市場做市，讓營運團隊高效工作而不必擔心資產風險。</p>
+          </div>
+          <div class="use-case-item">
+            <div class="icon">💼</div>
+            <h4>DAO 財庫管理</h4>
+            <p>多簽審批、提案執行、資金調度，讓社群治理更加透明且安全。</p>
+          </div>
+          <div class="use-case-item">
+            <div class="icon">🏦</div>
+            <h4>交易所熱錢包</h4>
+            <p>客戶提款處理、流動性管理，在效率和安全之間取得平衡。</p>
+          </div>
+          <div class="use-case-item">
+            <div class="icon">🎨</div>
+            <h4>NFT 項目方</h4>
+            <p>NFT 鑄造、空投發放、版稅收取，讓創作團隊專注於創作。</p>
+          </div>
+          <div class="use-case-item">
+            <div class="icon">📈</div>
+            <h4>投資機構</h4>
+            <p>多策略資產配置、基金管理、LP 分潤，滿足機構級合規需求。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Section -->
+      <div class="enterprise-cta">
+        <h3>對企業方案感興趣？</h3>
+        <p>我們正在開發企業級功能，歡迎加入等候名單，搶先體驗。</p>
+        <div class="cta-buttons">
+          <a href="mailto:enterprise@arcsign.io" class="btn btn-primary btn-lg">聯繫我們</a>
+          <a href="/#download" class="btn btn-secondary btn-lg">先試用個人版</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

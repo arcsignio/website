@@ -1,0 +1,49 @@
+---
+import { t, type Locale } from '../i18n';
+
+interface Props {
+  locale: Locale;
+  currentPath?: string;
+}
+
+const { locale, currentPath = '' } = Astro.props;
+const isEn = locale === 'en';
+
+// Base paths that change depending on locale
+const homePath = isEn ? '/en/' : '/';
+const blogPath = isEn ? '/en/blog/' : '/blog/';
+const pricingPath = isEn ? '/en/pricing' : '/pricing';
+const faqPath = isEn ? '/en/faq' : '/faq';
+const developerPath = isEn ? '/en/developer' : '/developer';
+const referralPath = isEn ? '/en/referral' : '/referral';
+const downloadPath = isEn ? '/en/#download' : '/#download';
+---
+
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href={homePath} class="nav-brand">
+      <img src="/assets/logo.png" alt="ArcSign Logo" class="nav-logo" />
+      <span class="logo">Arc</span><span class="logo-sign">Sign</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href={`${homePath}#features`}>{t('nav.features', locale)}</a>
+      <a href={`${homePath}#security`}>{t('nav.security', locale)}</a>
+      <a href={pricingPath}>{t('nav.pricing', locale)}</a>
+      <a href={faqPath}>{t('nav.faq', locale)}</a>
+      <a href={developerPath}>{t('nav.developer', locale)}</a>
+      <a href={blogPath}>{t('nav.blog', locale)}</a>
+      <a href={referralPath}>{t('nav.referral', locale)}</a>
+      <a href={downloadPath} class="btn btn-primary">{t('nav.download', locale)}</a>
+    </div>
+    <div class="nav-right">
+      <a href={isEn ? currentPath.replace('/en', '') || '/' : `/en${currentPath}`}
+         class="lang-toggle"
+         aria-label="切換語言">
+        {isEn ? '中' : 'EN'}
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>

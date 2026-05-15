@@ -1,0 +1,340 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { type Locale } from '../i18n';
+
+interface RelatedArticle {
+  slug: string;
+  title: string;
+  tags: string[];
+}
+
+interface Props {
+  title: string;
+  description: string;
+  locale: Locale;
+  pubDate: Date;
+  updatedDate?: Date;
+  heroImage?: string;
+  tags?: string[];
+  author?: string;
+  ogImage?: string;
+  slug: string;
+  relatedArticles?: RelatedArticle[];
+}
+
+const {
+  title,
+  description,
+  locale,
+  pubDate,
+  updatedDate,
+  heroImage,
+  tags = [],
+  author = 'ArcSign Security Team',
+  ogImage,
+  slug,
+  relatedArticles = [],
+} = Astro.props;
+
+const isEn = locale === 'en';
+const blogBase = isEn ? '/en/blog' : '/blog';
+const homeBase = isEn ? '/en' : '';
+const canonicalUrl = `https://arcsign.io${blogBase}/${slug}`;
+const altUrl = isEn
+  ? `https://arcsign.io/blog/${slug}`
+  : `https://arcsign.io/en/blog/${slug}`;
+
+const formattedDate = pubDate.toLocaleDateString(locale, {
+  year: 'numeric', month: 'long', day: 'numeric'
+});
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    image: ogImage ?? `https://arcsign.io/assets/og-image.png`,
+    datePublished: pubDate.toISOString(),
+    dateModified: (updatedDate ?? pubDate).toISOString(),
+    author: { '@type': 'Organization', name: 'ArcSign Security Team' },
+    publisher: {
+      '@type': 'Organization',
+      name: 'ArcSign',
+      logo: { '@type': 'ImageObject', url: 'https://arcsign.io/assets/logo.png' },
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'ArcSign', item: 'https://arcsign.io/' },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: `https://arcsign.io${blogBase}/` },
+      { '@type': 'ListItem', position: 3, name: title, item: canonicalUrl },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  locale={locale}
+  canonical={canonicalUrl}
+  ogImage={ogImage}
+  ogType="article"
+  schema={schema}
+>
+  <main class="blog-article-page">
+    <div class="blog-article-container">
+
+      <!-- Breadcrumb -->
+      <nav class="blog-breadcrumb" aria-label="breadcrumb">
+        <a href={isEn ? '/en/' : '/'}>ArcSign</a>
+        <span>/</span>
+        <a href={`${blogBase}/`}>Blog</a>
+        <span>/</span>
+        <span>{title}</span>
+      </nav>
+
+      <!-- Article Header -->
+      <header class="blog-header">
+        {tags.length > 0 && (
+          <div class="blog-tags">
+            {tags.map(tag => <span class="blog-tag">{tag}</span>)}
+          </div>
+        )}
+        <h1>{title}</h1>
+        <div class="blog-meta">
+          <span class="blog-author">✍️ {author}</span>
+          <span class="blog-date">📅 {formattedDate}</span>
+          {updatedDate && (
+            <span class="blog-updated">
+              {isEn ? 'Updated: ' : '更新：'}
+              {updatedDate.toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' })}
+            </span>
+          )}
+        </div>
+        {heroImage && (
+          <img src={heroImage} alt={title} class="blog-hero-img" loading="lazy" />
+        )}
+      </header>
+
+      <!-- Article Content -->
+      <article class="blog-article">
+        <slot />
+      </article>
+
+      <!-- Related Articles -->
+      {relatedArticles.length > 0 && (
+        <div class="related-articles">
+          <h2>{isEn ? 'Related Articles' : '推薦閱讀'}</h2>
+          <div class="related-grid">
+            {relatedArticles.map(r => (
+              <a class="related-card" href={`${blogBase}/${r.slug}`}>
+                {r.tags.length > 0 && (
+                  <div class="rc-tag">{r.tags[0]}</div>
+                )}
+                <div class="rc-title">{r.title}</div>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Footer Nav -->
+      <div class="blog-footer-nav">
+        <a href={`${blogBase}/`} class="btn btn-secondary">
+          {isEn ? '← Back to Blog' : '← 返回 Blog'}
+        </a>
+      </div>
+
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .blog-article-page {
+    padding: 120px 0 80px;
+    min-height: 100vh;
+    background: var(--bg-dark);
+  }
+  .blog-article-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .blog-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 32px;
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.5);
+  }
+  .blog-breadcrumb a {
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .blog-breadcrumb a:hover { color: var(--primary); }
+  .blog-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .blog-tag {
+    background: rgba(45,212,191,0.1);
+    color: var(--primary);
+    border: 1px solid rgba(45,212,191,0.3);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+  .blog-header h1 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .blog-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.875rem;
+    margin-bottom: 24px;
+  }
+  .blog-hero-img {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    margin-bottom: 40px;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+  .blog-article {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-size: 1.05rem;
+  }
+  .blog-article :global(h2) {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border-color);
+  }
+  .blog-article :global(h3) {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 2rem 0 0.75rem;
+  }
+  .blog-article :global(p) {
+    margin-bottom: 1.25rem;
+    color: rgba(255,255,255,0.7);
+  }
+  .blog-article :global(a) {
+    color: var(--primary);
+    text-decoration: none;
+  }
+  .blog-article :global(a:hover) { text-decoration: underline; }
+  .blog-article :global(strong) { color: var(--text-primary); }
+  .blog-article :global(ul), .blog-article :global(ol) {
+    padding-left: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .blog-article :global(li) {
+    margin-bottom: 0.5rem;
+    color: rgba(255,255,255,0.7);
+  }
+  .blog-article :global(code) {
+    background: rgba(45,212,191,0.1);
+    color: var(--primary);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-family: monospace;
+  }
+  .blog-article :global(pre) {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    overflow-x: auto;
+    margin-bottom: 1.25rem;
+  }
+  .blog-article :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+  }
+  .blog-article :global(th) {
+    background: rgba(45,212,191,0.1);
+    color: var(--primary);
+    padding: 12px 16px;
+    text-align: left;
+    border: 1px solid var(--border-color);
+  }
+  .blog-article :global(td) {
+    padding: 10px 16px;
+    border: 1px solid var(--border-color);
+    color: rgba(255,255,255,0.7);
+  }
+  .related-articles {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 2px solid var(--border-color);
+  }
+  .related-articles h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+  }
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  .related-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    text-decoration: none;
+    transition: border-color 0.2s;
+    display: block;
+  }
+  .related-card:hover { border-color: var(--primary); }
+  .rc-tag {
+    font-size: 11px;
+    color: var(--primary);
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+  }
+  .rc-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.4;
+  }
+  .blog-footer-nav {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border-color);
+  }
+  @media (max-width: 768px) {
+    .blog-article-page { padding: 100px 0 60px; }
+  }
+</style>

@@ -1,0 +1,61 @@
+---
+import { t, type Locale } from '../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const isEn = locale === 'en';
+const base = isEn ? '/en' : '';
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <a href={isEn ? '/en/' : '/'} class="nav-brand">
+          <img src="/assets/logo.png" alt="ArcSign" class="nav-logo" />
+          <span class="logo">Arc</span><span class="logo-sign">Sign</span>
+        </a>
+        <p>
+          {isEn
+            ? 'USB Cold Wallet — Free, Secure, No Device Lock-in'
+            : 'USB 冷錢包 — 免費、安全、不綁定設備'}
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-column">
+          <h4>{isEn ? 'Product' : '產品'}</h4>
+          <a href={`${base}/#features`}>{t('nav.features', locale)}</a>
+          <a href={`${base}/#security`}>{t('nav.security', locale)}</a>
+          <a href={`${base}/pricing`}>{t('nav.pricing', locale)}</a>
+          <a href={`${base}/developer`}>{isEn ? 'Developer Mode' : '開發者模式'}</a>
+          <a href={`${base}/enterprise`}>{isEn ? 'Enterprise' : '企業方案'}</a>
+          <a href={`${base}/#download`}>{t('nav.download', locale)}</a>
+        </div>
+
+        <div class="footer-column">
+          <h4>{isEn ? 'Resources' : '資源'}</h4>
+          <a href={`${base}/tutorial`}>{t('nav.tutorial', locale)}</a>
+          <a href={`${base}/faq`}>{t('nav.faq', locale)}</a>
+          <a href={isEn ? '/en/blog/' : '/blog/'}>{t('nav.blog', locale)}</a>
+          <a href={`${base}/changelog`}>{t('nav.changelog', locale)}</a>
+          <a href={`${base}/whitepaper`}>{isEn ? 'Whitepaper' : '白皮書'}</a>
+          <a href={`${base}/referral`}>{t('nav.referral', locale)}</a>
+        </div>
+
+        <div class="footer-column">
+          <h4>{isEn ? 'Community' : '社群'}</h4>
+          <a href="https://x.com/ArcSignWallet" target="_blank" rel="noopener">Twitter / X</a>
+          <a href="https://t.me/arcsign" target="_blank" rel="noopener">Telegram</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© {new Date().getFullYear()} ArcSign. {isEn ? 'All rights reserved.' : '版權所有。'}</p>
+    </div>
+  </div>
+</footer>

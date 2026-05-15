@@ -1,0 +1,330 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const locale = 'zh-TW' as const;
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'ArcSign',
+    applicationCategory: 'FinanceApplication',
+    operatingSystem: 'macOS, Windows, Linux',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    url: 'https://arcsign.io/',
+    downloadUrl: 'https://dl.arcsign.io/',
+    description: '免費 USB 冷錢包 — 私鑰存在 USB，插上任何電腦都能用',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'ArcSign',
+    url: 'https://arcsign.io/',
+    logo: 'https://arcsign.io/assets/logo.png',
+    sameAs: ['https://x.com/ArcSignWallet'],
+  },
+];
+---
+
+<BaseLayout
+  title="ArcSign - 免費 USB 冷錢包 | 拔掉就安全，連接所有 dApp"
+  description="將私鑰存在 USB 隨身碟，拔掉就是冷錢包。支援 WalletConnect 連接所有 dApp，多鏈支援，完全免費。"
+  locale={locale}
+  canonical="https://arcsign.io/"
+  schema={schema}
+>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badges">
+        <span class="hero-badge-item">帶著錢包走</span>
+        <span class="hero-badge-item">零額外成本</span>
+        <span class="hero-badge-item">WalletConnect</span>
+      </div>
+      <h1>你的資產，<span class="gradient-text">你的掌控</span></h1>
+      <p class="hero-subtitle">不綁定設備，不依賴公司，不需額外花費。<br />應用程式 + 私鑰都在 USB，插入任何電腦即可使用。</p>
+      <p class="hero-note">真正的隨插即用 — 拔掉就安全</p>
+      <div class="hero-cta">
+        <a href="#download" class="btn btn-primary btn-lg">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          免費下載
+        </a>
+        <a href="#security" class="btn btn-secondary btn-lg">了解安全機制</a>
+      </div>
+      <div class="hero-features">
+        <div class="hero-feature-card"><span class="feature-icon-sm">🔓</span><div><strong>不綁定設備</strong><p>插入任何電腦即用</p></div></div>
+        <div class="hero-feature-card"><span class="feature-icon-sm">🏛️</span><div><strong>不依賴公司</strong><p>私鑰只在你手上</p></div></div>
+        <div class="hero-feature-card"><span class="feature-icon-sm">💸</span><div><strong>不需額外花費</strong><p>用現有 USB 即可</p></div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="app-preview">
+        <div class="preview-header">
+          <div class="window-controls"><span class="control red"></span><span class="control yellow"></span><span class="control green"></span></div>
+          <span class="preview-title">ArcSign</span>
+        </div>
+        <div class="preview-content">
+          <div class="wallet-card">
+            <div class="wallet-icon">🔐</div>
+            <div class="wallet-info"><span class="wallet-name">My Wallet</span><span class="wallet-balance">$12,450.00</span></div>
+          </div>
+          <div class="chain-list">
+            <div class="chain-item"><span class="chain-logo eth"></span>ETH<span class="chain-value">2.5</span></div>
+            <div class="chain-item"><span class="chain-logo bnb"></span>BNB<span class="chain-value">15.2</span></div>
+            <div class="chain-item"><span class="chain-logo matic"></span>MATIC<span class="chain-value">1,200</span></div>
+          </div>
+          <div class="action-buttons">
+            <button class="action-btn">Send</button>
+            <button class="action-btn">Receive</button>
+            <button class="action-btn primary">Swap</button>
+          </div>
+        </div>
+      </div>
+      <div class="usb-indicator">
+        <div class="usb-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M9 4V2"></path><path d="M15 4V2"></path><circle cx="12" cy="12" r="3"></circle></svg></div>
+        <span>私鑰安全存儲於 USB</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-bg"></div>
+</section>
+
+<section class="social-proof-strip">
+  <div class="container">
+    <div class="proof-items">
+      <div class="proof-item"><span class="proof-number" id="user-count">1,000+</span><span class="proof-label">活躍用戶</span></div>
+      <div class="proof-divider"></div>
+      <div class="proof-item"><span class="proof-number">54+</span><span class="proof-label">條鏈支援</span></div>
+      <div class="proof-divider"></div>
+      <div class="proof-item"><span class="proof-number">AES-256</span><span class="proof-label">加密備份</span></div>
+      <div class="proof-divider"></div>
+      <div class="proof-item"><span class="proof-number">3</span><span class="proof-label">平台支援</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="problem">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">為什麼需要 ArcSign?</span>
+      <h2>軟體錢包的<span class="text-danger">致命弱點</span></h2>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card reveal"><div class="problem-icon">🦠</div><h3>私鑰存在硬碟</h3><p>MetaMask 的私鑰存在電腦硬碟。<br />惡意軟體可以 24/7 掃描竊取。</p><div class="problem-stat"><span class="stat-bad">檔案存在 = 可被竊取</span></div></div>
+      <div class="problem-card reveal"><div class="problem-icon">💸</div><h3>硬體錢包太貴</h3><p>Ledger/Trezor 要 $79-149 美元。<br />很多人知道更安全，但覺得太貴。</p><div class="problem-stat"><span class="stat-bad">門檻高 = 不願升級</span></div></div>
+      <div class="problem-card reveal"><div class="problem-icon">🔗</div><h3>兩難選擇</h3><p>軟體錢包方便但不夠安全。<br />硬體錢包安全但又貴又麻煩。</p><div class="problem-stat"><span class="stat-bad">ArcSign = 中間路線</span></div></div>
+    </div>
+    <div style="display:flex; gap:16px; justify-content:center; margin-top:40px; flex-wrap:wrap;">
+      <a href="/arcsign-vs-metamask" style="display:flex; align-items:center; gap:12px; background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:16px 24px; text-decoration:none; transition:border-color 0.2s;">
+        <span style="font-size:1.5rem;">🦊</span>
+        <div><div style="font-weight:700; color:var(--text-primary); font-size:0.95rem;">ArcSign vs MetaMask</div><div style="font-size:0.82rem; color:var(--text-muted); margin-top:2px;">冷錢包 vs 熱錢包完整比較 →</div></div>
+      </a>
+      <a href="/arcsign-vs-ledger" style="display:flex; align-items:center; gap:12px; background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:16px 24px; text-decoration:none; transition:border-color 0.2s;">
+        <span style="font-size:1.5rem;">🔐</span>
+        <div><div style="font-weight:700; color:var(--text-primary); font-size:0.95rem;">ArcSign vs Ledger</div><div style="font-size:0.82rem; color:var(--text-muted); margin-top:2px;">免費 USB vs $79 硬體錢包比較 →</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="solution" id="security">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">ArcSign 安全設計</span>
+      <h2><span class="gradient-text">USB 隔離</span> = 拔掉就安全</h2>
+      <p class="section-desc">把硬體錢包的核心概念帶給每個人，零額外成本</p>
+    </div>
+    <div class="defense-layers">
+      <div class="defense-layer highlight reveal"><div class="layer-number">1</div><div class="layer-content"><h3>USB-only Storage</h3><p class="layer-desc">私鑰不在電腦硬碟</p><ul class="layer-details"><li>私鑰只存在 USB 隨身碟</li><li>拔掉 USB = 駭客找不到私鑰</li><li>惡意軟體無法竊取不存在的檔案</li></ul></div></div>
+      <div class="defense-layer reveal"><div class="layer-number">2</div><div class="layer-content"><h3>Memory Hardening</h3><p class="layer-desc">記憶體層級保護</p><ul class="layer-details"><li>mlock 防止私鑰被換出到 swap</li><li>SecureZero 使用後立即清除</li><li>Split key 分片儲存，提高竊取難度</li></ul></div></div>
+      <div class="defense-layer reveal"><div class="layer-number">3</div><div class="layer-content"><h3>密碼不落地</h3><p class="layer-desc">每次操作需重新輸入</p><ul class="layer-details"><li>密碼永不儲存在任何地方</li><li>Session token 時效控制</li><li>閒置自動鎖定</li></ul></div></div>
+      <div class="defense-layer reveal"><div class="layer-number">4</div><div class="layer-content"><h3>加密備份</h3><p class="layer-desc">比助記詞更安全的備份方式</p><ul class="layer-details"><li>複製錢包資料夾即可備份</li><li>可存雲端，無外洩風險</li><li>即使官方也無法解密</li></ul></div></div>
+    </div>
+    <div class="security-note"><p><strong>誠實說明：</strong>ArcSign 是「強化版軟體錢包」，不是硬體錢包。簽名仍在電腦完成，但私鑰存在 USB 大幅降低被竊風險。大額長期儲存建議搭配硬體錢包。</p></div>
+    <div class="security-roadmap"><div class="roadmap-content"><div class="roadmap-icon">🚀</div><div class="roadmap-text"><p class="roadmap-next"><strong>Roadmap：</strong>交易可讀確認、風險警告、Hardware-backed Signing</p></div></div></div>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">完整功能</span>
+      <h2>不只是錢包，是完整的 <span class="gradient-text">DeFi 工具箱</span></h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card featured full-width reveal"><div class="feature-icon">🔌</div><h3>隨插即用 — 帶著錢包走</h3><p>應用程式和錢包資料都在 USB，插入任何電腦即可使用。拔掉 USB 就安全，私鑰不留在電腦上。</p><div class="feature-badge">核心特點</div></div>
+      <div class="feature-card reveal"><div class="feature-icon">🌐</div><h3>WalletConnect 支援</h3><p>連接 Uniswap、OpenSea、PancakeSwap 等所有主流 dApp</p><div class="feature-badge">全新功能</div></div>
+      <a href="/developer" class="feature-card reveal" style="text-decoration:none;color:inherit;"><div class="feature-icon">🔧</div><h3>開發者模式</h3><p>智能合約開發者專用 — Hardhat 整合、安全簽名、API Key 自動注入</p><div class="feature-badge">全新功能</div><span style="color:#2dd4bf;font-size:0.9rem;margin-top:8px;display:block;">Learn more →</span></a>
+      <div class="feature-card reveal"><div class="feature-icon">🔗</div><h3>多鏈支援</h3><p>支援 BTC + 21 條 EVM 鏈，共 22 條區塊鏈一次搞定</p><div class="feature-chains"><span class="chain-badge eth">BTC</span><span class="chain-badge eth">ETH</span><span class="chain-badge bnb">BSC</span><span class="chain-badge matic">Polygon</span><span class="chain-badge arb">Arbitrum</span><span class="chain-badge op">Optimism</span><span class="chain-badge base">Base</span><span class="chain-badge" style="background:rgba(255,255,255,0.1)">+15</span></div></div>
+      <div class="feature-card reveal"><div class="feature-icon">🛡️</div><h3>詐騙代幣過濾</h3><p>自動識別並隱藏詐騙代幣，只顯示已驗證的合法代幣</p></div>
+      <div class="feature-card reveal"><div class="feature-icon">💾</div><h3>加密備份</h3><p>比助記詞更安全 — 複製資料夾即可備份，可存雲端，官方也無法解密</p><div class="feature-badge">獨家功能</div></div>
+      <div class="feature-card reveal"><div class="feature-icon">💱</div><h3>Token Swap</h3><p>一鍵兌換任意代幣，自動尋找最佳價格</p><div class="feature-badge">免手續費</div></div>
+      <div class="feature-card reveal"><div class="feature-icon">🔑</div><h3>密碼不落地</h3><p>你的密碼永不儲存，每次操作需重新輸入，安全無虞</p></div>
+      <div class="feature-card reveal"><div class="feature-icon">📜</div><h3>交易歷史</h3><p>完整的交易記錄與資產總覽，一目了然</p></div>
+      <div class="feature-card reveal"><div class="feature-icon">⏰</div><h3>自動鎖定</h3><p>閒置自動登出，防止他人存取你的錢包</p></div>
+      <div class="feature-card reveal"><div class="feature-icon">📊</div><h3>資產總覽</h3><p>即時顯示所有鏈的餘額和估值</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="for-everyone">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">為誰設計</span>
+      <h2>為<span class="gradient-text">每一個人</span>設計</h2>
+      <p class="section-desc">安全存儲加密資產不該是特權</p>
+    </div>
+    <div class="everyone-grid">
+      <div class="everyone-card reveal"><div class="everyone-icon">🌍</div><div class="everyone-card-content"><h3>全球用戶</h3><p>無論你在台北、東京還是杜拜，只要有一支 USB，就能安全存儲資產。不受地區限制，不需國際運送。</p></div></div>
+      <div class="everyone-card reveal"><div class="everyone-icon">💼</div><div class="everyone-card-content"><h3>入門用戶</h3><p>不用花 $100 買硬體錢包，也能享有比軟體錢包更高的安全保護。零門檻開始你的 DeFi 之旅。</p></div></div>
+      <div class="everyone-card reveal"><div class="everyone-icon">🚀</div><div class="everyone-card-content"><h3>進階玩家</h3><p>WalletConnect 連接所有 dApp，Swap、Staking 功能一應俱全。功能不打折扣，安全不妥協。</p></div></div>
+      <div class="everyone-card reveal"><div class="everyone-icon">✈️</div><div class="everyone-card-content"><h3>隨時移動</h3><p>帶著錢包出國、換電腦、應對各種情況。你的資產始終在你掌控之中，不綁定任何設備。</p></div></div>
+    </div>
+    <div class="everyone-mission"><p>我們相信，<strong>安全存儲加密資產不該是有錢人的專利</strong>。<br />無論你的預算多少，ArcSign 讓每個人都能用現有的 USB 隨身碟，獲得更高等級的安全保護。</p></div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">方案比較</span>
+      <h2>選擇適合你的<span class="gradient-text">安全等級</span></h2>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card reveal">
+        <div class="pricing-header"><h3>Free</h3><div class="price"><span class="price-value">$0</span><span class="price-period">永久免費</span></div></div>
+        <ul class="pricing-features"><li>USB 離線存儲</li><li>1 個錢包</li><li>多鏈支援</li><li>Token Swap</li><li>交易歷史</li><li>自動鎖定</li></ul>
+        <a href="#download" class="btn btn-secondary btn-block">免費下載</a>
+      </div>
+      <div class="pricing-card featured reveal">
+        <div class="pricing-badge">推薦</div>
+        <div class="pricing-header"><h3>Pro</h3><div class="price"><span class="price-value">$30</span><span class="price-period">USDT / 年</span></div></div>
+        <ul class="pricing-features"><li><strong>所有 Free 功能</strong></li><li><strong>4+ 錢包</strong><span> (每個 NFT +3)</span></li><li>2x 積分加成</li><li>3x 空投權重</li><li>優先客服支援</li><li>未來功能優先體驗</li></ul>
+        <a href="#download" class="btn btn-primary btn-block">升級 Pro</a>
+      </div>
+      <div class="pricing-card compare reveal">
+        <div class="pricing-header"><h3>硬體錢包</h3><div class="price"><span class="price-value">$79-149</span><span class="price-period">一次性</span></div></div>
+        <ul class="pricing-features muted"><li class="con">需額外購買設備</li><li class="con">需在電腦安裝軟體</li><li class="con">換電腦需重新設定</li><li class="con">部分地區難以購買</li><li class="pro">私鑰完全隔離</li><li class="highlight">大額長期儲存首選</li></ul>
+        <div class="pricing-note">ArcSign 的互補方案</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="early-bird">
+  <div class="container">
+    <div class="early-bird-content">
+      <span class="early-badge">🎁 早鳥限定</span>
+      <h2>前 500 名用戶享專屬優惠</h2>
+      <div class="early-benefits">
+        <div class="benefit"><span class="benefit-icon">🆓</span><div><strong>前 100 名</strong><p>免費 1 年 Pro (價值 $30)</p></div></div>
+        <div class="benefit"><span class="benefit-icon">💰</span><div><strong>101-500 名</strong><p>Pro 方案 50% 折扣</p></div></div>
+        <div class="benefit"><span class="benefit-icon">🪂</span><div><strong>所有早鳥</strong><p>3x 未來空投權重</p></div></div>
+      </div>
+      <a href="#download" class="btn btn-primary btn-lg">立即加入早鳥</a>
+    </div>
+  </div>
+</section>
+
+<section class="newsletter" id="newsletter">
+  <div class="container">
+    <div class="newsletter-content">
+      <h2>掌握最新動態</h2>
+      <p>訂閱 ArcSign 電子報，獲取產品更新、安全教學、DeFi 趨勢與專屬優惠。</p>
+      <form class="newsletter-form" id="newsletter-form">
+        <input type="email" id="newsletter-email" placeholder="you@example.com" required autocomplete="email" />
+        <button type="submit" class="btn btn-primary">免費訂閱</button>
+      </form>
+      <p class="newsletter-status" id="newsletter-status"></p>
+      <p class="newsletter-privacy">不傳送垃圾郵件，隨時可取消訂閱。</p>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">常見問題</span>
+      <h2>你可能想知道的</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-question"><span>ArcSign 和 MetaMask 有什麼不同？</span><span class="faq-icon">+</span></button><div class="faq-answer"><p>最大的差別在於<strong>私鑰存儲位置</strong>。MetaMask 把私鑰存在電腦硬碟，任何能讀取檔案的惡意軟體都可能竊取。ArcSign 把私鑰存在 USB 隨身碟，拔掉就是冷錢包，攻擊者無法存取不存在的檔案。</p><p style="margin-top:10px;margin-bottom:0;"><a href="/arcsign-vs-metamask" style="color:var(--primary);font-size:0.9rem;font-weight:600;">深入比較：ArcSign vs MetaMask →</a></p></div></div>
+      <div class="faq-item"><button class="faq-question"><span>如果 USB 壞掉或遺失怎麼辦？</span><span class="faq-icon">+</span></button><div class="faq-answer"><p>ArcSign 提供<strong>兩種備份方式</strong>：</p><p><strong>加密檔案備份（推薦）</strong>：直接複製 USB 內的錢包資料夾到另一個 USB 或雲端。檔案已加密，只有知道密碼的人才能使用，不用擔心外洩。</p><p><strong>助記詞備份</strong>：將 12 或 24 個英文單詞寫在紙上保存。可在任何支援 BIP39 的錢包恢復資產。</p></div></div>
+      <div class="faq-item"><button class="faq-question"><span>ArcSign 是硬體錢包等級嗎？</span><span class="faq-icon">+</span></button><div class="faq-answer"><p><strong>不是，ArcSign 是「強化版軟體錢包」</strong>。核心差異是私鑰存在 USB 而不是電腦硬碟，拔掉 USB 後駭客無法存取。但簽名仍在電腦完成，無法達到硬體錢包的完全隔離。</p><p><strong>定位：</strong>比 MetaMask 更安全，比硬體錢包更便宜（免費）。大額長期儲存建議搭配硬體錢包使用。</p><p style="margin-top:10px;margin-bottom:0;"><a href="/arcsign-vs-ledger" style="color:var(--primary);font-size:0.9rem;font-weight:600;">深入比較：ArcSign vs Ledger →</a></p></div></div>
+      <div class="faq-item"><button class="faq-question"><span>ArcSign 安全嗎？怎麼確保沒有後門？</span><span class="faq-icon">+</span></button><div class="faq-answer"><p>ArcSign 採用<strong>業界頂級的加密標準</strong>保護你的私鑰，安全性不輸專業級產品。私鑰永遠不會離開你的 USB 隨身碟，也不會傳送到任何伺服器。</p></div></div>
+      <div class="faq-item"><button class="faq-question"><span>什麼是 WalletConnect？怎麼使用？</span><span class="faq-icon">+</span></button><div class="faq-answer"><p>WalletConnect 是一個<strong>開放協議</strong>，讓你的錢包可以安全連接到各種 dApp（如 Uniswap、OpenSea、PancakeSwap）。使用方式很簡單：在 dApp 選擇「WalletConnect」連接方式，然後在 ArcSign 中貼上連接連結即可。</p></div></div>
+      <div class="faq-item"><button class="faq-question"><span>支援哪些作業系統？</span><span class="faq-icon">+</span></button><div class="faq-answer"><p>支援 <strong>macOS</strong>（Apple Silicon）、<strong>Windows</strong>（x64）、<strong>Linux</strong>（x64），三平台皆可下載使用。</p></div></div>
+    </div>
+    <p style="text-align:center;margin-top:32px;"><a href="/faq" style="color:var(--primary);">查看完整常見問題 →</a></p>
+  </div>
+</section>
+
+<section class="download" id="download">
+  <div class="container">
+    <div class="download-content">
+      <h2>準備好升級安全了嗎？</h2>
+      <p>免費下載 ArcSign，用你現有的 USB 隨身碟</p>
+      <div class="download-trust">
+        <span class="trust-item">🔌 拔掉就安全</span>
+        <span class="trust-item">💰 100% 免費</span>
+        <span class="trust-item">🔒 私鑰不上傳</span>
+      </div>
+      <div class="download-buttons">
+        <div class="download-btn-group">
+          <a href="https://dl.arcsign.io/v1.2.3/ArcSign-1.2.3-macOS-ARM64.dmg" class="download-btn macos">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            <div><span class="download-label">Download for</span><span class="download-platform">macOS (Apple Silicon)</span></div>
+          </a>
+        </div>
+        <div class="download-btn-group">
+          <a href="https://dl.arcsign.io/v1.2.3/ArcSign-1.2.3-Windows-x64.msi" class="download-btn windows">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3 12V6.75l6-1.32v6.48L3 12zm17-9v8.75l-10 .15V5.21L20 3zM3 13l6 .09v6.81l-6-1.15V13zm17 .25V22l-10-1.91V13.1l10 .15z"/></svg>
+            <div><span class="download-label">Download for</span><span class="download-platform">Windows (x64)</span></div>
+          </a>
+        </div>
+        <div class="download-btn-group">
+          <a href="https://dl.arcsign.io/v1.2.3/ArcSign-1.2.3-Linux-x64.deb" class="download-btn linux">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12.504 0c-.155 0-.315.008-.48.021-4.226.333-3.105 4.807-3.17 6.298-.076 1.092-.3 1.953-1.05 3.02-.885 1.051-2.127 2.75-2.716 4.521-.278.832-.41 1.684-.287 2.489a.424.424 0 00-.11.135c-.26.268-.45.6-.663.839-.199.199-.485.267-.797.4-.313.136-.658.269-.864.68-.09.189-.136.394-.132.602 0 .199.027.4.055.536.058.399.116.728.04.97-.249.68-.28 1.145-.106 1.484.174.334.535.47.94.601.81.2 1.91.135 2.774.6.926.466 1.866.67 2.616.47.526-.116.97-.464 1.208-.946.587-.003 1.23-.269 2.26-.334.699-.058 1.574.267 2.577.2.025.134.063.198.114.333l.003.003c.391.778 1.113 1.132 1.884 1.071.771-.06 1.592-.536 2.257-1.306.631-.765 1.683-1.084 2.378-1.503.348-.199.629-.469.649-.853.023-.4-.2-.811-.714-1.376v-.097l-.003-.003c-.17-.2-.25-.535-.338-.926-.085-.401-.182-.786-.492-1.046h-.003c-.059-.054-.123-.067-.188-.135a.357.357 0 00-.19-.064c.431-1.278.264-2.55-.173-3.694-.533-1.41-1.465-2.638-2.175-3.483-.796-1.005-1.576-1.957-1.56-3.368.026-2.152.236-6.133-3.544-6.139z"/></svg>
+            <div><span class="download-label">Download for</span><span class="download-platform">Linux (x64)</span></div>
+          </a>
+        </div>
+      </div>
+      <p class="download-note">需要 USB 隨身碟來存儲錢包 · 建議 16GB 以上</p>
+      <div class="install-instructions">
+        <h3>一鍵安裝到 USB（推薦）</h3>
+        <div class="install-method">
+          <h4>macOS / Linux</h4>
+          <div class="code-block">
+            <code>bash &lt;(curl -fsSL https://arcsign.io/install.sh)</code>
+            <button class="copy-btn" onclick="navigator.clipboard.writeText('bash <(curl -fsSL https://arcsign.io/install.sh)').then(()=>{this.classList.add('copied');setTimeout(()=>this.classList.remove('copied'),2000)})">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
+          </div>
+        </div>
+        <div class="install-method" style="margin-top:16px;">
+          <h4>Windows</h4>
+          <div class="code-block">
+            <code>irm https://arcsign.io/install.ps1 | iex</code>
+            <button class="copy-btn" onclick="navigator.clipboard.writeText('irm https://arcsign.io/install.ps1 | iex').then(()=>{this.classList.add('copied');setTimeout(()=>this.classList.remove('copied'),2000)})">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Social proof: fetch user count
+  fetch('/api/public-stats')
+    .then(r => r.json())
+    .then(d => {
+      const el = document.getElementById('user-count');
+      if (el && d.users > 0) el.textContent = d.users.toLocaleString() + '+';
+    })
+    .catch(() => {});
+</script>
+
+</BaseLayout>

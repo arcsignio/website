@@ -1,0 +1,423 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="ArcSign vs Ledger：免費 USB 冷錢包 vs $79 硬體錢包（2026 完整比較）| ArcSign"
+  description="ArcSign vs Ledger Nano 完整比較：安全性、費用、DeFi 支援、備份恢復、2026年兩次客戶資料外洩事件分析。ArcSign 免費，Ledger 要價 $79 起。"
+  locale="zh-TW"
+  canonical="https://arcsign.io/arcsign-vs-ledger"
+>
+
+<article class="compare-article">
+    <div class="compare-header">
+        <div class="compare-breadcrumb">
+            <a href="/">首頁</a> &rsaquo; ArcSign vs Ledger
+        </div>
+        <h1>ArcSign vs Ledger：免費 USB 冷錢包 vs $79 硬體錢包（2026 完整比較）</h1>
+        <div class="compare-meta">
+            <span class="tag">比較分析</span>
+            <span>2026 年 3 月 30 日</span>
+            <span>ArcSign Team</span>
+            <span>10 分鐘閱讀</span>
+        </div>
+    </div>
+
+    <div class="toc">
+        <div class="toc-title">目錄</div>
+        <ul>
+            <li><a href="#quick-verdict">快速結論</a></li>
+            <li><a href="#cost-comparison">費用比較</a></li>
+            <li><a href="#feature-comparison">完整功能比較表</a></li>
+            <li><a href="#security-deep-dive">安全架構深入分析</a></li>
+            <li><a href="#breach-history">Ledger 的客戶資料外洩紀錄（2020 + 2026）</a></li>
+            <li><a href="#when-to-use-each">各自適合的使用場景</a></li>
+            <li><a href="#faq">常見問題</a></li>
+        </ul>
+    </div>
+
+    <p>ArcSign 和 Ledger 都是冷錢包——私鑰永遠不上網。但相似之處僅此而已。Ledger 是一個 $79–$249 的專用硬體裝置，內建安全晶片。ArcSign 在你已有的任何 USB 隨身碟上執行，完全免費，透過軟體加密而非專有硬體保障安全。</p>
+
+    <p>這篇比較深入探討這個差異對安全性、可用性、DeFi 存取、費用，以及你的錢的實際影響。</p>
+
+    <h2 id="quick-verdict">快速結論</h2>
+
+    <div class="verdict-box">
+        <div class="verdict-card winner">
+            <div class="vc-label">最佳性價比冷錢包</div>
+            <div class="vc-name">ArcSign</div>
+            <div class="vc-tag">任何 USB 隨身碟 &bull; 免費</div>
+            <div class="vc-best">與 Ledger 相同的冷錢包安全原則，零成本。使用你已有的任何 USB。支援 WalletConnect 使用 DeFi，內建 Token 授權管理。最適合：主要資產在 EVM + 比特幣，想要冷錢包保護但不想花硬體費用的用戶。</div>
+        </div>
+        <div class="verdict-card">
+            <div class="vc-label">最佳硬體安全</div>
+            <div class="vc-name">Ledger</div>
+            <div class="vc-tag">專用裝置 &bull; $79–$249</div>
+            <div class="vc-best">認證安全晶片（CC EAL5+）可抵抗物理提取攻擊。支援最廣泛的鏈，包括 Solana、XRP、Cardano。最適合：持有極高價值資產、機構使用，或需要硬體可證明安全性的用戶。</div>
+        </div>
+    </div>
+
+    <div class="callout">
+        <div class="callout-title">說實話</div>
+        <p>對絕大多數 EVM 用戶——以太坊、BSC、Polygon、Arbitrum——ArcSign 以零成本提供同等的冷錢包保護。Ledger 的安全晶片在你需要抵抗國家級物理攻擊，或需要硬體可驗證的安全證明時才顯出優勢。那是一個非常小眾的需求。</p>
+    </div>
+
+    <h2 id="cost-comparison">費用比較</h2>
+
+    <div class="price-box">
+        <div class="price-card featured">
+            <div class="price-amount">$0</div>
+            <div class="price-label">ArcSign — 永久免費</div>
+            <ul class="price-items">
+                <li><span class="check">&#10003;</span> 所有核心錢包功能</li>
+                <li><span class="check">&#10003;</span> 多鏈支援（ETH、BSC、Polygon 等）</li>
+                <li><span class="check">&#10003;</span> WalletConnect DeFi 存取</li>
+                <li><span class="check">&#10003;</span> Token 授權管理（逐個撤銷）</li>
+                <li><span class="check">&#10003;</span> NFT 展示</li>
+                <li><span class="check">&#10003;</span> 使用你已有的任何 USB</li>
+            </ul>
+        </div>
+        <div class="price-card">
+            <div class="price-amount">$79+</div>
+            <div class="price-label">Ledger Nano S Plus / X</div>
+            <ul class="price-items">
+                <li><span class="check">&#10003;</span> 安全晶片（CC EAL5+）</li>
+                <li><span class="check">&#10003;</span> 支援 5,500+ 幣種</li>
+                <li><span class="check">&#10003;</span> Ledger Live 應用程式</li>
+                <li><span class="warn">&#9888;</span> Ledger Live DeFi 收取手續費</li>
+                <li><span class="warn">&#9888;</span> 需信任硬體供應鏈</li>
+                <li><span class="cross">&#10007;</span> 2020 + 2026 年兩度洩露客戶資料</li>
+            </ul>
+        </div>
+    </div>
+
+    <p>$79 以上的初始費用是最明顯的差異。更隱性的差異：透過 Ledger Live 路由的 DeFi 交易會收取手續費。ArcSign 使用 WalletConnect——你直接連接到協議，ArcSign 不會在交易費用中間抽一刀。</p>
+
+    <h2 id="feature-comparison">完整功能比較表</h2>
+
+    <table class="comparison-table">
+        <thead>
+            <tr>
+                <th>功能</th>
+                <th>ArcSign</th>
+                <th>Ledger</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="feat">私鑰存儲</td>
+                <td><span class="check">&#10003;</span> 離線 USB（軟體加密）</td>
+                <td><span class="check">&#10003;</span> 安全晶片（硬體）</td>
+            </tr>
+            <tr>
+                <td class="feat">費用</td>
+                <td><span class="check">&#10003;</span> 免費</td>
+                <td><span class="warn">&#9888;</span> $79 – $249</td>
+            </tr>
+            <tr>
+                <td class="feat">所需硬體</td>
+                <td><span class="check">&#10003;</span> 任何 USB 隨身碟（約 NT$100 或免費）</td>
+                <td><span class="cross">&#10007;</span> 必須購買 Ledger 裝置</td>
+            </tr>
+            <tr>
+                <td class="feat">網路暴露</td>
+                <td><span class="check">&#10003;</span> 私鑰從不上網</td>
+                <td><span class="check">&#10003;</span> 私鑰從不上網</td>
+            </tr>
+            <tr>
+                <td class="feat">WalletConnect / DeFi</td>
+                <td><span class="check">&#10003;</span> 完整 WalletConnect（任何協議）</td>
+                <td><span class="check">&#10003;</span> WalletConnect + Ledger Live 內建</td>
+            </tr>
+            <tr>
+                <td class="feat">鏈支援</td>
+                <td><span class="warn">&#9888;</span> ETH、BSC、Polygon、Arbitrum、Optimism、Base、Bitcoin</td>
+                <td><span class="check">&#10003;</span> 5,500+ 幣種含 Solana、XRP、Cardano</td>
+            </tr>
+            <tr>
+                <td class="feat">Token 授權管理</td>
+                <td><span class="check">&#10003;</span> 內建，6條 EVM 鏈（Pro 批量撤銷）</td>
+                <td><span class="cross">&#10007;</span> 未內建（需使用第三方）</td>
+            </tr>
+            <tr>
+                <td class="feat">DeFi 倉位（流動質押）</td>
+                <td><span class="check">&#10003;</span> stETH、ankrETH、ankrBNB，即時 APY</td>
+                <td><span class="warn">&#9888;</span> 透過 Ledger Live 合作夥伴（有限）</td>
+            </tr>
+            <tr>
+                <td class="feat">NFT 展示</td>
+                <td><span class="check">&#10003;</span> ERC721 + ERC1155，跨鏈</td>
+                <td><span class="check">&#10003;</span> Ledger Live 內建</td>
+            </tr>
+            <tr>
+                <td class="feat">備份方式</td>
+                <td><span class="check">&#10003;</span> 加密 .arcsign 檔（AES-256-GCM）</td>
+                <td><span class="warn">&#9888;</span> 24 個助記詞（紙本）</td>
+            </tr>
+            <tr>
+                <td class="feat">物理篡改抵抗</td>
+                <td><span class="warn">&#9888;</span> 僅軟體（mlock、XOR 分片）</td>
+                <td><span class="check">&#10003;</span> CC EAL5+ 安全晶片</td>
+            </tr>
+            <tr>
+                <td class="feat">供應鏈信任</td>
+                <td><span class="check">&#10003;</span> 無硬體供應鏈風險</td>
+                <td><span class="warn">&#9888;</span> 必須信任 Ledger 供應鏈</td>
+            </tr>
+            <tr>
+                <td class="feat">客戶資料事件</td>
+                <td><span class="check">&#10003;</span> 無已知資料外洩</td>
+                <td><span class="cross">&#10007;</span> 2020 + 2026 年兩度外洩客戶 PII</td>
+            </tr>
+            <tr>
+                <td class="feat">開源</td>
+                <td><span class="warn">&#9888;</span> 計畫用戶達 1 萬後開源</td>
+                <td><span class="warn">&#9888;</span> 部分開源</td>
+            </tr>
+            <tr>
+                <td class="feat">行動 App</td>
+                <td><span class="warn">&#9888;</span> 開發中</td>
+                <td><span class="check">&#10003;</span> Ledger Live 行動版（iOS + Android）</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 id="security-deep-dive">安全架構深入分析</h2>
+
+    <p>兩款錢包都遵循核心冷錢包原則：私鑰離線生成並儲存。安全性的差異在於這種隔離是<em>如何</em>實現的。</p>
+
+    <div class="security-grid">
+        <div class="security-card arcsign">
+            <h4>ArcSign 安全模型</h4>
+            <ul>
+                <li>私鑰在 USB 上——設計上就是氣隔離的</li>
+                <li>XOR 三分片加密，將私鑰拆分成 3 份</li>
+                <li>mlock() 防止私鑰換出到作業系統磁碟</li>
+                <li>AES-256-GCM 雙層加密備份</li>
+                <li>無安全晶片——軟體強制隔離</li>
+                <li>零供應鏈風險（任何 USB 都可以）</li>
+                <li>無客戶資料庫可洩露</li>
+            </ul>
+        </div>
+        <div class="security-card">
+            <h4>Ledger 安全模型</h4>
+            <ul>
+                <li>認證安全晶片（ST33 / STM32，CC EAL5+）</li>
+                <li>金鑰存在防篡改硬體晶片內</li>
+                <li>物理晶片提取極為困難</li>
+                <li>專有 Ledger OS（BOLOS）隔離應用程式</li>
+                <li>必須信任 Ledger 供應鏈完整性</li>
+                <li>2020 年洩露 27 萬個地址 + 107 萬個電子郵件</li>
+                <li>2026 年 Global-e 外洩事件再次洩露客戶資料</li>
+                <li>Ledger Recover 事件揭露韌體可提取並傳送私鑰</li>
+            </ul>
+        </div>
+    </div>
+
+    <h3>安全晶片的取捨</h3>
+
+    <p>Ledger 的安全晶片讓物理金鑰提取極為困難。一個持有你 Ledger 裝置的攻擊者，即使用實驗室設備也很難從晶片中提取私鑰。ArcSign 沒有這個：一個有心的攻擊者在取得 USB 實體存取權的情況下，理論上可以嘗試提取金鑰材料——雖然軟體加密（XOR 分片 + AES-256-GCM）仍然讓這件事並不容易。</p>
+
+    <p>實際上，大多數用戶的威脅模型是：<strong>遠端攻擊</strong>（釣魚、惡意軟體、網路）。兩款錢包對遠端金鑰提取都完全免疫，因為私鑰從不連網。物理提取的場景只影響極少數用戶，而且通常還需要攻擊者同時知道你的密碼。</p>
+
+    <h2 id="breach-history">Ledger 的客戶資料外洩紀錄（2020 + 2026）</h2>
+
+    <p>Ledger 遭遇了多次客戶資料外洩。硬體錢包本身從未被攻破——私鑰保持安全。但 Ledger 的客戶一再以「加密貨幣持有者」的身份被暴露，成為多年持續攻擊的目標。</p>
+
+    <h3>2020 年 7 月：最初的外洩</h3>
+
+    <p>Ledger 自己的電商資料庫遭到入侵。27.2 萬個送貨地址和 107.5 萬個電子郵件地址被洩露。完整資料在 2020 年 12 月公開發布在 RaidForums——永久在網路上，任何人都可以搜尋。</p>
+
+    <p>外洩立即引發了大規模釣魚郵件攻擊。它也創造了一個長期問題：攻擊者確切知道哪些家庭持有加密貨幣硬體。這個資訊不會過期。</p>
+
+    <h3>2025 年 4 月：實體郵件詐騙</h3>
+
+    <p>使用 2020 年外洩資料的詐騙者升級到寄送實體信件。使用洩露資料庫中的真實姓名和家庭地址，他們郵寄了看起來很官方的 Ledger 信件，聲稱需要「重要安全更新」或「強制驗證」。每封信都包含一個 QR code，引導用戶到要求輸入 24 個助記詞的假 Ledger 網站。</p>
+
+    <p>Ledger 確認這些信件是假的並公開警告用戶。但攻擊很難阻止——資料已經外洩，永久的。2021 年前購買過 Ledger 的用戶應該假設自己的姓名和家庭地址已在攻擊者手中。</p>
+
+    <h3>2026 年 1 月：Global-e 第三方外洩</h3>
+
+    <p>2026 年 1 月，Ledger 披露了第二起客戶資料事件。這次外洩發生在 Global-e——Ledger 的國際電商和付款處理合作夥伴。根本原因：Ledger 自己網站上一個設定錯誤的 API key，讓攻擊者取得了 Global-e 系統的存取權。</p>
+
+    <p>外洩的資料：客戶姓名、電子郵件地址、郵寄地址、電話號碼和訂單詳情（購買的產品、價格）。付款卡資料和加密貨幣憑證未受影響。受害者人數未公開披露。</p>
+
+    <p>這次外洩引發了新一波釣魚攻擊——包括謊稱 Ledger 和 Trezor 合併的電子郵件，使用新洩露的聯絡資料讓詐騙看起來更可信。</p>
+
+    <div class="callout callout-warn">
+        <div class="callout-title">六年三次，同樣的模式</div>
+        <p>每次硬體都安全，每次客戶身份資料外洩。問題不在安全晶片——而在於 Ledger 維護客戶資料庫，而資料庫就會被入侵。ArcSign 沒有客戶資料庫。根本沒有資料可以外洩，也沒有人知道你的地址可以寄詐騙信給你。</p>
+    </div>
+
+    <h3>Ledger Recover 爭議</h3>
+
+    <p>2023 年，Ledger 宣布了「Ledger Recover」——一項將助記詞拆分備份到三個保管方（Coincover、EscrowTech、Ledger）的服務。這揭露了 Ledger 韌體<em>可以</em>提取私鑰並傳送至裝置外，讓許多以為安全晶片使這不可能的用戶感到震驚。</p>
+
+    <p>Ledger Recover 在 2024–2025 年以每月 $9.99 的價格商業化上線，目前是選配功能。為了回應批評，Ledger 也推出了「Ledger Recovery Key」——一個 $39 的離線 PIN 保護卡作為替代方案。但核心揭露仍然成立：韌體架構允許助記詞提取。ArcSign 的架構設計上就不可能有這樣的功能——加密的 .arcsign 備份由應用程式生成，而不是從黑盒晶片提取秘密。</p>
+
+    <h2 id="when-to-use-each">各自適合的使用場景</h2>
+
+    <div class="usecase-grid">
+        <div class="usecase-card">
+            <h4 style="color: var(--primary);">選 ArcSign 的情況</h4>
+            <ul>
+                <li>你想要冷錢包安全性，但不想花錢買硬體</li>
+                <li>你的資產主要在 EVM 鏈 + 比特幣</li>
+                <li>你想要內建 Token 授權管理</li>
+                <li>你不想出現在硬體廠商的客戶資料庫中</li>
+                <li>你想要完整的 DeFi 存取，不支付 Ledger Live 手續費</li>
+                <li>你已經有 USB 隨身碟（任何一個都可以）</li>
+            </ul>
+        </div>
+        <div class="usecase-card">
+            <h4 style="color: var(--text-primary);">選 Ledger 的情況</h4>
+            <ul>
+                <li>你需要硬體級防篡改保護（安全晶片）</li>
+                <li>你持有 Solana、XRP、Cardano 或 5,000+ 種山寨幣</li>
+                <li>你需要硬體可驗證的安全性用於機構/合規目的</li>
+                <li>你能夠接受供應鏈信任模型</li>
+                <li>你想要一個從不需要插入電腦的物理裝置</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="compare-cta">
+        <h3>冷錢包安全，零成本</h3>
+        <p>ArcSign 給你與 Ledger 相同的冷錢包原則——私鑰離線——使用你已有的任何 USB 隨身碟。不需要購買硬體，永久免費。</p>
+        <a href="/#download" class="btn">免費下載 ArcSign</a>
+    </div>
+
+    <div class="faq-section" id="faq">
+        <h2>常見問題</h2>
+
+        <div class="faq-item">
+            <h3>ArcSign 和 Ledger 一樣安全嗎？</h3>
+            <p>ArcSign 透過不同的方式提供相當的冷錢包安全性。Ledger 使用專用安全晶片（CC EAL5+）在硬體中隔離金鑰。ArcSign 使用 XOR 三分片加密、mlock() 記憶體保護和 AES-256-GCM 儲存——在標準 USB 上軟體強制隔離。兩者都讓私鑰完全離線。主要差異：Ledger 的安全晶片抵抗物理晶片級攻擊；ArcSign 的威脅模型專注於軟體和網路隔離。</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>ArcSign 真的完全免費嗎？</h3>
+            <p>是的。ArcSign 的核心功能——建立錢包、金鑰管理、多鏈支援、WalletConnect、Token 授權管理、NFT 展示——完全免費。Pro 方案提供批量 Token 授權撤銷、進階投資組合分析和優先支援，但免費版已涵蓋所有安全必備功能。</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Ledger 的資料外洩問題嚴重嗎？</h3>
+            <p>硬體錢包本身從未被攻破，但 Ledger 的客戶資料兩度外洩。2020 年：27.2 萬個送貨地址和 107 萬個電子郵件地址被公開在網路上。2026 年 1 月：第三方電商處理商 Global-e 遭入侵，再次洩露客戶姓名、地址、電話和訂單資料。這讓 Ledger 客戶面臨持續的釣魚攻擊，包括以真實住址寄送的實體詐騙信件（2025 年 4 月發生）。ArcSign 沒有客戶資料庫，根本沒有資料可洩露。</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Ledger 或 ArcSign USB 遺失了怎麼辦？</h3>
+            <p>Ledger：用 24 個助記詞在任何新 Ledger 或相容錢包上還原。ArcSign：用加密的 .arcsign 備份檔在任何 USB 隨身碟上還原。.arcsign 檔案用 AES-256-GCM 加密，存在雲端、另一個 USB 或寄給自己都安全。兩者都需要你的密碼才能使用。</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>ArcSign 可以替代我的 Ledger 嗎？</h3>
+            <p>對大多數 EVM 和比特幣用戶來說，可以。ArcSign 支援以太坊、BSC、Polygon、Arbitrum、Optimism、Base 和比特幣。Ledger 的主要優勢是安全晶片的硬體級安全性和更廣泛的鏈支援（Solana、XRP 等）。如果你的資產主要在 EVM 鏈 + 比特幣，ArcSign 以零成本提供同等的冷錢包安全性。</p>
+        </div>
+    </div>
+
+    <div style="margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border-color);">
+        <h3 style="color: var(--text-primary);">更多比較</h3>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px;">
+            <a href="/arcsign-vs-metamask" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 16px 24px; text-decoration: none; color: var(--primary); font-weight: 600; transition: border-color 0.2s;" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border-color)'">
+                ArcSign vs MetaMask &rsaquo;
+            </a>
+        </div>
+    </div>
+</article>
+
+<style>
+    .compare-article { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+    .compare-header { margin-bottom: 40px; }
+    .compare-breadcrumb { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; }
+    .compare-breadcrumb a { color: var(--primary); text-decoration: none; }
+    .compare-breadcrumb a:hover { text-decoration: underline; }
+    .compare-meta { display: flex; gap: 16px; align-items: center; margin-top: 16px; font-size: 14px; color: var(--text-muted); flex-wrap: wrap; }
+    .compare-meta .tag { background: rgba(45, 212, 191, 0.15); color: var(--primary); padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+    .compare-article h1 { font-size: 2.2rem; font-weight: 800; line-height: 1.3; margin-bottom: 8px; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .compare-article h2 { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-top: 48px; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--border-color); }
+    .compare-article h3 { font-size: 1.15rem; font-weight: 600; color: var(--primary); margin-top: 28px; margin-bottom: 12px; }
+    .compare-article p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px; font-size: 1.05rem; }
+    .compare-article strong { color: var(--text-primary); }
+    .compare-article ul, .compare-article ol { color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px; padding-left: 24px; font-size: 1.05rem; }
+    .compare-article li { margin-bottom: 6px; }
+
+    .verdict-box { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
+    .verdict-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 24px; }
+    .verdict-card.winner { border-color: var(--primary); }
+    .verdict-card .vc-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+    .verdict-card.winner .vc-label { color: var(--primary); }
+    .verdict-card .vc-name { font-size: 1.3rem; font-weight: 800; color: var(--text-primary); margin-bottom: 8px; }
+    .verdict-card .vc-tag { font-size: 0.85rem; color: var(--text-secondary); background: var(--bg-dark); border-radius: var(--radius-sm); padding: 4px 10px; display: inline-block; margin-bottom: 12px; }
+    .verdict-card .vc-best { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
+    .verdict-card.winner .vc-best { color: var(--text-primary); }
+
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.95rem; }
+    .comparison-table th { background: var(--bg-card); color: var(--primary); padding: 12px 16px; text-align: left; border-bottom: 2px solid var(--primary-dark); font-weight: 700; }
+    .comparison-table th:first-child { color: var(--text-muted); }
+    .comparison-table td { padding: 12px 16px; border-bottom: 1px solid var(--border-color); color: var(--text-secondary); vertical-align: middle; }
+    .comparison-table tr:nth-child(even) td { background: rgba(30, 41, 59, 0.5); }
+    .comparison-table .feat { color: var(--text-primary); font-weight: 600; }
+    .check { color: #22c55e; font-weight: 700; }
+    .cross { color: #ef4444; font-weight: 700; }
+    .warn { color: #f59e0b; font-weight: 700; }
+
+    .callout { background: var(--bg-card); border-left: 4px solid var(--primary); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 20px 24px; margin: 24px 0; }
+    .callout p { margin-bottom: 0; }
+    .callout-title { font-weight: 700; color: var(--primary); margin-bottom: 8px; font-size: 1rem; }
+    .callout-warn { border-left-color: #f59e0b; }
+    .callout-warn .callout-title { color: #f59e0b; }
+
+    .security-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0; }
+    .security-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 20px; }
+    .security-card h4 { color: var(--text-primary); font-size: 1rem; font-weight: 700; margin-bottom: 12px; margin-top: 0; }
+    .security-card ul { color: var(--text-secondary); font-size: 0.9rem; padding-left: 18px; margin: 0; }
+    .security-card li { margin-bottom: 6px; }
+    .security-card.arcsign { border-color: var(--primary); }
+    .security-card.arcsign h4 { color: var(--primary); }
+
+    .usecase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0; }
+    .usecase-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 20px; }
+    .usecase-card h4 { font-weight: 700; margin-bottom: 12px; margin-top: 0; }
+    .usecase-card ul { color: var(--text-secondary); font-size: 0.9rem; padding-left: 18px; margin: 0; }
+    .usecase-card li { margin-bottom: 6px; }
+
+    .compare-cta { background: var(--gradient-hero); border: 1px solid var(--primary-dark); border-radius: var(--radius-lg); padding: 40px; text-align: center; margin-top: 48px; }
+    .compare-cta h3 { color: var(--text-primary); font-size: 1.4rem; margin-bottom: 12px; }
+    .compare-cta p { text-align: center; margin-bottom: 20px; }
+    .compare-cta .btn { display: inline-block; background: var(--gradient-primary); color: var(--bg-dark); padding: 12px 32px; border-radius: var(--radius-xl); font-weight: 700; text-decoration: none; font-size: 1rem; transition: transform 0.2s; }
+    .compare-cta .btn:hover { transform: scale(1.05); }
+
+    .faq-section { margin-top: 48px; }
+    .faq-item { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 20px 24px; margin-bottom: 16px; }
+    .faq-item h3 { color: var(--text-primary); font-size: 1.05rem; margin-bottom: 8px; margin-top: 0; }
+    .faq-item p { margin-bottom: 0; font-size: 0.95rem; }
+
+    .toc { background: var(--bg-card); border-radius: var(--radius-md); padding: 24px; margin-bottom: 32px; }
+    .toc-title { font-weight: 700; color: var(--text-primary); margin-bottom: 12px; }
+    .toc ul { list-style: none; padding: 0; margin: 0; }
+    .toc li { padding: 4px 0; }
+    .toc a { color: var(--text-secondary); text-decoration: none; font-size: 0.95rem; transition: color 0.2s; }
+    .toc a:hover { color: var(--primary); }
+
+    .price-box { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0; }
+    .price-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 24px; text-align: center; }
+    .price-card.featured { border-color: var(--primary); }
+    .price-card .price-amount { font-size: 2.5rem; font-weight: 800; color: var(--text-primary); }
+    .price-card.featured .price-amount { color: var(--primary); }
+    .price-card .price-label { font-size: 0.9rem; color: var(--text-muted); margin-top: 4px; }
+    .price-card .price-items { text-align: left; margin-top: 16px; font-size: 0.9rem; color: var(--text-secondary); list-style: none; padding: 0; }
+    .price-card .price-items li { padding: 4px 0; }
+
+    @media (max-width: 768px) {
+        .compare-article h1 { font-size: 1.6rem; }
+        .compare-article h2 { font-size: 1.25rem; }
+        .verdict-box { grid-template-columns: 1fr; }
+        .security-grid { grid-template-columns: 1fr; }
+        .usecase-grid { grid-template-columns: 1fr; }
+        .price-box { grid-template-columns: 1fr; }
+        .compare-cta { padding: 24px; }
+    }
+</style>
+
+</BaseLayout>

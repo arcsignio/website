@@ -1,0 +1,1076 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="ArcSign vs MetaMask: Which Crypto Wallet Is Right for You? (2026)"
+  description="Comparing ArcSign and MetaMask — security model, features, and use cases. ArcSign stores keys on USB for cold storage; MetaMask keeps keys on your device."
+  locale="en"
+  canonical="https://arcsign.io/en/arcsign-vs-metamask"
+>
+
+<div class="page-wrapper">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/en/">ArcSign</a>
+        <span>/</span>
+        ArcSign vs MetaMask
+    </nav>
+
+    <!-- Hero -->
+    <header class="vs-hero">
+        <span class="eyebrow">Wallet Comparison 2026</span>
+        <h1>ArcSign vs MetaMask:<br><span class="gradient-text">Two Different Security Models</span></h1>
+        <p class="intro">
+            MetaMask is the world's most popular crypto wallet. ArcSign is a free USB cold wallet that stores private keys entirely offline. Both let you interact with the same dApps — but they protect your assets in fundamentally different ways. Here's everything you need to know to pick the right one.
+        </p>
+        <div class="meta-row">
+            <span>Updated: March 30, 2026</span>
+            <span>&middot;</span>
+            <span>12 min read</span>
+            <span class="tag">Security</span>
+            <span class="tag">Comparison</span>
+        </div>
+    </header>
+
+    <!-- TOC -->
+    <div class="toc-box">
+        <div class="toc-title">Table of Contents</div>
+        <ol>
+            <li><a href="#verdict">Quick Verdict: Which Is Right for You?</a></li>
+            <li><a href="#comparison-table">Full Feature Comparison Table</a></li>
+            <li><a href="#security">Security Deep-Dive: The Core Difference</a></li>
+            <li><a href="#when-to-use">When to Use Each Wallet</a></li>
+            <li><a href="#why-not-both">Why Not Both? The Dual-Wallet Strategy</a></li>
+            <li><a href="#faq">Frequently Asked Questions</a></li>
+        </ol>
+    </div>
+
+    <!-- Quick Verdict -->
+    <section id="verdict">
+        <h2 class="section-h2">Quick Verdict</h2>
+        <p class="prose">
+            The choice between ArcSign and MetaMask isn't really about features — it's about your <strong>threat model</strong>. MetaMask is optimized for convenience; ArcSign is optimized for security. Both have a place depending on how much value you're protecting and how you interact with crypto.
+        </p>
+
+        <div class="verdict-grid">
+            <div class="verdict-card arcsign">
+                <div class="verdict-label">Cold Storage Wallet</div>
+                <h3>ArcSign</h3>
+                <div class="best-for-title">Best for</div>
+                <ul>
+                    <li>Security-conscious holders protecting significant assets</li>
+                    <li>Anyone who has been phished, hacked, or drained before</li>
+                    <li>DeFi power users who need Token Approval management</li>
+                    <li>People who want a hardware wallet experience at zero cost</li>
+                    <li>Multi-chain users managing assets across 22+ networks</li>
+                </ul>
+            </div>
+            <div class="verdict-card metamask">
+                <div class="verdict-label">Hot Wallet (Browser Extension)</div>
+                <h3>MetaMask</h3>
+                <div class="best-for-title">Best for</div>
+                <ul>
+                    <li>Casual users new to crypto who want the simplest setup</li>
+                    <li>Frequent small transactions where speed matters most</li>
+                    <li>Browser-native dApp interaction without QR scanning</li>
+                    <li>Mobile-first users who need a phone wallet today</li>
+                    <li>Developers testing smart contracts locally</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section id="comparison-table">
+        <h2 class="section-h2">Full Feature Comparison</h2>
+        <p class="prose">
+            A detailed side-by-side look at every dimension that matters when choosing a crypto wallet.
+        </p>
+
+        <div class="table-wrap">
+            <table class="comp-table" aria-label="ArcSign vs MetaMask feature comparison">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th class="col-arcsign">ArcSign</th>
+                        <th class="col-metamask">MetaMask</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Price</td>
+                        <td class="check">Free (Pro $30 one-time)</td>
+                        <td class="check">Free</td>
+                    </tr>
+                    <tr>
+                        <td>Key Storage Location</td>
+                        <td class="check">USB drive — offline when unplugged</td>
+                        <td class="warn">Browser / device local storage</td>
+                    </tr>
+                    <tr>
+                        <td>Platform</td>
+                        <td>Desktop app (macOS / Windows / Linux)</td>
+                        <td>Browser extension + iOS + Android</td>
+                    </tr>
+                    <tr>
+                        <td>Mobile App</td>
+                        <td class="warn">Planned (not yet released)</td>
+                        <td class="check">Yes (iOS + Android)</td>
+                    </tr>
+                    <tr>
+                        <td>Supported Chains</td>
+                        <td class="check">22 chains</td>
+                        <td>8+ chains (custom RPC possible)</td>
+                    </tr>
+                    <tr>
+                        <td>WalletConnect Support</td>
+                        <td class="check">Yes (v2)</td>
+                        <td class="check">Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Token Approvals View</td>
+                        <td class="check">Yes — all 6 EVM chains</td>
+                        <td class="cross">No built-in</td>
+                    </tr>
+                    <tr>
+                        <td>Batch Revoke Approvals</td>
+                        <td class="check">Yes (Pro tier)</td>
+                        <td class="cross">No</td>
+                    </tr>
+                    <tr>
+                        <td>DeFi Positions</td>
+                        <td class="check">Yes (stETH, ankrETH, ankrBNB + APY)</td>
+                        <td class="warn">Limited (via Portfolio app)</td>
+                    </tr>
+                    <tr>
+                        <td>NFT Gallery</td>
+                        <td class="check">Yes (ERC721 + ERC1155)</td>
+                        <td class="check">Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Encrypted Backup File</td>
+                        <td class="check">Yes (.arcsign, AES-256 — exported file is immediately encrypted)</td>
+                        <td class="cross">No</td>
+                    </tr>
+                    <tr>
+                        <td>Seed Phrase Backup</td>
+                        <td class="check">Yes (BIP39 compatible)</td>
+                        <td class="check">Yes</td>
+                    </tr>
+                    <tr>
+                        <td>BIP39 / BIP44 Compatible</td>
+                        <td class="check">Yes (import from any BIP39 wallet)</td>
+                        <td class="check">Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Malware Resistance</td>
+                        <td class="check">High — USB is inaccessible when unplugged</td>
+                        <td class="cross">Low — keys readable by malicious extensions</td>
+                    </tr>
+                    <tr>
+                        <td>Phishing Protection</td>
+                        <td class="check">High — no browser integration</td>
+                        <td class="warn">Moderate (relies on user vigilance)</td>
+                    </tr>
+                    <tr>
+                        <td>Hardware Wallet Replacement</td>
+                        <td class="check">Near-equivalent security model</td>
+                        <td class="cross">No — hot wallet by design</td>
+                    </tr>
+                    <tr>
+                        <td>Open Source</td>
+                        <td class="warn">Planned (after 10K users)</td>
+                        <td class="check">Yes</td>
+                    </tr>
+                    <tr>
+                        <td>DEX Swap Built-in</td>
+                        <td class="check">Yes (Free: 0.1% fee / Pro: best-route free)</td>
+                        <td class="check">Yes (MetaMask Swaps, fee applies)</td>
+                    </tr>
+                    <tr>
+                        <td>BSC / NodeReal Support</td>
+                        <td class="check">Full (token balances, NFTs, approvals)</td>
+                        <td class="check">Yes</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Security Deep Dive -->
+    <section id="security">
+        <h2 class="section-h2">Security Deep-Dive: The Core Difference</h2>
+        <p class="prose">
+            Features aside, the single most important question is: <strong>where do your private keys live, and who can access them?</strong> The answer determines your real-world security exposure far more than any individual feature.
+        </p>
+
+        <div class="security-grid">
+            <div class="security-card">
+                <h4>
+                    <span class="icon icon-green">🔐</span>
+                    ArcSign's Key Model
+                </h4>
+                <ul>
+                    <li><span class="dot dot-green"></span> Private keys stored on the USB drive — not on your computer's disk or RAM at rest</li>
+                    <li><span class="dot dot-green"></span> When USB is unplugged, zero key material exists anywhere on the host machine</li>
+                    <li><span class="dot dot-green"></span> XOR 3-shard key splitting: three independent fragments, each meaningless alone</li>
+                    <li><span class="dot dot-green"></span> Key briefly reconstructed in mlock-protected memory (1–5 ms) for signing, then zero-wiped</li>
+                    <li><span class="dot dot-green"></span> Encrypted .arcsign backup exported as AES-256 immediately — no plaintext step</li>
+                    <li><span class="dot dot-green"></span> No browser process has any access to key material, ever</li>
+                </ul>
+            </div>
+            <div class="security-card">
+                <h4>
+                    <span class="icon icon-orange">🦊</span>
+                    MetaMask's Key Model
+                </h4>
+                <ul>
+                    <li><span class="dot dot-orange"></span> Private keys encrypted and stored in browser local storage on your device</li>
+                    <li><span class="dot dot-orange"></span> Keys are decrypted into memory while MetaMask is unlocked</li>
+                    <li><span class="dot dot-red"></span> Malicious browser extensions can access the same storage namespace</li>
+                    <li><span class="dot dot-red"></span> Clipboard-based phishing sites can capture keystrokes / seed phrases</li>
+                    <li><span class="dot dot-red"></span> If your computer has malware, the unlocked wallet is at risk</li>
+                    <li><span class="dot dot-orange"></span> Password protects the encrypted vault, but the vault lives on the device</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3 class="section-h3">What "Offline When Unplugged" Actually Means</h3>
+        <p class="prose">
+            With ArcSign, when you're not actively signing a transaction, your USB is unplugged and sitting in a drawer. At that moment, there is <strong>no software attack surface</strong>. A remote attacker cannot reach key material that is physically disconnected from any network. This is the same core security principle as hardware wallets like Ledger and Trezor — implemented in software, at zero hardware cost.
+        </p>
+        <p class="prose">
+            With MetaMask, your private keys always reside on the device — even when MetaMask is locked. The encryption password reduces risk significantly, but it does not eliminate it. A sufficiently sophisticated piece of malware installed on the same machine can monitor browser memory, intercept clipboard content, or wait for you to unlock the wallet.
+        </p>
+
+        <div class="callout">
+            <div class="callout-title">The "10-Second Rule"</div>
+            <p>For any transaction worth more than $100, spending 10 seconds plugging in your USB and confirming via ArcSign eliminates an entire class of attack vectors. The inconvenience is minimal; the security gain is substantial.</p>
+        </div>
+
+        <h3 class="section-h3">Browser Extension Risk Surface</h3>
+        <p class="prose">
+            MetaMask lives in your browser — the same process space as thousands of other extensions. Browser extension supply chain attacks are a growing threat in 2026: malicious updates to legitimate-looking extensions can silently exfiltrate wallet contents. Since MetaMask keys reside in browser storage, a compromised extension can attempt to access them.
+        </p>
+        <p class="prose">
+            ArcSign has no browser integration whatsoever. It connects to dApps exclusively through WalletConnect's encrypted relay protocol. The signing process happens entirely inside the ArcSign desktop app, which never runs inside the browser.
+        </p>
+
+        <h3 class="section-h3">Token Approval Risk: An Underrated Threat Vector</h3>
+        <p class="prose">
+            One of ArcSign's most underrated security features is built-in <strong>Token Approval management</strong>. When you interact with DeFi protocols, you grant them permission to spend tokens from your wallet. These approvals persist indefinitely — and if a protocol is later exploited, those old approvals become a backdoor into your wallet.
+        </p>
+        <p class="prose">
+            MetaMask does not surface your approval history natively. You need a third-party tool (revoke.cash, Etherscan, etc.) to even see what you've approved. ArcSign shows all outstanding approvals across 6 EVM chains in one view, and Pro users can batch-revoke them in a single click.
+        </p>
+
+        <div class="callout warning">
+            <div class="callout-title">Real-World Example</div>
+            <p>The 2024 EigenLayer restaking exploit and multiple AMM drains in 2025 both affected users who had granted unlimited token approvals months or years before the attack. Routine approval hygiene — viewing and revoking unnecessary permissions — is one of the highest-ROI security practices in DeFi, and it requires tooling that MetaMask doesn't include.</p>
+        </div>
+    </section>
+
+    <!-- When to Use Each -->
+    <section id="when-to-use">
+        <h2 class="section-h2">When to Use Each Wallet</h2>
+        <p class="prose">
+            Neither wallet is universally superior for every situation. Here's a practical guide based on what you're actually doing.
+        </p>
+
+        <div class="use-grid">
+            <div class="use-card use-arcsign">
+                <h3>Use ArcSign when...</h3>
+                <ul>
+                    <li>
+                        <span class="bullet bullet-teal">&#9670;</span>
+                        You're storing significant crypto holdings — anything you'd be devastated to lose
+                    </li>
+                    <li>
+                        <span class="bullet bullet-teal">&#9670;</span>
+                        You want hardware-wallet-level security without the $100+ price tag
+                    </li>
+                    <li>
+                        <span class="bullet bullet-teal">&#9670;</span>
+                        You're doing high-value DeFi transactions (staking, providing liquidity, bridging)
+                    </li>
+                    <li>
+                        <span class="bullet bullet-teal">&#9670;</span>
+                        You want to audit and revoke token approvals across all your chains
+                    </li>
+                    <li>
+                        <span class="bullet bullet-teal">&#9670;</span>
+                        You're on a shared or work computer and can't trust the browser environment
+                    </li>
+                    <li>
+                        <span class="bullet bullet-teal">&#9670;</span>
+                        You've experienced a compromise or phishing attack in the past
+                    </li>
+                    <li>
+                        <span class="bullet bullet-teal">&#9670;</span>
+                        You need a portable wallet you can use on any computer without installing extensions
+                    </li>
+                </ul>
+            </div>
+            <div class="use-card use-metamask">
+                <h3>Use MetaMask when...</h3>
+                <ul>
+                    <li>
+                        <span class="bullet bullet-orange">&#9670;</span>
+                        You're brand-new to crypto and want the simplest possible onboarding
+                    </li>
+                    <li>
+                        <span class="bullet bullet-orange">&#9670;</span>
+                        You're making many small transactions per day and need instant access
+                    </li>
+                    <li>
+                        <span class="bullet bullet-orange">&#9670;</span>
+                        You primarily use crypto on a mobile device
+                    </li>
+                    <li>
+                        <span class="bullet bullet-orange">&#9670;</span>
+                        You're experimenting with a dApp on a small test amount
+                    </li>
+                    <li>
+                        <span class="bullet bullet-orange">&#9670;</span>
+                        You need browser-native integration that doesn't require a QR code scan
+                    </li>
+                    <li>
+                        <span class="bullet bullet-orange">&#9670;</span>
+                        The dApp requires an injected provider (some older dApps don't support WalletConnect)
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Not Both -->
+    <section id="why-not-both">
+        <h2 class="section-h2">Why Not Both? The Dual-Wallet Strategy</h2>
+        <p class="prose">
+            The most pragmatic approach for active crypto users is to use <strong>both wallets for different purposes</strong>. This is not a compromise — it is a genuine best practice that experienced DeFi participants already use with Ledger + MetaMask. ArcSign makes this strategy completely free to implement.
+        </p>
+
+        <div class="both-card">
+            <h3>The Dual-Wallet Setup</h3>
+            <p class="prose" style="margin-bottom: 0;">Use ArcSign as your "vault" and MetaMask as your "checking account". Keep most of your value in ArcSign; only bridge small operational amounts to MetaMask.</p>
+
+            <div class="both-strategy">
+                <div class="strategy-item">
+                    <div class="strat-label teal">ArcSign — Your Vault</div>
+                    <p>Long-term holdings, NFT collections, DeFi positions, anything worth more than you're willing to lose. Plug in the USB to sign high-value transactions. Unplug to stay safe.</p>
+                </div>
+                <div class="strategy-item">
+                    <div class="strat-label orange">MetaMask — Your Checking Account</div>
+                    <p>Small operational amounts for frequent dApp interactions, gas fees, and quick trades. Treat this wallet like cash in your physical wallet — only keep what you need for daily use.</p>
+                </div>
+            </div>
+        </div>
+
+        <p class="prose">
+            Since ArcSign and MetaMask are both BIP39-compatible, you can also create entirely separate wallets for each role — keeping your vault addresses and operating addresses completely isolated. Even if your MetaMask hot wallet is compromised, your ArcSign vault remains untouched.
+        </p>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+        <h2 class="section-h2">Frequently Asked Questions</h2>
+        <p class="prose">Common questions from people evaluating both wallets.</p>
+
+        <div class="faq-list" role="list">
+
+            <div class="faq-item" role="listitem">
+                <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+                    Can I import my MetaMask wallet into ArcSign?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-a">
+                    Yes. ArcSign is fully BIP39-compatible. Simply use your MetaMask seed phrase (12 or 24 words) to import your existing wallet into ArcSign. Your addresses and balances will appear exactly as they do in MetaMask — because the underlying key derivation (BIP44) is identical.
+                </div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+                <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+                    Is ArcSign compatible with the same chains as MetaMask?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-a">
+                    ArcSign supports 22 chains natively, including all major MetaMask chains: Ethereum, Polygon, BNB Chain, Arbitrum, Optimism, Avalanche, Base, and more. You can connect ArcSign to any dApp via WalletConnect — the same dApps that work with MetaMask (Uniswap, OpenSea, Aave, Compound, etc.) work with ArcSign.
+                </div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+                <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+                    Which wallet is safer — ArcSign or MetaMask?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-a">
+                    ArcSign is significantly more secure for protecting large holdings. MetaMask stores encrypted private keys in browser local storage, which is accessible to malicious browser extensions and device-level malware. ArcSign stores keys on a USB drive that is physically offline when unplugged — no remote attack vector exists against an air-gapped device. For everyday small transactions, MetaMask is convenient and acceptable; for anything of significant value, ArcSign provides hardware-wallet-level security at zero cost.
+                </div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+                <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+                    Can I still use dApps with ArcSign like I do with MetaMask?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-a">
+                    Yes. ArcSign supports WalletConnect v2, which is accepted by virtually all major dApps. You open the dApp in your browser, click "Connect Wallet", choose WalletConnect, scan the QR code with ArcSign, and you're connected. The workflow adds about 10–15 seconds compared to MetaMask — a small trade-off for a major security improvement on high-value transactions.
+                </div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+                <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+                    Does ArcSign work on mobile?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-a">
+                    ArcSign is currently a desktop app for macOS, Windows, and Linux. A mobile app is on the product roadmap but has not been released yet. If you need a mobile wallet today, MetaMask remains the best option for on-the-go transactions — paired with ArcSign on desktop for your primary holdings.
+                </div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+                <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+                    Is ArcSign really free? What does the Pro tier include?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-a">
+                    Yes, ArcSign is fully free software with no feature limits for core wallet functionality — wallet creation, key management, viewing balances, signing transactions, and connecting via WalletConnect are all free. The Pro tier ($30 one-time, purchased as an NFT membership on BNB Chain) unlocks: batch token approval revoke across all chains, priority customer support, and future Pro-only features. There are no subscriptions or recurring fees.
+                </div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+                <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+                    What happens if I lose my USB drive?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-a">
+                    ArcSign generates an encrypted <code style="background:var(--bg-card);padding:1px 6px;border-radius:4px;font-size:0.9em;">.arcsign</code> backup file (AES-256 encrypted) when you set up your wallet. Unlike many wallets, there is no separate "set a password" step — the exported file is encrypted immediately. Store this backup on a second USB drive or another secure location. As long as you have either the .arcsign backup file or your original BIP39 seed phrase, your funds are fully recoverable on any computer with ArcSign installed.
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Related Pages -->
+    <section style="margin-top: 56px;">
+        <h2 class="section-h2" style="margin-top: 0;">Further Reading</h2>
+        <div class="related-grid">
+            <a href="/en/arcsign-vs-ledger" class="related-link">
+                <div class="rl-label">Comparison</div>
+                <div class="rl-title">ArcSign vs Ledger: USB Cold Wallet vs Hardware Wallet</div>
+            </a>
+            <a href="/en/blog/cold-vs-hot-wallet" class="related-link">
+                <div class="rl-label">Blog</div>
+                <div class="rl-title">Cold Wallet vs Hot Wallet: The Complete 2026 Guide</div>
+            </a>
+            <a href="/en/blog/phishing-attack-prevention" class="related-link">
+                <div class="rl-label">Blog</div>
+                <div class="rl-title">How to Protect Yourself from Crypto Phishing Attacks</div>
+            </a>
+            <a href="/en/blog/usb-cold-storage-vs-hardware-wallet-2026" class="related-link">
+                <div class="rl-label">Blog</div>
+                <div class="rl-title">USB Cold Storage vs Hardware Wallets: 2026 Comparison</div>
+            </a>
+            <a href="/en/faq" class="related-link">
+                <div class="rl-label">Help</div>
+                <div class="rl-title">ArcSign FAQ</div>
+            </a>
+            <a href="/en/blog/" class="related-link">
+                <div class="rl-label">Resource</div>
+                <div class="rl-title">ArcSign Security Blog</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>Try ArcSign Free Today</h2>
+        <p>
+            Download ArcSign and move your holdings to USB-backed cold storage in under 5 minutes. Free forever. No hardware required.
+        </p>
+        <a href="/#download" class="cta-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Download ArcSign — It's Free
+        </a>
+        <div class="cta-secondary-links">
+            <a href="/en/pricing">View Pro features</a>
+            &middot;
+            <a href="/en/faq">Read FAQ</a>
+            &middot;
+            <a href="/en/tutorial">Setup Guide</a>
+        </div>
+    </section>
+
+</div><!-- end .page-wrapper -->
+
+<style>
+    /* ===== Page Layout ===== */
+    .page-wrapper {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 48px 24px 80px;
+    }
+
+    /* ===== Breadcrumb ===== */
+    .breadcrumb {
+        font-size: 13px;
+        color: var(--text-muted);
+        margin-bottom: 28px;
+    }
+    .breadcrumb a {
+        color: var(--primary);
+        text-decoration: none;
+    }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 6px; }
+
+    /* ===== Hero ===== */
+    .vs-hero {
+        text-align: center;
+        margin-bottom: 48px;
+    }
+    .vs-hero .eyebrow {
+        display: inline-block;
+        background: rgba(45,212,191,0.15);
+        color: var(--primary);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 4px 14px;
+        border-radius: 20px;
+        margin-bottom: 20px;
+    }
+    .vs-hero h1 {
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        font-weight: 800;
+        line-height: 1.25;
+        margin-bottom: 20px;
+        color: var(--text-primary);
+    }
+    .vs-hero h1 .gradient-text {
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    .vs-hero .intro {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        line-height: 1.8;
+        max-width: 680px;
+        margin: 0 auto 24px;
+    }
+    .meta-row {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        font-size: 13px;
+        color: var(--text-muted);
+        flex-wrap: wrap;
+    }
+    .meta-row .tag {
+        background: rgba(45,212,191,0.12);
+        color: var(--primary);
+        padding: 2px 10px;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 12px;
+    }
+
+    /* ===== Quick Verdict ===== */
+    .verdict-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin: 40px 0;
+    }
+    .verdict-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-lg);
+        padding: 28px 24px;
+        transition: border-color 0.2s;
+    }
+    .verdict-card.arcsign {
+        border-color: var(--primary-dark);
+        background: linear-gradient(135deg, rgba(13,148,136,0.08) 0%, rgba(30,41,59,1) 100%);
+    }
+    .verdict-card h3 {
+        font-size: 1.15rem;
+        font-weight: 800;
+        margin-bottom: 6px;
+    }
+    .verdict-card.arcsign h3 { color: var(--primary); }
+    .verdict-card.metamask h3 { color: #f6851b; }
+    .verdict-card .verdict-label {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--text-muted);
+        font-weight: 600;
+        margin-bottom: 16px;
+    }
+    .verdict-card .best-for-title {
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: var(--text-muted);
+        margin-bottom: 10px;
+    }
+    .verdict-card ul {
+        list-style: none;
+        padding: 0;
+    }
+    .verdict-card ul li {
+        padding: 5px 0;
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    .verdict-card ul li::before {
+        content: "→";
+        color: var(--primary);
+        flex-shrink: 0;
+        margin-top: 1px;
+    }
+    .verdict-card.metamask ul li::before { color: #f6851b; }
+
+    /* ===== Section headings ===== */
+    .section-h2 {
+        font-size: 1.7rem;
+        font-weight: 800;
+        color: var(--text-primary);
+        margin-top: 64px;
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid var(--border-color);
+    }
+    .section-h3 {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--primary);
+        margin-top: 32px;
+        margin-bottom: 12px;
+    }
+    .prose {
+        color: var(--text-secondary);
+        line-height: 1.8;
+        font-size: 1.02rem;
+        margin-bottom: 16px;
+    }
+    .prose strong { color: var(--text-primary); }
+
+    /* ===== Comparison Table ===== */
+    .table-wrap {
+        overflow-x: auto;
+        margin: 28px 0;
+        border-radius: var(--radius-md);
+        border: 1px solid var(--border-color);
+    }
+    .comp-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.92rem;
+        min-width: 560px;
+    }
+    .comp-table thead tr {
+        background: var(--bg-card);
+    }
+    .comp-table th {
+        padding: 14px 18px;
+        text-align: left;
+        font-weight: 700;
+        font-size: 0.88rem;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        border-bottom: 2px solid var(--border-color);
+    }
+    .comp-table th:first-child { color: var(--text-muted); }
+    .comp-table th.col-arcsign { color: var(--primary); }
+    .comp-table th.col-metamask { color: #f6851b; }
+    .comp-table td {
+        padding: 12px 18px;
+        border-bottom: 1px solid var(--border-color);
+        color: var(--text-secondary);
+        vertical-align: top;
+    }
+    .comp-table td:first-child {
+        font-weight: 600;
+        color: var(--text-primary);
+        white-space: nowrap;
+    }
+    .comp-table tr:last-child td { border-bottom: none; }
+    .comp-table tr:nth-child(even) td { background: rgba(30,41,59,0.45); }
+    .check { color: var(--success); font-weight: 700; }
+    .cross { color: var(--danger); font-weight: 700; }
+    .warn  { color: var(--warning); font-weight: 600; }
+    .neutral { color: var(--text-muted); }
+
+    /* ===== Callout box ===== */
+    .callout {
+        background: var(--bg-card);
+        border-left: 4px solid var(--primary);
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        padding: 20px 24px;
+        margin: 28px 0;
+    }
+    .callout-title {
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 8px;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    .callout p { color: var(--text-secondary); line-height: 1.7; margin: 0; }
+    .callout.warning { border-left-color: var(--warning); }
+    .callout.warning .callout-title { color: var(--warning); }
+
+    /* ===== Security deep-dive ===== */
+    .security-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin: 28px 0;
+    }
+    .security-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        padding: 24px;
+    }
+    .security-card h4 {
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 12px;
+        color: var(--text-primary);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .security-card .icon {
+        width: 28px;
+        height: 28px;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        flex-shrink: 0;
+    }
+    .icon-green { background: rgba(16,185,129,0.15); }
+    .icon-orange { background: rgba(246,133,27,0.15); }
+    .security-card ul {
+        list-style: none;
+        padding: 0;
+    }
+    .security-card ul li {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        padding: 5px 0;
+        border-bottom: 1px solid rgba(51,65,85,0.5);
+        display: flex;
+        gap: 8px;
+        align-items: flex-start;
+    }
+    .security-card ul li:last-child { border-bottom: none; }
+    .security-card ul li .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        margin-top: 7px;
+        flex-shrink: 0;
+    }
+    .dot-green { background: var(--success); }
+    .dot-orange { background: #f6851b; }
+    .dot-red { background: var(--danger); }
+
+    /* ===== When to use section ===== */
+    .use-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin: 28px 0;
+    }
+    .use-card {
+        border-radius: var(--radius-md);
+        padding: 24px;
+        border: 1px solid var(--border-color);
+    }
+    .use-card.use-arcsign {
+        background: linear-gradient(135deg, rgba(13,148,136,0.1) 0%, rgba(30,41,59,0.8) 100%);
+        border-color: rgba(13,148,136,0.4);
+    }
+    .use-card.use-metamask {
+        background: linear-gradient(135deg, rgba(246,133,27,0.08) 0%, rgba(30,41,59,0.8) 100%);
+        border-color: rgba(246,133,27,0.3);
+    }
+    .use-card h3 {
+        font-size: 1.05rem;
+        font-weight: 800;
+        margin-bottom: 14px;
+    }
+    .use-card.use-arcsign h3 { color: var(--primary); }
+    .use-card.use-metamask h3 { color: #f6851b; }
+    .use-card ul { list-style: none; padding: 0; }
+    .use-card ul li {
+        font-size: 0.92rem;
+        color: var(--text-secondary);
+        padding: 6px 0;
+        display: flex;
+        gap: 8px;
+        align-items: flex-start;
+    }
+    .use-card ul li .bullet {
+        flex-shrink: 0;
+        font-size: 0.8rem;
+        margin-top: 2px;
+    }
+    .bullet-teal { color: var(--primary); }
+    .bullet-orange { color: #f6851b; }
+
+    /* ===== Why Not Both ===== */
+    .both-card {
+        background: var(--gradient-hero);
+        border: 1px solid var(--primary-dark);
+        border-radius: var(--radius-lg);
+        padding: 36px;
+        margin: 28px 0;
+    }
+    .both-card h3 {
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: var(--text-primary);
+        margin-bottom: 16px;
+    }
+    .both-strategy {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-top: 20px;
+    }
+    .strategy-item {
+        background: rgba(15,23,42,0.5);
+        border-radius: var(--radius-md);
+        padding: 18px 20px;
+    }
+    .strategy-item .strat-label {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+    .strategy-item .strat-label.teal { color: var(--primary); }
+    .strategy-item .strat-label.orange { color: #f6851b; }
+    .strategy-item p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin: 0; }
+
+    /* ===== FAQ ===== */
+    .faq-list { margin: 28px 0; }
+    .faq-item {
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        margin-bottom: 12px;
+        overflow: hidden;
+    }
+    .faq-q {
+        width: 100%;
+        background: var(--bg-card);
+        border: none;
+        padding: 18px 20px;
+        text-align: left;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--text-primary);
+        font-size: 0.97rem;
+        font-weight: 600;
+        font-family: 'Inter', sans-serif;
+        transition: background 0.2s;
+        gap: 12px;
+    }
+    .faq-q:hover { background: var(--bg-card-hover); }
+    .faq-q .faq-icon {
+        flex-shrink: 0;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: rgba(45,212,191,0.15);
+        color: var(--primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        font-weight: 400;
+        transition: transform 0.3s;
+    }
+    .faq-a {
+        display: none;
+        padding: 0 20px 18px;
+        background: var(--bg-card);
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        line-height: 1.75;
+        border-top: 1px solid var(--border-color);
+    }
+    .faq-item.open .faq-a { display: block; padding-top: 16px; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    /* ===== CTA ===== */
+    .cta-section {
+        background: var(--gradient-hero);
+        border: 1px solid var(--primary-dark);
+        border-radius: var(--radius-lg);
+        padding: 48px 36px;
+        text-align: center;
+        margin-top: 64px;
+    }
+    .cta-section h2 {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: var(--text-primary);
+        margin-bottom: 12px;
+    }
+    .cta-section p {
+        color: var(--text-secondary);
+        margin-bottom: 28px;
+        font-size: 1.05rem;
+        max-width: 540px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--gradient-primary);
+        color: #0f172a;
+        font-weight: 800;
+        font-size: 1rem;
+        padding: 14px 36px;
+        border-radius: var(--radius-xl);
+        text-decoration: none;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .cta-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(45,212,191,0.4);
+    }
+    .cta-secondary-links {
+        margin-top: 20px;
+        font-size: 13px;
+        color: var(--text-muted);
+    }
+    .cta-secondary-links a {
+        color: var(--primary);
+        text-decoration: none;
+        margin: 0 8px;
+    }
+    .cta-secondary-links a:hover { text-decoration: underline; }
+
+    /* ===== TOC ===== */
+    .toc-box {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        padding: 24px;
+        margin: 36px 0;
+    }
+    .toc-box .toc-title {
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 14px;
+        font-size: 0.95rem;
+    }
+    .toc-box ol {
+        padding-left: 20px;
+        margin: 0;
+    }
+    .toc-box li { padding: 4px 0; }
+    .toc-box a {
+        color: var(--text-secondary);
+        font-size: 0.93rem;
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+    .toc-box a:hover { color: var(--primary); }
+
+    /* ===== Related links ===== */
+    .related-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 12px;
+        margin: 20px 0;
+    }
+    .related-link {
+        display: block;
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        padding: 16px 18px;
+        text-decoration: none;
+        transition: border-color 0.2s, background 0.2s;
+    }
+    .related-link:hover {
+        border-color: var(--primary-dark);
+        background: var(--bg-card-hover);
+    }
+    .related-link .rl-label {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: var(--text-muted);
+        font-weight: 600;
+        margin-bottom: 6px;
+    }
+    .related-link .rl-title {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--primary);
+        line-height: 1.4;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 640px) {
+        .verdict-grid,
+        .security-grid,
+        .use-grid,
+        .both-strategy {
+            grid-template-columns: 1fr;
+        }
+        .vs-hero h1 { font-size: 1.6rem; }
+        .section-h2 { font-size: 1.35rem; }
+        .cta-section { padding: 32px 20px; }
+        .both-card { padding: 24px 18px; }
+    }
+</style>
+
+<script>
+    function toggleFaq(btn) {
+        var item = btn.closest('.faq-item');
+        var isOpen = item.classList.contains('open');
+        // Close all
+        document.querySelectorAll('.faq-item.open').forEach(function(el) {
+            el.classList.remove('open');
+            el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+        });
+        // Open clicked if it was closed
+        if (!isOpen) {
+            item.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
+
+</BaseLayout>

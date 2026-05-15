@@ -1,0 +1,866 @@
+---
+// English homepage — served at /en/
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const locale = 'en' as const;
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'ArcSign',
+    applicationCategory: 'FinanceApplication',
+    operatingSystem: 'macOS, Windows, Linux',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    description: 'Free USB cold wallet. Store private keys on USB drive - unplug it and it becomes a cold wallet. Supports WalletConnect to connect all dApps.',
+    url: 'https://arcsign.io/en/',
+    downloadUrl: 'https://arcsign.io/en/#download',
+    softwareVersion: '1.2.3',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'ArcSign',
+    url: 'https://arcsign.io',
+    logo: 'https://arcsign.io/assets/logo.png',
+    description: 'ArcSign is a free USB cold wallet application for secure multi-chain cryptocurrency storage.',
+    sameAs: [
+      'https://x.com/ArcSignWallet',
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'ArcSign',
+    url: 'https://arcsign.io/',
+    inLanguage: ['en', 'zh-TW'],
+    publisher: {
+      '@type': 'Organization',
+      name: 'ArcSign',
+      url: 'https://arcsign.io',
+    },
+  },
+];
+---
+
+<BaseLayout
+  title="ArcSign - Free USB Cold Wallet | Unplug to Secure, Connect All dApps"
+  description="ArcSign is a free USB cold wallet. Store your private keys on a USB drive - unplug it and it becomes a cold wallet. Supports WalletConnect to connect Uniswap, OpenSea, and all dApps. No need to spend $100 on a hardware wallet."
+  locale={locale}
+  canonical="https://arcsign.io/en/"
+  schema={schema}
+>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badges">
+          <span class="hero-badge-item">Portable Wallet</span>
+          <span class="hero-badge-item">Zero Extra Cost</span>
+          <span class="hero-badge-item">WalletConnect</span>
+        </div>
+        <h1><span>Your Assets, </span><span class="gradient-text">Your Control</span></h1>
+        <p class="hero-subtitle">
+          No device lock-in, no company dependency, no extra cost.<br />
+          App + private keys all on USB, use on any computer.
+        </p>
+        <p class="hero-note">
+          True plug-and-play — Unplug to stay safe
+        </p>
+        <div class="hero-cta">
+          <a href="#download" class="btn btn-primary btn-lg">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Free Download</span>
+          </a>
+          <a href="#security" class="btn btn-secondary btn-lg">Learn About Security</a>
+        </div>
+        <!-- Three cards: core selling points -->
+        <div class="hero-features">
+          <div class="hero-feature-card">
+            <span class="feature-icon-sm">🔓</span>
+            <div>
+              <strong>No Device Lock-in</strong>
+              <p>Use on any computer</p>
+            </div>
+          </div>
+          <div class="hero-feature-card">
+            <span class="feature-icon-sm">🏛️</span>
+            <div>
+              <strong>No Company Dependency</strong>
+              <p>Keys only in your hands</p>
+            </div>
+          </div>
+          <div class="hero-feature-card">
+            <span class="feature-icon-sm">💸</span>
+            <div>
+              <strong>No Extra Cost</strong>
+              <p>Use existing USB</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="app-preview">
+          <div class="preview-header">
+            <div class="window-controls">
+              <span class="control red"></span>
+              <span class="control yellow"></span>
+              <span class="control green"></span>
+            </div>
+            <span class="preview-title">ArcSign</span>
+          </div>
+          <div class="preview-content">
+            <div class="wallet-card">
+              <div class="wallet-icon">🔐</div>
+              <div class="wallet-info">
+                <span class="wallet-name">My Wallet</span>
+                <span class="wallet-balance">$12,450.00</span>
+              </div>
+            </div>
+            <div class="chain-list">
+              <div class="chain-item">
+                <span class="chain-logo eth"></span>ETH
+                <span class="chain-value">2.5</span>
+              </div>
+              <div class="chain-item">
+                <span class="chain-logo bnb"></span>BNB
+                <span class="chain-value">15.2</span>
+              </div>
+              <div class="chain-item">
+                <span class="chain-logo matic"></span>MATIC
+                <span class="chain-value">1,200</span>
+              </div>
+            </div>
+            <div class="action-buttons">
+              <button class="action-btn">Send</button>
+              <button class="action-btn">Receive</button>
+              <button class="action-btn primary">Swap</button>
+            </div>
+          </div>
+        </div>
+        <div class="usb-indicator">
+          <div class="usb-icon">
+            <svg
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+              <path d="M9 4V2"></path>
+              <path d="M15 4V2"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+          </div>
+          <span>Private keys stored safely on USB</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-bg"></div>
+  </section>
+
+  <!-- Problem Section -->
+  <section class="problem">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Why ArcSign?</span>
+        <h2><span>Software Wallet's </span><span class="text-danger">Fatal Flaw</span></h2>
+      </div>
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="problem-icon">🦠</div>
+          <h3>Keys on Hard Drive</h3>
+          <p>
+            MetaMask stores keys on your hard drive.<br />
+            Malware can scan and steal 24/7.
+          </p>
+          <div class="problem-stat">
+            <span class="stat-bad">File exists = Can be stolen</span>
+          </div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">💸</div>
+          <h3>Hardware Wallets Too Expensive</h3>
+          <p>
+            Ledger/Trezor costs $79-149.<br />
+            Many know it's safer but find it too pricey.
+          </p>
+          <div class="problem-stat">
+            <span class="stat-bad">High barrier = Won't upgrade</span>
+          </div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">🔗</div>
+          <h3>The Dilemma</h3>
+          <p>
+            Software wallets are convenient but insecure.<br />
+            Hardware wallets are secure but expensive.
+          </p>
+          <div class="problem-stat">
+            <span class="stat-bad">ArcSign = The Middle Ground</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparison Links -->
+      <div style="display:flex; gap:16px; justify-content:center; margin-top:40px; flex-wrap:wrap;">
+        <a href="/en/arcsign-vs-metamask" style="display:flex; align-items:center; gap:12px; background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:16px 24px; text-decoration:none; transition:border-color 0.2s, transform 0.2s;" onmouseover="this.style.borderColor='var(--primary)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)';this.style.transform='translateY(0)'">
+          <span style="font-size:1.5rem;">🦊</span>
+          <div>
+            <div style="font-weight:700; color:var(--text-primary); font-size:0.95rem;">ArcSign vs MetaMask</div>
+            <div style="font-size:0.82rem; color:var(--text-muted); margin-top:2px;">Cold wallet vs hot wallet — full comparison →</div>
+          </div>
+        </a>
+        <a href="/en/arcsign-vs-ledger" style="display:flex; align-items:center; gap:12px; background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:16px 24px; text-decoration:none; transition:border-color 0.2s, transform 0.2s;" onmouseover="this.style.borderColor='var(--primary)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)';this.style.transform='translateY(0)'">
+          <span style="font-size:1.5rem;">🔐</span>
+          <div>
+            <div style="font-weight:700; color:var(--text-primary); font-size:0.95rem;">ArcSign vs Ledger</div>
+            <div style="font-size:0.82rem; color:var(--text-muted); margin-top:2px;">Free USB vs $79 hardware wallet →</div>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Solution Section -->
+  <section class="solution" id="security">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">ArcSign Security Design</span>
+        <h2><span class="gradient-text">USB Isolation</span><span> = Unplug to Stay Safe</span></h2>
+        <p class="section-desc">
+          Bringing hardware wallet's core concept to everyone, at zero cost
+        </p>
+      </div>
+
+      <!-- Core Concepts -->
+      <div class="defense-layers">
+        <div class="defense-layer highlight">
+          <div class="layer-number">1</div>
+          <div class="layer-content">
+            <h3>USB-only Storage</h3>
+            <p class="layer-desc">Private keys not on hard drive</p>
+            <ul class="layer-details">
+              <li>Keys stored only on USB drive</li>
+              <li>Unplug USB = Hackers can't find keys</li>
+              <li>Malware can't steal non-existent files</li>
+            </ul>
+          </div>
+        </div>
+        <div class="defense-layer">
+          <div class="layer-number">2</div>
+          <div class="layer-content">
+            <h3>Memory Hardening</h3>
+            <p class="layer-desc">Memory-level protection</p>
+            <ul class="layer-details">
+              <li>mlock prevents swap to disk</li>
+              <li>SecureZero clears after use</li>
+              <li>Split key storage increases theft difficulty</li>
+            </ul>
+          </div>
+        </div>
+        <div class="defense-layer">
+          <div class="layer-number">3</div>
+          <div class="layer-content">
+            <h3>Password Never Stored</h3>
+            <p class="layer-desc">Re-enter for every operation</p>
+            <ul class="layer-details">
+              <li>Password never stored anywhere</li>
+              <li>Session token time control</li>
+              <li>Auto-lock when idle</li>
+            </ul>
+          </div>
+        </div>
+        <div class="defense-layer">
+          <div class="layer-number">4</div>
+          <div class="layer-content">
+            <h3>Encrypted Backup</h3>
+            <p class="layer-desc">Safer than seed phrases</p>
+            <ul class="layer-details">
+              <li>Just copy the wallet folder</li>
+              <li>Safe to store in cloud</li>
+              <li>Even we can't decrypt</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="security-note">
+        <p>
+          <strong>Honest Disclosure:</strong> ArcSign is an "enhanced software wallet", not a hardware wallet.
+          Signing still happens on computer, but storing keys on USB greatly reduces theft risk.
+          For large long-term storage, consider pairing with a hardware wallet.
+        </p>
+      </div>
+
+      <div class="security-roadmap">
+        <div class="roadmap-content">
+          <div class="roadmap-icon">🚀</div>
+          <div class="roadmap-text">
+            <p class="roadmap-next">
+              <strong>Roadmap:</strong> Transaction decoding, Risk warnings, Hardware-backed Signing
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Full Features</span>
+        <h2>
+          <span>Not just a wallet, a complete </span><span class="gradient-text">DeFi Toolbox</span>
+        </h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card featured full-width">
+          <div class="feature-icon">🔌</div>
+          <h3>Plug &amp; Play — Take Your Wallet</h3>
+          <p>App and wallet data all on USB, use on any computer. Unplug USB to stay safe, keys don't stay on computer.</p>
+          <div class="feature-badge">Core Feature</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🌐</div>
+          <h3>WalletConnect Support</h3>
+          <p>Connect to Uniswap, OpenSea, PancakeSwap and all major dApps</p>
+          <div class="feature-badge">New Feature</div>
+        </div>
+        <a href="/en/developer" class="feature-card" style="text-decoration: none; color: inherit;">
+          <div class="feature-icon">🔧</div>
+          <h3>Developer Mode</h3>
+          <p>For smart contract developers — Hardhat integration, secure signing, API key auto-injection</p>
+          <div class="feature-badge">New</div>
+          <span style="color: #2dd4bf; font-size: 0.9rem; margin-top: 8px; display: block;">Learn more →</span>
+        </a>
+        <div class="feature-card">
+          <div class="feature-icon">🔗</div>
+          <h3>Multi-chain Support</h3>
+          <p>BTC + 21 EVM chains — 22 blockchains all in one</p>
+          <div class="feature-chains">
+            <span class="chain-badge eth">BTC</span>
+            <span class="chain-badge eth">ETH</span>
+            <span class="chain-badge bnb">BSC</span>
+            <span class="chain-badge matic">Polygon</span>
+            <span class="chain-badge arb">Arbitrum</span>
+            <span class="chain-badge op">Optimism</span>
+            <span class="chain-badge base">Base</span>
+            <span class="chain-badge" style="background: rgba(255,255,255,0.1)">+15</span>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <h3>Scam Token Filter</h3>
+          <p>Auto-detect and hide scam tokens, only show verified tokens</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💾</div>
+          <h3>Encrypted Backup</h3>
+          <p>Safer than seed phrases — just copy folder, safe for cloud, even we can't decrypt</p>
+          <div class="feature-badge">Exclusive</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💱</div>
+          <h3>Token Swap</h3>
+          <p>One-click token exchange, auto-find best price</p>
+          <div class="feature-badge">Pro: No Fee</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔑</div>
+          <h3>Password Never Stored</h3>
+          <p>Your password is never saved, re-enter for every operation</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📜</div>
+          <h3>Transaction History</h3>
+          <p>Complete transaction records and asset overview</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⏰</div>
+          <h3>Auto Lock</h3>
+          <p>Auto logout when idle, prevent unauthorized access</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Portfolio Overview</h3>
+          <p>Real-time balance and valuation across all chains</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- For Everyone Section -->
+  <section class="for-everyone">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Who Is It For</span>
+        <h2><span>Designed for </span><span class="gradient-text">Everyone</span><span></span></h2>
+        <p class="section-desc">
+          Secure crypto storage shouldn't be a privilege
+        </p>
+      </div>
+      <div class="everyone-grid">
+        <div class="everyone-card">
+          <div class="everyone-icon">🌍</div>
+          <div class="everyone-card-content">
+            <h3>Global Users</h3>
+            <p>Whether in Taipei, Tokyo, or Dubai, just need a USB to securely store assets. No regional limits, no international shipping.</p>
+          </div>
+        </div>
+        <div class="everyone-card">
+          <div class="everyone-icon">💼</div>
+          <div class="everyone-card-content">
+            <h3>Beginners</h3>
+            <p>No need to spend $100 on hardware wallet, get better security than software wallets. Zero barrier to start DeFi.</p>
+          </div>
+        </div>
+        <div class="everyone-card">
+          <div class="everyone-icon">🚀</div>
+          <div class="everyone-card-content">
+            <h3>Power Users</h3>
+            <p>WalletConnect to all dApps, Swap, Staking features included. Full features, no compromise on security.</p>
+          </div>
+        </div>
+        <div class="everyone-card">
+          <div class="everyone-icon">✈️</div>
+          <div class="everyone-card-content">
+            <h3>Always Mobile</h3>
+            <p>Take your wallet abroad, switch computers, handle any situation. Your assets always in your control, not tied to any device.</p>
+          </div>
+        </div>
+      </div>
+      <div class="everyone-mission">
+        <p>
+          We believe <strong>secure crypto storage shouldn't be a privilege for the wealthy</strong>.<br />
+          Whatever your budget, ArcSign lets everyone use their existing USB drive for higher-level security.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Compare Plans</span>
+        <h2><span>Choose Your </span><span class="gradient-text">Security Level</span></h2>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3>Free</h3>
+            <div class="price">
+              <span class="price-value">$0</span>
+              <span class="price-period">Forever Free</span>
+            </div>
+          </div>
+          <ul class="pricing-features">
+            <li>USB Offline Storage</li>
+            <li>1 Wallet</li>
+            <li>Multi-chain Support</li>
+            <li>Token Swap</li>
+            <li>Transaction History</li>
+            <li>Auto Lock</li>
+          </ul>
+          <a href="#download" class="btn btn-secondary btn-block">Free Download</a>
+        </div>
+        <div class="pricing-card featured">
+          <div class="pricing-badge">Recommended</div>
+          <div class="pricing-header">
+            <h3>Pro</h3>
+            <div class="price">
+              <span class="price-value">$30</span>
+              <span class="price-period">USDT / year</span>
+            </div>
+          </div>
+          <ul class="pricing-features">
+            <li><strong>All Free Features</strong></li>
+            <li><strong>4+ Wallets</strong><span> (+3 per NFT)</span></li>
+            <li>2x Points Bonus</li>
+            <li>3x Airdrop Weight</li>
+            <li>Priority Support</li>
+            <li>Early Access to New Features</li>
+          </ul>
+          <a href="#download" class="btn btn-primary btn-block">Upgrade to Pro</a>
+        </div>
+        <div class="pricing-card compare">
+          <div class="pricing-header">
+            <h3>Hardware Wallet</h3>
+            <div class="price">
+              <span class="price-value">$79-149</span>
+              <span class="price-period">One-time</span>
+            </div>
+          </div>
+          <ul class="pricing-features muted">
+            <li class="con">Need to buy device</li>
+            <li class="con">Need software on computer</li>
+            <li class="con">Setup again on new computer</li>
+            <li class="con">Hard to buy in some regions</li>
+            <li class="pro">Complete key isolation</li>
+            <li class="highlight">Best for large long-term storage</li>
+          </ul>
+          <div class="pricing-note">Complementary to ArcSign</div>
+        </div>
+      </div>
+      <div class="use-case-section">
+        <div class="use-case-header">
+          <h3>How to Use Together?</h3>
+          <p>ArcSign and hardware wallets have different strengths, complementary not competing</p>
+        </div>
+        <div class="use-case-cards">
+          <div class="use-case-card arcsign">
+            <div class="use-case-icon">🔄</div>
+            <div class="use-case-content">
+              <h4>Daily DeFi Activity</h4>
+              <p class="use-case-product">Recommended: ArcSign</p>
+              <ul class="use-case-benefits">
+                <li>Free to use</li>
+                <li>Plug &amp; play, any computer</li>
+                <li>Safer than software wallets</li>
+              </ul>
+            </div>
+          </div>
+          <div class="use-case-card hardware">
+            <div class="use-case-icon">🏦</div>
+            <div class="use-case-content">
+              <h4>Large Long-term Storage</h4>
+              <p class="use-case-product">Recommended: Hardware Wallet</p>
+              <ul class="use-case-benefits">
+                <li>Complete key isolation</li>
+                <li>Highest security level</li>
+                <li>Best for HODLing</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="use-case-roadmap">
+          <span class="roadmap-badge">🔮 Coming Soon</span>
+          <p>ArcSign will soon support <strong>hardware wallet integration</strong>, manage all assets in one interface</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Early Bird Section -->
+  <section class="early-bird">
+    <div class="container">
+      <div class="early-bird-content">
+        <span class="early-badge">🎁 Early Bird Only</span>
+        <h2>First 500 Users Get Exclusive Perks</h2>
+        <div class="early-benefits">
+          <div class="benefit">
+            <span class="benefit-icon">🆓</span>
+            <div>
+              <strong>First 100</strong>
+              <p>Free 1 Year Pro (Worth $30)</p>
+            </div>
+          </div>
+          <div class="benefit">
+            <span class="benefit-icon">💰</span>
+            <div>
+              <strong>101-500</strong>
+              <p>50% Off Pro Plan</p>
+            </div>
+          </div>
+          <div class="benefit">
+            <span class="benefit-icon">🪂</span>
+            <div>
+              <strong>All Early Birds</strong>
+              <p>3x Future Airdrop Weight</p>
+            </div>
+          </div>
+        </div>
+        <a href="#download" class="btn btn-primary btn-lg">Join Early Bird Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="newsletter" id="newsletter">
+    <div class="container">
+      <div class="newsletter-content">
+        <h2>Stay in the Loop</h2>
+        <p>Subscribe to the ArcSign newsletter for product updates, security guides, DeFi trends, and exclusive offers.</p>
+        <form class="newsletter-form" id="newsletter-form">
+          <input type="email" id="newsletter-email" placeholder="you@example.com" required autocomplete="email" />
+          <button type="submit" class="btn btn-primary">Subscribe Free</button>
+        </form>
+        <p class="newsletter-status" id="newsletter-status"></p>
+        <p class="newsletter-privacy">No spam. Unsubscribe anytime.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">FAQ</span>
+        <h2>You Might Be Wondering</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How is ArcSign different from MetaMask?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              The biggest difference is <strong>where private keys are stored</strong>. MetaMask
+              stores keys on your hard drive, any malware that can read files might steal them. ArcSign
+              stores keys on USB drive, unplug and it's a cold wallet, attackers can't access non-existent files.
+            </p>
+            <p style="margin-top:10px; margin-bottom:0;">
+              <a href="/en/arcsign-vs-metamask" style="color:var(--primary); font-size:0.9rem; font-weight:600;">Full comparison: ArcSign vs MetaMask →</a>
+            </p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What if USB breaks or gets lost?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>ArcSign provides <strong>two backup methods</strong>:</p>
+            <p><strong>Encrypted File Backup (Recommended)</strong>: Just copy the wallet folder from USB to another USB or cloud. Files are encrypted, only those with password can use it, no leak concerns.</p>
+            <p><strong>Seed Phrase Backup</strong>: Write down 12 or 24 English words on paper. Can recover assets in any BIP39-compatible wallet.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Is ArcSign hardware wallet level?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p><strong>No, ArcSign is an "enhanced software wallet"</strong>. The key difference is private keys are on USB instead of hard drive, hackers can't access after unplugging. But signing still happens on computer, can't achieve hardware wallet's complete isolation.</p>
+            <p><strong>Positioning:</strong> Safer than MetaMask, cheaper than hardware wallet (free). For large long-term storage, recommend pairing with hardware wallet.</p>
+            <p style="margin-top:10px; margin-bottom:0;">
+              <a href="/en/arcsign-vs-ledger" style="color:var(--primary); font-size:0.9rem; font-weight:600;">Full comparison: ArcSign vs Ledger →</a>
+            </p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Is ArcSign secure? How to ensure no backdoors?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>ArcSign uses <strong>industry-leading encryption standards</strong> to protect your private keys, security comparable to professional products. Private keys never leave your USB drive, never sent to any server.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What is WalletConnect? How to use?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>WalletConnect is an <strong>open protocol</strong> that lets your wallet securely connect to various dApps (like Uniswap, OpenSea, PancakeSwap). Simple to use: select "WalletConnect" in dApp, then paste the connection link in ArcSign. All transactions confirmed in ArcSign, ensuring your keys stay safe.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What is scam token filtering?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Some scammers airdrop fake tokens to your wallet, trying to lure you to malicious sites. ArcSign <strong>automatically hides these suspicious tokens</strong>, only showing known legitimate tokens. You can always choose to view filtered tokens.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Does Swap charge fees?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Free users pay a <strong>0.1%</strong> swap fee. Pro users get <strong>completely free</strong> swaps with auto-comparison across multiple aggregators for the best route. You always pay blockchain network Gas Fee separately.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Which operating systems are supported?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Supports <strong>macOS</strong> (Apple Silicon), <strong>Windows</strong> (x64), and <strong>Linux</strong> (x64). All three platforms available for download.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Which dApps does ArcSign support?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>ArcSign supports <strong>all major dApps</strong> via WalletConnect, including but not limited to: Uniswap, PancakeSwap, SushiSwap, OpenSea, Aave, Compound, etc. Any dApp supporting WalletConnect can be used with ArcSign.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What is the Pro membership NFT?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Pro membership exists as an NFT on BSC chain. After purchase, NFT is minted to your wallet address. This means your membership is <strong>a digital asset that truly belongs to you</strong>, can be transferred, sold, or kept. Each NFT adds 3 wallet slots (1 NFT = 4 wallets).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download Section -->
+  <section class="download" id="download">
+    <div class="container">
+      <div class="download-content">
+        <h2>Ready to Upgrade Your Security?</h2>
+        <p>Free download ArcSign, use your existing USB drive</p>
+        <div class="download-trust">
+          <span class="trust-item">🔌 Unplug to Stay Safe</span>
+          <span class="trust-item">💰 100% Free</span>
+          <span class="trust-item">🔒 Keys Never Uploaded</span>
+        </div>
+        <div class="download-buttons">
+          <div class="download-btn-group">
+            <a href="https://dl.arcsign.io/v1.2.3/ArcSign-1.2.3-macOS-ARM64.dmg" class="download-btn macos">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+              </svg>
+              <div>
+                <span class="download-label">Download for</span>
+                <span class="download-platform">macOS (Apple Silicon)</span>
+              </div>
+            </a>
+            <div class="download-format-options">
+              <a href="https://dl.arcsign.io/v1.2.3/ArcSign-1.2.3-macOS-ARM64.dmg" class="format-btn active">.dmg</a>
+            </div>
+          </div>
+          <div class="download-btn-group">
+            <a href="https://dl.arcsign.io/v1.2.3/ArcSign-1.2.3-Windows-x64.msi" class="download-btn windows">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3 12V6.75l6-1.32v6.48L3 12zm17-9v8.75l-10 .15V5.21L20 3zM3 13l6 .09v6.81l-6-1.15V13zm17 .25V22l-10-1.91V13.1l10 .15z"/>
+              </svg>
+              <div>
+                <span class="download-label">Download for</span>
+                <span class="download-platform">Windows (x64)</span>
+              </div>
+            </a>
+            <div class="download-format-options">
+              <a href="https://dl.arcsign.io/v1.2.3/ArcSign-1.2.3-Windows-x64.msi" class="format-btn active">.msi</a>
+              <a href="https://dl.arcsign.io/v1.2.3/ArcSign-1.2.3-Windows-x64-Setup.exe" class="format-btn">.exe</a>
+            </div>
+          </div>
+          <div class="download-btn-group">
+            <a href="https://dl.arcsign.io/v1.2.3/ArcSign-1.2.3-Linux-x64.deb" class="download-btn linux">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.504 0c-.155 0-.315.008-.48.021-4.226.333-3.105 4.807-3.17 6.298-.076 1.092-.3 1.953-1.05 3.02-.885 1.051-2.127 2.75-2.716 4.521-.278.832-.41 1.684-.287 2.489a.424.424 0 00-.11.135c-.26.268-.45.6-.663.839-.199.199-.485.267-.797.4-.313.136-.658.269-.864.68-.09.189-.136.394-.132.602 0 .199.027.4.055.536.058.399.116.728.04.97-.249.68-.28 1.145-.106 1.484.174.334.535.47.94.601.81.2 1.91.135 2.774.6.926.466 1.866.67 2.616.47.526-.116.97-.464 1.208-.946.587-.003 1.23-.269 2.26-.334.699-.058 1.574.267 2.577.2.025.134.063.198.114.333l.003.003c.391.778 1.113 1.132 1.884 1.071.771-.06 1.592-.536 2.257-1.306.631-.765 1.683-1.084 2.378-1.503.348-.199.629-.469.649-.853.023-.4-.2-.811-.714-1.376v-.097l-.003-.003c-.17-.2-.25-.535-.338-.926-.085-.401-.182-.786-.492-1.046h-.003c-.059-.054-.123-.067-.188-.135a.357.357 0 00-.19-.064c.431-1.278.264-2.55-.173-3.694-.533-1.41-1.465-2.638-2.175-3.483-.796-1.005-1.576-1.957-1.56-3.368.026-2.152.236-6.133-3.544-6.139zm.529 3.405h.013c.213 0 .396.062.584.198.19.135.33.332.438.533.105.259.158.459.166.724 0-.02.006-.04.006-.06v.105a.086.086 0 01-.004-.021l-.004-.024a1.807 1.807 0 01-.15.706.953.953 0 01-.213.335.71.71 0 00-.088-.042c-.104-.045-.198-.064-.284-.133a1.312 1.312 0 00-.22-.066c.05-.06.146-.133.183-.198.053-.128.082-.264.088-.402v-.02a1.21 1.21 0 00-.061-.4c-.045-.134-.101-.2-.183-.333-.084-.066-.167-.132-.267-.132h-.016c-.093 0-.176.03-.262.132a.8.8 0 00-.205.334 1.18 1.18 0 00-.09.4v.019c.002.089.008.179.02.267-.193-.067-.438-.135-.607-.202a1.635 1.635 0 01-.018-.2v-.02a1.772 1.772 0 01.15-.768c.082-.22.232-.406.43-.533a.985.985 0 01.594-.2zm-2.962.059h.036c.142 0 .27.048.399.135.146.129.264.288.344.465.09.199.14.4.153.667v.004c.007.134.006.2-.002.266v.08c-.03.007-.056.018-.083.024-.152.055-.274.135-.393.2.012-.09.013-.18.003-.267v-.015c-.012-.133-.04-.2-.082-.333a.613.613 0 00-.166-.267.248.248 0 00-.183-.064h-.021c-.071.006-.13.04-.186.132a.552.552 0 00-.12.27.944.944 0 00-.023.33v.015c.012.135.037.2.08.334.046.134.098.2.166.268.01.009.02.018.034.024-.07.057-.117.07-.176.136a.304.304 0 01-.131.068 2.62 2.62 0 01-.275-.402 1.772 1.772 0 01-.155-.667 1.759 1.759 0 01.08-.668 1.43 1.43 0 01.283-.535c.128-.133.26-.2.418-.2zm1.37 1.706c.332 0 .733.065 1.216.399.293.2.523.269 1.052.468h.003c.255.136.405.266.478.399v-.131a.571.571 0 01.016.47c-.123.31-.516.643-1.063.842v.002c-.268.135-.501.333-.775.465-.276.135-.588.292-1.012.267a1.139 1.139 0 01-.448-.067 3.566 3.566 0 01-.322-.198c-.195-.135-.363-.332-.612-.465v-.005h-.005c-.4-.246-.616-.512-.686-.71-.07-.268-.005-.47.193-.6.224-.135.38-.271.483-.336.104-.074.143-.102.176-.131h.002v-.003c.169-.202.436-.47.839-.601.139-.036.294-.065.466-.065zm2.8 2.142c.358 1.417 1.196 3.475 1.735 4.473.286.534.855 1.659 1.102 3.024.156-.005.33.018.513.064.646-1.671-.546-3.467-1.089-3.966-.22-.2-.232-.335-.123-.335.59.534 1.365 1.572 1.646 2.757.13.535.16 1.104.021 1.67.067.028.135.06.205.067 1.032.534 1.413.938 1.23 1.537v-.002c-.06-.135-.12-.2-.181-.2-.66.869-1.593 1.07-2.388 1.07-.795 0-1.448-.268-1.645-.399-.432-.2-1.005-.468-1.522-.334-.517.135-1.048.335-1.748.202-.268-.068-.622-.202-.967-.47a.965.965 0 01-.226-.232c-.235-.067-.503-.467-.702-.935-.06-.135-.24-.668-.24-.668.025.266.14.534.296.735.017.028.033.058.054.09-.064-.034-.141-.067-.186-.067-.167 0-.333.67-.5.938-.4.268-1.133.535-1.766.802-.634.268-1.2.535-1.4.668-.367.2-.767.202-1.133-.067-.367-.27-.467-.67-.367-1.002.1-.268.267-.468.667-.669.4-.2.867-.268 1.233-.6.335-.268.535-.802.535-1.27v-.065c-.5.468-.9.468-1.133.402-.367-.135-.667-.402-.8-.87-.067-.2-.117-.468.033-.935.017-.065.167-.4.167-.4-.167.667.233.668.6.468.334-.134.586-.334.686-.535l.001-.002c.134-.333.067-.6-.067-.868-.133-.268-.4-.668-.6-.935-.267-.333-.534-.733-.668-1.202-.1-.4-.133-.867 0-1.335.1-.335.333-.735.667-1.068.267-.268.667-.502 1-.668-.033.132-.267.335-.2.6.067.134.2.267.4.2.267-.134.533-.67.533-1.27 0-.467-.133-.867-.267-1.135v-.003a1.876 1.876 0 01-.196-.467c0-.066-.024-.131-.035-.2-.067-.468.2-.669.533-.869.3-.134.667-.2.667-.4 0-.166-.267-.332-.4-.4-.133-.066-.267-.132-.4-.2v-.065c.067-.268.267-.735.867-1.202.6-.468 1.133-.535 1.067-.202-.065.269-.332.602-.332.869 0 .135.2.267.4.135.2-.134.267-.6.267-1.202v-.003c.267.268.534.6.467 1.068-.067.401-.267.669-.4.869-.1.135-.267.135-.333.333a.76.76 0 00.067.535c.1.135.333.2.6.2.267 0 .6-.066 1-.066s1.067.066 1.267.266c.2.134.4.934.467 1.469v.002l.003.003c.133 0 .333-.135.533-.27.135-.065.333-.2.6-.066.267.133.6.268.7.535 0 0 .001 0 0 .002-.1.265-.234.531-.267.731-.033.2.067.335.333.335.268 0 .667-.135 1.133-.2.6-.134 1-.067 1.267.133.267.2.4.535.4.869 0 .4-.167.801-.4 1.068-.267.267-.667.469-1.2.602-.534.132-1.267.065-2.001-.135z"/>
+              </svg>
+              <div>
+                <span class="download-label">Download for</span>
+                <span class="download-platform">Linux (x64)</span>
+              </div>
+            </a>
+            <div class="download-format-options">
+              <a href="https://dl.arcsign.io/v1.2.3/ArcSign-1.2.3-Linux-x64.deb" class="format-btn active">.deb</a>
+              <a href="https://dl.arcsign.io/v1.2.3/ArcSign-1.2.3-Linux-x64.AppImage" class="format-btn">.AppImage</a>
+            </div>
+          </div>
+        </div>
+        <p class="download-note">
+          USB drive required for wallet storage · 16GB+ recommended
+        </p>
+        <div class="download-checksum">
+          <p class="checksum-title">SHA256 Checksum</p>
+          <code class="checksum-value">fbe50d716b6654b7987636d8d503a14893c007f81998bf8447d145e03fcba9b7</code>
+          <p class="checksum-hint">Verify: shasum -a 256 ArcSign-1.2.3-macOS-ARM64.dmg</p>
+        </div>
+
+        <!-- Quick Install Instructions (All Platforms) -->
+        <div class="install-instructions">
+          <h3>One-Click Install to USB (Recommended)</h3>
+
+          <div class="install-method">
+            <h4>macOS / Linux</h4>
+            <p>Open Terminal and paste this command:</p>
+            <div class="code-block">
+              <code>bash &lt;(curl -fsSL https://arcsign.io/install.sh)</code>
+              <button class="copy-btn" onclick="copyToClipboard('bash <(curl -fsSL https://arcsign.io/install.sh)', this)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="install-method" style="margin-top: 16px;">
+            <h4>Windows</h4>
+            <p>Open PowerShell and paste this command:</p>
+            <div class="code-block">
+              <code>irm https://arcsign.io/install.ps1 | iex</code>
+              <button class="copy-btn" onclick="copyToClipboard('irm https://arcsign.io/install.ps1 | iex', this)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="install-divider">
+            <span>OR</span>
+          </div>
+
+          <div class="install-method">
+            <h4>Manual Install</h4>
+            <ol class="install-steps">
+              <li>1. Click the download button above for your platform</li>
+              <li>2. Install to USB drive</li>
+              <li>3. macOS users need to run in Terminal (replace USB_NAME with your drive name):</li>
+            </ol>
+            <div class="code-block">
+              <code>xattr -cr /Volumes/USB_NAME/ArcSign.app</code>
+              <button class="copy-btn" onclick="copyToClipboard('xattr -cr /Volumes/USB_NAME/ArcSign.app', this)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <details class="install-faq">
+            <summary>Why is this step needed?</summary>
+            <p>macOS quarantines apps downloaded from the internet. This command simply removes the quarantine flag without modifying the app.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<script is:inline>
+  function copyToClipboard(text, btn) {
+    navigator.clipboard.writeText(text).then(function() {
+      btn.classList.add('copied');
+      setTimeout(function() {
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  }
+</script>

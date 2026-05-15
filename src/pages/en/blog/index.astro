@@ -1,0 +1,219 @@
+---
+// English Blog listing — served at /en/blog/
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const locale = 'en' as const;
+
+const allPosts = await getCollection('blogEn');
+const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const CATEGORIES = ['Security', 'Tutorial', 'Market Insights', 'Wallet Comparison', 'DeFi', 'Cryptography'];
+---
+
+<BaseLayout
+  title="ArcSign Blog - Cold Wallet Security, Private Key Management & DeFi Guides"
+  description="Deep dives into cold wallet security, private key management, and DeFi safety. Expert guides from the ArcSign security team."
+  locale={locale}
+  canonical="https://arcsign.io/en/blog/"
+>
+  <section style="padding: 120px 0 80px;">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: 32px;">
+        <a href="/en/" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.875rem;">
+          ← Back to Home
+        </a>
+        <h1 style="font-size: 2.5rem; margin-top: 16px;">
+          <span class="gradient-text">ArcSign Blog</span>
+        </h1>
+        <p class="section-desc">Cold Wallet Security · Private Key Management · DeFi Guides</p>
+      </div>
+
+      <!-- Filter buttons -->
+      <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-tag="all">All（{posts.length}）</button>
+        {CATEGORIES.map(cat => {
+          const count = posts.filter(p => p.data.tags.includes(cat)).length;
+          return count > 0 ? (
+            <button class="filter-btn" data-tag={cat}>{cat}（{count}）</button>
+          ) : null;
+        })}
+      </div>
+
+      <!-- Article grid -->
+      <div class="blog-grid" id="blogGrid">
+        {posts.map(post => {
+          const slug = post.id.replace(/\.(md|mdx)$/, '');
+          return (
+            <a
+              href={`/en/blog/${slug}`}
+              class="article-card"
+              data-tags={post.data.tags.join(',')}
+            >
+              {post.data.heroImage && (
+                <img src={post.data.heroImage} alt={post.data.title} loading="lazy" />
+              )}
+              <div class="article-card-body">
+                <div class="article-tags">
+                  {post.data.tags.map(tag => (
+                    <span class="blog-tag">{tag}</span>
+                  ))}
+                </div>
+                <h2>{post.data.title}</h2>
+                <p>{post.data.description}</p>
+                <div class="article-meta">
+                  <span>{post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                </div>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+
+      <p class="no-results" id="noResults" style="display:none;">
+        No articles found for this category.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const filterBar = document.getElementById('filterBar')!;
+  const grid = document.getElementById('blogGrid')!;
+  const noResults = document.getElementById('noResults')!;
+  const cards = Array.from(grid.querySelectorAll<HTMLElement>('.article-card'));
+
+  function applyFilter(tag: string) {
+    const url = new URL(window.location.href);
+    if (tag === 'all') url.searchParams.delete('tag');
+    else url.searchParams.set('tag', tag);
+    history.replaceState(null, '', url.toString());
+
+    filterBar.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.classList.toggle('active', (btn as HTMLElement).dataset.tag === tag);
+    });
+
+    let visible = 0;
+    cards.forEach(card => {
+      const tags = (card.dataset.tags ?? '').split(',');
+      const show = tag === 'all' || tags.includes(tag);
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    noResults.style.display = visible === 0 ? '' : 'none';
+  }
+
+  const initTag = new URLSearchParams(window.location.search).get('tag') ?? 'all';
+  applyFilter(initTag);
+
+  filterBar.addEventListener('click', e => {
+    const btn = (e.target as HTMLElement).closest<HTMLElement>('.filter-btn');
+    if (btn?.dataset.tag) applyFilter(btn.dataset.tag);
+  });
+</script>
+
+<style>
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+  .filter-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: rgba(255,255,255,0.6);
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .filter-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+  .filter-btn.active {
+    background: rgba(45,212,191,0.15);
+    border-color: var(--primary);
+    color: var(--primary);
+    font-weight: 600;
+  }
+  .no-results {
+    text-align: center;
+    padding: 60px 0;
+    color: rgba(255,255,255,0.4);
+    font-size: 1rem;
+  }
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .article-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+  .article-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+  }
+  .article-card img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+  .article-card-body {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .blog-tag {
+    background: rgba(45,212,191,0.1);
+    color: var(--primary);
+    border: 1px solid rgba(45,212,191,0.3);
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-size: 0.7rem;
+    font-weight: 500;
+  }
+  .article-card h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    line-height: 1.4;
+    flex: 1;
+  }
+  .article-card p {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+    margin-bottom: 12px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .article-meta {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.4);
+  }
+  @media (max-width: 640px) {
+    .blog-grid { grid-template-columns: 1fr; }
+  }
+</style>
