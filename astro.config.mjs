@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
@@ -21,4 +22,17 @@ export default defineConfig({
 
   // Site URL
   site: 'https://arcsign.io',
+
+  // Auto-generate sitemap.xml + sitemap-index.xml
+  integrations: [
+    sitemap({
+      i18n: {
+        defaultLocale: 'zh-TW',
+        locales: {
+          'zh-TW': 'zh-TW',
+          'en': 'en',
+        },
+      },
+    }),
+  ],
 });
