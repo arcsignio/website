@@ -1,0 +1,9 @@
+# ArcSign robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://arcsign.io/sitemap.xml
+
+# Disallow admin or private paths (if any)
+# Disallow: /admin/

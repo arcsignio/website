@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BPWXQLMPZ6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-BPWXQLMPZ6');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArcSign vs Ledger: Free USB Cold Wallet vs $79 Hardware Wallet (2026) | ArcSign</title>
+    <meta name="description" content="ArcSign vs Ledger Nano: detailed comparison of security, cost, setup, DeFi support, recovery, and which cold wallet is right for you in 2026. ArcSign is free.">
+    <meta name="keywords" content="ArcSign vs Ledger, ArcSign Ledger comparison, Ledger Nano alternative, free hardware wallet alternative, USB cold wallet vs Ledger, best cold wallet 2026">
+    <link rel="canonical" href="https://arcsign.io/en/arcsign-vs-ledger.html">
+
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="en" href="https://arcsign.io/en/arcsign-vs-ledger.html">
+    <link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/arcsign-vs-ledger.html">
+    <link rel="alternate" hreflang="x-default" href="https://arcsign.io/arcsign-vs-ledger.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="ArcSign vs Ledger: Free USB Cold Wallet vs $79 Hardware Wallet (2026)">
+    <meta property="og:description" content="Both are cold wallets, but ArcSign is free and uses any USB drive. Ledger costs $79+. Full security, DeFi, and recovery comparison.">
+    <meta property="og:image" content="https://arcsign.io/assets/og-image.png">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://arcsign.io/en/arcsign-vs-ledger.html">
+    <meta property="og:locale" content="en_US">
+    <meta property="article:published_time" content="2026-03-30">
+    <meta property="article:author" content="ArcSign Team">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ArcSign vs Ledger: Free USB Cold Wallet vs $79 Hardware Wallet (2026)">
+    <meta name="twitter:description" content="Both are cold wallets — but one costs $79+. Full comparison.">
+    <meta name="twitter:image" content="https://arcsign.io/assets/og-image.png">
+
+    <!-- Structured Data: Article -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "ArcSign vs Ledger: Free USB Cold Wallet vs $79 Hardware Wallet (2026)",
+        "description": "Detailed comparison of ArcSign free USB cold wallet vs Ledger Nano hardware wallet: security architecture, cost, DeFi support, recovery, and which is right for you.",
+        "image": "https://arcsign.io/assets/og-image.png",
+        "datePublished": "2026-03-30",
+        "dateModified": "2026-03-30",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://arcsign.io/en/arcsign-vs-ledger.html"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "ArcSign",
+            "url": "https://arcsign.io"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ArcSign",
+            "url": "https://arcsign.io",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://arcsign.io/assets/logo.png"
+            }
+        }
+    }
+    </script>
+
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://arcsign.io/" },
+            { "@type": "ListItem", "position": 2, "name": "ArcSign vs Ledger", "item": "https://arcsign.io/en/arcsign-vs-ledger.html" }
+        ]
+    }
+    </script>
+
+    <!-- Structured Data: FAQ -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Is ArcSign as secure as Ledger?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "ArcSign offers comparable cold wallet security through different means. Ledger uses a dedicated Secure Element chip (CC EAL5+) to isolate keys in hardware. ArcSign uses XOR three-shard encryption, mlock() memory protection, and AES-256-GCM storage — software-enforced isolation on a standard USB drive. Both keep private keys completely offline. The main difference is the attack surface: Ledger's Secure Element resists physical chip-level attacks; ArcSign's threat model focuses on software and network isolation."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is ArcSign really free?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. ArcSign's core functionality — wallet creation, key management, multi-chain support, WalletConnect, token approvals, NFT gallery — is completely free. The Pro plan ($X/month) adds batch token approval revoke, advanced portfolio analytics, and priority support. You don't need Pro for full security."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What happens if my Ledger or ArcSign USB is lost or stolen?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "With Ledger: restore from your 24-word seed phrase on any new Ledger or compatible wallet. With ArcSign: restore from your encrypted .arcsign backup file on any USB drive. The .arcsign file is AES-256-GCM encrypted — it's safe to store in cloud storage, email to yourself, or put on a second USB. Neither can be accessed without your password."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does ArcSign support DeFi like Ledger Live?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "ArcSign supports WalletConnect, which connects to any DeFi protocol that supports WalletConnect — Uniswap, Aave, Curve, OpenSea, and thousands more. Ledger Live has built-in DeFi integrations but charges fees. ArcSign's WalletConnect approach gives broader compatibility without proprietary lock-in."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can ArcSign replace my Ledger?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "For most EVM and Bitcoin users, yes. ArcSign supports Ethereum, BSC, Polygon, Arbitrum, Optimism, Base, and Bitcoin. The main Ledger advantage is Secure Element chip-level security and wider chain support (Solana, XRP, etc.). If your holdings are primarily EVM + Bitcoin, ArcSign provides equivalent cold storage security at zero cost."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .compare-article { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+        .compare-header { margin-bottom: 40px; }
+        .compare-breadcrumb { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; }
+        .compare-breadcrumb a { color: var(--primary); text-decoration: none; }
+        .compare-breadcrumb a:hover { text-decoration: underline; }
+        .compare-meta { display: flex; gap: 16px; align-items: center; margin-top: 16px; font-size: 14px; color: var(--text-muted); flex-wrap: wrap; }
+        .compare-meta .tag { background: rgba(45, 212, 191, 0.15); color: var(--primary); padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+        .compare-article h1 { font-size: 2.2rem; font-weight: 800; line-height: 1.3; margin-bottom: 8px; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .compare-article h2 { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-top: 48px; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--border-color); }
+        .compare-article h3 { font-size: 1.15rem; font-weight: 600; color: var(--primary); margin-top: 28px; margin-bottom: 12px; }
+        .compare-article p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px; font-size: 1.05rem; }
+        .compare-article strong { color: var(--text-primary); }
+        .compare-article ul, .compare-article ol { color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px; padding-left: 24px; font-size: 1.05rem; }
+        .compare-article li { margin-bottom: 6px; }
+
+        /* Verdict box */
+        .verdict-box { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
+        .verdict-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 24px; }
+        .verdict-card.winner { border-color: var(--primary); }
+        .verdict-card .vc-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+        .verdict-card.winner .vc-label { color: var(--primary); }
+        .verdict-card .vc-name { font-size: 1.3rem; font-weight: 800; color: var(--text-primary); margin-bottom: 8px; }
+        .verdict-card .vc-tag { font-size: 0.85rem; color: var(--text-secondary); background: var(--bg-dark); border-radius: var(--radius-sm); padding: 4px 10px; display: inline-block; margin-bottom: 12px; }
+        .verdict-card .vc-best { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
+        .verdict-card.winner .vc-best { color: var(--text-primary); }
+
+        /* Feature table */
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.95rem; }
+        .comparison-table th { background: var(--bg-card); color: var(--primary); padding: 12px 16px; text-align: left; border-bottom: 2px solid var(--primary-dark); font-weight: 700; }
+        .comparison-table th:first-child { color: var(--text-muted); }
+        .comparison-table td { padding: 12px 16px; border-bottom: 1px solid var(--border-color); color: var(--text-secondary); vertical-align: middle; }
+        .comparison-table tr:nth-child(even) td { background: rgba(30, 41, 59, 0.5); }
+        .comparison-table .feat { color: var(--text-primary); font-weight: 600; }
+        .check { color: #22c55e; font-weight: 700; }
+        .cross { color: #ef4444; font-weight: 700; }
+        .warn { color: #f59e0b; font-weight: 700; }
+
+        /* Callout */
+        .callout { background: var(--bg-card); border-left: 4px solid var(--primary); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 20px 24px; margin: 24px 0; }
+        .callout p { margin-bottom: 0; }
+        .callout-title { font-weight: 700; color: var(--primary); margin-bottom: 8px; font-size: 1rem; }
+        .callout-warn { border-left-color: #f59e0b; }
+        .callout-warn .callout-title { color: #f59e0b; }
+
+        /* Security section */
+        .security-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0; }
+        .security-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 20px; }
+        .security-card h4 { color: var(--text-primary); font-size: 1rem; font-weight: 700; margin-bottom: 12px; margin-top: 0; }
+        .security-card ul { color: var(--text-secondary); font-size: 0.9rem; padding-left: 18px; margin: 0; }
+        .security-card li { margin-bottom: 6px; }
+        .security-card.arcsign { border-color: var(--primary); }
+        .security-card.arcsign h4 { color: var(--primary); }
+
+        /* Use case cards */
+        .usecase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0; }
+        .usecase-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 20px; }
+        .usecase-card h4 { font-weight: 700; margin-bottom: 12px; margin-top: 0; }
+        .usecase-card ul { color: var(--text-secondary); font-size: 0.9rem; padding-left: 18px; margin: 0; }
+        .usecase-card li { margin-bottom: 6px; }
+
+        /* CTA */
+        .compare-cta { background: var(--gradient-hero); border: 1px solid var(--primary-dark); border-radius: var(--radius-lg); padding: 40px; text-align: center; margin-top: 48px; }
+        .compare-cta h3 { color: var(--text-primary); font-size: 1.4rem; margin-bottom: 12px; }
+        .compare-cta p { text-align: center; margin-bottom: 20px; }
+        .compare-cta .btn { display: inline-block; background: var(--gradient-primary); color: var(--bg-dark); padding: 12px 32px; border-radius: var(--radius-xl); font-weight: 700; text-decoration: none; font-size: 1rem; transition: transform 0.2s; }
+        .compare-cta .btn:hover { transform: scale(1.05); }
+
+        /* FAQ */
+        .faq-section { margin-top: 48px; }
+        .faq-item { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 20px 24px; margin-bottom: 16px; }
+        .faq-item h3 { color: var(--text-primary); font-size: 1.05rem; margin-bottom: 8px; margin-top: 0; }
+        .faq-item p { margin-bottom: 0; font-size: 0.95rem; }
+
+        /* TOC */
+        .toc { background: var(--bg-card); border-radius: var(--radius-md); padding: 24px; margin-bottom: 32px; }
+        .toc-title { font-weight: 700; color: var(--text-primary); margin-bottom: 12px; }
+        .toc ul { list-style: none; padding: 0; margin: 0; }
+        .toc li { padding: 4px 0; }
+        .toc a { color: var(--text-secondary); text-decoration: none; font-size: 0.95rem; transition: color 0.2s; }
+        .toc a:hover { color: var(--primary); }
+
+        /* Price highlight */
+        .price-box { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0; }
+        .price-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 24px; text-align: center; }
+        .price-card.featured { border-color: var(--primary); }
+        .price-card .price-amount { font-size: 2.5rem; font-weight: 800; color: var(--text-primary); }
+        .price-card.featured .price-amount { color: var(--primary); }
+        .price-card .price-label { font-size: 0.9rem; color: var(--text-muted); margin-top: 4px; }
+        .price-card .price-items { text-align: left; margin-top: 16px; font-size: 0.9rem; color: var(--text-secondary); list-style: none; padding: 0; }
+        .price-card .price-items li { padding: 4px 0; }
+
+        @media (max-width: 768px) {
+            .compare-article h1 { font-size: 1.6rem; }
+            .compare-article h2 { font-size: 1.25rem; }
+            .verdict-box { grid-template-columns: 1fr; }
+            .security-grid { grid-template-columns: 1fr; }
+            .usecase-grid { grid-template-columns: 1fr; }
+            .price-box { grid-template-columns: 1fr; }
+            .compare-cta { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Nav -->
+    <nav style="background: rgba(15,23,42,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-color); padding: 16px 0; position: sticky; top: 0; z-index: 100;">
+        <div class="container" style="display:flex; justify-content:space-between; align-items:center;">
+            <a href="../index.html" style="font-size:1.4rem; font-weight:800; text-decoration:none; color:var(--primary);">ArcSign</a>
+            <div style="display:flex; gap:24px; font-size:14px; align-items:center;">
+                <a href="../index.html" style="color:var(--text-secondary); text-decoration:none;">Home</a>
+                <a href="../tutorial.html" style="color:var(--text-secondary); text-decoration:none;">Tutorial</a>
+                <a href="../blog/en/index.html" style="color:var(--text-secondary); text-decoration:none;">Blog</a>
+                <a href="../faq.html" style="color:var(--text-secondary); text-decoration:none;">FAQ</a>
+                <a href="../pricing.html" style="color:var(--text-secondary); text-decoration:none;">Pricing</a>
+                <span style="display:inline-flex; gap:4px; background:var(--bg-card); border-radius:20px; padding:2px; font-size:13px;">
+                    <a href="../arcsign-vs-ledger.html" style="padding:4px 12px; border-radius:16px; text-decoration:none; color:var(--text-muted);">中</a>
+                    <a href="arcsign-vs-ledger.html" style="padding:4px 12px; border-radius:16px; text-decoration:none; background:var(--primary); color:var(--bg-dark); font-weight:600;">EN</a>
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <article class="compare-article">
+        <div class="compare-header">
+            <div class="compare-breadcrumb">
+                <a href="../index.html">Home</a> &rsaquo; ArcSign vs Ledger
+            </div>
+            <h1>ArcSign vs Ledger: Free USB Cold Wallet vs $79 Hardware Wallet (2026)</h1>
+            <div class="compare-meta">
+                <span class="tag">Comparison</span>
+                <span>March 30, 2026</span>
+                <span>By ArcSign Team</span>
+                <span>10 min read</span>
+            </div>
+        </div>
+
+        <div class="toc">
+            <div class="toc-title">Table of Contents</div>
+            <ul>
+                <li><a href="#quick-verdict">Quick Verdict</a></li>
+                <li><a href="#cost-comparison">Cost Comparison</a></li>
+                <li><a href="#feature-comparison">Full Feature Comparison</a></li>
+                <li><a href="#security-deep-dive">Security Deep Dive</a></li>
+                <li><a href="#the-ledger-data-breach">Ledger's Data Breach Track Record (2020 + 2026)</a></li>
+                <li><a href="#when-to-use-each">When to Use Each</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </div>
+
+        <p>Both ArcSign and Ledger are cold wallets — your private keys never go online. But the similarities end there. Ledger is a $79–$249 dedicated hardware device with a Secure Element chip. ArcSign runs on any USB drive you already own, costs nothing, and handles security through software encryption rather than proprietary hardware.</p>
+
+        <p>This comparison digs into what that difference actually means for security, usability, DeFi access, and your money.</p>
+
+        <!-- Quick Verdict -->
+        <h2 id="quick-verdict">Quick Verdict</h2>
+
+        <div class="verdict-box">
+            <div class="verdict-card winner">
+                <div class="vc-label">Best Value Cold Wallet</div>
+                <div class="vc-name">ArcSign</div>
+                <div class="vc-tag">Any USB Drive &bull; Free</div>
+                <div class="vc-best">Same cold wallet security principle as Ledger, zero cost. Works with any USB drive you already have. WalletConnect for DeFi. Built-in token approvals management. Best for: EVM + Bitcoin holders who want cold storage without the hardware cost.</div>
+            </div>
+            <div class="verdict-card">
+                <div class="vc-label">Best Hardware Security</div>
+                <div class="vc-name">Ledger</div>
+                <div class="vc-tag">Dedicated Device &bull; $79–$249</div>
+                <div class="vc-best">Certified Secure Element chip (CC EAL5+) resists physical extraction attacks. Widest chain support including Solana, XRP, Cardano. Best for: very high value holdings, institutional use, or anyone who needs tamper-resistant hardware attestation.</div>
+            </div>
+        </div>
+
+        <div class="callout">
+            <div class="callout-title">The honest take</div>
+            <p>For the vast majority of EVM users — Ethereum, BSC, Polygon, Arbitrum — ArcSign provides equivalent cold storage protection at zero cost. Ledger's Secure Element becomes meaningful if you're defending against nation-state-level physical attacks or need hardware-attestable security proofs. That's a niche.</p>
+        </div>
+
+        <!-- Cost Comparison -->
+        <h2 id="cost-comparison">Cost Comparison</h2>
+
+        <div class="price-box">
+            <div class="price-card featured">
+                <div class="price-amount">$0</div>
+                <div class="price-label">ArcSign — Forever Free</div>
+                <ul class="price-items">
+                    <li><span class="check">&#10003;</span> All core wallet features</li>
+                    <li><span class="check">&#10003;</span> Multi-chain (ETH, BSC, Polygon, etc.)</li>
+                    <li><span class="check">&#10003;</span> WalletConnect DeFi access</li>
+                    <li><span class="check">&#10003;</span> Token approvals (single revoke)</li>
+                    <li><span class="check">&#10003;</span> NFT gallery</li>
+                    <li><span class="check">&#10003;</span> Any USB drive you own</li>
+                </ul>
+            </div>
+            <div class="price-card">
+                <div class="price-amount">$79+</div>
+                <div class="price-label">Ledger Nano S Plus / X</div>
+                <ul class="price-items">
+                    <li><span class="check">&#10003;</span> Secure Element chip (CC EAL5+)</li>
+                    <li><span class="check">&#10003;</span> 5,500+ supported coins</li>
+                    <li><span class="check">&#10003;</span> Ledger Live app</li>
+                    <li><span class="warn">&#9888;</span> Ledger Live DeFi fees apply</li>
+                    <li><span class="warn">&#9888;</span> Supply chain trust required</li>
+                    <li><span class="cross">&#10007;</span> 2020 breach (270K addresses + 1M emails) + Jan 2026 Global-e vendor breach</li>
+                </ul>
+            </div>
+        </div>
+
+        <p>The $79+ upfront cost is the obvious difference. Less obvious: Ledger charges fees on DeFi transactions routed through Ledger Live. ArcSign uses WalletConnect — you connect directly to the protocol, ArcSign never sits in the middle of the transaction fee.</p>
+
+        <!-- Full Feature Comparison -->
+        <h2 id="feature-comparison">Full Feature Comparison</h2>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>ArcSign</th>
+                    <th>Ledger</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="feat">Private Key Storage</td>
+                    <td><span class="check">&#10003;</span> Offline USB (software encrypted)</td>
+                    <td><span class="check">&#10003;</span> Secure Element chip (hardware)</td>
+                </tr>
+                <tr>
+                    <td class="feat">Price</td>
+                    <td><span class="check">&#10003;</span> Free</td>
+                    <td><span class="warn">&#9888;</span> $79 – $249</td>
+                </tr>
+                <tr>
+                    <td class="feat">Hardware Required</td>
+                    <td><span class="check">&#10003;</span> Any USB drive (~$5 or free)</td>
+                    <td><span class="cross">&#10007;</span> Must buy Ledger device</td>
+                </tr>
+                <tr>
+                    <td class="feat">Internet Exposure</td>
+                    <td><span class="check">&#10003;</span> Keys never online</td>
+                    <td><span class="check">&#10003;</span> Keys never online</td>
+                </tr>
+                <tr>
+                    <td class="feat">WalletConnect / DeFi</td>
+                    <td><span class="check">&#10003;</span> Full WalletConnect (any protocol)</td>
+                    <td><span class="check">&#10003;</span> WalletConnect + Ledger Live built-in</td>
+                </tr>
+                <tr>
+                    <td class="feat">Chain Support</td>
+                    <td><span class="warn">&#9888;</span> ETH, BSC, Polygon, Arbitrum, Optimism, Base, Bitcoin</td>
+                    <td><span class="check">&#10003;</span> 5,500+ coins incl. Solana, XRP, Cardano</td>
+                </tr>
+                <tr>
+                    <td class="feat">Token Approvals Management</td>
+                    <td><span class="check">&#10003;</span> Built-in, 6 EVM chains (batch for Pro)</td>
+                    <td><span class="cross">&#10007;</span> Not built-in (use third-party)</td>
+                </tr>
+                <tr>
+                    <td class="feat">DeFi Positions (Liquid Staking)</td>
+                    <td><span class="check">&#10003;</span> stETH, ankrETH, ankrBNB with APY</td>
+                    <td><span class="warn">&#9888;</span> Via Ledger Live partners (limited)</td>
+                </tr>
+                <tr>
+                    <td class="feat">NFT Gallery</td>
+                    <td><span class="check">&#10003;</span> ERC721 + ERC1155, cross-chain</td>
+                    <td><span class="check">&#10003;</span> Built-in in Ledger Live</td>
+                </tr>
+                <tr>
+                    <td class="feat">Backup Method</td>
+                    <td><span class="check">&#10003;</span> Encrypted .arcsign file (AES-256-GCM)</td>
+                    <td><span class="warn">&#9888;</span> 24-word seed phrase (paper)</td>
+                </tr>
+                <tr>
+                    <td class="feat">Physical Tamper Resistance</td>
+                    <td><span class="warn">&#9888;</span> Software-only (mlock, XOR sharding)</td>
+                    <td><span class="check">&#10003;</span> CC EAL5+ Secure Element chip</td>
+                </tr>
+                <tr>
+                    <td class="feat">Supply Chain Trust</td>
+                    <td><span class="check">&#10003;</span> No hardware supply chain</td>
+                    <td><span class="warn">&#9888;</span> Must trust Ledger supply chain</td>
+                </tr>
+                <tr>
+                    <td class="feat">Customer Data Incident</td>
+                    <td><span class="check">&#10003;</span> No known data breaches</td>
+                    <td><span class="cross">&#10007;</span> 270K addresses leaked (2020); Global-e vendor breach (Jan 2026)</td>
+                </tr>
+                <tr>
+                    <td class="feat">Open Source</td>
+                    <td><span class="warn">&#9888;</span> Planned after 10K users</td>
+                    <td><span class="warn">&#9888;</span> Partially open source</td>
+                </tr>
+                <tr>
+                    <td class="feat">Mobile App</td>
+                    <td><span class="warn">&#9888;</span> In development</td>
+                    <td><span class="check">&#10003;</span> Ledger Live mobile (iOS + Android)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Security Deep Dive -->
+        <h2 id="security-deep-dive">Security Deep Dive</h2>
+
+        <p>Both wallets share the core cold wallet principle: private keys are generated and stored offline. The security diverges in <em>how</em> that isolation is enforced.</p>
+
+        <div class="security-grid">
+            <div class="security-card arcsign">
+                <h4>ArcSign Security Model</h4>
+                <ul>
+                    <li>Private keys on USB — air-gapped by design</li>
+                    <li>XOR three-shard encryption splits keys into 3 fragments</li>
+                    <li>mlock() prevents keys from swapping to OS disk</li>
+                    <li>AES-256-GCM dual-layer encrypted backup</li>
+                    <li>No Secure Element chip — software-enforced isolation</li>
+                    <li>Zero supply chain risk (any USB will do)</li>
+                    <li>No customer database to breach</li>
+                </ul>
+            </div>
+            <div class="security-card">
+                <h4>Ledger Security Model</h4>
+                <ul>
+                    <li>Certified Secure Element chip (ST33 / STM32, CC EAL5+)</li>
+                    <li>Keys stored inside tamper-resistant hardware chip</li>
+                    <li>Physical chip extraction is extremely difficult</li>
+                    <li>Proprietary Ledger OS (BOLOS) isolates apps</li>
+                    <li>Must trust Ledger supply chain integrity</li>
+                    <li>Customer data (270K addresses + 1M+ emails) leaked in 2020</li>
+                    <li>January 2026: Global-e vendor breach exposed names, addresses, orders again</li>
+                    <li>Ledger Recover (opt-in) raised key custody concerns</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>The Secure Element Tradeoff</h3>
+
+        <p>Ledger's Secure Element chip makes physical key extraction extremely difficult. An attacker with physical access to your Ledger device cannot easily extract the key from the chip, even with lab equipment. ArcSign doesn't have this: a determined attacker with physical access to your USB drive could, in theory, attempt to extract the key material — though the software encryption (XOR sharding + AES-256-GCM) still makes this non-trivial.</p>
+
+        <p>In practice, the threat model for most users is: <strong>remote attack</strong> (phishing, malware, network). Both wallets are immune to remote key extraction because keys are never online. The physical extraction scenario affects a tiny fraction of users and typically requires the attacker to also know your password.</p>
+
+        <!-- The Ledger Data Breach -->
+        <h2 id="the-ledger-data-breach">Ledger's Data Breach Track Record (2020 + 2026)</h2>
+
+        <p>Ledger has suffered multiple customer data exposures. The hardware wallet itself was never compromised — private keys stayed safe. But Ledger's customers were repeatedly exposed as crypto holders, making them targets for years of follow-on attacks.</p>
+
+        <h3>July 2020: The Original Breach</h3>
+
+        <p>Ledger's own e-commerce database was breached. 272,853 customer shipping addresses and 1,075,382 email addresses were exposed. The full dataset was published on RaidForums in December 2020 — publicly searchable, permanently on the internet.</p>
+
+        <p>The breach triggered an immediate wave of phishing emails. It also created a long-term problem: attackers know exactly which households own cryptocurrency hardware. That information doesn't expire.</p>
+
+        <h3>April 2025: Physical Mail Scam</h3>
+
+        <p>Scammers using the 2020 breach data escalated to physical postal letters. Using real names and home addresses from the leaked database, they mailed official-looking Ledger letters claiming a "critical security update" or "mandatory Authentication Check." Each letter included a QR code directing users to a fake Ledger site asking for their 24-word recovery phrase.</p>
+
+        <p>Ledger confirmed the letters were fake and publicly warned users. But the attack is difficult to stop — the data is already out there, permanently. Anyone who bought a Ledger before 2021 should assume their name and home address are in attacker hands.</p>
+
+        <h3>January 2026: Global-e Vendor Breach</h3>
+
+        <p>In January 2026, Ledger disclosed a second customer data incident. This time the breach hit Global-e, Ledger's international e-commerce and payment processing partner. The root cause: a misconfigured API key on Ledger's own website gave attackers access to Global-e's systems.</p>
+
+        <p>Data exposed: customer names, email addresses, postal addresses, phone numbers, and order details (products purchased, prices). Payment card data and crypto credentials were not affected. The number of victims was not publicly disclosed.</p>
+
+        <p>The breach generated a new wave of phishing — including emails falsely claiming Ledger and Trezor had merged, using the newly leaked contact data to appear legitimate.</p>
+
+        <div class="callout callout-warn">
+            <div class="callout-title">The pattern that won't stop</div>
+            <p>Three separate incidents in six years. Each time, Ledger's hardware remained secure. Each time, customer identity data leaked. The problem isn't the Secure Element chip — it's that Ledger maintains a customer database, and databases get breached. ArcSign doesn't have a customer database. There's nothing to breach, and no one to send you a fake letter.</p>
+        </div>
+
+        <h3>Ledger Recover Controversy</h3>
+
+        <p>In 2023, Ledger announced "Ledger Recover" — a service that splits and backs up your seed phrase to three custodians (Coincover, EscrowTech, Ledger). This revealed that Ledger firmware <em>can</em> extract and transmit private keys off-device, which surprised many users who assumed the Secure Element made this impossible.</p>
+
+        <p>Ledger Recover launched commercially in 2024-2025 at $9.99/month and remains opt-in. In response to criticism, Ledger also released the "Ledger Recovery Key" — a $39 offline PIN-protected card as an alternative. But the underlying revelation stands: the firmware architecture allows seed export. ArcSign's architecture makes no such capability possible by design — the encrypted .arcsign backup is generated by the app, not by extracting secrets from a black-box chip.</p>
+
+        <!-- When to Use Each -->
+        <h2 id="when-to-use-each">When to Use Each</h2>
+
+        <div class="usecase-grid">
+            <div class="usecase-card">
+                <h4 style="color: var(--primary);">Choose ArcSign when...</h4>
+                <ul>
+                    <li>You want cold wallet security at zero cost</li>
+                    <li>Your holdings are primarily EVM chains + Bitcoin</li>
+                    <li>You want token approvals management built in</li>
+                    <li>You don't want to be in a hardware vendor's customer database</li>
+                    <li>You want full DeFi access without Ledger Live fees</li>
+                    <li>You already have a USB drive (any one will work)</li>
+                </ul>
+            </div>
+            <div class="usecase-card">
+                <h4 style="color: var(--text-primary);">Choose Ledger when...</h4>
+                <ul>
+                    <li>You need hardware-level tamper resistance (Secure Element)</li>
+                    <li>You hold Solana, XRP, Cardano, or 5,000+ alt coins</li>
+                    <li>You require hardware attestation for institutional/compliance purposes</li>
+                    <li>You're comfortable with the supply chain trust model</li>
+                    <li>You want a physical device that never plugs into a computer</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="compare-cta">
+            <h3>Cold Wallet Security, Zero Cost</h3>
+            <p>ArcSign gives you the same cold wallet principle as Ledger — private keys offline — using any USB drive you already own. No hardware to buy. Free forever.</p>
+            <a href="../index.html#download" class="btn">Download ArcSign Free</a>
+        </div>
+
+        <!-- FAQ -->
+        <div class="faq-section" id="faq">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <h3>Is ArcSign as secure as Ledger?</h3>
+                <p>ArcSign offers comparable cold wallet security through different means. Ledger uses a dedicated Secure Element chip (CC EAL5+) to isolate keys in hardware. ArcSign uses XOR three-shard encryption, mlock() memory protection, and AES-256-GCM storage — software-enforced isolation on a standard USB drive. Both keep private keys completely offline. The main difference is the attack surface: Ledger's Secure Element resists physical chip-level attacks; ArcSign's threat model focuses on software and network isolation.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Is ArcSign really free?</h3>
+                <p>Yes. ArcSign's core functionality — wallet creation, key management, multi-chain support, WalletConnect, token approvals, NFT gallery — is completely free. The Pro plan adds batch token approval revoke, advanced portfolio analytics, and priority support, but the free tier covers all security essentials.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What happens if my Ledger or ArcSign USB is lost or stolen?</h3>
+                <p>With Ledger: restore from your 24-word seed phrase on any new Ledger or compatible wallet. With ArcSign: restore from your encrypted .arcsign backup file on any USB drive. The .arcsign file is AES-256-GCM encrypted — it's safe to store in cloud storage, email to yourself, or put on a second USB. Neither can be accessed without your password.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Does ArcSign support DeFi like Ledger Live?</h3>
+                <p>ArcSign supports WalletConnect, which connects to any DeFi protocol that supports WalletConnect — Uniswap, Aave, Curve, OpenSea, and thousands more. Ledger Live has built-in DeFi integrations but charges fees. ArcSign's WalletConnect approach gives broader compatibility without proprietary lock-in.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Can ArcSign replace my Ledger?</h3>
+                <p>For most EVM and Bitcoin users, yes. ArcSign supports Ethereum, BSC, Polygon, Arbitrum, Optimism, Base, and Bitcoin. The main Ledger advantage is Secure Element chip-level security and wider chain support (Solana, XRP, etc.). If your holdings are primarily EVM + Bitcoin, ArcSign provides equivalent cold storage security at zero cost.</p>
+            </div>
+        </div>
+
+        <!-- Related comparisons -->
+        <div style="margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border-color);">
+            <h3 style="color: var(--text-primary);">More Comparisons</h3>
+            <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px;">
+                <a href="arcsign-vs-metamask.html" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 16px 24px; text-decoration: none; color: var(--primary); font-weight: 600; transition: border-color 0.2s;" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border-color)'">
+                    ArcSign vs MetaMask &rsaquo;
+                </a>
+            </div>
+        </div>
+
+    </article>
+
+    <!-- Footer -->
+    <footer style="background: var(--bg-card); border-top: 1px solid var(--border-color); padding: 40px 0; margin-top: 80px; text-align: center;">
+        <div class="container">
+            <div style="font-size: 1.2rem; font-weight: 800; color: var(--primary); margin-bottom: 8px;">ArcSign</div>
+            <p style="color: var(--text-muted); font-size: 14px; max-width: 400px; margin: 0 auto 16px;">Free USB cold wallet. Your keys, your coins.</p>
+            <div style="display: flex; gap: 24px; justify-content: center; font-size: 14px; margin-bottom: 16px; flex-wrap: wrap;">
+                <a href="../index.html" style="color: var(--text-muted); text-decoration: none;">Home</a>
+                <a href="../tutorial.html" style="color: var(--text-muted); text-decoration: none;">Tutorial</a>
+                <a href="../blog/en/index.html" style="color: var(--text-muted); text-decoration: none;">Blog</a>
+                <a href="../faq.html" style="color: var(--text-muted); text-decoration: none;">FAQ</a>
+                <a href="arcsign-vs-metamask.html" style="color: var(--text-muted); text-decoration: none;">vs MetaMask</a>
+            </div>
+            <p style="color: var(--text-muted); font-size: 12px; margin: 0;">&copy; 2026 ArcSign. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

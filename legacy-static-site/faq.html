@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BPWXQLMPZ6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-BPWXQLMPZ6');
+    </script>
+    <title>ArcSign FAQ: Cold Wallet Security, Setup & DeFi Questions Answered (2026)</title>
+    <meta
+      name="description"
+      content="Got questions about ArcSign? We answer the most common ones: How safe is a USB cold wallet? Does it work with WalletConnect? How do I back up my wallet? Read our full FAQ."
+    />
+    <link rel="canonical" href="https://arcsign.io/faq.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://arcsign.io/faq.html" />
+    <meta property="og:title" content="ArcSign FAQ: Cold Wallet Security, Setup & DeFi Questions Answered (2026)" />
+    <meta property="og:description" content="Got questions about ArcSign? We answer the most common ones: How safe is a USB cold wallet? Does it work with WalletConnect? How do I back up my wallet? Read our full FAQ." />
+    <meta property="og:image" content="https://arcsign.io/assets/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is ArcSign safe? How does it protect my private keys?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ArcSign uses industry-leading encryption standards to protect your private keys. Most importantly, your private keys never leave your USB drive and are never transmitted to any server. Unplug the USB and hackers cannot access your keys."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between ArcSign and MetaMask?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The biggest difference is where private keys are stored. MetaMask stores private keys on your computer's hard drive, where any malware with file access can steal them. ArcSign stores private keys on a USB drive — unplug it and attackers cannot access files that don't exist on the computer."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if my USB drive breaks or is lost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ArcSign supports two backup methods: (1) Mnemonic backup — write down your 12 or 24 seed words on paper and store multiple copies in different locations. Even if the USB is damaged, you can recover your assets using the seed phrase in ArcSign or any BIP39-compatible wallet. (2) Encrypted file backup — copy the wallet folder from the USB to another USB or safe location. The files are already encrypted and can only be used by someone who knows the password."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does ArcSign support WalletConnect?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, ArcSign fully supports WalletConnect. You can connect to any WalletConnect-compatible dApp (Uniswap, Aave, OpenSea, etc.) by scanning the QR code or pasting the connection link. Your private key stays on the USB while you sign transactions — giving you cold wallet security with hot wallet convenience."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is ArcSign free? What does the Pro plan include?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, ArcSign is completely free for individual use. The Pro plan ($30/year) includes batch token approval revocation across 6 EVM chains, priority support, and access to advanced DeFi features. The free plan covers all core wallet functions including multi-chain support, WalletConnect, and NFT display."
+          }
+        }
+      ]
+    }
+    </script>
+    <style>
+      .faq-hero {
+        padding: 120px 0 60px;
+        background: linear-gradient(135deg, #0a0a0a 0%, #0f2b46 100%);
+      }
+      .faq-hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+      .faq-content {
+        padding: 60px 0;
+      }
+      .faq-category {
+        margin-bottom: 48px;
+      }
+      .faq-category h2 {
+        font-size: 1.5rem;
+        margin-bottom: 24px;
+        color: #fff;
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .faq-page-list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .faq-page-item {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      .faq-page-question {
+        width: 100%;
+        padding: 20px 24px;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 500;
+        text-align: left;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background 0.2s;
+      }
+      .faq-page-question:hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .faq-page-question .icon {
+        font-size: 1.5rem;
+        color: rgba(255, 255, 255, 0.5);
+        transition: transform 0.3s;
+      }
+      .faq-page-item.active .faq-page-question .icon {
+        transform: rotate(45deg);
+      }
+      .faq-page-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+      }
+      .faq-page-item.active .faq-page-answer {
+        max-height: 500px;
+      }
+      .faq-page-answer-content {
+        padding: 0 24px 20px;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.8;
+      }
+      .faq-page-answer-content p {
+        margin-bottom: 12px;
+      }
+      .faq-page-answer-content p:last-child {
+        margin-bottom: 0;
+      }
+      .faq-page-answer-content strong {
+        color: #fff;
+      }
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        margin-bottom: 20px;
+        transition: color 0.2s;
+      }
+      .back-link:hover {
+        color: #fff;
+      }
+      .contact-box {
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+        border: 1px solid rgba(102, 126, 234, 0.3);
+        border-radius: 16px;
+        padding: 32px;
+        text-align: center;
+        margin-top: 60px;
+      }
+      .contact-box h3 {
+        font-size: 1.25rem;
+        margin-bottom: 12px;
+        color: #fff;
+      }
+      .contact-box p {
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="container">
+        <a href="index.html" class="nav-brand">
+          <img src="assets/logo.png" alt="ArcSign Logo" class="nav-logo" />
+          <span class="logo">Arc</span><span class="logo-sign">Sign</span>
+        </a>
+        <div class="nav-links">
+          <a href="index.html#features" data-i18n="nav.features">功能</a>
+          <a href="index.html#security" data-i18n="nav.security">安全</a>
+          <a href="index.html#pricing" data-i18n="nav.pricing">方案</a>
+          <a href="faq.html" class="active" data-i18n="nav.faq">常見問題</a>
+          <a href="index.html#download" class="btn btn-primary" data-i18n="nav.download">下載</a>
+          <button class="lang-toggle" aria-label="切換語言">EN</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="faq-hero">
+      <div class="container">
+        <a href="index.html" class="back-link" data-i18n="common.backHome">← 返回首頁</a>
+        <h1><span class="gradient-text" data-i18n="faqpage.title">常見問題</span></h1>
+        <p style="color: rgba(255,255,255,0.7); font-size: 1.125rem;" data-i18n="faqpage.subtitle">
+          關於 ArcSign 的所有疑問，都能在這裡找到答案
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQ Content -->
+    <section class="faq-content">
+      <div class="container">
+
+        <!-- Category: Basic -->
+        <div class="faq-category">
+          <h2 data-i18n="faqpage.cat.basic">基本問題</h2>
+          <div class="faq-page-list">
+            <div class="faq-page-item">
+              <button class="faq-page-question">
+                <span data-i18n="faqpage.basic.q1">ArcSign 是什麼？</span>
+                <span class="icon">+</span>
+              </button>
+              <div class="faq-page-answer">
+                <div class="faq-page-answer-content">
+                  <p data-i18n-html="faqpage.basic.a1.p1">ArcSign 是一個<strong>免費的 USB 冷錢包應用程式</strong>。它將你的私鑰存儲在 USB 隨身碟上，而不是電腦硬碟中，大幅降低被惡意軟體竊取的風險。</p>
+                  <p data-i18n="faqpage.basic.a1.p2">ArcSign 支援多條區塊鏈（Ethereum、BSC、Polygon 等），並透過 WalletConnect 讓你可以安全地連接到各種 dApp。</p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-page-item">
+              <button class="faq-page-question">
+                <span data-i18n="faqpage.basic.q2">ArcSign 和 MetaMask 有什麼不同？</span>
+                <span class="icon">+</span>
+              </button>
+              <div class="faq-page-answer">
+                <div class="faq-page-answer-content">
+                  <p data-i18n-html="faqpage.basic.a2.p1">最大的差別在於<strong>私鑰存儲位置</strong>：</p>
+                  <p data-i18n="faqpage.basic.a2.p2">• MetaMask 把私鑰存在電腦硬碟，任何能讀取檔案的惡意軟體都可能竊取</p>
+                  <p data-i18n="faqpage.basic.a2.p3">• ArcSign 把私鑰存在 USB 隨身碟，拔掉就是冷錢包，攻擊者無法存取不存在的檔案</p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-page-item">
+              <button class="faq-page-question">
+                <span data-i18n="faqpage.basic.q3">ArcSign 是硬體錢包等級嗎？</span>
+                <span class="icon">+</span>
+              </button>
+              <div class="faq-page-answer">
+                <div class="faq-page-answer-content">
+                  <p data-i18n-html="faqpage.basic.a3.p1"><strong>不是，ArcSign 是「強化版軟體錢包」</strong>。核心差異是私鑰存在 USB 而不是電腦硬碟，拔掉 USB 後駭客無法存取。但簽名仍在電腦完成，無法達到硬體錢包的完全隔離。</p>
+                  <p data-i18n-html="faqpage.basic.a3.p2"><strong>定位：</strong>比 MetaMask 更安全，比硬體錢包更便宜（免費）。大額長期儲存建議搭配硬體錢包使用。</p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-page-item">
+              <button class="faq-page-question">
+                <span data-i18n="faqpage.basic.q4">支援哪些作業系統？</span>
+                <span class="icon">+</span>
+              </button>
+              <div class="faq-page-answer">
+                <div class="faq-page-answer-content">
+                  <p data-i18n-html="faqpage.basic.a4">目前支援 <strong>macOS</strong>（Intel 和 Apple Silicon）。Windows 和 Linux 版本即將推出。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category: Security -->
+        <div class="faq-category">
+          <h2 data-i18n="faqpage.cat.security">安全相關</h2>
+          <div class="faq-page-list">
+            <div class="faq-page-item">
+              <button class="faq-page-question">
+                <span data-i18n="faqpage.security.q1">ArcSign 安全嗎？怎麼確保沒有後門？</span>
+                <span class="icon">+</span>
+              </button>
+              <div class="faq-page-answer">
+                <div class="faq-page-answer-content">
+                  <p data-i18n-html="faqpage.security.a1.p1">ArcSign 採用<strong>業界頂級的加密標準</strong>保護你的私鑰，安全性不輸專業級產品。</p>
+                  <p data-i18n-html="faqpage.security.a1.p2">最重要的是：<strong>私鑰永遠不會離開你的 USB 隨身碟</strong>，也不會傳送到任何伺服器。拔掉 USB，駭客就無法存取你的私鑰。</p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-page-item">
+              <button class="faq-page-question">
+                <span data-i18n="faqpage.security.q2">如果 USB 壞掉或遺失怎麼辦？</span>
+                <span class="icon">+</span>
+              </button>
+              <div class="faq-page-answer">
+                <div class="faq-page-answer-content">
+                  <p data-i18n-html="faqpage.security.a2.p1">ArcSign 提供<strong>兩種備份方式</strong>：</p>
+                  <p data-i18n-html="faqpage.security.a2.p2">• <strong>助記詞備份</strong>：將 12 或 24 個英文單詞抄寫在紙上，多份異地保存。即使 USB 損壞，你可以用助記詞在 ArcSign 或任何支援 BIP39 的錢包恢復資產。</p>
+                  <p data-i18n-html="faqpage.security.a2.p3">• <strong>加密檔案備份</strong>：直接複製 USB 內的錢包資料夾到另一個 USB 或安全位置。檔案已加密，只有知道密碼的人才能使用。這種方式更方便，且不用擔心助記詞外洩。</p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-page-item">
+              <button class="faq-page-question">
+                <span data-i18n="faqpage.security.q3">忘記密碼怎麼辦？</span>
+                <span class="icon">+</span>
+              </button>
+              <div class="faq-page-answer">
+                <div class="faq-page-answer-content">
+                  <p data-i18n-html="faqpage.security.a3.p1">ArcSign 不儲存你的密碼，所以<strong>無法幫你重設密碼</strong>。但如果你有備份助記詞，可以用助記詞重新匯入錢包並設定新密碼。</p>
+                  <p data-i18n="faqpage.security.a3.p2">這就是為什麼我們反覆強調備份助記詞的重要性。</p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-page-item">
+              <button class="faq-page-question">
+                <span data-i18n="faqpage.security.q4">什麼是詐騙代幣過濾？</span>
+                <span class="icon">+</span>
+              </button>
+              <div class="faq-page-answer">
+                <div class="faq-page-answer-content">
+                  <p data-i18n-html="faqpage.security.a4.p1">有些詐騙者會空投假代幣到你的錢包，試圖誘騙你點擊惡意網站。ArcSign 會<strong>自動隱藏這些可疑代幣</strong>，只顯示已知的合法代幣。</p>
+                  <p data-i18n="faqpage.security.a4.p2">你隨時可以選擇查看被過濾的代幣。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category: Features -->
+        <div class="faq-category">
+          <h2 data-i18n="faqpage.cat.features">功能相關</h2>
+          <div class="faq-page-list">
+            <div class="faq-page-item">
+              <button class="faq-page-question">
+                <span data-i18n="faqpage.features.q1">什麼是 WalletConnect？怎麼使用？</span>
+                <span class="icon">+</span>
+              </button>
+              <div class="faq-page-answer">
+                <div class="faq-page-answer-content">
+                  <p data-i18n-html="faqpage.features.a1.p1">WalletConnect 是一個<strong>開放協議</strong>，讓你的錢包可以安全連接到各種 dApp（如 Uniswap、OpenSea、PancakeSwap）。</p>
+                  <p data-i18n="faqpage.features.a1.p2">使用方式很簡單：在 dApp 選擇「WalletConnect」連接方式，然後在 ArcSign 中貼上連接連結即可。所有交易都會在 ArcSign 中確認，確保你的私鑰安全。</p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-page-item">
+              <button class="faq-page-question">
+                <span data-i18n="faqpage.features.q2">ArcSign 支援哪些 dApp？</span>
+                <span class="icon">+</span>
+              </button>
+              <div class="faq-page-answer">
+                <div class="faq-page-answer-content">
+                  <p data-i18n-html="faqpage.features.a2.p1">ArcSign 透過 WalletConnect 支援<strong>所有主流 dApp</strong>，包括但不限於：</p>
+                  <p data-i18n="faqpage.features.a2.p2">• DEX：Uniswap、PancakeSwap、SushiSwap</p>
+                  <p data-i18n="faqpage.features.a2.p3">• NFT：OpenSea、Blur、LooksRare</p>
+                  <p data-i18n="faqpage.features.a2.p4">• DeFi：Aave、Compound、Lido</p>
+                  <p data-i18n="faqpage.features.a2.p5">只要 dApp 支援 WalletConnect 連接方式，你就可以使用 ArcSign。</p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-page-item">
+              <button class="faq-page-question">
+                <span data-i18n="faqpage.features.q3">Swap 功能會收手續費嗎？</span>
+                <span class="icon">+</span>
+              </button>
+              <div class="faq-page-answer">
+                <div class="faq-page-answer-content">
+                  <p data-i18n-html="faqpage.features.a3.p1"><strong>目前完全免費！</strong>你只需支付區塊鏈網路的 Gas Fee。</p>
+                  <p data-i18n-html="faqpage.features.a3.p2">未來我們將推出「智能路由」功能，整合更多聚合器自動搜尋最佳交易路徑。該功能會收取<strong>固定的低手續費</strong>（非百分比），比其他軟體錢包收取 0.5%~1% 的交易手續費便宜許多。</p>
+                  <p data-i18n-html="faqpage.features.a3.p3">現有的基本 Swap 功能將<strong>維持免費</strong>。</p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-page-item">
+              <button class="faq-page-question">
+                <span data-i18n="faqpage.features.q4">支援哪些區塊鏈？</span>
+                <span class="icon">+</span>
+              </button>
+              <div class="faq-page-answer">
+                <div class="faq-page-answer-content">
+                  <p data-i18n="faqpage.features.a4.p1">目前支援的區塊鏈包括：</p>
+                  <p data-i18n="faqpage.features.a4.p2">• Ethereum (ETH)</p>
+                  <p data-i18n="faqpage.features.a4.p3">• BNB Smart Chain (BSC)</p>
+                  <p data-i18n="faqpage.features.a4.p4">• Polygon (MATIC)</p>
+                  <p data-i18n="faqpage.features.a4.p5">• Arbitrum One</p>
+                  <p data-i18n="faqpage.features.a4.p6">• Optimism</p>
+                  <p data-i18n="faqpage.features.a4.p7">• Base</p>
+                  <p data-i18n="faqpage.features.a4.p8">我們會持續添加更多鏈的支援。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category: Membership -->
+        <div class="faq-category">
+          <h2 data-i18n="faqpage.cat.membership">會員與付費</h2>
+          <div class="faq-page-list">
+            <div class="faq-page-item">
+              <button class="faq-page-question">
+                <span data-i18n="faqpage.membership.q1">免費版有什麼限制？</span>
+                <span class="icon">+</span>
+              </button>
+              <div class="faq-page-answer">
+                <div class="faq-page-answer-content">
+                  <p data-i18n-html="faqpage.membership.a1.p1">免費版可以使用 <strong>1 個錢包</strong>，其他所有功能都完整開放：</p>
+                  <p data-i18n="faqpage.membership.a1.p2">• USB 離線存儲</p>
+                  <p data-i18n="faqpage.membership.a1.p3">• 多鏈支援</p>
+                  <p data-i18n="faqpage.membership.a1.p4">• Token Swap</p>
+                  <p data-i18n="faqpage.membership.a1.p5">• WalletConnect</p>
+                  <p data-i18n="faqpage.membership.a1.p6">• 交易歷史</p>
+                  <p data-i18n="faqpage.membership.a1.p7">對於大多數用戶來說，免費版已經足夠。</p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-page-item">
+              <button class="faq-page-question">
+                <span data-i18n="faqpage.membership.q2">Pro 會員的 NFT 是什麼？</span>
+                <span class="icon">+</span>
+              </button>
+              <div class="faq-page-answer">
+                <div class="faq-page-answer-content">
+                  <p data-i18n="faqpage.membership.a2.p1">Pro 會員資格以 BSC 鏈上的 NFT 形式存在。購買後，NFT 會鑄造到你的錢包地址。</p>
+                  <p data-i18n-html="faqpage.membership.a2.p2">這代表你的會員資格是<strong>真正屬於你的數位資產</strong>，可以轉讓、出售或保留。每個 NFT 增加 3 個錢包配額（1 NFT = 4 個錢包）。</p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-page-item">
+              <button class="faq-page-question">
+                <span data-i18n="faqpage.membership.q3">如何購買 Pro 會員？</span>
+                <span class="icon">+</span>
+              </button>
+              <div class="faq-page-answer">
+                <div class="faq-page-answer-content">
+                  <p data-i18n="faqpage.membership.a3.p1">在 ArcSign 應用程式中：</p>
+                  <p data-i18n="faqpage.membership.a3.p2">1. 進入「設定」→「會員資格」</p>
+                  <p data-i18n="faqpage.membership.a3.p3">2. 選擇要購買的 NFT 數量</p>
+                  <p data-i18n="faqpage.membership.a3.p4">3. 使用 USDT (BSC) 完成支付</p>
+                  <p data-i18n="faqpage.membership.a3.p5">4. NFT 會自動鑄造到你的錢包</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Box -->
+        <div class="contact-box">
+          <h3 data-i18n="faqpage.contact.title">找不到你的問題？</h3>
+          <p data-i18n="faqpage.contact.desc">歡迎加入我們的社群，我們會盡快回覆你的問題</p>
+          <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+            <a href="#" class="btn btn-secondary">Telegram</a>
+            <a href="#" class="btn btn-secondary">Discord</a>
+            <a href="#" class="btn btn-secondary">Twitter</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-mission">
+          <h4 data-i18n="footer.mission.title">我們的信念</h4>
+          <p data-i18n="footer.mission.desc">安全存儲加密資產不該是特權。ArcSign 讓每個人都能用現有的 USB 隨身碟，獲得更高等級的安全保護。</p>
+        </div>
+        <div class="footer-content">
+          <div class="footer-brand">
+            <span class="logo">Arc</span><span class="logo-sign">Sign</span>
+            <p data-i18n="footer.brand.desc">免費的 USB 冷錢包 — 拔掉就安全，連接所有 dApp</p>
+          </div>
+          <div class="footer-links">
+            <div class="footer-column">
+              <h4 data-i18n="footer.product">產品</h4>
+              <a href="index.html#features" data-i18n="footer.product.features">功能介紹</a>
+              <a href="index.html#security" data-i18n="footer.product.security">安全機制</a>
+              <a href="index.html#pricing" data-i18n="footer.product.pricing">方案比較</a>
+              <a href="enterprise.html" data-i18n="footer.product.enterprise">企業方案</a>
+              <a href="index.html#download" data-i18n="footer.product.download">下載</a>
+            </div>
+            <div class="footer-column">
+              <h4 data-i18n="footer.resources">資源</h4>
+              <a href="tutorial.html" data-i18n="footer.resources.tutorial">使用教學</a>
+              <a href="faq.html" data-i18n="footer.resources.faq">常見問題</a>
+              <a href="changelog.html" data-i18n="footer.resources.changelog">更新日誌</a>
+              <a href="whitepaper.html" data-i18n="footer.resources.whitepaper">白皮書</a>
+            </div>
+            <div class="footer-column">
+              <h4 data-i18n="footer.community">社群</h4>
+              <a href="#">Telegram</a>
+              <a href="#">Twitter</a>
+              <a href="#">Discord</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p data-i18n="footer.copyright">&copy; 2025 ArcSign. All rights reserved.</p>
+          <div class="footer-legal">
+            <a href="#" data-i18n="footer.legal.privacy">隱私政策</a>
+            <a href="#" data-i18n="footer.legal.terms">服務條款</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="i18n.js"></script>
+    <script src="script.js"></script>
+    <script>
+      // FAQ accordion functionality for this page
+      document.querySelectorAll('.faq-page-question').forEach(button => {
+        button.addEventListener('click', () => {
+          const item = button.parentElement;
+          item.classList.toggle('active');
+        });
+      });
+    </script>
+  </body>
+</html>

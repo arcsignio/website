@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BPWXQLMPZ6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-BPWXQLMPZ6');
+    </script>
+    <title>Changelog - ArcSign</title>
+    <meta
+      name="description"
+      content="ArcSign version history - Learn about the latest features and improvements."
+    />
+    <link rel="canonical" href="https://arcsign.io/changelog.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://arcsign.io/changelog.html" />
+    <meta property="og:title" content="Changelog - ArcSign" />
+    <meta property="og:description" content="ArcSign version history - Learn about the latest features and improvements." />
+    <meta property="og:image" content="https://arcsign.io/assets/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .changelog-hero {
+        padding: 120px 0 60px;
+        background: linear-gradient(135deg, #0a0a0a 0%, #0f2b46 100%);
+      }
+      .changelog-hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+      .changelog-content {
+        padding: 60px 0;
+      }
+      .version-item {
+        margin-bottom: 48px;
+        padding-bottom: 48px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .version-item:last-child {
+        border-bottom: none;
+      }
+      .version-header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+      }
+      .version-number {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #fff;
+      }
+      .version-date {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.875rem;
+      }
+      .version-tag {
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+      .tag-latest {
+        background: linear-gradient(135deg, #2dd4bf 0%, #0d9488 100%);
+        color: #fff;
+      }
+      .tag-beta {
+        background: rgba(245, 158, 11, 0.2);
+        color: #f59e0b;
+        border: 1px solid rgba(245, 158, 11, 0.3);
+      }
+      .tag-release {
+        background: rgba(16, 185, 129, 0.2);
+        color: #10b981;
+        border: 1px solid rgba(16, 185, 129, 0.3);
+      }
+      .change-category {
+        margin-bottom: 20px;
+      }
+      .change-category h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .change-category h3.new {
+        color: #10b981;
+      }
+      .change-category h3.improved {
+        color: #2dd4bf;
+      }
+      .change-category h3.fixed {
+        color: #f59e0b;
+      }
+      .change-category h3.security {
+        color: #ef4444;
+      }
+      .change-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .change-list li {
+        padding: 8px 0 8px 24px;
+        position: relative;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.6;
+      }
+      .change-list li::before {
+        content: "•";
+        position: absolute;
+        left: 8px;
+        color: rgba(255, 255, 255, 0.3);
+      }
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        margin-bottom: 20px;
+        transition: color 0.2s;
+      }
+      .back-link:hover {
+        color: #fff;
+      }
+      .roadmap-section {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        padding: 32px;
+        margin-top: 60px;
+      }
+      .roadmap-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 24px;
+        color: #fff;
+      }
+      .roadmap-item {
+        display: flex;
+        gap: 16px;
+        padding: 16px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .roadmap-item:last-child {
+        border-bottom: none;
+      }
+      .roadmap-status {
+        width: 100px;
+        flex-shrink: 0;
+      }
+      .roadmap-status span {
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+      .status-planned {
+        background: rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.7);
+      }
+      .status-progress {
+        background: rgba(59, 130, 246, 0.2);
+        color: #2dd4bf;
+      }
+      .status-soon {
+        background: rgba(16, 185, 129, 0.2);
+        color: #10b981;
+      }
+      .roadmap-content h4 {
+        color: #fff;
+        margin-bottom: 4px;
+      }
+      .roadmap-content p {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.875rem;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="container">
+        <a href="index.html" class="nav-brand">
+          <img src="assets/logo.png" alt="ArcSign Logo" class="nav-logo" />
+          <span class="logo">Arc</span><span class="logo-sign">Sign</span>
+        </a>
+        <div class="nav-links">
+          <a href="index.html#features" data-i18n="nav.features">功能</a>
+          <a href="index.html#security" data-i18n="nav.security">安全</a>
+          <a href="index.html#pricing" data-i18n="nav.pricing">方案</a>
+          <a href="faq.html" data-i18n="nav.faq">常見問題</a>
+          <a href="index.html#download" class="btn btn-primary" data-i18n="nav.download">下載</a>
+          <button class="lang-toggle" aria-label="切換語言">EN</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="changelog-hero">
+      <div class="container">
+        <a href="index.html" class="back-link" data-i18n="common.backHome">← 返回首頁</a>
+        <h1><span class="gradient-text" data-i18n="changelog.title">更新日誌</span></h1>
+        <p style="color: rgba(255,255,255,0.7); font-size: 1.125rem;" data-i18n="changelog.subtitle">
+          追蹤 ArcSign 的每一次進化
+        </p>
+      </div>
+    </section>
+
+    <!-- Changelog Content -->
+    <section class="changelog-content">
+      <div class="container">
+
+        <!-- Version 1.2.0 -->
+        <div class="version-item">
+          <div class="version-header">
+            <span class="version-number">v1.2.0</span>
+            <span class="version-tag tag-latest" data-i18n="changelog.tag.latest">最新版</span>
+            <span class="version-date" data-i18n="changelog.v120.date">2026 年 3 月 3 日</span>
+          </div>
+          <div class="change-category">
+            <h3 class="new" data-i18n="changelog.cat.new">✨ 新功能</h3>
+            <ul class="change-list">
+              <li data-i18n="changelog.v120.new.item1">首次使用 Onboarding — 6 步驟導引流程</li>
+              <li data-i18n="changelog.v120.new.item2">OTA 自動更新 UI — 自訂更新對話框</li>
+              <li data-i18n="changelog.v120.new.item3">匿名活躍用戶追蹤 — HMAC 簽名 + IP 去重</li>
+              <li data-i18n="changelog.v120.new.item4">GA4 下載追蹤</li>
+              <li data-i18n="changelog.v120.new.item5">Windows / Linux 三平台一鍵安裝腳本</li>
+            </ul>
+          </div>
+          <div class="change-category">
+            <h3 class="improved" data-i18n="changelog.cat.improved">🔧 改進</h3>
+            <ul class="change-list">
+              <li data-i18n="changelog.v120.improved.item1">鏈支援精簡至 22 條</li>
+              <li data-i18n="changelog.v120.improved.item2">KyberSwap 價格影響計算修正</li>
+              <li data-i18n="changelog.v120.improved.item3">設定頁開發者模式卡片樣式統一</li>
+            </ul>
+          </div>
+          <div class="change-category">
+            <h3 class="fixed" data-i18n="changelog.cat.security">🔒 安全</h3>
+            <ul class="change-list">
+              <li data-i18n="changelog.v120.security.item1">修復 22 個安全漏洞</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Version 1.1.2 -->
+        <div class="version-item">
+          <div class="version-header">
+            <span class="version-number">v1.1.2</span>
+            <span class="version-tag tag-release" data-i18n="changelog.tag.release">正式版</span>
+            <span class="version-date" data-i18n="changelog.v112.date">2026 年 2 月 9 日</span>
+          </div>
+          <div class="change-category">
+            <h3 class="improved" data-i18n="changelog.cat.improved">🔧 改進</h3>
+            <ul class="change-list">
+              <li data-i18n="changelog.v112.improved.item1">Session Mode 文件更新 — 完善開發者模式使用說明</li>
+              <li data-i18n="changelog.v112.improved.item2">Landing Page 開發者頁面 — 新增 Session Mode 功能說明區塊</li>
+            </ul>
+          </div>
+          <div class="change-category">
+            <h3 class="fixed" data-i18n="changelog.cat.fixed">🐛 修復</h3>
+            <ul class="change-list">
+              <li data-i18n="changelog.v112.fixed.item1">修正 Hardhat 設定範例 — arcsign 設定應放在 network 內而非頂層</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Version 1.1.1 -->
+        <div class="version-item">
+          <div class="version-header">
+            <span class="version-number">v1.1.1</span>
+            <span class="version-tag tag-release" data-i18n="changelog.tag.release">正式版</span>
+            <span class="version-date" data-i18n="changelog.v111.date">2025 年 2 月 6 日</span>
+          </div>
+          <div class="change-category">
+            <h3 class="new" data-i18n="changelog.cat.new">✨ 新功能</h3>
+            <ul class="change-list">
+              <li data-i18n="changelog.v111.new.item1">交易歷史白名單過濾 — 自動過濾不在 CoinGecko 白名單內的代幣和 NFT</li>
+            </ul>
+          </div>
+          <div class="change-category">
+            <h3 class="fixed" data-i18n="changelog.cat.fixed">🐛 修復</h3>
+            <ul class="change-list">
+              <li data-i18n="changelog.v111.fixed.item1">RPC 多端點備援 — 解決 HTTP 429 rate limit 導致廣播失敗的問題</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Version 1.1.0 -->
+        <div class="version-item">
+          <div class="version-header">
+            <span class="version-number">v1.1.0</span>
+            <span class="version-tag tag-release" data-i18n="changelog.tag.release">正式版</span>
+            <span class="version-date" data-i18n="changelog.v110.date">2025 年 2 月 6 日</span>
+          </div>
+          <div class="change-category">
+            <h3 class="new" data-i18n="changelog.cat.new">✨ 新功能</h3>
+            <ul class="change-list">
+              <li data-i18n="changelog.v110.new.item1">開發者模式 — 智能合約開發者安全簽名方案</li>
+              <li data-i18n="changelog.v110.new.item2">@arcsign/hardhat-plugin — Hardhat 官方整合套件</li>
+              <li data-i18n="changelog.v110.new.item3">Block Explorer API Key 管理 — 自動注入 Etherscan、BSCScan 等 API Key</li>
+              <li data-i18n="changelog.v110.new.item4">Session 授權模式 — 測試網自動簽名，加速開發流程</li>
+              <li data-i18n="changelog.v110.new.item5">開發者簽名歷史 — 持久化儲存，支援 Block Explorer 連結</li>
+            </ul>
+          </div>
+          <div class="change-category">
+            <h3 class="improved" data-i18n="changelog.cat.improved">🔧 改進</h3>
+            <ul class="change-list">
+              <li data-i18n="changelog.v110.improved.item1">WebSocket 協議擴展 — 支援 EIP-191、EIP-712 簽名</li>
+              <li data-i18n="changelog.v110.improved.item2">開發者 UI — 獨立頁面設計，與一般用戶模式分離</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Version 1.0.0 -->
+        <div class="version-item">
+          <div class="version-header">
+            <span class="version-number">v1.0.0</span>
+            <span class="version-tag tag-release" data-i18n="changelog.tag.release">正式版</span>
+            <span class="version-date" data-i18n="changelog.v100.date">2025 年 1 月 26 日</span>
+          </div>
+          <div class="change-category">
+            <h3 class="new" data-i18n="changelog.cat.release">🎉 正式發布</h3>
+            <ul class="change-list">
+              <li data-i18n="changelog.v100.release.item1">ArcSign 正式發布 1.0.0 版本</li>
+              <li data-i18n="changelog.v100.release.item2">企業解決方案頁面 — 多簽錢包、層級授權功能預告</li>
+              <li data-i18n="changelog.v100.release.item3">版本管理機制 — 統一版本號同步工具</li>
+            </ul>
+          </div>
+          <div class="change-category">
+            <h3 class="improved" data-i18n="changelog.cat.improved">🔧 改進</h3>
+            <ul class="change-list">
+              <li data-i18n="changelog.v100.improved.item1">跨平台支援 (Windows、macOS、Linux)</li>
+              <li data-i18n="changelog.v100.improved.item2">優化 WalletConnect 連接穩定性</li>
+              <li data-i18n="changelog.v100.improved.item3">改進 FAQ 和使用教學文件</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Version 0.5.0 -->
+        <div class="version-item">
+          <div class="version-header">
+            <span class="version-number">v0.5.0</span>
+            <span class="version-date" data-i18n="changelog.v050.date">2025 年 1 月 23 日</span>
+          </div>
+          <div class="change-category">
+            <h3 class="new" data-i18n="changelog.cat.new">✨ 新功能</h3>
+            <ul class="change-list">
+              <li data-i18n="changelog.v050.new.item1">WalletConnect v2 完整整合 — 連接 Uniswap、OpenSea 等所有支援的 dApp</li>
+              <li data-i18n="changelog.v050.new.item2">支援 eth_sendTransaction、personal_sign、eth_signTypedData_v4 簽名方法</li>
+              <li data-i18n="changelog.v050.new.item3">Session 管理介面 — 查看和管理所有 dApp 連接</li>
+              <li data-i18n="changelog.v050.new.item4">簽名狀態即時通知</li>
+              <li data-i18n="changelog.v050.new.item5">Staking 功能 — 支援 Lido、Ankr、ether.fi 等協議</li>
+              <li data-i18n="changelog.v050.new.item6">最低質押金額驗證</li>
+            </ul>
+          </div>
+          <div class="change-category">
+            <h3 class="improved" data-i18n="changelog.cat.improved">🔧 改進</h3>
+            <ul class="change-list">
+              <li data-i18n="changelog.v050.improved.item1">優化 Landing Page UI 設計</li>
+              <li data-i18n="changelog.v050.improved.item2">改進錢包鎖定機制 — 鎖定的錢包完全阻擋所有操作</li>
+              <li data-i18n="changelog.v050.improved.item3">調整會員錢包額度公式 (1 + NFT × 3)</li>
+              <li data-i18n="changelog.v050.improved.item4">Session token 取代 appPassword 認證方式</li>
+            </ul>
+          </div>
+          <div class="change-category">
+            <h3 class="fixed" data-i18n="changelog.cat.fixed">🐛 修復</h3>
+            <ul class="change-list">
+              <li data-i18n="changelog.v050.fixed.item1">修復 personal_sign 簽名驗證失敗問題</li>
+              <li data-i18n="changelog.v050.fixed.item2">修復 session recovery 無限循環</li>
+              <li data-i18n="changelog.v050.fixed.item3">修復 wallet context 持久化問題</li>
+              <li data-i18n="changelog.v050.fixed.item4">修復 estimate_fee 缺少 sessionToken 參數</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Version 0.4.0 -->
+        <div class="version-item">
+          <div class="version-header">
+            <span class="version-number">v0.4.0</span>
+            <span class="version-date" data-i18n="changelog.v040.date">2025 年 1 月 10 日</span>
+          </div>
+          <div class="change-category">
+            <h3 class="new" data-i18n="changelog.cat.new">✨ 新功能</h3>
+            <ul class="change-list">
+              <li data-i18n="changelog.v040.new.item1">Pro 會員 NFT 系統 — 購買 NFT 解鎖更多錢包額度</li>
+              <li data-i18n="changelog.v040.new.item2">會員狀態頁面與購買流程</li>
+              <li data-i18n="changelog.v040.new.item3">Swap 功能優化 — 更好的價格顯示和滑點控制</li>
+            </ul>
+          </div>
+          <div class="change-category">
+            <h3 class="improved" data-i18n="changelog.cat.improved">🔧 改進</h3>
+            <ul class="change-list">
+              <li data-i18n="changelog.v040.improved.item1">改進交易歷史載入速度</li>
+              <li data-i18n="changelog.v040.improved.item2">優化資產餘額更新機制</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Version 0.3.0 -->
+        <div class="version-item">
+          <div class="version-header">
+            <span class="version-number">v0.3.0</span>
+            <span class="version-date" data-i18n="changelog.v030.date">2024 年 12 月 20 日</span>
+          </div>
+          <div class="change-category">
+            <h3 class="new" data-i18n="changelog.cat.new">✨ 新功能</h3>
+            <ul class="change-list">
+              <li data-i18n="changelog.v030.new.item1">Token Swap 功能 — 一鍵兌換任意代幣</li>
+              <li data-i18n="changelog.v030.new.item2">詐騙代幣過濾 — 自動隱藏可疑代幣</li>
+              <li data-i18n="changelog.v030.new.item3">交易歷史記錄</li>
+              <li data-i18n="changelog.v030.new.item4">多語言支援（繁體中文、英文）</li>
+            </ul>
+          </div>
+          <div class="change-category">
+            <h3 class="security" data-i18n="changelog.cat.security">🔒 安全</h3>
+            <ul class="change-list">
+              <li data-i18n="changelog.v030.security.item1">實作閒置自動鎖定機制</li>
+              <li data-i18n="changelog.v030.security.item2">加強密碼輸入安全性</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Version 0.2.0 -->
+        <div class="version-item">
+          <div class="version-header">
+            <span class="version-number">v0.2.0</span>
+            <span class="version-date" data-i18n="changelog.v020.date">2024 年 12 月 1 日</span>
+          </div>
+          <div class="change-category">
+            <h3 class="new" data-i18n="changelog.cat.new">✨ 新功能</h3>
+            <ul class="change-list">
+              <li data-i18n="changelog.v020.new.item1">多鏈支援 — Ethereum、BSC、Polygon、Arbitrum、Optimism、Base</li>
+              <li data-i18n="changelog.v020.new.item2">發送和接收代幣功能</li>
+              <li data-i18n="changelog.v020.new.item3">資產總覽儀表板</li>
+              <li data-i18n="changelog.v020.new.item4">匯入現有錢包（助記詞）</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Version 0.1.0 -->
+        <div class="version-item">
+          <div class="version-header">
+            <span class="version-number">v0.1.0</span>
+            <span class="version-tag tag-beta" data-i18n="changelog.tag.beta">Beta</span>
+            <span class="version-date" data-i18n="changelog.v010.date">2024 年 11 月 15 日</span>
+          </div>
+          <div class="change-category">
+            <h3 class="new" data-i18n="changelog.cat.initial">✨ 初始版本</h3>
+            <ul class="change-list">
+              <li data-i18n="changelog.v010.initial.item1">USB 離線私鑰存儲</li>
+              <li data-i18n="changelog.v010.initial.item2">Argon2id 密鑰派生 + XChaCha20-Poly1305 加密</li>
+              <li data-i18n="changelog.v010.initial.item3">建立新錢包功能</li>
+              <li data-i18n="changelog.v010.initial.item4">基本的 Ethereum 支援</li>
+              <li data-i18n="changelog.v010.initial.item5">macOS (Apple Silicon) 版本</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Roadmap -->
+        <div class="roadmap-section">
+          <h2 data-i18n="changelog.roadmap.title">🚀 開發路線圖</h2>
+          <div class="roadmap-item">
+            <div class="roadmap-status">
+              <span class="status-soon" data-i18n="changelog.roadmap.status.soon">即將推出</span>
+            </div>
+            <div class="roadmap-content">
+              <h4 data-i18n="changelog.roadmap.item1.title">Mobile 版本（iOS / Android）</h4>
+              <p data-i18n="changelog.roadmap.item1.desc">將 USB 冷錢包體驗延伸至行動裝置</p>
+            </div>
+          </div>
+          <div class="roadmap-item">
+            <div class="roadmap-status">
+              <span class="status-progress" data-i18n="changelog.roadmap.status.progress">開發中</span>
+            </div>
+            <div class="roadmap-content">
+              <h4 data-i18n="changelog.roadmap.item2.title">交易可讀確認</h4>
+              <p data-i18n="changelog.roadmap.item2.desc">將交易內容解析成人類可讀的格式，減少盲簽風險</p>
+            </div>
+          </div>
+          <div class="roadmap-item">
+            <div class="roadmap-status">
+              <span class="status-progress" data-i18n="changelog.roadmap.status.progress">開發中</span>
+            </div>
+            <div class="roadmap-content">
+              <h4 data-i18n="changelog.roadmap.item3.title">風險警告系統</h4>
+              <p data-i18n="changelog.roadmap.item3.desc">識別高風險交易和惡意合約，提供安全警告</p>
+            </div>
+          </div>
+          <div class="roadmap-item">
+            <div class="roadmap-status">
+              <span class="status-planned" data-i18n="changelog.roadmap.status.planned">規劃中</span>
+            </div>
+            <div class="roadmap-content">
+              <h4 data-i18n="changelog.roadmap.item4.title">Hardware-backed Signing</h4>
+              <p data-i18n="changelog.roadmap.item4.desc">整合硬體安全模組，提供更高等級的簽名保護</p>
+            </div>
+          </div>
+          <div class="roadmap-item">
+            <div class="roadmap-status">
+              <span class="status-planned" data-i18n="changelog.roadmap.status.planned">規劃中</span>
+            </div>
+            <div class="roadmap-content">
+              <h4 data-i18n="changelog.roadmap.item5.title">更多區塊鏈支援</h4>
+              <p data-i18n="changelog.roadmap.item5.desc">Solana、Avalanche、Fantom 等</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-mission">
+          <h4 data-i18n="footer.mission.title">我們的信念</h4>
+          <p data-i18n="footer.mission.desc">安全存儲加密資產不該是特權。ArcSign 讓每個人都能用現有的 USB 隨身碟，獲得更高等級的安全保護。</p>
+        </div>
+        <div class="footer-content">
+          <div class="footer-brand">
+            <span class="logo">Arc</span><span class="logo-sign">Sign</span>
+            <p data-i18n="footer.brand.desc">免費的 USB 冷錢包 — 拔掉就安全，連接所有 dApp</p>
+          </div>
+          <div class="footer-links">
+            <div class="footer-column">
+              <h4 data-i18n="footer.product">產品</h4>
+              <a href="index.html#features" data-i18n="footer.product.features">功能介紹</a>
+              <a href="index.html#security" data-i18n="footer.product.security">安全機制</a>
+              <a href="index.html#pricing" data-i18n="footer.product.pricing">方案比較</a>
+              <a href="enterprise.html" data-i18n="footer.product.enterprise">企業方案</a>
+              <a href="index.html#download" data-i18n="footer.product.download">下載</a>
+            </div>
+            <div class="footer-column">
+              <h4 data-i18n="footer.resources">資源</h4>
+              <a href="tutorial.html" data-i18n="footer.resources.tutorial">使用教學</a>
+              <a href="faq.html" data-i18n="footer.resources.faq">常見問題</a>
+              <a href="changelog.html" data-i18n="footer.resources.changelog">更新日誌</a>
+              <a href="whitepaper.html" data-i18n="footer.resources.whitepaper">白皮書</a>
+            </div>
+            <div class="footer-column">
+              <h4 data-i18n="footer.community">社群</h4>
+              <a href="#">Telegram</a>
+              <a href="#">Twitter</a>
+              <a href="#">Discord</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p data-i18n="footer.copyright">&copy; 2025 ArcSign. All rights reserved.</p>
+          <div class="footer-legal">
+            <a href="#" data-i18n="footer.legal.privacy">隱私政策</a>
+            <a href="#" data-i18n="footer.legal.terms">服務條款</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="i18n.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

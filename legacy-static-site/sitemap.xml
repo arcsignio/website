@@ -1,0 +1,1187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Main Pages -->
+  <url>
+    <loc>https://arcsign.io/</loc>
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/faq.html</loc>
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/tutorial.html</loc>
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/whitepaper.html</loc>
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/pricing.html</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/developer.html</loc>
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/enterprise.html</loc>
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/changelog.html</loc>
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Blog Index Pages -->
+  <url>
+    <loc>https://arcsign.io/blog/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/index.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/index.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/index.html" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/index.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blog Articles (zh-TW + en with hreflang) -->
+  <url>
+    <loc>https://arcsign.io/blog/arcsign-beginner-setup-guide.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/arcsign-beginner-setup-guide.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/arcsign-beginner-setup-guide.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/arcsign-beginner-setup-guide.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/arcsign-beginner-setup-guide.html" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/arcsign-beginner-setup-guide.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/arcsign-pro-nft-membership.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/arcsign-pro-nft-membership.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/arcsign-pro-nft-membership.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/arcsign-pro-nft-membership.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/arcsign-pro-nft-membership.html" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/arcsign-pro-nft-membership.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/cold-vs-hot-wallet.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/cold-vs-hot-wallet.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/cold-vs-hot-wallet.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/cold-vs-hot-wallet.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/cold-vs-hot-wallet.html" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/cold-vs-hot-wallet.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/crypto-wallet-landscape-2026.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/crypto-wallet-landscape-2026.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/crypto-wallet-landscape-2026.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/crypto-wallet-landscape-2026.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/crypto-wallet-landscape-2026.html" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/crypto-wallet-landscape-2026.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/defi-security-trends-2026.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/defi-security-trends-2026.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/defi-security-trends-2026.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/defi-security-trends-2026.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/defi-security-trends-2026.html" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/defi-security-trends-2026.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/how-to-dex-swap-arcsign.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/how-to-dex-swap-arcsign.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/how-to-dex-swap-arcsign.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/how-to-dex-swap-arcsign.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/how-to-dex-swap-arcsign.html" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/how-to-dex-swap-arcsign.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/ledger-recover-controversy.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/ledger-recover-controversy.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/ledger-recover-controversy.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/ledger-recover-controversy.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/ledger-recover-controversy.html" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/ledger-recover-controversy.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/litellm-supply-chain-attack.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/litellm-supply-chain-attack.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/litellm-supply-chain-attack.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/litellm-supply-chain-attack.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/litellm-supply-chain-attack.html" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/litellm-supply-chain-attack.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/mlock-memory-protection.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/mlock-memory-protection.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/mlock-memory-protection.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/mlock-memory-protection.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/mlock-memory-protection.html" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/mlock-memory-protection.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/multi-chain-management.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/multi-chain-management.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/multi-chain-management.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/multi-chain-management.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/multi-chain-management.html" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/multi-chain-management.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/phishing-attack-prevention.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/phishing-attack-prevention.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/phishing-attack-prevention.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/phishing-attack-prevention.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/phishing-attack-prevention.html" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/phishing-attack-prevention.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/seed-phrase-backup-guide.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/seed-phrase-backup-guide.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/seed-phrase-backup-guide.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/seed-phrase-backup-guide.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/seed-phrase-backup-guide.html" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/seed-phrase-backup-guide.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/taiwan-crypto-regulation.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/taiwan-crypto-regulation.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/taiwan-crypto-regulation.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/taiwan-crypto-regulation.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/taiwan-crypto-regulation.html" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/taiwan-crypto-regulation.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/usb-backup-strategy.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/usb-backup-strategy.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/usb-backup-strategy.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/usb-backup-strategy.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/usb-backup-strategy.html" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/usb-backup-strategy.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/usb-cold-storage-vs-hardware-wallet-2026.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/usb-cold-storage-vs-hardware-wallet-2026.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/usb-cold-storage-vs-hardware-wallet-2026.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/usb-cold-storage-vs-hardware-wallet-2026.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/usb-cold-storage-vs-hardware-wallet-2026.html" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/usb-cold-storage-vs-hardware-wallet-2026.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/usb-cold-wallet-benefits.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/usb-cold-wallet-benefits.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/usb-cold-wallet-benefits.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/usb-cold-wallet-benefits.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/usb-cold-wallet-benefits.html" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/usb-cold-wallet-benefits.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/walletconnect-dapp-tutorial.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/walletconnect-dapp-tutorial.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/walletconnect-dapp-tutorial.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/walletconnect-dapp-tutorial.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/walletconnect-dapp-tutorial.html" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/walletconnect-dapp-tutorial.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/what-is-cold-storage.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/what-is-cold-storage.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/what-is-cold-storage.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/what-is-cold-storage.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/what-is-cold-storage.html" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/what-is-cold-storage.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/xor-encryption-explained.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/xor-encryption-explained.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/xor-encryption-explained.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/xor-encryption-explained.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/xor-encryption-explained.html" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/xor-encryption-explained.html" />
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/mpc-vs-hd-wallet.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/mpc-vs-hd-wallet.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/mpc-vs-hd-wallet.html" />
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/mpc-vs-hd-wallet.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/mpc-vs-hd-wallet.html" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/mpc-vs-hd-wallet.html" />
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/arcsign-windows-macos-setup.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/arcsign-windows-macos-setup.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/arcsign-windows-macos-setup.html" />
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/arcsign-windows-macos-setup.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/arcsign-windows-macos-setup.html" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/arcsign-windows-macos-setup.html" />
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Comparison Pages -->
+  <url>
+    <loc>https://arcsign.io/arcsign-vs-metamask.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/arcsign-vs-metamask.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/en/arcsign-vs-metamask.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/arcsign-vs-metamask.html" />
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/en/arcsign-vs-metamask.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/en/arcsign-vs-metamask.html" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/arcsign-vs-metamask.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/arcsign-vs-metamask.html" />
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/arcsign-vs-ledger.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/arcsign-vs-ledger.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/en/arcsign-vs-ledger.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/arcsign-vs-ledger.html" />
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/en/arcsign-vs-ledger.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/en/arcsign-vs-ledger.html" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/arcsign-vs-ledger.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/arcsign-vs-ledger.html" />
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blog Articles - Batch 4 (2026-04-02) -->
+  <url>
+    <loc>https://arcsign.io/blog/arcsign-vs-trezor.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/arcsign-vs-trezor.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/arcsign-vs-trezor.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/arcsign-vs-trezor.html" />
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/arcsign-vs-trezor.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/arcsign-vs-trezor.html" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/arcsign-vs-trezor.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/arcsign-vs-trezor.html" />
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/how-to-revoke-token-approvals.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/how-to-revoke-token-approvals.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/how-to-revoke-token-approvals.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/how-to-revoke-token-approvals.html" />
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/how-to-revoke-token-approvals.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/how-to-revoke-token-approvals.html" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/how-to-revoke-token-approvals.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/how-to-revoke-token-approvals.html" />
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/bitcoin-cold-storage-guide.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/bitcoin-cold-storage-guide.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/bitcoin-cold-storage-guide.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/bitcoin-cold-storage-guide.html" />
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/bitcoin-cold-storage-guide.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/bitcoin-cold-storage-guide.html" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/bitcoin-cold-storage-guide.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/bitcoin-cold-storage-guide.html" />
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/defi-beginner-guide-2026.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/defi-beginner-guide-2026.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/defi-beginner-guide-2026.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/defi-beginner-guide-2026.html" />
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/defi-beginner-guide-2026.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/defi-beginner-guide-2026.html" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/defi-beginner-guide-2026.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/defi-beginner-guide-2026.html" />
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/best-crypto-wallet-2026.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/best-crypto-wallet-2026.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/best-crypto-wallet-2026.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/best-crypto-wallet-2026.html" />
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/best-crypto-wallet-2026.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/best-crypto-wallet-2026.html" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/best-crypto-wallet-2026.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/best-crypto-wallet-2026.html" />
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/crypto-wallet-backup-guide.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/crypto-wallet-backup-guide.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/crypto-wallet-backup-guide.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/crypto-wallet-backup-guide.html" />
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/crypto-wallet-backup-guide.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/crypto-wallet-backup-guide.html" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/crypto-wallet-backup-guide.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/crypto-wallet-backup-guide.html" />
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/private-key-management-best-practices.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/private-key-management-best-practices.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/private-key-management-best-practices.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/private-key-management-best-practices.html" />
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/private-key-management-best-practices.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/private-key-management-best-practices.html" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/private-key-management-best-practices.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/private-key-management-best-practices.html" />
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Blog Articles - Batch 5 (2026-04-23) -->
+  <url>
+    <loc>https://arcsign.io/blog/aes256-encryption-simple.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/aes256-encryption-simple.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/aes256-encryption-simple.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/aes256-encryption-simple.html"/>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/aes256-encryption-simple.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/aes256-encryption-simple.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/aes256-encryption-simple.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/aes256-encryption-simple.html"/>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/arcsign-cross-chain-guide.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/arcsign-cross-chain-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/arcsign-cross-chain-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/arcsign-cross-chain-guide.html"/>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/arcsign-cross-chain-guide.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/arcsign-cross-chain-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/arcsign-cross-chain-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/arcsign-cross-chain-guide.html"/>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/arcsign-troubleshooting.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/arcsign-troubleshooting.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/arcsign-troubleshooting.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/arcsign-troubleshooting.html"/>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/arcsign-troubleshooting.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/arcsign-troubleshooting.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/arcsign-troubleshooting.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/arcsign-troubleshooting.html"/>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/arcsign-windows-linux-guide.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/arcsign-windows-linux-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/arcsign-windows-linux-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/arcsign-windows-linux-guide.html"/>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/arcsign-windows-linux-guide.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/arcsign-windows-linux-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/arcsign-windows-linux-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/arcsign-windows-linux-guide.html"/>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/asia-pacific-crypto-report.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/asia-pacific-crypto-report.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/asia-pacific-crypto-report.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/asia-pacific-crypto-report.html"/>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/asia-pacific-crypto-report.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/asia-pacific-crypto-report.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/asia-pacific-crypto-report.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/asia-pacific-crypto-report.html"/>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/clipboard-hijack-attack.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/clipboard-hijack-attack.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/clipboard-hijack-attack.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/clipboard-hijack-attack.html"/>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/clipboard-hijack-attack.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/clipboard-hijack-attack.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/clipboard-hijack-attack.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/clipboard-hijack-attack.html"/>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/crypto-regulation-global.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/crypto-regulation-global.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/crypto-regulation-global.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/crypto-regulation-global.html"/>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/crypto-regulation-global.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/crypto-regulation-global.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/crypto-regulation-global.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/crypto-regulation-global.html"/>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/defi-yield-comparison.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/defi-yield-comparison.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/defi-yield-comparison.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/defi-yield-comparison.html"/>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/defi-yield-comparison.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/defi-yield-comparison.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/defi-yield-comparison.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/defi-yield-comparison.html"/>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/eth-staking-arcsign.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/eth-staking-arcsign.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/eth-staking-arcsign.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/eth-staking-arcsign.html"/>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/eth-staking-arcsign.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/eth-staking-arcsign.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/eth-staking-arcsign.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/eth-staking-arcsign.html"/>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/exchange-hack-history.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/exchange-hack-history.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/exchange-hack-history.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/exchange-hack-history.html"/>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/exchange-hack-history.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/exchange-hack-history.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/exchange-hack-history.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/exchange-hack-history.html"/>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/gas-fee-optimization.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/gas-fee-optimization.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/gas-fee-optimization.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/gas-fee-optimization.html"/>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/gas-fee-optimization.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/gas-fee-optimization.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/gas-fee-optimization.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/gas-fee-optimization.html"/>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/key-derivation-bip39-44.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/key-derivation-bip39-44.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/key-derivation-bip39-44.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/key-derivation-bip39-44.html"/>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/key-derivation-bip39-44.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/key-derivation-bip39-44.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/key-derivation-bip39-44.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/key-derivation-bip39-44.html"/>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/ledger-vs-trezor-vs-arcsign.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/ledger-vs-trezor-vs-arcsign.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/ledger-vs-trezor-vs-arcsign.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/ledger-vs-trezor-vs-arcsign.html"/>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/ledger-vs-trezor-vs-arcsign.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/ledger-vs-trezor-vs-arcsign.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/ledger-vs-trezor-vs-arcsign.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/ledger-vs-trezor-vs-arcsign.html"/>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/nft-management-arcsign.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/nft-management-arcsign.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/nft-management-arcsign.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/nft-management-arcsign.html"/>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/nft-management-arcsign.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/nft-management-arcsign.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/nft-management-arcsign.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/nft-management-arcsign.html"/>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/polygon-bsc-swap-guide.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/polygon-bsc-swap-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/polygon-bsc-swap-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/polygon-bsc-swap-guide.html"/>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/polygon-bsc-swap-guide.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/polygon-bsc-swap-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/polygon-bsc-swap-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/polygon-bsc-swap-guide.html"/>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/sim-swap-attack-prevention.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/sim-swap-attack-prevention.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/sim-swap-attack-prevention.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/sim-swap-attack-prevention.html"/>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/sim-swap-attack-prevention.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/sim-swap-attack-prevention.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/sim-swap-attack-prevention.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/sim-swap-attack-prevention.html"/>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/social-engineering-crypto.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/social-engineering-crypto.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/social-engineering-crypto.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/social-engineering-crypto.html"/>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/social-engineering-crypto.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/social-engineering-crypto.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/social-engineering-crypto.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/social-engineering-crypto.html"/>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/stablecoin-storage-guide.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/stablecoin-storage-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/stablecoin-storage-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/stablecoin-storage-guide.html"/>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/stablecoin-storage-guide.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/stablecoin-storage-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/stablecoin-storage-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/stablecoin-storage-guide.html"/>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/supply-chain-attack-hardware-wallet.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/supply-chain-attack-hardware-wallet.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/supply-chain-attack-hardware-wallet.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/supply-chain-attack-hardware-wallet.html"/>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/supply-chain-attack-hardware-wallet.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/supply-chain-attack-hardware-wallet.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/supply-chain-attack-hardware-wallet.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/supply-chain-attack-hardware-wallet.html"/>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/token-approval-revoke.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/token-approval-revoke.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/token-approval-revoke.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/token-approval-revoke.html"/>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/token-approval-revoke.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/token-approval-revoke.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/token-approval-revoke.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/token-approval-revoke.html"/>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/why-free-wallet-safe.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/why-free-wallet-safe.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/why-free-wallet-safe.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/why-free-wallet-safe.html"/>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/why-free-wallet-safe.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/why-free-wallet-safe.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/why-free-wallet-safe.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/why-free-wallet-safe.html"/>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/zero-trust-wallet.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/zero-trust-wallet.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/zero-trust-wallet.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/zero-trust-wallet.html"/>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/zero-trust-wallet.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/zero-trust-wallet.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/zero-trust-wallet.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/zero-trust-wallet.html"/>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/web3-wallet-future.html</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/web3-wallet-future.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/web3-wallet-future.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/web3-wallet-future.html"/>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/web3-wallet-future.html</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/web3-wallet-future.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/web3-wallet-future.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/web3-wallet-future.html"/>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/erc20-token-management.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/erc20-token-management.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/erc20-token-management.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/erc20-token-management.html"/>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/erc20-token-management.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/erc20-token-management.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/erc20-token-management.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/erc20-token-management.html"/>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/xor-secret-sharing-deep-dive.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/xor-secret-sharing-deep-dive.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/xor-secret-sharing-deep-dive.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/xor-secret-sharing-deep-dive.html"/>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/xor-secret-sharing-deep-dive.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/xor-secret-sharing-deep-dive.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/xor-secret-sharing-deep-dive.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/xor-secret-sharing-deep-dive.html"/>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/crypto-inheritance-planning.html</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/crypto-inheritance-planning.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/crypto-inheritance-planning.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/crypto-inheritance-planning.html"/>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/crypto-inheritance-planning.html</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/crypto-inheritance-planning.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/crypto-inheritance-planning.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/crypto-inheritance-planning.html"/>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/address-poisoning-attack.html</loc>
+    <lastmod>2026-05-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/address-poisoning-attack.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/address-poisoning-attack.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/address-poisoning-attack.html"/>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/address-poisoning-attack.html</loc>
+    <lastmod>2026-05-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/address-poisoning-attack.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/address-poisoning-attack.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/address-poisoning-attack.html"/>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/blind-signing-risks.html</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/blind-signing-risks.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/blind-signing-risks.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/blind-signing-risks.html"/>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/blind-signing-risks.html</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/blind-signing-risks.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/blind-signing-risks.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/blind-signing-risks.html"/>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/wallet-drainer-toolkits-explained.html</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/wallet-drainer-toolkits-explained.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/wallet-drainer-toolkits-explained.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/wallet-drainer-toolkits-explained.html"/>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/wallet-drainer-toolkits-explained.html</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/wallet-drainer-toolkits-explained.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/wallet-drainer-toolkits-explained.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/wallet-drainer-toolkits-explained.html"/>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/eip-7702-delegation-risks.html</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/eip-7702-delegation-risks.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/eip-7702-delegation-risks.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/eip-7702-delegation-risks.html"/>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/eip-7702-delegation-risks.html</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/eip-7702-delegation-risks.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/eip-7702-delegation-risks.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/eip-7702-delegation-risks.html"/>
+  </url>
+
+  <url>
+    <loc>https://arcsign.io/blog/permit2-signature-phishing.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/permit2-signature-phishing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/permit2-signature-phishing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/permit2-signature-phishing.html"/>
+  </url>
+  <url>
+    <loc>https://arcsign.io/blog/en/permit2-signature-phishing.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://arcsign.io/blog/permit2-signature-phishing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcsign.io/blog/en/permit2-signature-phishing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcsign.io/blog/en/permit2-signature-phishing.html"/>
+  </url>
+
+</urlset>
