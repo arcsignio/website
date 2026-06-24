@@ -17,7 +17,7 @@ Uniswap's **Permit2**, deployed in 2022, rewrote that intuition. Permit2 turns a
 
 Between 2023 and 2026, **almost every successful [wallet drainer toolkit](/blog/wallet-drainer-toolkits-explained) that stole more than a million dollars used Permit2 phishing as its primary weapon**. Public reports in 2024 alone documented 20+ Permit / Permit2 phishing incidents above $500k each, totaling well over $200M.
 
-            Why Read This Carefully
+**Why Read This Carefully**
 
 If you've used Uniswap, 1inch, CoW Swap, Matcha, or OpenSea Seaport in the last year, you've already signed Permit2 authorizations. This post breaks down Permit2's three message structures, how attackers disguise them as innocuous "Sign in to claim" or "Verify ownership" prompts, and why ArcSign treats every EIP-712 message as an on-chain-transaction-grade decision.
 
@@ -75,7 +75,7 @@ PermitBatch:
 
 `2^160-1` is the maximum value of Permit2's amount field — about 1.46 × 10^48, far greater than any token's total supply. `2^48-1` as expiration corresponds to year ~89,000 AD. In plain English: **this signature lets the attacker pull any amount of any of these tokens from your wallet until the planet is gone**.
 
-            Why Permit2 Is More Dangerous Than Classic ERC-20 Approve
+Why Permit2 Is More Dangerous Than Classic ERC-20 Approve
 
 A classic `approve()` is an on-chain transaction: you see "Confirm transaction," you see a gas fee, Etherscan records it, and if you regret it you can send `approve(spender, 0)` to revoke. Permit2 is a **message signature**: no gas, no on-chain trail, Etherscan sees nothing — **and to revoke you still need to pay gas for a `lockdown()` on-chain transaction**. The whole risk model flips from "actively pay to confirm" to "silently authorize."
 
@@ -118,9 +118,9 @@ This variant is as dangerous as [EIP-7702 Sweeper delegation](/blog/eip-7702-del
 
 Permit2 is deployed at the **same address on every supported chain** — by design, so DApp developers have a consistent interface. But that means **a PermitBatch signed for Permit2 on Ethereum is technically valid for the same-address Permit2 on Optimism, Arbitrum, Base, etc.** — as long as the token name and nonce line up.
 
-Some drainer toolkits (later versions of [Inferno, Pink, Angel](/blog/wallet-drainer-toolkits-explained)) automate this: victim signs a PermitBatch on Ethereum, the attacker backend replays it across 6 chains within seconds. If the victim happens to hold the same tokens on an L2 (very common), those assets vanish in parallel.
+Some drainer toolkits (later versions of [Inferno, Pink, Angel](/blog/wallet-drainer-toolkits-explained)) automate this: victim signs a PermitBatch on Ethereum, the attacker backend replays it across 7 chains within seconds. If the victim happens to hold the same tokens on an L2 (very common), those assets vanish in parallel.
 
-            How Is Permit2 Different from EIP-2612 Permit?
+How Is Permit2 Different from EIP-2612 Permit?
 
 EIP-2612 Permit is built into individual ERC-20 tokens — only DAI, USDC, UNI, and a handful of others implement it. Permit2 is **a standalone contract** that works **with every ERC-20** (as long as you first send one `approve(max)` to the Permit2 contract). The attack surface of EIP-2612 is limited to specific tokens; Permit2's surface covers **every token you've ever swapped through any major DEX aggregator**. That's why Permit phishing losses jumped 5× the year Permit2 went live.
 
@@ -154,32 +154,27 @@ If any of those five is off, stop. **A legitimate swap does not need infinite al
 
 ArcSign treats EIP-712 message signing in the same pipeline as [blind signing](/blog/blind-signing-risks) and [EIP-7702 delegation](/blog/eip-7702-delegation-risks) — once a Permit2 message is detected, the signing UI enters **on-chain-transaction-grade** review:
 
-            1
-            Full Permit2 Decoding — Never Raw Hex
+**1. Full Permit2 Decoding — Never Raw Hex**
 
 The signing screen never shows `PermitBatch` plus a hex blob. ArcSign decodes the message into plain English: "You are about to authorize spender `0x7a2...e91` to drain [USDC: infinite / USDT: infinite / WETH: infinite / WBTC: infinite] from your wallet over the next [27,394 days / never expires]." A signature you can't read should never be a signature you confirm.
 
-            2
-            Auto-Flag Abnormal Parameters With a Full-Screen Warning
+**2. Auto-Flag Abnormal Parameters With a Full-Screen Warning**
 
 Any of these triggers a red full-screen warning that requires an explicit checkbox to bypass: (a) `amount` at or near `2^160-1`; (b) `expiration` more than current time + 1 year; (c) `sigDeadline` more than current time + 7 days; (d) PermitBatch containing ≥ 3 tokens; (e) `spender` is a contract deployed less than 30 days ago.
 
-            3
-            Spender Static Analysis and Blacklist Lookup
+**3. Spender Static Analysis and Blacklist Lookup**
 
 ArcSign's local engine runs immediate checks on the spender address: (a) match against known [drainer toolkit](/blog/wallet-drainer-toolkits-explained) infrastructure blacklists; (b) deployment age; (c) presence of repetitive `transferFrom` traffic (typical sweeper signature); (d) funds-flow correlation with known phishing relays. Any flag → full-screen warning.
 
-            4
-            Simulation: What Happens If This Signature Is Used
+**4. Simulation: What Happens If This Signature Is Used**
 
 Before you press Confirm, ArcSign simulates the outcome **if the attacker submitted this signature immediately**. The tokens and amounts that would leave your wallet are shown in red on the signing screen. If the simulation shows funds being drained — the signature is blocked outright.
 
-            5
-            Private Key Never Leaves USB; Full Message on the Cold Screen
+**5. Private Key Never Leaves USB; Full Message on the Cold Screen**
 
 The core of a Permit2 attack is "**signing the wrong message**" — keeping the private key on USB is not enough by itself. The signing interface itself must live on the cold side. ArcSign renders the full Permit2 decode, static analysis, and simulation results on the USB device's screen, integrated with [XOR three-shard key protection](/blog/xor-encryption-explained) and [mlock memory protection](/blog/mlock-memory-protection) for a complete zero-trust signing chain.
 
-            Design Philosophy: Every EIP-712 Is a Latent On-Chain Action
+Design Philosophy: Every EIP-712 Is a Latent On-Chain Action
 
 ArcSign refuses to treat EIP-712 messages as "the cheap kind of signature" — they are authorization grants **exactly equivalent** to on-chain transactions. So we put Permit2 messages and ERC-20 approve transactions through identical review. See [zero-trust wallet](/blog/zero-trust-wallet) for ArcSign's full security model.
 
@@ -203,27 +198,23 @@ If you need to use Permit2 for swaps: (1) Right after each swap, revoke that tok
 
 If you suspect you just signed Permit2 on a sketchy site — **speed matters more than anything else**. Permit2's risk is that the signature might still be unused (waiting attacks). The faster you revoke, the higher the chance you invalidate it before it's submitted.
 
-            1
-            Check Permit2 Allowances on Revoke.cash
+**1. Check Permit2 Allowances on Revoke.cash**
 
 Open [Revoke.cash](https://revoke.cash) and switch to the Permit2 tab. Look for unknown spenders with non-zero allowance on any of your tokens. If any are present, go to the next step.
 
-            2
-            Revoke On-Chain (Gas Required)
+**2. Revoke On-Chain (Gas Required)**
 
 For each suspicious (token, spender) pair, click Revoke on Revoke.cash. This sends a `Permit2.lockdown()` or `Permit2.approve(token, spender, 0, 0)` on-chain transaction that zeroes the allowance. **You can't wait this out**: once the attacker submits the signature within its `sigDeadline`, the allowance activates and funds move immediately. The moment you notice anything wrong, pay gas and revoke.
 
-            3
-            Also Revoke the Token's ERC-20 Approval to Permit2
+**3. Also Revoke the Token's ERC-20 Approval to Permit2**
 
 Advanced safety: beyond zeroing the Permit2 allowance, also revoke the underlying `approve(Permit2, max)` you originally made for that token. That severs Permit2's ability to touch that token at all. Re-approve next time you actually need to swap.
 
-            4
-            Assume the Wallet Is Compromised; Move to a Fresh Address
+**4. Assume the Wallet Is Compromised; Move to a Fresh Address**
 
 Even after revoking, the attacker might hold other approvals you haven't noticed — [ERC-20 allowances](/blog/token-approval-revoke), [EIP-7702 delegations](/blog/eip-7702-delegation-risks), `setApprovalForAll`, etc. The safe play is a fresh address (ideally a new [seed](/blog/seed-phrase-backup-guide)), move remaining assets over, and treat the old wallet as burned ground.
 
-            Never Hire an "On-Chain Detective" to Recover Funds
+Never Hire an "On-Chain Detective" to Recover Funds
 
 Like other [phishing victims](/blog/wallet-drainer-toolkits-explained), Permit2 victims are aggressively targeted by secondary scams. Anyone on Telegram, X, or Discord claiming they can "recover your funds" is **100% a scam**. Legitimate forensic firms do not DM you and do not collect retainers up front.
 

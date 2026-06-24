@@ -19,7 +19,7 @@ Address poisoning (sometimes called "address spoofing") works without breaking i
 
 Web3 security firm Scam Sniffer logged the largest single victim loss to address poisoning on Ethereum mainnet at roughly **$69 million in USDT** — a whale who meant to transfer the equivalent of 1,155 WBTC to a counterparty and copied a poisoned address from history. Less than three months later, another **$20 million** loss followed the same pattern. And these are just the headline cases — Etherscan logs more than a million 0-value poison transactions every day.
 
-            Why This Is Worth Reading Slowly
+**Why This Is Worth Reading Slowly**
 
 Address poisoning sits at the intersection of human habit and social engineering. It does not require you to do anything obviously wrong — it just requires you to trust your eyes. The goal of this article: by the time you finish, you will never copy an address from history again, and every transfer will feel like the first one.
 
@@ -27,18 +27,15 @@ Address poisoning sits at the intersection of human habit and social engineering
 
 Address poisoning is not a technical breakthrough. It is a deeply cynical exploit of a single user habit: copying from history. The kill chain has four steps.
 
-            1
-            Target selection: monitor large wallets and their counterparties
+**1. Target selection: monitor large wallets and their counterparties**
 
 Attackers run crawlers across mainnet and L2s, indexing every wallet holding more than a five-figure USD balance in stablecoins. They look at each wallet's last 30 days of transfers and flag the **counterparties that show up repeatedly** — a CEX deposit address, a market maker hot wallet, a team multisig, an OTC desk. Those are the high-value paths worth poisoning.
 
-            2
-            Generate the clone: vanity prefix-and-suffix collision
+**2. Generate the clone: vanity prefix-and-suffix collision**
 
 Once the attacker has your frequent counterparty (e.g. `0x5754284f345afc66a98fbB0a0Afe71e0F007B949`), they spin up a GPU rig running a vanity address generator. The goal: produce a new address whose **first 4–6 and last 4–6 hex characters match the target**. A consumer GPU finds a 4+4 match in under a minute and a 6+6 match within a day. To the attacker, this is a one-time fixed cost — the same clone can be aimed at every victim who sends to the same counterparty.
 
-            3
-            Send the poison: 0-value or dust transactions
+**3. Send the poison: 0-value or dust transactions**
 
 The attacker now triggers a transaction that **looks like it came from your wallet**, deposited into the clone. Three common variants:
 
@@ -46,8 +43,7 @@ The attacker now triggers a transaction that **looks like it came from your wall
 - **Fake-token airdrop**: the clone fires a `transfer` event of 1 fake "USDT" (actually a fork-contract spoof) to your wallet. UI implementations frequently render this in the "Sent" tab because the event's `from` field is the clone, masquerading as you.
 - **Tiny inbound transfer**: the clone sends 0.0001 ETH to your wallet. The amount is too small to notice, but it permanently writes the clone into your wallet's history.
 
-            4
-            Wait: catch you on a rushed day
+**4. Wait: catch you on a rushed day**
 
 Days or weeks later, you are sending a large transfer. You open the wallet, glance at recent transactions, see the familiar first-four and last-four characters, and **copy-paste**. Your eye skips over the 32 hex characters in the middle. You hit confirm. Twelve seconds later, the funds are in the attacker's pocket. There is no recall on-chain.
 
@@ -78,7 +74,7 @@ Address poisoning broke into mainstream awareness in 2024 because of a string of
 
 The May 2024 **$69M** case is famous because the attacker, after on-chain negotiation, returned roughly **$62M** in exchange for keeping 10% as a "fee." This was a freakishly lucky outcome — the loss was so large and so traceable that the attacker chose to settle rather than face Chainalysis. **The vast majority of mid-size victims never recover anything**, because the attacker's risk-reward only flips at headline-grabbing sums.
 
-            Related Threats Worth Reading
+**Related Threats Worth Reading**
 
 Address poisoning is often confused with [clipboard hijacking](/blog/clipboard-hijack-attack), but they are different: clipboard hijacking is a Trojan on your device rewriting what you paste; address poisoning is an on-chain decoy rewriting what you see in your history. The former needs the device to be infected, the latter happens entirely on-chain. Read both, because the defenses are complementary. Also see [phishing-attack-prevention](/blog/phishing-attack-prevention) and [social-engineering-crypto](/blog/social-engineering-crypto).
 
@@ -133,27 +129,23 @@ For any transfer above $10,000, always send 0.001 first and wait for the counter
 
 ArcSign's signing flow is designed so that even if your eyes have been deceived, the final signing moment gives you one more chance to catch it:
 
-            1
-            Full-address preview, no truncation, grouped in 4s
+**1. Full-address preview, no truncation, grouped in 4s**
 
 The signing confirmation page shows all 42 characters (`0x` + 40 hex) of the destination, broken into groups of 4 separated by spaces (e.g. `0x5754 284f 345a fc66 a98f bB0a 0Afe 71e0 F007 B949`). The middle 32 characters that a `…` would otherwise swallow are **back inside your field of vision**.
 
-            2
-            USB-air-gapped confirmation, with your finger on the button
+**2. USB-air-gapped confirmation, with your finger on the button**
 
 ArcSign is a USB [cold wallet](/blog/what-is-cold-storage). [Private keys](/blog/private-key-management-best-practices) never leave the device. Even if your browser, your wallet UI, and your block explorer have all been poisoned, the signature only happens inside ArcSign software and only when **you press confirm**. If the address you see does not match the address you intend to send to, refuse the signature.
 
-            3
-            One-click address book and label hints
+**3. One-click address book and label hints**
 
 Every manually entered or externally verified address can be added to the address book with a label. The next transfer, you pick from a list — and ArcSign shows you "You previously labeled this address X." If today's intended recipient is X but the hint does not appear, that is your warning sign.
 
-            4
-            Transaction simulation with poisoning-mode detection
+**4. Transaction simulation with poisoning-mode detection**
 
 For EVM chains, ArcSign simulates the transaction before signing and checks the destination against two heuristics: (a) has this address ever interacted with your wallet via a 0-value or sub-0.0001-ETH transfer? (b) does it share a 4+4 (or 6+6) prefix-and-suffix with an address you have already labeled, but differ in the middle? If either matches, the UI raises a **red warning** and requires you to type the final 8 characters of the address manually before signing.
 
-            Defense in Depth
+**Defense in Depth**
 
 ArcSign extends [zero-trust](/blog/zero-trust-wallet) all the way to the final second before signing — assuming nothing about your machine, your explorer's history view, or your eyes' ability to spot truncated lies. Combined with [XOR three-share key protection](/blog/xor-encryption-explained) and [mlock memory protection](/blog/mlock-memory-protection), even if your OS is fully compromised the private key itself never leaks.
 
@@ -161,29 +153,25 @@ ArcSign extends [zero-trust](/blog/zero-trust-wallet) all the way to the final s
 
 Address poisoning losses tend to be **large** (the attacker targeted high-frequency, high-value paths) and on-chain transactions are irreversible — but the first few minutes to hours still determine how much you can claw back.
 
-            1
-            Tag the attacker's address on Etherscan immediately
+**1. Tag the attacker's address on Etherscan immediately**
 
 Go to the relevant explorer (Etherscan / BscScan / Polygonscan / Arbiscan), find the attacker's address, and use "Update Address Tag" to flag it as `Reported Scam – Address Poisoning`. This will not freeze the funds, but it warns other potential victims and accelerates the attention of on-chain forensics firms.
 
-            2
-            Report to stablecoin issuers and exchanges
+**2. Report to stablecoin issuers and exchanges**
 
 If your loss was in USDT or USDC, immediately contact Tether (lawenforcement@tether.to) and Circle (compliance@circle.com) law-enforcement desks. Provide the transaction hash, the loss amount, and your police report number. **Tether has frozen more than $2 billion in USDT in cooperation with on-chain forensics**, and while individual response times stretch into weeks, partial recovery is real when the funds have not yet been laundered.
 
 If the attacker has already moved funds into a centralized exchange, file an urgent compliance report with that exchange (Binance compliance@binance.com, Coinbase compliance@coinbase.com, OKX, Bybit all have dedicated channels).
 
-            3
-            File a police report and engage on-chain forensics
+**3. File a police report and engage on-chain forensics**
 
 In the US, file with the FBI's IC3 (Internet Crime Complaint Center). In the EU/UK, file with the relevant national cybercrime unit (NCA in the UK, EC3 in Europe). With a police case number, you can then approach Chainalysis, TRM Labs, or Elliptic — these firms generally only take individual cases via a law-enforcement or law-firm submission, but the case number opens the door.
 
-            4
-            Remove the poison from your interface
+**4. Remove the poison from your interface**
 
 The on-chain record is permanent, but you can hide the clone from your day-to-day view. Use the wallet's "Hidden Tokens" and "Blacklisted Addresses" features. ArcSign supports permanently marking an address as `Poisoning` — once tagged, it never appears in your quick-copy or recent-transactions UI again.
 
-            Beware the Recovery Scam
+**Beware the Recovery Scam**
 
 After a public loss, expect strangers on Telegram or Discord claiming to be "crypto investigators" or "asset recovery agents" offering to retrieve your funds for an up-front fee. **Legitimate forensic services never DM you out of the blue.** Any request for upfront payment, your [seed phrase](/blog/seed-phrase-backup-guide), or installation of "recovery software" is a second scam riding on top of the first.
 

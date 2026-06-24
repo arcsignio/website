@@ -17,7 +17,7 @@ EIP-7702 lets any regular wallet address (EOA) sign an **authorization** that de
 
 This capability was designed as a gentle on-ramp to account abstraction — you keep your address, but you get gasless transactions, batching, session keys, and other smart-account perks. But pivot the lens slightly and the same capability becomes **2026's most dangerous phishing primitive: one signature, and the entire EOA is permanently outsourced to the attacker.**
 
-            Why Read This Carefully
+**Why Read This Carefully**
 
 If you still use an EOA to connect to DApps and you sign EIP-712 messages from a browser wallet, you're already inside the EIP-7702 attack surface. This piece walks through the technical mechanics, the actual attack vectors that have appeared in 2025–2026, and how ArcSign surfaces `0x04` transactions and `SET_CODE` authorizations in the signing UI so they don't slip past as another [blind sign](/blog/blind-signing-risks).
 
@@ -55,7 +55,7 @@ A delegated EOA's `code` isn't actual contract bytecode — it's a fixed 23-byte
 
 What this means: **the only way to tell whether an address is delegated is to call `eth_getCode` on it**. If you receive a "send 1 ETH to 0xAlice" transaction, the address alone can't tell you who will actually process that ETH once it arrives.
 
-            Why EIP-7702 Is "Attack Surface Expansion," Not Just a New Feature
+Why EIP-7702 Is "Attack Surface Expansion," Not Just a New Feature
 
 For ten years, the Ethereum security model has been "**EOAs can only sign with their key; contracts can only act through their code**." EIP-7702 is the first time that line is blurred: an EOA can **pre-sign an authorization** that routes every future call through a contract. An attacker who captures one EIP-7702 signature captures **programmatic control of the wallet** — without ever touching the private key, without any token approval.
 
@@ -77,7 +77,7 @@ The nasty part: **this authorization does not immediately drain existing balance
 
 ### Vector 2: Cross-Chain Replay — chain_id = 0 Is the Death Grip
 
-The EIP-7702 spec allows the authorization's `chain_id` to be set to **0**, meaning "**this authorization is valid on every EVM chain**." The intended use case is letting a user upgrade their EOA at the same address on Ethereum, Optimism, Arbitrum, Base, BSC, and Polygon in one signature. For attackers, it's a free lateral expansion: **one signature drains six chains.**
+The EIP-7702 spec allows the authorization's `chain_id` to be set to **0**, meaning "**this authorization is valid on every EVM chain**." The intended use case is letting a user upgrade their EOA at the same address on Ethereum, Optimism, Arbitrum, Base, BSC, Polygon, and Avalanche in one signature. For attackers, it's a free lateral expansion: **one signature drains seven chains.**
 
 The cruel variant: **the sweeper contract is only deployed on some chains**. The attacker deploys the same address as a harmless "demo contract" on Ethereum and as a sweeper on Linea / Scroll / zkSync. A victim who checks the Ethereum address on a block explorer sees "a benign test contract" — but what they actually authorized is **every same-address contract on every EVM chain**, including the six chains they never looked at.
 
@@ -97,7 +97,7 @@ Once the victim signs the EIP-7702 authorization, their EOA becomes "this Safe-l
 
 This pattern has been documented in 2026 incidents, and victims are typically "**I want to try account abstraction**" early adopters — they thought they were upgrading to a smart account, when in fact they upgraded into a jail cell built by the attacker.
 
-            EIP-7702 Revocation Is Not as Cheap as Revoking an Approval
+EIP-7702 Revocation Is Not as Cheap as Revoking an Approval
 
 Revoking an ERC-20 approval costs one `approve(spender, 0)` transaction (a few dollars of gas). But **revoking an EIP-7702 delegation requires signing a new type-4 transaction** that points the authorization at `0x0000...0000`. And if your EOA is already delegated to a sweeper, **every wei of gas you send in to pay for that revocation gets intercepted by the sweeper** — you can't even afford the signature that frees you. That's why EIP-7702 phishing is harder to recover from than Permit2 phishing: the rescue itself needs gas, and gas is exactly what the attacker is stealing.
 
@@ -141,32 +141,27 @@ If any of those five fail, stop. **You will not be excluded from DeFi for skippi
 
 ArcSign treats EIP-7702 with the same severity as Permit2 and `setApprovalForAll`. In our Clear Signing engine, type-4 transactions and bare EIP-7702 authorizations share the same alerting pipeline:
 
-            1
-            Full ABI Decoding of Type-4 Transactions
+**1. Full ABI Decoding of Type-4 Transactions**
 
 The signing UI never displays `0x04` and hex. ArcSign parses the entire `authorization_list` into English: "You are about to authorize EOA `0xYou` on [chain name / 'all EVM chains'] to delegate code to [target contract address + Etherscan label + deployment date + verified status]." This is the same design philosophy as the [blind-signing piece](/blog/blind-signing-risks) — a signature you can't read should never be signed.
 
-            2
-            chain_id = 0 Triggers a Mandatory Red Warning
+**2. chain_id = 0 Triggers a Mandatory Red Warning**
 
 If the authorization's `chain_id` is 0, ArcSign throws a **full-screen red warning** and requires the user to manually tick "I understand this signature is valid on every EVM chain" before continuing. For nearly every legitimate use case, that field should be bound to the current chain — it should not be 0.
 
-            3
-            Static Analysis of the Target Contract
+**3. Static Analysis of the Target Contract**
 
 ArcSign runs a local static analysis on the target contract: (a) does it contain `setOwner` / `upgrade` / `migrateAdmin` -style functions; (b) is the deployment timestamp newer than 30 days; (c) is it on a known sweeper blacklist; (d) does it share fund flows with known [drainer toolkit](/blog/wallet-drainer-toolkits-explained) relays. Any anomaly → full-screen warning.
 
-            4
-            Simulation: What Happens to the Next Inbound Transfer
+**4. Simulation: What Happens to the Next Inbound Transfer**
 
 Before you press "Confirm," ArcSign simulates: "**after this delegation, what happens to the next ETH / token that arrives at this EOA?**" If the simulation shows funds will immediately `transfer` to a different address — the signature is blocked, period.
 
-            5
-            Private Key Never Leaves the USB, and the Authorization Is Confirmed Cold-Side
+**5. Private Key Never Leaves the USB, and the Authorization Is Confirmed Cold-Side**
 
 The EIP-7702 attack hinges on "**signing one wrong authorization**," so locking the private key in a USB is not enough — the signing UI itself has to render on the cold side. ArcSign moves the entire type-4 parse, contract static analysis, and cross-chain warning onto the USB device's screen, integrated with [XOR three-shard key storage](/blog/xor-encryption-explained) and [mlock memory hardening](/blog/mlock-memory-protection) into a complete zero-trust signing chain.
 
-            Design Philosophy: Treat Account Abstraction Like a Contract Deployment
+Design Philosophy: Treat Account Abstraction Like a Contract Deployment
 
 The moment EIP-7702 made EOAs programmable, the wallet security model needed rewriting. ArcSign's choice is: **no one-click "upgrade" shortcut**. Every EIP-7702 authorization is treated like a **contract-deployment-grade** decision, because the consequences are at contract-deployment grade. See [the zero-trust wallet piece](/blog/zero-trust-wallet) for the full design.
 
@@ -190,27 +185,23 @@ If you genuinely need to upgrade an EOA to a smart account, treat it like **movi
 
 If you suspect you just signed an EIP-7702 on a sketchy site, **speed matters more than anything**:
 
-            1
-            Check Whether Your EOA Is Already Delegated
+**1. Check Whether Your EOA Is Already Delegated**
 
 On Etherscan, open your address page and look at the "Code" field. If it shows `0x` or empty → you're fine, the authorization wasn't packed into a transaction (or was frontrun). If it shows `0xef0100...` → you're delegated. Continue to step 2.
 
-            2
-            Revoke Immediately — Sign a New Authorization Pointing at `0x0`
+**2. Revoke Immediately — Sign a New Authorization Pointing at `0x0`**
 
 From a **clean device** (not the browser you got phished on), sign a new type-4 transaction with `authorization_list[0]` pointing at `0x0000000000000000000000000000000000000000`. This clears your EOA's `code` and restores it to a plain EOA. **Note**: you need gas to broadcast this transaction, and if the sweeper intercepts inbound gas, you may need to use **Flashbots / a private mempool** to bundle the type-4 transaction with its gas payment in the same atomic bundle.
 
-            3
-            Clean Out All Token Approvals Too
+**3. Clean Out All Token Approvals Too**
 
 Once the delegation is cleared, lingering ERC-20 approvals and Permit2 allowances are still valid — go to [Revoke.cash](https://revoke.cash) or ArcSign's [Token Approvals](/blog/token-approval-revoke) and revoke everything.
 
-            4
-            Treat the Old Wallet as Burned, Move to a New EOA
+**4. Treat the Old Wallet as Burned, Move to a New EOA**
 
 Even after the delegation is cleared, you should [never trust that private key again](/blog/private-key-management-best-practices) — you don't know what else the attacker may have planted. Create a fresh address (ideally from a new [seed phrase](/blog/seed-phrase-backup-guide)), move remaining assets there, and consider the old wallet scorched earth.
 
-            Never Hire "On-Chain Investigators"
+**Never Hire "On-Chain Investigators"**
 
 Just like [drainer victims](/blog/wallet-drainer-toolkits-explained), EIP-7702 victims get targeted by secondary scams. DMs on Telegram / X / Discord offering "I can recover your funds" or "I'm a professional on-chain investigator" are **100% scams**. Legitimate forensics firms don't cold-DM and never take upfront payment.
 

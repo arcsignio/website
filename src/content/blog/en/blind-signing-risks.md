@@ -17,7 +17,7 @@ Almost everyone who has used [WalletConnect](/blog/walletconnect-dapp-tutorial) 
 
 That habit has a name: **blind signing**. It is the single largest cause of self-custody losses in NFTs, DeFi, and airdrop farming between 2024 and 2026 — and it is the design flaw that has repeatedly drawn criticism toward Ledger, Trezor, and other long-standing hardware wallets. Chainalysis and Scam Sniffer's combined data show that **Permit and Permit2 phishing alone — the most blind-signing-driven attack class — caused over $320M in losses in 2024**, with victims including well-known NFT collectors, DeFi LPs, and institutional wallets.
 
-            Why This Article Is Worth Reading Slowly
+**Why This Article Is Worth Reading Slowly**
 
 If you remember one thing from this post, make it this: **the instant your signing screen becomes unreadable, that is the instant you should stop.** This piece walks through the technical roots of blind signing (EIP-712, Permit, Permit2, setApprovalForAll), the real cases from 2024–2026, and how ArcSign's Clear Signing translates every signature into plain English before you press confirm.
 
@@ -37,7 +37,7 @@ EIP-712 introduced structured signatures so users *could* see `{ to: 0x..., amou
 
 `setApprovalForAll(operator, true)` on ERC-721 / ERC-1155 grants transfer rights for **every NFT you own in that contract** to a single operator. Phishing sites disguise this call as "free mint," "claim airdrop," or "verify holdings." If your cold wallet can't translate it into "you are about to give your entire BAYC collection to 0xFee...", you're flying blind — and your collection can be drained in one click within five minutes.
 
-            EIP-712 Isn't the Villain — Blind Signing Is
+EIP-712 Isn't the Villain — Blind Signing Is
 
 EIP-712 itself is a *good* design. Its whole point is to make signatures **more** legible, not less. The problem is whether **wallets and hardware actually parse it**. If your hardware wallet treats EIP-712 as just another hex blob, no amount of standardization saves the user. ArcSign's Clear Signing parses the full EIP-712 schema, splitting `domain`, `types`, and `message` into three readable panels.
 
@@ -70,7 +70,7 @@ Normal transactions show "estimated gas 0.003 ETH" before broadcast — a natura
 
 The most cautionary tale is **2025-12 KOL live-stream incident**. The KOL was a publicly known "Ledger veteran" who considered himself fluent in hardware-wallet flows. On-stream, he connected to what looked like an official mint site; the hardware screen showed hex he "didn't fully understand but looked familiar." He approved. **The camera caught his assets being drained in eight seconds.** On-chain analysis showed he had signed a Permit2 payload granting Inferno Drainer's contract control over his tokens.
 
-            Related Threats Worth Reading
+**Related Threats Worth Reading**
 
 Blind signing rarely happens alone. It pairs with [address poisoning](/blog/address-poisoning-attack), [phishing attacks](/blog/phishing-attack-prevention), and [clipboard hijack](/blog/clipboard-hijack-attack) — phishing sites lure you in, blind-signing UI gets you to click, address poisoning prevents you from even noticing the counterparty is wrong. Read all four together to build a complete defensive mental model.
 
@@ -96,27 +96,23 @@ Permit and Permit2 signatures are **not transactions** — they are off-chain me
 
 ArcSign was designed from version one with "users should never blind-sign" as a core principle. The implementation has four layers:
 
-            1
-            Full ABI parsing (22 chains, 4,000+ mainstream contracts preloaded)
+**1. Full ABI parsing (7 EVM chains, 4,000+ mainstream contracts preloaded)**
 
-ArcSign ships with ABIs for over 4,000 mainstream DeFi, NFT, and bridge contracts across its 22 supported chains. The signing screen never shows `0x...` hex — it shows `Uniswap V3 Router: exactInputSingle({ tokenIn: WETH, tokenOut: USDC, amountIn: 1.5 ETH, ... })`. For uncommon contracts, the UI tries to fetch ABI from Etherscan / Sourcify; only if that fails does it fall back to hex — and **hex mode triggers a prominent warning**, requiring the user to tick "I understand I am blind-signing" before proceeding.
+ArcSign ships with ABIs for over 4,000 mainstream DeFi, NFT, and bridge contracts across its 7 supported EVM chains. The signing screen never shows `0x...` hex — it shows `Uniswap V3 Router: exactInputSingle({ tokenIn: WETH, tokenOut: USDC, amountIn: 1.5 ETH, ... })`. For uncommon contracts, the UI tries to fetch ABI from Etherscan / Sourcify; only if that fails does it fall back to hex — and **hex mode triggers a prominent warning**, requiring the user to tick "I understand I am blind-signing" before proceeding.
 
-            2
-            EIP-712 three-layer decomposition + Permit/Permit2 red banners
+**2. EIP-712 three-layer decomposition + Permit/Permit2 red banners**
 
 For every EIP-712 structured signature, ArcSign splits `domain` (DApp origin), `types` (data schema), and `message` (actual payload) into three panels. If a `Permit`, `PermitSingle`, or `PermitBatch` is detected, the top of the screen flashes a **red banner**: "⚠ This is an authorization signature — you are granting [spender / known label] permission to move up to [amount] until [deadline]. Once signed, an attacker can drain at any time." The user must reconfirm before the signature is released.
 
-            3
-            Special handling for infinite allowance and setApprovalForAll
+**3. Special handling for infinite allowance and setApprovalForAll**
 
 When `amount = 2^256-1` (infinite) or `setApprovalForAll(operator, true)` appears, ArcSign: (a) shows a full-screen red warning; (b) displays your current balance of the affected token / collection so the impact is concrete ("you hold 5,124 USDC — granting unlimited approval"); (c) automatically suggests the bounded-allowance equivalent and shows how to modify the call to `approve(N)`.
 
-            4
-            Transaction simulation + asset-delta preview
+**4. Transaction simulation + asset-delta preview**
 
 For EVM transactions, ArcSign simulates the entire call against a local or trusted RPC before signing and shows "your wallet after this transaction": e.g. "-1.5 ETH, +3,124 USDC, +0 NFT, -1 NFT (CryptoPunk #4xxx)". If the simulation shows "-N NFT" when you thought you were just "minting one NFT" — stop. Reject.
 
-            Design Philosophy: [Zero Trust](/blog/zero-trust-wallet) Carried Through to the Last 1ms Before Signing
+Design Philosophy: [Zero Trust](/blog/zero-trust-wallet) Carried Through to the Last 1ms Before Signing
 
 ArcSign's [private keys](/blog/private-key-management-best-practices) are protected by [XOR three-share encryption](/blog/xor-encryption-explained), [mlocked in memory](/blog/mlock-memory-protection), and never leave the USB cold-storage device. But those technologies only solve "private-key exfiltration" — they cannot stop you from **voluntarily** handing a signature to an attacker. Clear Signing is the final and most decisive line of that defense.
 
@@ -139,27 +135,23 @@ Many users equate "sign message" with "log in" — because there's no gas and no
 
 If you suspect you just signed something incomprehensible on some site, **the first 30 minutes are golden**:
 
-            1
-            Revoke every approval on that wallet immediately
+**1. Revoke every approval on that wallet immediately**
 
 Go to [Revoke.cash](https://revoke.cash) or ArcSign's Token Approvals view and **revoke every active approval** — not just the one you just signed, because the attacker may have planted others you didn't notice. Pro users can batch-revoke all approvals in ArcSign in one click, zeroing the attack surface at minimum gas cost.
 
-            2
-            Move all assets to a brand-new wallet
+**2. Move all assets to a brand-new wallet**
 
 Even after revoking, **that wallet's [private key](/blog/private-key-management-best-practices) is permanently untrusted** — you don't know whether other delay-execution signatures are out there. Create a fresh wallet (ideally from a new [seed phrase](/blog/seed-phrase-backup-guide)) and migrate everything. Consider the old wallet burned.
 
-            3
-            Check Permit2 nonce state
+**3. Check Permit2 nonce state**
 
 At [permit2.uniswap.org](https://permit2.uniswap.org) or via on-chain tools, audit all Permit2 grants and nonce states for your wallet. Permit2 grants have a `nonce + deadline` structure — a phished signature can be invalidated early via `invalidateNonces`. This costs a little gas but kills the signature before the attacker uses it.
 
-            4
-            Report + on-chain trail
+**4. Report + on-chain trail**
 
 Flag the phishing site and contract address on ScamSniffer, ChainAbuse, and Etherscan as "Drainer." For large losses, contact on-chain forensics firms (Chainalysis, TRM Labs). In the US, file with IC3 (FBI's Internet Crime Complaint Center).
 
-            Do NOT Try to "Recover" Through Strangers
+Do NOT Try to "Recover" Through Strangers
 
 The most common secondary scam after a drain is a Telegram / X / Discord DM from "I can recover your funds" or "I'm a professional on-chain detective." **Legitimate forensics firms do not cold-DM victims** and will never ask for your [seed phrase](/blog/seed-phrase-backup-guide) or an upfront payment. Block all such contacts on sight.
 

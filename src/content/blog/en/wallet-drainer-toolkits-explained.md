@@ -17,7 +17,7 @@ Starting in 2024, that changed. A small group of anonymous developers **producti
 
 According to [Scam Sniffer](https://scamsniffer.io) and Chainalysis's 2025 reports, **the three dominant drainer toolkits — Inferno, Pink, and Angel — caused over $500M in cumulative losses between 2024 and 2026**, hitting 270,000+ wallets. This piece dissects how those three operate, what their on-chain fingerprints are, and exactly where ArcSign can step in to stop the attack.
 
-            Why Read This Carefully
+**Why Read This Carefully**
 
 Drainer toolkits lowered the floor on "being a phisher" from "need technical skill" to "need money." Once you understand how they work, you'll see why [blind signing](/blog/blind-signing-risks), [address poisoning](/blog/address-poisoning-attack), and [clipboard hijacking](/blog/clipboard-hijack-attack) all spiked together in 2024 — they're not independent attacks. They're the same group of operators selling the same toolkits.
 
@@ -55,7 +55,7 @@ The moment you sign, the backend, within milliseconds: (a) calls `transferFrom` 
 
 The toolkit operator typically auto-skims 20–30% off the top, sending the rest to the buyer. Buyers receive already-once-laundered funds; the platform takes a stable platform cut. ZachXBT has repeatedly doxxed the on-chain splitter addresses for Inferno Drainer throughout 2024.
 
-            Drainers Leave Zero Trace on Your Computer
+Drainers Leave Zero Trace on Your Computer
 
 Traditional botnets and trojans drop files, edit the registry, install scheduled tasks. Drainers operate **entirely inside the browser tab**. They don't install anything on your computer — they only need you to "connect a wallet and sign." That's why antivirus software never catches them and reinstalling your OS doesn't help: they were never in your OS to begin with.
 
@@ -100,28 +100,23 @@ Technical fingerprints:
 
 We can decompose every drainer attack into 5 stages, from "you see the site" to "your assets are gone." Each stage is a different defense surface:
 
-            1
-            Acquisition (Traffic)
+**1. Acquisition (Traffic)**
 
 Drainers use Google Ads, X / Twitter Ads, pinned Discord messages, Telegram bots, SEO squatting, and compromised protocol Discord channels to drive traffic to the phishing page. **Your defense here is "only bookmarks, never search results."** Since 2024, more than 40% of "Uniswap" or "OpenSea" Google Ads results have been drainer-purchased.
 
-            2
-            Connection (Wallet Connect)
+**2. Connection (Wallet Connect)**
 
 You click "Connect Wallet." The drainer reads your address via WalletConnect or an injected provider. **No loss has happened yet** — connecting costs nothing, signs nothing. But the drainer's backend has already begun profiling your assets.
 
-            3
-            Signature Request (The Drain Signature)
+**3. Signature Request (The Drain Signature)**
 
 The drainer dynamically generates the most efficient drain signature for your asset profile — usually `Permit2.PermitBatch` or `setApprovalForAll`. **This is your last escape point.** Reject if you can't read it: total win. Confirm: total loss.
 
-            4
-            Execution (Asset Movement)
+**4. Execution (Asset Movement)**
 
 Within 200 ms of your signature, the drainer's executor runs `transferFrom` to a relay address. **You cannot get the assets back at this stage** — no "cancel transaction" button, no blockchain customer support.
 
-            5
-            Laundering
+**5. Laundering**
 
 The relay bridges, mixes, and offramps. Within an hour, your assets are usually scattered across 20+ addresses and 3+ chains. **All you can do here is report and tag**, hoping to leave breadcrumbs for future on-chain forensics.
 
@@ -141,7 +136,7 @@ No matter which drainer toolkit is behind the curtain, to actually achieve "one 
 | 4 | **`deadline` is far in the future** | Normal approvals have deadlines of "now + 10–30 minutes," not "+10 years" |
 | 5 | **`setApprovalForAll(operator, true)`** | Always stop and ask: do you really want to hand over your entire NFT collection? |
 
-            Drainers Manufacture a "Sense of Normalcy"
+Drainers Manufacture a "Sense of Normalcy"
 
 More sophisticated drainers will first ask you to sign an **innocuous "sign-in message"** (just a plain string), getting you used to pressing approve. Then the **second signature** is the actual drain. This technique is called **Trust Priming**. The only defense is: **treat every signature as an independent event from scratch** — never relax because the previous one was safe.
 
@@ -149,27 +144,23 @@ More sophisticated drainers will first ask you to sign an **innocuous "sign-in m
 
 ArcSign was designed from day one around "stop the drainer before the signature." That defense is layered four deep:
 
-            1
-            Clear Signing: Every Signature Translated to Plain English
+**1. Clear Signing: Every Signature Translated to Plain English**
 
 For all EIP-712 signatures (Permit, Permit2, ERC-20 approve, ERC-721 `setApprovalForAll`), ArcSign performs full schema parsing and renders in plain English. When a Permit2 PermitBatch arrives, ArcSign doesn't show `0x...` — it shows "You are about to authorize [spender address + known label] to move up to [USDC: 5,000 / USDT: 3,000 / DAI: 2,000] before [human-readable deadline]." See the [Clear Signing deep dive](/blog/blind-signing-risks).
 
-            2
-            Automatic High-Risk Pattern Detection
+**2. Automatic High-Risk Pattern Detection**
 
 ArcSign ships with a "drainer fingerprint database" that checks: (a) is the `spender` address on a known drainer relay list; (b) does the signature shape match common drainer templates (e.g., a `Permit2.PermitBatch` sweeping 5+ tokens at once); (c) is it an "unlimited amount + far-future deadline" combo. If any check trips, the UI throws a full-screen red warning and requires the user to tick "I understand this might be phishing" before continuing.
 
-            3
-            Transaction Simulation: See Net Asset Change Before You Sign
+**3. Transaction Simulation: See Net Asset Change Before You Sign**
 
 For EVM transactions, ArcSign simulates the call against a local or trusted RPC and displays "what happens to your wallet" before signing — e.g., "−5,000 USDC, −3,000 USDT, −1 NFT (BAYC #4xxx)." If the simulation doesn't match what you thought you were doing (you thought you were minting an NFT, but the sim shows multiple NFTs leaving your wallet), reject.
 
-            4
-            Private Key Never Leaves the USB
+**4. Private Key Never Leaves the USB**
 
 Even if a drainer tricks you into signing one authorization, [ArcSign's XOR three-shard key protection](/blog/xor-encryption-explained) and [mlock memory hardening](/blog/mlock-memory-protection) ensure the private key itself never leaks. The attack surface is strictly bounded to "what that one signature could authorize" — never "every future asset you ever put in this wallet." That's the last line of defense, but the best line is still "don't sign wrong."
 
-            Design Philosophy: Extending [Zero Trust](/blog/zero-trust-wallet) From Key Storage to the Signing UI
+Design Philosophy: Extending [Zero Trust](/blog/zero-trust-wallet) From Key Storage to the Signing UI
 
 Many cold wallets define "security" narrowly as "the key doesn't leak." But drainers never steal your key — they steal your signature. ArcSign extends zero-trust into the entire signing interaction: every signature is treated as a potential attack by default, and only released after three layers of verification (ABI parse, drainer-fingerprint match, simulation).
 
@@ -194,27 +185,23 @@ For mid-to-large asset holders, run three wallet tiers: (1) **Cold storage** (e.
 
 If you suspect you just signed a drainer signature, **the first 60 minutes are the golden window**:
 
-            1
-            Revoke All Approvals Immediately
+**1. Revoke All Approvals Immediately**
 
 Go to [Revoke.cash](https://revoke.cash) or ArcSign's Token Approvals interface and **revoke every approval on that wallet** — not just the one you just signed, because the drainer may have planted other Permits you didn't notice. Pro users can use ArcSign's batch revoke to clear everything in one click.
 
-            2
-            invalidateNonces (Permit2-Specific)
+**2. invalidateNonces (Permit2-Specific)**
 
 Go to [permit2.uniswap.org](https://permit2.uniswap.org) and call `invalidateNonces` to invalidate all unused Permit2 nonces on your wallet. This kills any Permit2 signature the drainer is holding before they execute. Costs a bit of gas, but far cheaper than letting them sweep your assets.
 
-            3
-            Move Remaining Assets to a Fresh Wallet
+**3. Move Remaining Assets to a Fresh Wallet**
 
 Even after revoking, **that wallet can no longer be trusted** — the drainer may have planted delayed-execution signatures you don't know about. Create a brand-new address (ideally with a new [seed phrase](/blog/seed-phrase-backup-guide)) and move all remaining assets there. Treat the old wallet as "burned."
 
-            4
-            Report and Tag On-Chain
+**4. Report and Tag On-Chain**
 
 Tag the phishing site and contract address as "Drainer" on ScamSniffer, ChainAbuse, and Etherscan. For large losses, contact on-chain forensics (Chainalysis, TRM Labs). Local victims can report to their national fraud hotlines.
 
-            Never Hire "On-Chain Detectives"
+**Never Hire "On-Chain Detectives"**
 
 The most common secondary scam is a DM on Telegram / X / Discord saying "I can help you recover," "I'm a professional on-chain investigator," or "I can unfreeze your assets." **These are 100% scams.** Legitimate forensics firms don't cold-DM, and they never take upfront payments.
 

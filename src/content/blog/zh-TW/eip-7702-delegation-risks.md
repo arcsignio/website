@@ -17,7 +17,7 @@ EIP-7702 讓任何一個普通錢包地址（EOA），都能透過一張**授權
 
 這個能力本來是設計給「帳戶抽象（Account Abstraction）」的入門體驗 — 讓你不用換新地址就能享有自動 Gas、Batch 交易、Session Key 等智能帳戶優勢。但只要稍微把鏡頭轉個角度，它也是 **2026 年最危險的釣魚原語**：**一張簽名，就能把整個 EOA 永久變成攻擊者的代理。**
 
-            為什麼這篇值得一讀
+**為什麼這篇值得一讀**
 
 如果你還在用 EOA 連 DApp、用瀏覽器錢包簽 EIP-712 — 你已經在 EIP-7702 的攻擊面上了。本文從技術原理講到實戰案例，並說明 ArcSign 如何在簽名介面把 `0x04` 委派交易與 `SET_CODE` 授權清楚標示出來，避免[盲簽](/blog/blind-signing-risks)落入委派陷阱。
 
@@ -55,7 +55,7 @@ EIP-7702 引入第四種交易類型（在 EIP-1559 type-2、EIP-4844 blob type-
 
 這意味著：**從外部觀察一個地址，你只能透過 `eth_getCode` 才能知道它有沒有被委派**。如果你拿到一筆「送 ETH 到 0xAlice」的交易，光看地址沒辦法判斷這個 ETH 進去之後會被誰處理。
 
-            為什麼 EIP-7702 是「攻擊面擴張」而不只是新功能
+**為什麼 EIP-7702 是「攻擊面擴張」而不只是新功能**
 
 過去十年，以太坊的安全心智模型是「**EOA 只能用私鑰簽，合約只能用代碼動**」。EIP-7702 第一次模糊了這條線：EOA 可以「**事先簽一張授權**」，讓未來所有送到它的交易都走合約邏輯。攻擊者只要拿到一張 EIP-7702 簽名，就拿到了「**這個錢包的程式化控制權**」 — 即使沒拿到私鑰、沒拿到任何 token approval。
 
@@ -77,7 +77,7 @@ EIP-7702 引入第四種交易類型（在 EIP-1559 type-2、EIP-4844 blob type-
 
 ### 向量 2：跨鏈重放 — chain_id = 0 的死亡之握
 
-EIP-7702 規範允許 authorization 的 `chain_id` 設為 0，意思是「**這張授權對任何 EVM 鏈都有效**」。這個設計初衷是讓使用者能一次升級在 Ethereum / Optimism / Arbitrum / Base / BSC / Polygon 上的所有同地址 EOA。但對攻擊者來說，這是免費的橫向擴張：**一張簽名洗 6 條鏈。**
+EIP-7702 規範允許 authorization 的 `chain_id` 設為 0，意思是「**這張授權對任何 EVM 鏈都有效**」。這個設計初衷是讓使用者能一次升級在 Ethereum / Optimism / Arbitrum / Base / BSC / Polygon / Avalanche 上的所有同地址 EOA。但對攻擊者來說，這是免費的橫向擴張：**一張簽名洗 7 條鏈。**
 
 更狠的攻擊變體：**Sweeper 合約只在某些鏈上有部署**。攻擊者把同一個合約地址在 Ethereum 部署成「無害的 demo」，在 Linea / Scroll / zkSync 部署成 Sweeper。受害者用區塊瀏覽器查 Ethereum 上那個地址，看到「沒問題的測試合約」 — 但他真正被授權的，是**所有 EVM 鏈上的同地址合約**，含他完全沒查的那六條鏈。
 
@@ -97,7 +97,7 @@ function setOwner(address newOwner) external {
 
 這種攻擊在 2026 已經出現過，受害者通常是「**想試試帳戶抽象**」的早期使用者 — 他們以為自己升級到了智能錢包，事實上把自己升級進了攻擊者的牢籠。
 
-            EIP-7702 撤銷不像撤銷 Approval 一樣便宜
+**EIP-7702 撤銷不像撤銷 Approval 一樣便宜**
 
 撤銷 ERC-20 approval 只需要一張 `approve(spender, 0)` 交易（幾美元 gas）。但**撤銷 EIP-7702 委派需要簽一張新的 type-4 交易**，把目標改成 `0x0000...0000`。如果你的 EOA 已經被 Sweeper 委派，**轉任何 gas 進去都會被 Sweeper 攔截** — 你連簽新授權的能力都沒有。這就是為什麼 EIP-7702 釣魚比 Permit2 釣魚更難救：救援本身需要 gas，而 gas 一進來就被搬走。
 
@@ -141,32 +141,27 @@ Authorization List:
 
 ArcSign 把 EIP-7702 視為與 Permit2、`setApprovalForAll` 同等級的高風險簽名類型。在我們的 Clear Signing 引擎裡，type-4 交易與裸 EIP-7702 authorization 都走同一條告警管線：
 
-            1
-            Type-4 交易完整 ABI 解析
+**1. Type-4 交易完整 ABI 解析**
 
 簽名介面不會顯示 `0x04` + hex。ArcSign 會把整個 `authorization_list` 解析成人話：「你即將授權 EOA `0xYou` 在 [鏈名 / 「所有 EVM 鏈」] 上委派代碼到 [目標合約地址 + Etherscan label + 部署日期 + verified 狀態]」。這跟[盲簽](/blog/blind-signing-risks)的設計哲學一致 — 看不懂的簽名永遠不該被按下。
 
-            2
-            chain_id = 0 強制紅色警告
+**2. chain_id = 0 強制紅色警告**
 
 只要 authorization 的 `chain_id` 是 0，ArcSign 會在簽名介面跳出**全螢幕紅色警告**，必須額外勾選「我了解這張簽名會在所有 EVM 鏈生效」才能繼續。對絕大多數使用者，這個欄位應該被綁定到當前鏈 — 不應該是 0。
 
-            3
-            目標合約靜態分析
+**3. 目標合約靜態分析**
 
 ArcSign 的本地引擎會對目標合約做即時靜態分析：(a) 是否有 `setOwner` / `upgrade` / `migrateAdmin` 等可疑函數；(b) 部署時間是否在 30 天以內；(c) 是否在已知 Sweeper 黑名單中；(d) 是否與已知 [Drainer 工具包](/blog/wallet-drainer-toolkits-explained)中繼地址有資金往來。任一項異常 → 全螢幕警告。
 
-            4
-            模擬執行：升級後第一筆會發生什麼
+**4. 模擬執行：升級後第一筆會發生什麼**
 
 ArcSign 會在你按下「Confirm」前，模擬「**EOA 委派之後，下一筆送進來的 ETH / token 會發生什麼**」。如果模擬顯示「資金會立刻被 `transfer` 到非你的地址」 — 直接攔截，不允許簽名。
 
-            5
-            私鑰永不離開 USB，授權路徑全程冷端確認
+**5. 私鑰永不離開 USB，授權路徑全程冷端確認**
 
 EIP-7702 的攻擊核心是「**簽錯一張授權**」，所以光是把私鑰鎖在 USB 還不夠 — 簽名介面本身也得在冷端顯示。ArcSign 把整個 type-4 解析、合約靜態分析、跨鏈警告都搬到 USB 裝置螢幕，與[XOR 三分片金鑰](/blog/xor-encryption-explained)、[mlock 記憶體保護](/blog/mlock-memory-protection)整合成完整零信任簽名鏈。
 
-            設計哲學：把帳戶抽象當成「需要被審查的合約呼叫」
+**設計哲學：把帳戶抽象當成「需要被審查的合約呼叫」**
 
 EIP-7702 把 EOA 變成「可程式化」的瞬間，整個錢包安全模型就需要重寫。ArcSign 的選擇是：**不允許「點一下就升級」的快捷簽名**。每一張 EIP-7702 授權都被當成「**部署合約等級**」的決定來對待，因為它的後果就是部署合約等級的。看[零信任錢包](/blog/zero-trust-wallet)一文了解 ArcSign 的完整零信任設計。
 
@@ -190,27 +185,23 @@ EIP-7702 把 EOA 變成「可程式化」的瞬間，整個錢包安全模型就
 
 如果你懷疑剛剛在某個來路不明的網站簽下了 EIP-7702，**速度比什麼都重要**：
 
-            1
-            檢查你的 EOA 是否已被委派
+**1. 檢查你的 EOA 是否已被委派**
 
 到 Etherscan 你的地址頁面，看 "Code" 欄位。如果顯示 `0x` 或空白 → 你沒事，授權沒被打包進交易（或被 frontrun 了）。如果顯示 `0xef0100...` → 你已經被委派，立刻進入下一步。
 
-            2
-            立刻撤銷委派 — 簽一張指向 0x0 的新 authorization
+**2. 立刻撤銷委派 — 簽一張指向 0x0 的新 authorization**
 
 從另一台**乾淨裝置**（不要用剛剛被釣魚的瀏覽器）打開錢包，簽一張新的 type-4 交易，`authorization_list[0]` 指向 `0x0000000000000000000000000000000000000000`。這會清空你 EOA 的 `code`，恢復成普通 EOA。**注意**：你需要 gas 來發這筆交易，而如果目標 Sweeper 會搬走入帳 gas，你可能需要**用 Flashbots / Private mempool** 把這筆 type-4 與 gas 入帳綁在同一個 bundle 裡。
 
-            3
-            把所有 token approvals 也清掉
+**3. 把所有 token approvals 也清掉**
 
 委派授權清掉後，舊的 ERC-20 approval 與 Permit2 額度仍然有效 — 到 [Revoke.cash](https://revoke.cash) 或 ArcSign [Token Approvals](/blog/token-approval-revoke) 把全部都撤銷。
 
-            4
-            假設舊錢包已燒掉，搬到新 EOA
+**4. 假設舊錢包已燒掉，搬到新 EOA**
 
 即使你已經撤銷委派，這個錢包的[私鑰仍然不應該再被信任](/blog/private-key-management-best-practices) — 因為你不知道攻擊者是不是還有其他延遲執行的東西。建立一個全新地址（最好用新的[助記詞](/blog/seed-phrase-backup-guide)），把剩餘資產轉過去，原錢包視為焦土。
 
-            千萬別找「鏈上偵探」幫你恢復
+**千萬別找「鏈上偵探」幫你恢復**
 
 跟 Drainer 受害者一樣，[EIP-7702 受害者也會被二次詐騙](/blog/wallet-drainer-toolkits-explained)鎖定。Telegram / X / Discord 上自稱「能幫你救回的鏈上偵探」**100% 都是詐騙**。合法鑑識公司不會主動私訊也不收預付款。
 
