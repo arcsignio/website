@@ -1,6 +1,6 @@
 ---
 title: "NFT 收藏管理：用 ArcSign 安全存放你的 NFT"
-description: "NFT 被盜、授權詐騙、假空投攻擊層出不窮。本文教你如何用 ArcSign 冷錢包安全存放 NFT：跨鏈 Gallery 完整顯示、ERC-721/ERC-1155 雙標準支援、授權管理與離線簽名一篇完整看懂。，附各大 NFT 市場操作指引與 OpenSea/Blur WalletConnect 整合教學說明。"
+description: "NFT 被盜、授權詐騙、假空投攻擊層出不窮。本文教你如何用 ArcSign 冷錢包安全存放 NFT：跨鏈 Gallery 完整顯示、ERC-721/ERC-1155 雙標準支援、授權管理與離線簽名一篇完整看懂。"
 pubDate: 2026-04-09
 locale: zh-TW
 tags: ["產品教學"]

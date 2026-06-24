@@ -1,6 +1,6 @@
 ---
 title: "Polygon & BSC 上的 Swap 操作教學：用 ArcSign 安全兌換代幣"
-description: "完整圖文教學：如何在 Polygon 和 BSC 鏈上使用 ArcSign 進行 DEX Swap。涵蓋 OpenOcean 聚合器完整操作流程、Gas Fee 優化設定、滑點保護設置與常見錯誤排解方法的詳細步驟說明。，附 Polygon PoS vs BSC 鏈的手續費比較與代幣授權風險注意事項說明。"
+description: "完整圖文教學：如何在 Polygon 和 BSC 鏈上使用 ArcSign 進行 DEX Swap。涵蓋 OpenOcean 聚合器完整操作流程、Gas Fee 優化設定、滑點保護設置與常見錯誤排解方法的詳細步驟說明。"
 pubDate: 2026-04-03
 locale: zh-TW
 tags: ["產品教學"]

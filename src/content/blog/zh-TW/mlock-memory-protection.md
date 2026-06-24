@@ -1,6 +1,6 @@
 ---
 title: "mlock 記憶體保護是什麼？為什麼你的錢包需要它"
-description: "深入了解 mlock 記憶體保護技術：加密錢包的私鑰如何在記憶體中被竊取？mlock 如何防止作業系統將敏感數據寫入磁碟暫存？ArcSign 多層記憶體防護機制的完整設計原理與實作解析。，含 Linux mlock 系統呼叫原理、ArcSign Go 實作程式碼解析說明。"
+description: "深入了解 mlock 記憶體保護技術：加密錢包的私鑰如何在記憶體中被竊取？mlock 如何防止作業系統將敏感數據寫入磁碟暫存？ArcSign 多層記憶體防護機制的完整設計原理與實作解析。"
 pubDate: 2026-03-17
 locale: zh-TW
 tags: ["安全教育", "加密技術"]

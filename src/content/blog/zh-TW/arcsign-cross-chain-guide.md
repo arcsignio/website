@@ -1,6 +1,6 @@
 ---
 title: "跨鏈操作輕鬆學：用 ArcSign 管理 7 條 EVM 鏈"
-description: "一篇文章學會跨鏈管理：用 ArcSign 同時管理 以太坊、BSC、Avalanche 等 7 條主流 EVM 鏈資產。一組助記詞衍生所有帳戶，BIP-44 路徑完整詳解，USB 冷錢包跨鏈操作全攻略含圖解步驟說明。，包含多鏈資產余額查詢、跨鏈 DEX Swap 操作步驟詳細說明。"
+description: "一篇文章學會跨鏈管理：用 ArcSign 同時管理 以太坊、BSC、Avalanche 等 7 條主流 EVM 鏈資產。一組助記詞衍生所有帳戶，BIP-44 路徑完整詳解，USB 冷錢包跨鏈操作全攻略含圖解步驟說明。"
 pubDate: 2026-04-12
 locale: zh-TW
 tags: ["產品教學", "跨鏈操作"]

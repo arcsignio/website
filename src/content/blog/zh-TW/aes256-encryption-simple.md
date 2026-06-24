@@ -1,6 +1,6 @@
 ---
 title: "AES-256-GCM + Argon2id：軍事級加密簡單說"
-description: "用白話文拆解 AES-256-GCM 與 Argon2id 運作原理：為什麼這組合被稱為軍事級加密？ArcSign 如何用它保護你的私鑰與 .arcsign 備份檔？圖解版讓每位加密新手都能看懂加密技術的實際應用原理與設計邏輯。，包含 AES-256 金鑰衍生與 Argon2id 記憶體強化算法的完整技術解析。"
+description: "用白話文拆解 AES-256-GCM 與 Argon2id 運作原理：為什麼這組合被稱為軍事級加密？ArcSign 如何用它保護你的私鑰與 .arcsign 備份檔？圖解版讓每位加密新手都能看懂加密技術的實際應用原理與設計邏輯。"
 pubDate: 2026-04-08
 locale: zh-TW
 tags: ["安全教育", "加密技術"]

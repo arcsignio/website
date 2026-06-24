@@ -1,6 +1,6 @@
 ---
 title: "ArcSign 常見問題排解：USB 偵測、連線、簽名完整指南"
-description: "ArcSign 疑難排解完整指南：從 USB 偵測失敗、Alchemy Provider 連線錯誤到 WalletConnect 簽名卡住，一次解決 15+ 個常見問題，含 Windows、macOS、Linux 三平台專屬解決方案完整整理。，包含各類錯誤代碼對照表與快速修復步驟完整整理。"
+description: "ArcSign 疑難排解完整指南：從 USB 偵測失敗、Alchemy Provider 連線錯誤到 WalletConnect 簽名卡住，一次解決 15+ 個常見問題，含 Windows、macOS、Linux 三平台專屬解決方案完整整理。"
 pubDate: 2026-04-07
 locale: zh-TW
 tags: ["產品教學"]

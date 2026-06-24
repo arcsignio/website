@@ -1,6 +1,6 @@
 ---
 title: "Ledger vs Trezor vs ArcSign：哪個最適合你？2026 完整比較"
-description: "2026 年三大冷錢包深度比較：Ledger、Trezor 和 ArcSign 在安全架構、硬體成本、支援鏈數量、備份方式、開源狀態等 10 個核心面向的完整分析評比，幫你選出最適合需求的加密錢包方案。，附各方案的安全漏洞歷史紀錄與實測用戶體驗評分整理說明。"
+description: "2026 年三大冷錢包深度比較：Ledger、Trezor 和 ArcSign 在安全架構、硬體成本、支援鏈數量、備份方式、開源狀態等 10 個核心面向的完整分析評比，幫你選出最適合需求的加密錢包方案。"
 pubDate: 2026-04-05
 locale: zh-TW
 tags: ["產品教學", "錢包比較"]

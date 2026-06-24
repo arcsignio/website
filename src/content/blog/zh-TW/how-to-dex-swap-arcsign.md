@@ -1,6 +1,6 @@
 ---
 title: "如何在 ArcSign 進行 DEX Swap（圖文教學）"
-description: "完整教學：用 ArcSign 直接在區塊鏈上進行代幣交換，享受去中心化交易的安全與自由。支援 ETH、BSC、Polygon 等 6 條 EVM 鏈，透過 OpenOcean + KyberSwap 聚合器找到最佳交換匯率。，含滑點設定、Gas 費用優化、最佳路徑選擇策略完整教學說明。"
+description: "完整教學：用 ArcSign 直接在區塊鏈上進行代幣交換，享受去中心化交易的安全與自由。支援 ETH、BSC、Polygon 等 6 條 EVM 鏈，透過 OpenOcean + KyberSwap 聚合器找到最佳交換匯率。"
 pubDate: 2026-03-16
 locale: zh-TW
 tags: ["產品教學"]

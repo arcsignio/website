@@ -1,6 +1,6 @@
 ---
 title: "用 ArcSign 質押 ETH 賺取被動收入（教學）"
-description: "完整教學：如何用 ArcSign USB 冷錢包安全地質押 ETH，透過 Lido stETH 賺取被動收入。從連接 DApp 到確認質押交易，圖文步驟全解析，讓你在保障資產安全的同時讓 ETH 持續增值。，附各 ETH 質押方案收益比較（Lido、Rocket Pool、EigenLayer）完整分析。"
+description: "完整教學：如何用 ArcSign USB 冷錢包安全地質押 ETH，透過 Lido stETH 賺取被動收入。從連接 DApp 到確認質押交易，圖文步驟全解析，讓你在保障資產安全的同時讓 ETH 持續增值。"
 pubDate: 2026-03-31
 locale: zh-TW
 tags: ["產品教學", "DeFi"]

@@ -1,6 +1,6 @@
 ---
 title: "WalletConnect 連接 DApp 完整教學"
-description: "完整教學：如何使用 ArcSign USB 冷錢包通過 WalletConnect v2 連接 Uniswap、OpenSea 等各大 DApp 應用程式。涵蓋完整連接步驟、安全注意事項、支援鏈種列表與常見問題排解說明指南。，附 WalletConnect v2 支援的 DApp 完整清單與連接問題排解步驟說明。"
+description: "完整教學：如何使用 ArcSign USB 冷錢包通過 WalletConnect v2 連接 Uniswap、OpenSea 等各大 DApp 應用程式。涵蓋完整連接步驟、安全注意事項、支援鏈種列表與常見問題排解說明指南。"
 pubDate: 2026-03-13
 locale: zh-TW
 tags: ["產品教學"]

@@ -1,6 +1,6 @@
 ---
 title: "USB 備份策略：如何用多支 USB 保護你的加密資產"
-description: "完整的 USB 冷儲存備份策略指南：學習如何用多支 USB 建立 3-2-1 備份架構、正確選購適合的 USB 儲存裝置、使用 ArcSign .arcsign 加密備份檔確保加密資產永不因裝置損壞而失聯消失。，附 USB 品牌可靠性評比（Samsung/Kingston/SanDisk）與壽命測試數據。"
+description: "完整的 USB 冷儲存備份策略指南：學習如何用多支 USB 建立 3-2-1 備份架構、正確選購適合的 USB 儲存裝置、使用 ArcSign .arcsign 加密備份檔確保加密資產永不因裝置損壞而失聯消失。"
 pubDate: 2026-03-26
 locale: zh-TW
 tags: ["安全教育"]

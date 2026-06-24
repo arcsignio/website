@@ -1,6 +1,6 @@
 ---
 title: "ArcSign Pro NFT 會員：值不值得？完整功能解析"
-description: "完整解析 ArcSign Pro NFT 會員制度：鏈上身份驗證、批次撤銷授權、進階 DeFi 追蹤等 Pro 專屬功能完整詳解。了解 NFT 會員 vs 傳統訂閱制的本質差異，判斷是否值得升級的完整分析。，還有 Pro NFT 的取得方式、鑄造流程與會員福利完整介紹。"
+description: "完整解析 ArcSign Pro NFT 會員制度：鏈上身份驗證、批次撤銷授權、進階 DeFi 追蹤等 Pro 專屬功能完整詳解。了解 NFT 會員 vs 傳統訂閱制的本質差異，判斷是否值得升級的完整分析。"
 pubDate: 2026-03-23
 locale: zh-TW
 tags: ["產品教學"]

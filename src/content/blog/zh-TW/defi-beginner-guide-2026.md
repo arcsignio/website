@@ -1,6 +1,6 @@
 ---
 title: "DeFi 新手完整指南 2026：如何安全使用去中心化金融 | ArcSign 部落格"
-description: "2026 年 DeFi 新手必讀完整指南：涵蓋 DEX 交易所、借貸協議、流動性質押、智能合約風險、rug pull 識別、代幣授權漏洞防範，以及如何透過冷錢包搭配 WalletConnect 安全參與 DeFi 生態。，附主要 DeFi 協議操作步驟與風險評分完整指南說明。"
+description: "2026 年 DeFi 新手必讀完整指南：涵蓋 DEX 交易所、借貸協議、流動性質押、智能合約風險、rug pull 識別、代幣授權漏洞防範，以及如何透過冷錢包搭配 WalletConnect 安全參與 DeFi 生態。"
 pubDate: 2026-04-02
 locale: zh-TW
 tags: ["市場洞察", "DeFi"]

@@ -1,6 +1,6 @@
 ---
 title: "2026 加密錢包市場全景：誰在領跑？"
-description: "2026 年加密錢包市場深度分析：從硬體錢包到軟體錢包、從託管到自託管、MPC 到 HD 錢包架構，全面比較 MetaMask、Ledger、Trust Wallet、ArcSign 等主流方案優缺點與市場定位。，含各類錢包技術架構圖解與 2026 年市場發展趨勢預測。"
+description: "2026 年加密錢包市場深度分析：從硬體錢包到軟體錢包、從託管到自託管、MPC 到 HD 錢包架構，全面比較 MetaMask、Ledger、Trust Wallet、ArcSign 等主流方案優缺點與市場定位。"
 pubDate: 2026-03-12
 locale: zh-TW
 tags: ["市場洞察", "錢包比較"]

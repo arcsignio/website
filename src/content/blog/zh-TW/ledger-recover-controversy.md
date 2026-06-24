@@ -1,6 +1,6 @@
 ---
 title: "Ledger Recover 爭議解析：你有什麼替代選擇？"
-description: "深度解析 Ledger Recover 服務引發的重大爭議：為什麼它動搖了硬體錢包的信任根基？了解自託管核心原則、私鑰外洩潛在風險，以及 ArcSign 等替代方案如何在不妥協安全性前提下解決備份問題。，含社群反應、Ledger 官方回應與業界評估完整時間軸整理。"
+description: "深度解析 Ledger Recover 服務引發的重大爭議：為什麼它動搖了硬體錢包的信任根基？了解自託管核心原則、私鑰外洩潛在風險，以及 ArcSign 等替代方案如何在不妥協安全性前提下解決備份問題。"
 pubDate: 2026-03-19
 locale: zh-TW
 tags: ["安全教育", "錢包比較"]
