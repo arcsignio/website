@@ -19,9 +19,9 @@ Zero Trust flips this assumption entirely: **there is no "safe inside."** Every 
 
 So what does an enterprise IT security concept have to do with your crypto wallet? The answer: **more than you might think**.
 
-            Core Principle
-
-Zero Trust isn't a product — it's a security mindset. In the crypto wallet space, it means: **don't trust the operating system, don't trust memory, don't trust storage media, don't trust the network — only trust mathematics**.
+> **Core Principle**
+>
+> Zero Trust isn't a product — it's a security mindset. In the crypto wallet space, it means: **don't trust the operating system, don't trust memory, don't trust storage media, don't trust the network — only trust mathematics**.
 
 ## Why Crypto Wallets Need Zero Trust
 
@@ -33,23 +33,19 @@ This means crypto wallets require higher security standards than traditional fin
 
 Let's examine how many trust assumptions most crypto wallets silently make:
 
-            1
-            Trusting the OS won't be compromised
+**1. Trusting the OS won't be compromised**
 
 Hot wallets keep decrypted private keys in memory, assuming the operating system will protect them. But malware and zero-day exploits can break this assumption at any time.
 
-            2
-            Trusting the hard drive won't be read
+**2. Trusting the hard drive won't be read**
 
 Many wallets store encrypted private keys on the hard drive. But if the computer is stolen or the drive is analyzed with forensic tools, a weak password can be brute-forced.
 
-            3
-            Trusting the manufacturer's firmware
+**3. Trusting the manufacturer's firmware**
 
 Hardware wallet users trust that Ledger, Trezor, and others have no backdoors in their firmware. But the 2023 [Ledger Recover](/blog/ledger-recover-controversy) controversy proved this trust can be broken at any time.
 
-            4
-            Trusting the supply chain hasn't been tampered with
+**4. Trusting the supply chain hasn't been tampered with**
 
 At every step from factory to your hands, hardware devices can be intercepted and implanted with backdoors. Multiple hardware wallet [supply chain attack](/blog/supply-chain-attack-hardware-wallet)s were documented in 2024.
 
@@ -59,28 +55,28 @@ The Zero Trust approach: **assume every single one of these has already been com
 
 Zero Trust architecture has five core principles. Let's see how each translates into crypto wallet security design:
 
-            1. Least Privilege
-            Grant only the minimum access needed, only when needed
+**1. Least Privilege**
+Grant only the minimum access needed, only when needed
 
 In ArcSign, the private key is only reconstructed in memory for the 1-5 milliseconds needed to sign a transaction, then immediately destroyed. During the entire application runtime, the key exists only as three meaningless XOR shards — even ArcSign's own code cannot "see" the complete private key except during the brief signing process.
 
-            2. Continuous Verification
-            Every access request must be re-verified
+**2. Continuous Verification**
+Every access request must be re-verified
 
 ArcSign never retains decrypted data in memory. Every signing operation requires re-reading the three encrypted shards from USB, decrypting them, XOR reconstruction, signing, and destruction — a complete verification and cleanup cycle. There's no "already logged in, therefore trusted" state.
 
-            3. Assume Breach
-            Design as if the system is already compromised
+**3. Assume Breach**
+Design as if the system is already compromised
 
 ArcSign's multi-layer defense is built on this assumption. Even if the OS is compromised ([mlock](/blog/mlock-memory-protection) protects memory from being swapped), even if memory is read (the key only exists for 1-5ms), even if the USB is stolen (each shard is encrypted with [AES-256](/blog/aes256-encryption-simple)) — every layer operates independently, not relying on any other layer's integrity.
 
-            4. Micro-Segmentation
-            Break resources into the smallest units, protect each independently
+**4. Micro-Segmentation**
+Break resources into the smallest units, protect each independently
 
 XOR three-shard splitting is the perfect implementation of micro-segmentation. The private key is split into three independent shards, each encrypted and stored separately on the USB. Obtaining any single shard reveals zero information about the original key — far more secure than protecting the key as a single unit.
 
-            5. Encrypt Everything
-            All data must be encrypted in every state
+**5. Encrypt Everything**
+All data must be encrypted in every state
 
 ArcSign data is encrypted at rest ([AES-256](/blog/aes256-encryption-simple)-GCM encrypted storage), in transit (USB read channel), and even in backup (.arcsign encrypted backup files — encrypted upon export). The only exception is the 1-5 milliseconds during signing — and that window is protected by [mlock](/blog/mlock-memory-protection).
 
@@ -106,9 +102,9 @@ When a transaction needs to be signed, ArcSign first uses the mlock system call 
 
 The final defense layer is physical isolation. All encrypted shards are stored on a USB drive, not the computer's hard drive. When not in use, the USB can be unplugged, completely isolating your private keys from the online world. No matter how skilled a remote hacker may be, they cannot access a USB device that isn't connected to a computer.
 
-            Independence of the Four Layers
-
-The key point: these four defense layers are **completely independent**. Even if one layer is fully breached, the other three still protect your private key. An attacker would need to **simultaneously** breach all four layers to have any chance of accessing your key — virtually impossible in practice.
+> **Independence of the Four Layers**
+>
+> The key point: these four defense layers are **completely independent**. Even if one layer is fully breached, the other three still protect your private key. An attacker would need to **simultaneously** breach all four layers to have any chance of accessing your key — virtually impossible in practice.
 
 ## Zero Trust vs Traditional Wallet Security Models
 
@@ -144,36 +140,31 @@ Cold Boot Attacks use physical access to read residual data from computer memory
 
 ArcSign's mlock + millisecond-level exposure window makes this attack virtually impossible to execute. The attacker's window is only 1-5 milliseconds, and mlock-protected memory regions don't normally persist in recoverable areas of RAM.
 
-            Security Lesson
-
-Every attack case above shares a common thread: they all resulted from "trusting" a component that shouldn't have been trusted. The value of Zero Trust architecture lies precisely here — **eliminate all trust assumptions so security never depends on any single component's integrity**.
+> **Security Lesson**
+>
+> Every attack case above shares a common thread: they all resulted from "trusting" a component that shouldn't have been trusted. The value of Zero Trust architecture lies precisely here — **eliminate all trust assumptions so security never depends on any single component's integrity**.
 
 ## How to Start Protecting Your Crypto with a Zero Trust Mindset
 
 You don't need to be a security expert to practice Zero Trust. Here are concrete steps every crypto user can take:
 
-            1
-            Use cold storage, not hot wallets
+**1. Use cold storage, not hot wallets**
 
 Keep the majority of your assets in an offline wallet. ArcSign lets you achieve [cold storage](/blog/what-is-cold-storage) with any standard USB drive, completely free. Keep a small amount in hot wallets for daily use, but your main holdings should be offline.
 
-            2
-            Encrypt your backups
+**2. Encrypt your backups**
 
 Don't rely solely on paper [seed phrase](/blog/seed-phrase-backup-guide)s. Use ArcSign's .arcsign encrypted backup feature and store backups on a second USB drive. Backup files are encrypted upon export (AES-256-GCM) — even if someone obtains the file, they can't decrypt it.
 
-            3
-            Regularly audit token approvals
+**3. Regularly audit token approvals**
 
 Many DeFi users grant unlimited approvals to smart contracts and forget to revoke them. ArcSign's built-in [token approval](/blog/token-approval-revoke)s management lets you view all [ERC-20](/blog/erc20-token-management) approvals and revoke dangerous permissions with one click. Pro users can batch-revoke.
 
-            4
-            Use WalletConnect for secure signing
+**4. Use WalletConnect for secure signing**
 
 When interacting with DApps, don't hand your private key to a browser extension. ArcSign supports WalletConnect v2, letting you securely sign transactions from your cold wallet while your private key stays on the USB.
 
-            5
-            Maintain a Zero Trust mindset
+**5. Maintain a Zero Trust mindset**
 
 Be suspicious of any website asking for your seed phrase. Be suspicious of services claiming "absolute security." Be suspicious of "official support" contacting you to resolve issues. Zero Trust isn't just a technical architecture — it's a security mindset.
 

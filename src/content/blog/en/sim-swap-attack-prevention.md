@@ -15,31 +15,27 @@ SIM Swap (also called SIM hijacking or port-out fraud) is a social-engineering a
 
 The reason it's so devastating is that it cleanly bypasses the defense layer most crypto users still rely on: **SMS-based two-factor authentication**. Most exchanges, email providers, and Google accounts still allow password resets using an SMS code. With your phone number plus a few publicly-available details, an attacker can domino their way through your entire digital identity in under an hour.
 
-            Core truth
-
-The SIM Swap attack surface is not on your side. You can use the strongest password, a brand-new phone, and the most secure network — and it won't matter if the carrier's support agent gets socially engineered once. **This is an attack you largely cannot prevent with personal device hygiene.**
+> **Core truth**
+>
+> The SIM Swap attack surface is not on your side. You can use the strongest password, a brand-new phone, and the most secure network — and it won't matter if the carrier's support agent gets socially engineered once. **This is an attack you largely cannot prevent with personal device hygiene.**
 
 ## Anatomy of a SIM Swap: the full attack flow
 
 Understanding how attackers execute is the only way to find real defense points. A typical SIM Swap unfolds in four stages:
 
-            1
-            Intelligence gathering (OSINT)
+**1. Intelligence gathering (OSINT)**
 
 Attackers assemble target profiles from LinkedIn, Twitter, leaked databases, and public on-chain addresses — name, birthday, phone number, last-four-of-ID, schools attended, common email, sometimes home address. A wallet address that was once flexed on Twitter as "holding 100 ETH" lands squarely on a target list.
 
-            2
-            Social-engineering the carrier
+**2. Social-engineering the carrier**
 
 The attacker calls or walks into a store claiming "I lost my phone, I need a replacement SIM." They answer identity questions using the data they collected. In several public cases, attackers have outright bribed insider carrier employees to complete the port — T-Mobile faced multiple scandals between 2017 and 2022 involving employees helping execute SIM Swaps.
 
-            3
-            Identity takeover
+**3. Identity takeover**
 
 Once the port succeeds, the attacker uses "Forgot Password" flows on Gmail, Apple ID, and exchange accounts. Every password-reset email, verification code, and 2FA SMS is delivered straight to their new SIM. The full takeover typically completes in under 30 minutes.
 
-            4
-            Asset extraction and laundering
+**4. Asset extraction and laundering**
 
 The attacker logs into the exchange and withdraws all crypto to an external wallet. To evade tracing, funds pass through mixers, [cross-chain](/blog/arcsign-cross-chain-guide) bridges, and multiple [DEX swap](/blog/how-to-dex-swap-arcsign)s. In the worst documented cases, the total elapsed time from port-out to funds-untraceable is about 45 minutes.
 
@@ -83,38 +79,31 @@ Before a SIM Swap executes, attackers usually leave observable traces. If you se
 
 ## 7 battle-tested defense strategies
 
-            1
-            Turn off SMS 2FA — move to TOTP or FIDO2
+**1. Turn off SMS 2FA — move to TOTP or FIDO2**
 
 In the security settings of every exchange, email, and cloud service, remove SMS verification. Switch to **Google Authenticator / Aegis / 1Password TOTP**, or ideally **YubiKey / FIDO2 security keys**. TOTP binds the second factor to a device, not to your phone number — SIM Swap cannot retrieve it.
 
-            2
-            Set a carrier PIN or port-out lock
+**2. Set a carrier PIN or port-out lock**
 
 All major US carriers (Verizon, AT&T, T-Mobile) and most international carriers let you set a "carrier PIN" or an explicit "number transfer lock." Some offer stronger options like "replacement SIM requires in-person photo ID." Spending 5 minutes on a support call blocks the vast majority of social-engineering attempts.
 
-            3
-            Use a dedicated "crypto-only" email
+**3. Use a dedicated "crypto-only" email**
 
 Create a brand-new email address, **never shared publicly, never linked to a phone number**, and use it only for exchanges, wallets, and DeFi. Lock it down with a FIDO2 key as 2FA. ProtonMail, Tutanota, or a clean Gmail all work — the point is strict separation from your public identity.
 
-            4
-            Stop broadcasting your crypto net worth
+**4. Stop broadcasting your crypto net worth**
 
 Roughly 90% of SIM Swap targets are selected from Twitter posts like "just bought 100 ETH" or "up $100k this week." Shift your posting habits to "teach the lesson, not the number." Removing yourself from the public target list is the single cheapest defensive move.
 
-            5
-            Move long-term holdings off exchanges and into cold storage
+**5. Move long-term holdings off exchanges and into cold storage**
 
 The ultimate defense: **don't keep the eggs in an exchange basket.** Exchanges are the #1 victim surface for SIM Swap because they allow email + SMS-based password resets. Move long-term holdings to a USB cold wallet like **ArcSign**. Even if the attacker gets full control of your exchange account, they cannot sign transactions out of your cold wallet.
 
-            6
-            Audit account recovery paths quarterly
+**6. Audit account recovery paths quarterly**
 
 Every three months, log into Gmail, Apple ID, and each exchange's security settings. Check "backup phone," "trusted devices," and "app passwords" for anything you didn't add. Some attackers plant latent backdoors after a successful takeover and harvest months later.
 
-            7
-            Enable withdrawal delay + address whitelist
+**7. Enable withdrawal delay + address whitelist**
 
 Major exchanges (Binance, OKX, Coinbase) support "whitelist + 24-72h withdrawal delay." Even if your account is compromised, funds can't leave until the delay expires — giving you time to detect and freeze. Combine with push notifications for sub-minute reaction time.
 
@@ -130,9 +119,9 @@ Not all "two-factor authentication" provides the same protection. Here's how the
 | **FIDO2 hardware key** | YubiKey, SoloKey | ✓ Immune | ✓ Immune (domain-bound) | △ Requires carrying key |
 | **Passkey (OS-native)** | iCloud Keychain, Android Passkey | ✓ Immune | ✓ Immune | ✓ Seamless |
 
-            Recommendation
-
-For high-value accounts (exchanges, primary email), use **TOTP** at minimum; ideally **FIDO2 hardware key + TOTP backup**. Remove SMS 2FA entirely, even if the exchange still allows it.
+> **Recommendation**
+>
+> For high-value accounts (exchanges, primary email), use **TOTP** at minimum; ideally **FIDO2 hardware key + TOTP backup**. Remove SMS 2FA entirely, even if the exchange still allows it.
 
 ## Why ArcSign cold wallets are structurally immune
 
@@ -149,31 +138,27 @@ ArcSign splits the private key using **XOR three-shard encryption**, then encryp
 
 If you want the deeper mechanics, see [XOR Three-Shard Encryption Explained](/blog/xor-encryption-explained); for the broader philosophy, see [Zero Trust Architecture in Crypto Wallets](/blog/zero-trust-wallet).
 
-            Architectural difference
-
-Exchanges protect *account access*. Cold wallets protect *key ownership*. SIM Swap can take the former; it cannot take the latter. **This is why "not your keys, not your coins" matters even more in the SIM Swap era.**
+> **Architectural difference**
+>
+> Exchanges protect *account access*. Cold wallets protect *key ownership*. SIM Swap can take the former; it cannot take the latter. **This is why "not your keys, not your coins" matters even more in the SIM Swap era.**
 
 ## If it happens: the golden 30-minute playbook
 
 Time is everything during a SIM Swap incident. From the moment your phone loses signal (or you receive an unexpected password-reset notification), you have roughly 30 minutes before losses lock in:
 
-            1
-            Minutes 0-5: Freeze the carrier account
+**1. Minutes 0-5: Freeze the carrier account**
 
 Use Wi-Fi calling or a secondary line to reach your carrier. Demand an immediate "freeze all SIM changes" and open an internal investigation. This is the only way to stop the number from being manipulated further.
 
-            2
-            Minutes 5-15: Lock every high-value account
+**2. Minutes 5-15: Lock every high-value account**
 
 From a trusted laptop or tablet, log into: Gmail, Apple ID, every exchange. Rotate passwords, log out all devices, disable API keys, and trigger "emergency account lock" where supported (Binance, OKX, Coinbase all provide this). At this moment, time equals money.
 
-            3
-            Minutes 15-25: Report and collect evidence
+**3. Minutes 15-25: Report and collect evidence**
 
 File a police report, request a written record from your carrier, screenshot every unusual notification. These artifacts are the foundation of any later civil recovery action. If assets have already been withdrawn, contact the exchange's risk desk — most major exchanges will attempt to freeze suspicious receiving accounts if you provide a case number quickly enough.
 
-            4
-            Minutes 25-30: Build the long-term fix
+**4. Minutes 25-30: Build the long-term fix**
 
 Move remaining assets from exchanges to [cold storage](/blog/what-is-cold-storage). Re-enable high-strength 2FA (TOTP + FIDO2) across every account. Consider changing your phone number and carrier, setting up a crypto-only email. Treat this incident as the forcing function for an architecture upgrade.
 

@@ -1,6 +1,6 @@
 ---
 title: "How to DEX Swap on ArcSign (Step-by-Step Tutorial)"
-description: "Swap tokens on-chain with ArcSign using OpenOcean and KyberSwap for best rates. Supports 7 chains including Ethereum, BSC, Polygon, and Arbitrum."
+description: "Swap tokens on-chain with ArcSign using OpenOcean and KyberSwap for best rates. Supports 6 EVM chains including Ethereum, BSC, Polygon, and Arbitrum."
 pubDate: 2026-03-16
 locale: en
 tags: ["Tutorial"]
@@ -41,7 +41,7 @@ Benefits of this approach:
 
 ## Supported Blockchains
 
-ArcSign supports swaps on 7 chains, covering all major ecosystems:
+ArcSign supports swaps on 6 EVM chains, covering all major ecosystems:
 
 | Blockchain | Network Name | Characteristics |
 | --- | --- | --- |
@@ -51,32 +51,26 @@ ArcSign supports swaps on 7 chains, covering all major ecosystems:
 | **Arbitrum** | Arbitrum One | Layer 2 speed, rich ecosystem |
 | **Optimism** | Optimism | Layer 2 speed, numerous DeFi apps |
 | **Base** | Base (Coinbase L2) | Emerging chain, rapid growth |
-| **Bitcoin** | Bitcoin Mainnet | Native BTC support |
-| + 15 more chains (Avalanche, Fantom, Aurora, Linea, zkSync, Scroll, and more) |
 
-            Pro Tip
-
-When doing large swaps on lower-liquidity chains, consider splitting into multiple smaller trades to minimize slippage and avoid transaction failures.
+> **Pro Tip**
+>
+> When doing large swaps on lower-liquidity chains, consider splitting into multiple smaller trades to minimize slippage and avoid transaction failures.
 
 ## 7 Steps to Complete a Swap
 
-            1
-            Connect Your USB and Open ArcSign
+**1. Connect Your USB and Open ArcSign**
 
-Insert your ArcSign USB drive into your computer and launch the ArcSign application. The app will automatically detect the USB and load your wallet list. Ensure your internet connection is stable — ArcSign needs to connect to your configured Provider (such as Alchemy) to read balances and blockchain data.
+Insert your ArcSign USB drive into your computer and launch the ArcSign application. The app will automatically detect the USB and load your wallet list. Ensure your internet connection is stable — ArcSign reads your balances over built-in public RPC plus Multicall3 (no API key needed) to fetch on-chain data.
 
-            2
-            Navigate to the Swap Tab
+**2. Navigate to the Swap Tab**
 
 Find the **Swap** tab in the main interface. If this is your first time, you may need to select a blockchain (Ethereum, BSC, Polygon, etc.). Choose which chain you want to trade on.
 
-            3
-            Select Source and Destination Tokens
+**3. Select Source and Destination Tokens**
 
 Click the "From" dropdown and select the token you want to swap (e.g., ETH). Then click "To" and select the token you want to receive (e.g., USDC). You can search by token symbol or contract address. ArcSign displays your current balance.
 
-            4
-            Enter Amount, Review Route, and Check Estimated Output
+**4. Enter Amount, Review Route, and Check Estimated Output**
 
 Type the amount you want to swap (e.g., 1 ETH) in the amount field. ArcSign immediately queries the aggregators and shows you:
 
@@ -88,17 +82,15 @@ Type the amount you want to swap (e.g., 1 ETH) in the amount field. ArcSign imme
 
 - **Gas Estimate**: How much gas this transaction will cost
 
-            5
-            Check Gas Fees and Adjust Slippage
+**5. Check Gas Fees and Adjust Slippage**
 
 ArcSign defaults to 0.5% slippage tolerance (suitable for stablecoin pairs). For more volatile tokens, you may want to adjust to 1-2%. Gas fees are automatically calculated based on current network conditions. If gas is too high, consider waiting for the network to settle.
 
-                ⚠️ Important
+> **⚠️ Important**
+>
+> Slippage too low = transaction fails. Slippage too high = risk of front-running. 1% is a safe starting point.
 
-Slippage too low = transaction fails. Slippage too high = risk of front-running. 1% is a safe starting point.
-
-            6
-            Confirm Transaction and Sign
+**6. Confirm Transaction and Sign**
 
 Click the "Confirm Swap" button. ArcSign displays a final confirmation screen showing:
 
@@ -110,8 +102,7 @@ Click the "Confirm Swap" button. ArcSign displays a final confirmation screen sh
 
 Review and click "Sign". **Your USB is now activated, and the private key signs the transaction. The entire process takes only 1-5ms. Your private key never leaves the USB and is immediately cleared afterward.**
 
-            7
-            Wait for Blockchain Confirmation
+**7. Wait for Blockchain Confirmation**
 
 Your transaction is broadcast to the blockchain. ArcSign shows your transaction hash (TX Hash) and estimated confirmation time. You can click the hash to view details on the blockchain explorer. Most transactions confirm within 15 seconds to 5 minutes (depending on the chain and gas price). Your new tokens appear in your wallet automatically once confirmed.
 
@@ -155,9 +146,9 @@ Compared to hot wallets (MetaMask, Trust Wallet), DEX swaps on ArcSign offer hug
 | **Memory Leaks** | High risk | Protected by mlock, extremely low risk |
 | **Unauthorized Transactions** | Malware can hijack signatures | Requires physical USB + signature, dual protection |
 
-            ArcSign's Encryption Layers
-
-ArcSign uses **XOR 3-shard key protection** + **[AES-256](/blog/aes256-encryption-simple) encryption** + **[mlock](/blog/mlock-memory-protection) memory protection**. Even if the USB is stolen, without the password it cannot be decrypted. Even if your computer is hacked, sensitive data in memory is immediately cleared.
+> **ArcSign's Encryption Layers**
+>
+> ArcSign uses **XOR 3-shard key protection** + **[AES-256](/blog/aes256-encryption-simple) encryption** + **[mlock](/blog/mlock-memory-protection) memory protection**. Even if the USB is stolen, without the password it cannot be decrypted. Even if your computer is hacked, sensitive data in memory is immediately cleared.
 
 ## Common Issues and Solutions
 

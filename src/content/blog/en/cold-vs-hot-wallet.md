@@ -25,9 +25,9 @@ Cold wallets store private keys **completely offline**, never touching the inter
 
 The traditional downside of cold wallets is inconvenience: every transaction requires manual interaction with a hardware device, and hardware wallets typically cost $60-150. But this is changing with next-generation cold wallet solutions like ArcSign, which replaces expensive dedicated hardware with a standard USB drive you already own, and uses [WalletConnect](/blog/walletconnect-dapp-tutorial) to let cold wallets connect directly to DApps.
 
-            Remember the Difference
-
-**Hot wallet = cash in your pocket — convenient but easy to steal; Cold wallet = assets in a bank vault — secure but requires an extra step to access**. The best strategy is to use both together.
+> **Remember the Difference**
+>
+> **Hot wallet = cash in your pocket — convenient but easy to steal; Cold wallet = assets in a bank vault — secure but requires an extra step to access**. The best strategy is to use both together.
 
 ## Security Deep Dive: Which Better Protects Your Assets?
 
@@ -51,9 +51,9 @@ Dedicated hardware wallets face a unique risk: [supply chain attacks](/blog/../s
 
 Hot wallets and software cold wallets like ArcSign don't face hardware supply chain risks — they run on general-purpose hardware, with security coming from auditable software algorithms rather than closed, "trust-required" hardware.
 
-            Security Verdict
-
-In overall security, cold wallets clearly outperform hot wallets. But **not all cold wallets are equal**: ArcSign's XOR three-shard encryption + [mlock memory protection](/blog/../mlock-memory-protection) provides more layers of defense than traditional hardware wallets, while avoiding [supply chain attack](/blog/supply-chain-attack-hardware-wallet) risks.
+> **Security Verdict**
+>
+> In overall security, cold wallets clearly outperform hot wallets. But **not all cold wallets are equal**: ArcSign's XOR three-shard encryption + [mlock memory protection](/blog/../mlock-memory-protection) provides more layers of defense than traditional hardware wallets, while avoiding [supply chain attack](/blog/supply-chain-attack-hardware-wallet) risks.
 
 ## Convenience Showdown: Daily Usage Experience
 
@@ -77,30 +77,27 @@ ArcSign solves this with built-in [WalletConnect v2](/blog/../walletconnect-dapp
 
 Hot wallets typically excel at multi-chain support. MetaMask can manually add any EVM chain, and Trust Wallet supports dozens of chains. But you may need to switch between different apps.
 
-ArcSign supports BTC and 6 major EVM chains, [managing all assets in a single interface](/blog/../multi-chain-management). This includes Ethereum, BSC, Polygon, Arbitrum, Optimism, and other major chains. You can view all balances, NFTs, and DeFi positions across every chain in one app.
+ArcSign supports 7 EVM chains, [managing all assets in a single interface](/blog/../multi-chain-management). This includes Ethereum, BSC, Polygon, Arbitrum, Optimism, Base, and Avalanche. You can view all balances, NFTs, and DeFi positions across every chain in one app.
 
 ## Cost Analysis: From Free to Thousands of Dollars
 
 Cost is an important factor for many people when choosing a wallet. Here's how the options compare:
 
-            $0
-            Hot Wallets (MetaMask, Trust Wallet, etc.)
+> **$0 — Hot Wallets (MetaMask, Trust Wallet, etc.)**
+>
+> Completely free to download and use. But the price of "free" is that your private keys are stored on internet-connected devices, with security depending on your device hygiene and usage habits.
 
-Completely free to download and use. But the price of "free" is that your private keys are stored on internet-connected devices, with security depending on your device hygiene and usage habits.
+> **$0 — ArcSign USB Cold Wallet**
+>
+> Software is completely free — you just need a standard USB drive you already own. All core security features — XOR three-shard encryption, [mlock](/blog/mlock-memory-protection) memory protection, [AES-256](/blog/aes256-encryption-simple) encrypted backups — are provided at no cost. Supports 7 chains with built-in [DEX swap](/blog/how-to-dex-swap-arcsign).
 
-            $0
-            ArcSign USB Cold Wallet
+> **$$ — Hardware Wallets (Ledger, Trezor, etc.)**
+>
+> Entry-level models cost $60-90, flagship models can exceed $150. Requires purchasing dedicated hardware, and if lost or damaged, you'll need to buy another. Some premium features may require additional subscription fees.
 
-Software is completely free — you just need a standard USB drive you already own. All core security features — XOR three-shard encryption, [mlock](/blog/mlock-memory-protection) memory protection, [AES-256](/blog/aes256-encryption-simple) encrypted backups — are provided at no cost. Supports 7 chains with built-in [DEX swap](/blog/how-to-dex-swap-arcsign).
-
-            $$
-            Hardware Wallets (Ledger, Trezor, etc.)
-
-Entry-level models cost $60-90, flagship models can exceed $150. Requires purchasing dedicated hardware, and if lost or damaged, you'll need to buy another. Some premium features may require additional subscription fees.
-
-            Value Verdict
-
-ArcSign breaks the "cold wallet = expensive" stereotype. You can get [cold storage](/blog/what-is-cold-storage)-level security at **zero cost**, while enjoying multi-chain support, DEX Swap, WalletConnect, and more. The only "cost" is a USB drive you probably already have in your drawer.
+> **Value Verdict**
+>
+> ArcSign breaks the "cold wallet = expensive" stereotype. You can get [cold storage](/blog/what-is-cold-storage)-level security at **zero cost**, while enjoying multi-chain support, DEX Swap, WalletConnect, and more. The only "cost" is a USB drive you probably already have in your drawer.
 
 ## Full Comparison: 8 Key Dimensions at a Glance
 
@@ -114,7 +111,7 @@ The following table compares hot wallets, traditional hardware cold wallets, and
 | **Purchase Cost** | Free | $60-$150+ | Free (use existing USB) |
 | **DApp Interaction** | Native support | Via bridge software | Built-in WalletConnect v2 |
 | **DEX Swap** | Via separate DApps | Not directly supported | Built-in DEX Swap |
-| **Multi-Chain Support** | Extensive (varies by wallet) | Multi-chain support | BTC + 6 EVM chains |
+| **Multi-Chain Support** | Extensive (varies by wallet) | Multi-chain support | 7 EVM chains |
 | **Backup Method** | Seed phrase (plaintext risk) | Seed phrase (plaintext risk) | Seed phrase + .arcsign encrypted backup |
 
 ## Best 2026 Strategy: Use Both Together
@@ -123,24 +120,21 @@ Now that you understand the pros and cons of cold and hot wallets, the best asse
 
 ### Recommended Asset Allocation
 
-            1
-            Core Assets → Cold Wallet (80-90%)
+**1. Core Assets → Cold Wallet (80-90%)**
 
 Long-term BTC, ETH, and other core holdings should all go into a cold wallet. This is your "digital vault," only accessed for major operations. With ArcSign, your private keys are protected by XOR three-shard encryption — even if the USB is stolen, it cannot be cracked.
 
-            2
-            Daily Operations → Hot Wallet or ArcSign WalletConnect (10-20%)
+**2. Daily Operations → Hot Wallet or ArcSign WalletConnect (10-20%)**
 
 Funds for daily DeFi operations, NFT trading, or small transfers can stay in a hot wallet. Or better yet: use ArcSign's WalletConnect feature to connect DApps directly from cold storage, saving the hassle and gas fees of moving assets between wallets.
 
-            3
-            Backup Strategy → Double Insurance
+**3. Backup Strategy → Double Insurance**
 
 Regardless of which wallet you use, have a solid backup plan. ArcSign offers an exclusive [.arcsign encrypted backup file](/blog/../usb-backup-strategy) — export equals encryption (AES-256), secure even if obtained by others. Keep both a paper seed phrase and a .arcsign backup file stored in separate secure locations. Follow these [9 private key management principles](/blog/private-key-management-best-practices) to maximize your cold wallet security.
 
-            Practical Advice
-
-If your total crypto holdings exceed $1,000, we strongly recommend keeping at least 80% in a cold wallet. **The loss from stolen assets always outweighs the minor inconvenience of cold storage**. And with ArcSign, that "inconvenience" has virtually disappeared.
+> **Practical Advice**
+>
+> If your total crypto holdings exceed $1,000, we strongly recommend keeping at least 80% in a cold wallet. **The loss from stolen assets always outweighs the minor inconvenience of cold storage**. And with ArcSign, that "inconvenience" has virtually disappeared.
 
 ## ArcSign's Unique Position: A Cold Wallet for Daily Use
 

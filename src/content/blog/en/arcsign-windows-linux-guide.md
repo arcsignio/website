@@ -15,9 +15,9 @@ Hot wallets can be restored from the cloud on any device, but a cold wallet is d
 
 That is why, starting with v1.2, ArcSign treats **Windows, macOS, and Linux** as first-class citizens. All three builds share the same Go core library and Tauri desktop framework, so the XOR three-shard key protection, [AES-256](/blog/aes256-encryption-simple) encrypted backup, and [mlock](/blog/mlock-memory-protection) memory protection behave identically regardless of the platform. This guide walks you from download to first signature on every one of them.
 
-            Shared facts across platforms
-
-ArcSign is **free software** (planned to open-source after passing 10,000 users). The `.arcsign` backup file is **encrypted with [AES-256](/blog/aes256-encryption-simple) the moment it is exported** — there is no separate "set a backup password" step. Your private key never exists in reconstructed form outside a short **1–5 millisecond** signing window.
+> **Shared facts across platforms**
+>
+> ArcSign is **free software** (fully open source under Apache 2.0). The `.arcsign` backup file is **encrypted with [AES-256](/blog/aes256-encryption-simple) the moment it is exported** — there is no separate "set a backup password" step. Your private key never exists in reconstructed form outside a short **1–5 millisecond** signing window.
 
 ## System requirements across all three platforms
 
@@ -38,13 +38,11 @@ The full app comes in at **under 200 MB**, lighter than most companion software 
 
 The number-one enemy of a cold wallet is a **tampered installer**. If you download a trojanized ArcSign from a look-alike site, no amount of cryptography will save you. Please always do two things before installing:
 
-            1
-            Only download from arcsign.io
+**1. Only download from arcsign.io**
 
 Type arcsign.io into the address bar by hand — never click search ads. The download page will auto-detect your OS and surface the right file: ArcSign-Setup-x.y.z.exe on Windows, ArcSign-x.y.z.dmg on macOS, and ArcSign-x.y.z.AppImage on Linux (with deb/rpm options for advanced users). Every artifact is hosted on Cloudflare R2 at github.com/arcsignio/arcsign/releases over HTTPS.
 
-            2
-            Verify the SHA-256 hash
+**2. Verify the SHA-256 hash**
 
 The download page shows a SHA-256 next to every file. After downloading, run the equivalent of this check in a terminal:
 
@@ -59,26 +57,23 @@ sha256sum ArcSign-1.2.3.AppImage
 
 The output must match the website value exactly. A mismatch means the file was corrupted or tampered with — delete it and download again.
 
-            ⚠️ Common phishing patterns
-
-Attackers register look-alikes such as arc-sign.io, arcsign.download, or arcsign-wallet.io. Bookmark the real domain and always enter the site from that bookmark. See [our phishing prevention guide](/blog/phishing-attack-prevention) for more detection tips.
+> **⚠️ Common phishing patterns**
+>
+> Attackers register look-alikes such as arc-sign.io, arcsign.download, or arcsign-wallet.io. Bookmark the real domain and always enter the site from that bookmark. See [our phishing prevention guide](/blog/phishing-attack-prevention) for more detection tips.
 
 ## Windows install: handling SmartScreen and antivirus
 
 Windows is the smoothest to install on, but because ArcSign is still a relatively new publisher you will likely see a SmartScreen warning on first run. That warning is routine, not a malware detection.
 
-            1
-            Run the setup binary
+**1. Run the setup binary**
 
 Double-click ArcSign-Setup-x.y.z.exe. If Windows Defender SmartScreen shows the blue "Windows protected your PC" screen, click **More info**, then **Run anyway**. The installer uses an EV code-signing certificate — SmartScreen's reputation score climbs over time, so the warning goes away as more users install.
 
-            2
-            Pick the install location
+**2. Pick the install location**
 
 The default C:\Program Files\ArcSign\ is fine. The installer creates a desktop shortcut and a Start Menu entry automatically. Total install time is roughly 30 seconds and no reboot is required.
 
-            3
-            Handle antivirus false positives
+**3. Handle antivirus false positives**
 
 Some third-party antivirus products (Avast, Kaspersky, Bitdefender) may flag ArcSign as "unknown" and quarantine it. That is because ArcSign talks to USB devices and calls [mlock](/blog/mlock-memory-protection) — behaviors that look "suspicious" to heuristic scanners. Whitelist the ArcSign install directory and re-launch.
 
@@ -88,24 +83,21 @@ Once installed, launch ArcSign from the Start Menu. Windows may ask for permissi
 
 The macOS build is a **Universal Binary**, so the same file runs natively on Intel x64 and Apple Silicon (arm64). M1/M2/M3/M4 Macs execute the arm64 slice automatically and older Intel Macs run the x64 slice. No wrong-version hazards.
 
-            1
-            Mount the DMG and drag to Applications
+**1. Mount the DMG and drag to Applications**
 
 Double-click the ArcSign-x.y.z.dmg you downloaded. The mounted window shows the ArcSign icon alongside a shortcut to **Applications**. Drag ArcSign onto that shortcut to copy it into /Applications.
 
-            2
-            Clear the Gatekeeper prompt
+**2. Clear the Gatekeeper prompt**
 
 On first launch macOS may say "ArcSign cannot be opened because it is from an unidentified developer." Open **System Settings → Privacy & Security**, scroll to the Security block, and click **Open Anyway** next to the ArcSign-blocked notice. Every subsequent launch works without further prompts.
 
-            3
-            Grant USB and removable-media access
+**3. Grant USB and removable-media access**
 
 macOS 12+ gatekeeps USB access tightly. The first time you plug the USB and start ArcSign, the OS surfaces a permission dialog — click **Allow**. If you accidentally click Deny, re-enable it at **System Settings → Privacy & Security → Removable Volumes**.
 
-            Tip for Apple Silicon users
-
-M-series Macs ship without USB-A ports, so prepare a USB-A to USB-C adapter or a USB-C thumb drive. ArcSign has no requirement on the specific USB connector — any drive the OS can mount is fine.
+> **Tip for Apple Silicon users**
+>
+> M-series Macs ship without USB-A ports, so prepare a USB-A to USB-C adapter or a USB-C thumb drive. ArcSign has no requirement on the specific USB connector — any drive the OS can mount is fine.
 
 ## Linux install: AppImage, deb, or rpm
 
@@ -113,8 +105,7 @@ Linux users get three packaging formats to match their distro and preferences. F
 
 ### Option A: AppImage (recommended for most people)
 
-            1
-            Download and mark executable
+**1. Download and mark executable**
 
 Download ArcSign-x.y.z.AppImage. In the file manager, right-click → Properties → Permissions → check "Allow executing file as program", or from a terminal:
 
@@ -123,8 +114,7 @@ chmod +x ArcSign-1.2.3.AppImage
 ./ArcSign-1.2.3.AppImage
 ```
 
-            2
-            Integrate with the app menu (optional)
+**2. Integrate with the app menu (optional)**
 
 On first launch the AppImage asks whether to register itself with the system. Choose **Yes** and it creates a .desktop entry so you can relaunch from the application menu. For cleaner management try AppImageLauncher.
 
@@ -146,28 +136,25 @@ sudo rpm -ivh arcsign-1.2.3-1.x86_64.rpm
 sudo dnf install ./arcsign-1.2.3-1.x86_64.rpm
 ```
 
-            USB permissions on AppImage
+> **USB permissions on AppImage**
+>
+> Without the packaged udev rules, you may need to add yourself to the plugdev group: sudo usermod -aG plugdev $USER. Log out and back in to activate group membership. The deb and rpm builds handle this automatically.
+>
+> All three formats result in the same ArcSign binary — any performance differences come from the distro itself, not the package format.
 
-Without the packaged udev rules, you may need to add yourself to the plugdev group: sudo usermod -aG plugdev $USER. Log out and back in to activate group membership. The deb and rpm builds handle this automatically.
+## First launch: balances work out of the box, Alchemy key is optional
 
-All three formats result in the same ArcSign binary — any performance differences come from the distro itself, not the package format.
+As of v1.5.0, **token balances need no API key at all**. ArcSign ships with built-in public RPC endpoints plus Multicall3 and free DefiLlama prices, so balances load out of the box on every EVM chain — zero setup. You only need an Alchemy (or NodeReal) key if you want the **NFT gallery** or **transaction history**, which require full-chain indexing that public RPC can't provide. When a key is missing, those panels clearly state "this feature needs a key" instead of silently showing blank.
 
-## First launch: Alchemy API key and provider setup
+**1. (Optional) Create a free Alchemy account — only for NFT/tx-history**
 
-ArcSign needs a blockchain node endpoint to show balances and broadcast transactions. For **privacy and speed** we do not ship shared public RPC endpoints — instead you plug in your own free Alchemy API key. Alchemy's free tier covers 300M compute units per month, far more than any individual user needs.
+Skip this entirely if you only care about balances and sending funds. To enable the NFT gallery and transaction history, go to alchemy.com → Sign up → choose "Individual". Create a new App, name it anything you like, and pick "Ethereum Mainnet". On the dashboard, in the API Keys section, copy the **API Key** string (not the HTTP URL). Alchemy's free tier covers 300M compute units per month, far more than any individual user needs.
 
-            1
-            Create a free Alchemy account
+**2. (Optional) Paste the key into ArcSign**
 
-Go to alchemy.com → Sign up → choose "Individual". Create a new App, name it anything you like, and pick "Ethereum Mainnet". On the dashboard, in the API Keys section, copy the **API Key** string (not the HTTP URL).
+Open ArcSign → Settings (bottom-right gear icon) → Providers → Alchemy Key. Paste what you copied. ArcSign uses this one key for NFT/tx-history across Ethereum, Polygon, Arbitrum, Optimism, and Base. BSC uses NodeReal for NFT/tx-history (its own free key), and Avalanche uses Glacier, which is keyless (anonymous tier).
 
-            2
-            Paste the key into ArcSign
-
-Open ArcSign → Settings (bottom-right gear icon) → Providers → Alchemy Key. Paste what you copied. ArcSign uses this one key across Ethereum, Polygon, Arbitrum, Optimism, Base, and the other EVM chains automatically. BSC uses NodeReal's public endpoint and requires no extra setup.
-
-            3
-            Create or import a wallet
+**3. Create or import a wallet**
 
 Plug in your USB stick and either "Create new wallet" (12-word seed generated) or "Import from .arcsign backup". For a full walkthrough of first-time wallet setup, see our [10-minute beginner guide](/blog/arcsign-beginner-setup-guide).
 
@@ -181,7 +168,8 @@ Each OS comes with a different set of gotchas. Here are the six most common issu
 | Windows fails to launch (error code) | Antivirus quarantine or missing VC++ runtime | Whitelist ArcSign; install VC++ 2019 Redistributable from Microsoft |
 | macOS "file is damaged" warning | Gatekeeper quarantine attribute | xattr -d com.apple.quarantine /Applications/ArcSign.app |
 | Linux AppImage will not start | Missing libfuse2 (Ubuntu 22+) | sudo apt install libfuse2, or use AppImageLauncher |
-| Balances stuck at 0 or failing to load | Alchemy key not set or quota exceeded | Check Settings → Providers; view usage in the Alchemy dashboard |
+| Balances stuck at 0 or failing to load | Public RPC temporarily down, or token not imported (no key needed) | Pull to refresh and retry; use "Import Token" to add the contract (keyless) |
+| NFT gallery or transaction history blank | Needs an indexer key | Add an Alchemy key (Ethereum/Polygon/Arbitrum/Optimism/Base) or NodeReal key (BSC); Avalanche is keyless via Glacier |
 | WalletConnect fails to connect | Firewall blocking or DApp using v1 protocol | Allow outbound 443; verify the DApp supports WalletConnect v2 |
 
 If none of the above fit, see the [full troubleshooting guide](/blog/arcsign-troubleshooting) or ask on Discord — the team usually responds within 24 hours.
@@ -217,6 +205,6 @@ Yes, and we recommend it. The same USB works on all three operating systems. Man
 
 Yes, and arguably slightly better. All three share the same Go core, so the XOR three-shard implementation, AES-256 backup, and mlock memory protection are byte-identical. Linux has a slight edge because mlock behavior is strictest, there are fewer closed-source background services, and the platform can easily be set up as a fully offline signing host. Trade-offs: no GUI installer and OTA updates require extra tooling.
 
-### Q: Why does ArcSign need an Alchemy API key? Can it talk to the chain directly?
+### Q: Do I need an Alchemy API key to see my balances?
 
-Technically it could use a public RPC, but public nodes have two drawbacks: (1) your query IP is visible to the provider, which can leak wallet activity; (2) free public RPCs rate-limit aggressively and frequently time out. Your own Alchemy key improves both privacy and performance. The key only runs locally — ArcSign never transmits it back to us. For more on RPC privacy, see the [custom RPC guide](/blog/arcsign-custom-rpc).
+No. Since v1.5.0, **balances need no key at all** — ArcSign uses built-in public RPC plus Multicall3 and free DefiLlama prices, so token balances load out of the box on every EVM chain. An Alchemy (or NodeReal) key is only required for the **NFT gallery** and **transaction history**, which need full-chain indexing that public RPC can't do. The key only runs locally — ArcSign never transmits it back to us. If you want extra privacy for balance reads too, you can still point ArcSign at your own RPC; see the [custom RPC guide](/blog/arcsign-custom-rpc).

@@ -15,9 +15,9 @@ Choosing a cold wallet is one of the most important decisions for protecting you
 
 These three wallets represent three fundamentally different security philosophies. Ledger trusts hardware Secure Elements, Trezor champions open-source transparency, and [ArcSign Pro](/blog/arcsign-pro-nft-membership)ves that **top-tier security doesn't require specialized hardware**. This article analyzes all three across 10 dimensions to help you find the best fit.
 
-            Disclosure
-
-This article is written by the ArcSign team, but we are committed to providing objective, factual comparisons. Every product has strengths and weaknesses — the best choice depends on your needs and use case. All technical claims can be verified in each product's official documentation.
+> **Disclosure**
+>
+> This article is written by the ArcSign team, but we are committed to providing objective, factual comparisons. Every product has strengths and weaknesses — the best choice depends on your needs and use case. All technical claims can be verified in each product's official documentation.
 
 ## Three Wallets in a Nutshell
 
@@ -51,18 +51,15 @@ The trade-off: general-purpose chips **lack hardware-level tamper protection**. 
 
 ArcSign takes a third path: **security comes entirely from software encryption architecture, with no dependency on specific hardware**. Core technologies include:
 
-            1
-            XOR 3-Shard Encryption
+**1. XOR 3-Shard Encryption**
 
 Private keys are split into three shards, each individually appearing as meaningless random data. Only all three shards combined can reconstruct the original key. This is backed by information-theoretic mathematical guarantees — impossible to brute force. (See [XOR 3-Shard Encryption Explained](/blog/xor-encryption-explained))
 
-            2
-            mlock Memory Protection
+**2. mlock Memory Protection**
 
 During signing, private keys are briefly reconstructed in protected memory for only 1-5 milliseconds, then immediately destroyed. [mlock](/blog/mlock-memory-protection) ensures this memory is never swapped to disk. (See [mlock Memory Protection](/blog/mlock-memory-protection))
 
-            3
-            AES-256-GCM Encrypted Storage
+**3. AES-256-GCM Encrypted Storage**
 
 Each shard on the USB is encrypted with [AES-256](/blog/aes256-encryption-simple)-GCM. Even if someone obtains your USB, they only see encrypted random data.
 
@@ -78,17 +75,17 @@ ArcSign's architecture's greatest advantage is **completely eliminating supply c
 | **Wait Time** | 7-21 days international | 7-21 days international | Immediate |
 | **Additional Hardware** | Not needed | Not needed | USB drive (you probably already have one) |
 
-            Cost Calculation
-
-For international users: a Ledger Nano X costs $149 USD plus $10-25 shipping, with a 2-3 week wait. ArcSign takes just 10 minutes from download to full setup, at zero cost. If you already have a USB drive, you can start today.
+> **Cost Calculation**
+>
+> For international users: a Ledger Nano X costs $149 USD plus $10-25 shipping, with a 2-3 week wait. ArcSign takes just 10 minutes from download to full setup, at zero cost. If you already have a USB drive, you can start today.
 
 ## Chain Support & Features
 
 | Feature | Ledger | Trezor | ArcSign |
 | --- | --- | --- | --- |
-| **Supported Blockchains** | 5,500+ tokens | 1,200+ tokens | 7 chains (BTC + 6 EVM) |
-| **BTC Support** | ✓ | ✓ | ✓ |
-| **EVM Chains** | ✓ Most EVM | ✓ Major EVM | ✓ 6 major EVM chains |
+| **Supported Blockchains** | 5,500+ tokens | 1,200+ tokens | 7 EVM chains |
+| **BTC Support** | ✓ | ✓ | ✗ (EVM only) |
+| **EVM Chains** | ✓ Most EVM | ✓ Major EVM | ✓ 7 major EVM chains |
 | **Built-in DEX Swap** | ✓ Paraswap | ✓ 1inch | ✓ OpenOcean + KyberSwap |
 | **WalletConnect** | ✓ | ✓ | ✓ v2 |
 | **NFT Display** | ✓ | Limited | ✓ Cross-chain NFT Gallery |
@@ -96,7 +93,7 @@ For international users: a Ledger Nano X costs $149 USD plus $10-25 shipping, wi
 | **DeFi Position Tracking** | ✗ | ✗ | ✓ Real-time APY |
 | **Cross-Platform** | Desktop + Mobile | Desktop (+ limited mobile) | Desktop (mobile planned) |
 
-In terms of chain support, Ledger is unquestionably the leader. If you hold significant non-EVM chain assets (Solana, Cardano, Polkadot, etc.), Ledger or Trezor may be better suited for you. However, for mainstream BTC + EVM ecosystem users, ArcSign's 7 chains cover the vast majority of needs, and it offers **[token approval](/blog/token-approval-revoke) management** and **DeFi position tracking** that neither Ledger nor Trezor provide.
+In terms of chain support, Ledger is unquestionably the leader. If you hold significant non-EVM chain assets (Solana, Cardano, Polkadot, etc.), Ledger or Trezor may be better suited for you. However, for mainstream EVM ecosystem users, ArcSign's 7 EVM chains cover the vast majority of needs, and it offers **[token approval](/blog/token-approval-revoke) management** and **DeFi position tracking** that neither Ledger nor Trezor provide.
 
 ## Backup & Recovery Methods
 
@@ -122,9 +119,9 @@ Hardware wallets have a rarely discussed but critical risk: **[supply chain atta
 | **Firmware Backdoors** | Closed-source firmware, unverifiable | Open-source firmware, verifiable | Desktop app, verifiable |
 | **Counterfeit Device Risk** | Fake Ledger scam cases exist | Fake Trezor cases exist | ✓ Just download from official site |
 
-            Real-World Case
-
-In 2021, users received counterfeit Ledger devices (convincing packaging) that directed them to phishing sites to enter their seed phrases, resulting in complete asset theft. ArcSign uses your own existing USB drive, fundamentally eliminating this attack vector.
+> **Real-World Case**
+>
+> In 2021, users received counterfeit Ledger devices (convincing packaging) that directed them to phishing sites to enter their seed phrases, resulting in complete asset theft. ArcSign uses your own existing USB drive, fundamentally eliminating this attack vector.
 
 ## Full 10-Point Comparison Table
 
@@ -132,7 +129,7 @@ In 2021, users received counterfeit Ledger devices (convincing packaging) that d
 | --- | --- | --- | --- |
 | **1. Entry Price** | ~$79 USD | ~$69 USD | Free |
 | **2. Secure Element** | ✓ CC EAL5+ | ✗ General chip | N/A (software encryption) |
-| **3. Open-Source Level** | Firmware closed-source | Fully open-source | Open-source planned after 10K users |
+| **3. Open-Source Level** | Firmware closed-source | Fully open-source | ✓ Fully open source (Apache 2.0) |
 | **4. Supply Chain Risk** | Medium (specialized hardware) | Medium (specialized hardware) | Very low (use own USB) |
 | **5. Key Protection** | Secure Element isolation | PIN + passphrase | XOR 3-shard + mlock |
 | **6. Backup Encryption** | ✗ Plaintext seed phrase | ✗ Plaintext seed phrase | ✓ AES-256 encrypted backup |
@@ -153,11 +150,11 @@ Highly value open-source transparency, don't trust closed-source firmware and Se
 
 #### Choose ArcSign if you...
 
-Primarily hold BTC + EVM chain assets, want to start self-custody at **zero cost**, are concerned about supply chain attack risks, value encrypted backups (don't want to handwrite seed phrases), and need token approval management and DeFi position tracking. ArcSign is especially great for users who want to get started immediately — no waiting for shipping, no customs fees, instant setup.
+Primarily hold EVM chain assets, want to start self-custody at **zero cost**, are concerned about supply chain attack risks, value encrypted backups (don't want to handwrite seed phrases), and need token approval management and DeFi position tracking. ArcSign is especially great for users who want to get started immediately — no waiting for shipping, no customs fees, instant setup.
 
-            Hybrid Strategy
-
-Security experts recommend: **don't put all your assets in one wallet**. You can use ArcSign for daily BTC + EVM assets (free and fast), and Ledger or Trezor for long-term non-EVM holdings. Multiple cold wallets diversify risk — the most robust asset protection strategy.
+> **Hybrid Strategy**
+>
+> Security experts recommend: **don't put all your assets in one wallet**. You can use ArcSign for daily EVM assets (free and fast), and Ledger or Trezor for Bitcoin and long-term non-EVM holdings. Multiple cold wallets diversify risk — the most robust asset protection strategy.
 
 ## Frequently Asked Questions
 

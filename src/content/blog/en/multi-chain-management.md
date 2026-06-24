@@ -1,6 +1,6 @@
 ---
-title: "BTC + ETH + BSC All-in-One Management: ArcSign Multi-Chain Tutorial"
-description: "Manage BTC, ETH, and BSC simultaneously with ArcSign across 7 chains. Complete guide to wallet setup, cross-chain transfers, and DEX swaps step by step."
+title: "ETH + BSC + Polygon All-in-One Management: ArcSign Multi-Chain Tutorial"
+description: "Manage ETH, BSC, and Polygon simultaneously with ArcSign across 7 EVM chains. Complete guide to wallet setup, cross-chain transfers, and DEX swaps step by step."
 pubDate: 2026-03-20
 locale: en
 tags: ["Tutorial"]
@@ -15,47 +15,27 @@ The blockchain ecosystem in 2026 is far from a single-chain world. Ethereum host
 
 The challenge is: **how do you securely manage assets scattered across multiple chains?** Many people use a different wallet app for each chain — MetaMask for EVM chains, Electrum for BTC, plus various chain-specific wallets. This is not only inconvenient but creates serious security risks: more [mnemonic phrase](/blog/seed-phrase-backup-guide)s to remember, more software to trust, and more attack surfaces to worry about.
 
-            ArcSign's Solution
+> **ArcSign's Solution**
+>
+> **One USB, one mnemonic, 7 chains**. Through HD wallet standards ([BIP-39](/blog/key-derivation-bip39-44)/[BIP-44](/blog/key-derivation-bip39-44)), ArcSign lets you manage all 7 EVM chain assets in a single cold wallet interface, with all private keys securely stored on your USB device.
 
-**One USB, one mnemonic, 7 chains**. Through HD wallet standards ([BIP-39](/blog/key-derivation-bip39-44)/[BIP-44](/blog/key-derivation-bip39-44)), ArcSign lets you manage Bitcoin and all major EVM chain assets in a single cold wallet interface, with all private keys securely stored on your USB device.
+## ArcSign's 7 Supported EVM Chains
 
-## ArcSign's 22 Supported Chains
+ArcSign currently supports 7 major EVM-compatible chains. Balances, tokens, NFTs, and transaction history for each chain can be viewed and managed directly from the Dashboard.
 
-ArcSign currently supports Bitcoin plus 6 major EVM-compatible chains. Balances, tokens, NFTs, and transaction history for each chain can be viewed and managed directly from the Dashboard.
+| Chain | Role |
+| :--- | :--- |
+| **Ethereum (ETH)** | DeFi ecosystem core |
+| **BNB Chain (BSC)** | Low-fee transactions |
+| **Polygon (MATIC)** | L2 scaling solution |
+| **Arbitrum** | Optimistic Rollup |
+| **Optimism** | OP Stack ecosystem |
+| **Avalanche** | High-speed EVM |
+| **Base** | Coinbase L2 |
 
-                Bitcoin (BTC)
-                Native UTXO chain
-
-                Ethereum (ETH)
-                DeFi ecosystem core
-
-                BNB Chain (BSC)
-                Low-fee transactions
-
-                Polygon (MATIC)
-                L2 scaling solution
-
-                Arbitrum
-                Optimistic Rollup
-
-                Optimism
-                OP Stack ecosystem
-
-                Avalanche
-                High-speed EVM
-
-                Base
-                Coinbase L2
-
-                Fantom
-                DAG architecture
-
-                + 13 More
-                Continuously expanding
-
-            Full BSC Support
-
-[ArcSign Pro](/blog/arcsign-pro-nft-membership)vides enhanced BSC support via NodeReal APIs (`nr_getTokenHoldings`, `nr_getNFTHoldings`), enabling direct BEP-20 token balance and NFT holdings queries. Other EVM chains use Alchemy as the Provider.
+> **Full BSC Support**
+>
+> [ArcSign Pro](/blog/arcsign-pro-nft-membership)vides enhanced BSC support via NodeReal APIs (`nr_getTokenHoldings`, `nr_getNFTHoldings`), enabling direct BEP-20 token balance and NFT holdings queries. Other EVM chains use Alchemy as the Provider.
 
 ## How HD Wallets Enable "One Mnemonic, Many Chains"
 
@@ -65,18 +45,15 @@ ArcSign uses HD (Hierarchical Deterministic) wallet architecture following BIP-3
 
 BIP-44 defines a structured path format: `m/purpose'/coin_type'/account'/change/address_index`. The **coin_type** field is the key differentiator between chains. Bitcoin's coin type is 0, while Ethereum and all EVM chains share 60. This means the same mnemonic phrase derives completely different BTC and ETH addresses, keeping each chain's assets fully isolated.
 
-            1
-            Mnemonic → Master Key
+**1. Mnemonic → Master Key**
 
 The 12-word mnemonic generates a 512-bit seed via PBKDF2, which derives the Master Key. This process happens in ArcSign's [mlock](/blog/mlock-memory-protection)-protected memory, with private key exposure limited to just 1-5 milliseconds.
 
-            2
-            Master Key → Chain-Specific Keys
+**2. Master Key → Chain-Specific Keys**
 
 The Master Key derives independent child keys for each chain via BIP-44 paths. BTC uses `m/44'/0'/0'`, ETH and EVM chains use `m/44'/60'/0'`. Each chain's private key is mathematically impossible to reverse-engineer back to the Master Key.
 
-            3
-            Child Keys → XOR Three-Shard Protection
+**3. Child Keys → XOR Three-Shard Protection**
 
 Each chain's derived private key is protected by [XOR three-shard encryption](/blog/../xor-encryption-explained), with shards distributed across the USB. Even if the USB is stolen, attackers cannot reconstruct any chain's private key from the fragments.
 
@@ -84,28 +61,23 @@ Each chain's derived private key is protected by [XOR three-shard encryption](/b
 
 If you haven't set up ArcSign yet, check the [Beginner Setup Guide](/blog/../arcsign-beginner-setup-guide) first. This tutorial assumes you already have a wallet created and want to start managing assets across multiple chains.
 
-            1
-            Open the Chain Management Panel
+**1. Open the Chain Management Panel**
 
 After launching ArcSign, find the "Chain Management" or "Networks" option in the left sidebar. You'll see a list of all supported chains with their enabled status.
 
-            2
-            Enable Your Desired Chains
+**2. Enable Your Desired Chains**
 
 Toggle the switch next to each chain you want to manage. ArcSign automatically derives that chain's address from your mnemonic — no need to create a new wallet or remember a new seed phrase.
 
-            3
-            Configure the Provider (Indexer)
+**3. (Optional) Configure the Provider for NFTs & History**
 
-To read on-chain data (balances, transaction history, token info), ArcSign needs a Provider connection. Most EVM chains use Alchemy (free tier is sufficient), while BSC uses NodeReal. Enter your API Key in the settings page.
+**Balances need no Provider** — ArcSign reads them via built-in public RPC plus Multicall3 and free DefiLlama prices on every EVM chain, out of the box. A Provider key is only needed to enable the **NFT gallery** and **transaction history**: Alchemy (free tier) for Ethereum/Polygon/Arbitrum/Optimism/Base, NodeReal for BSC, while **Avalanche uses Glacier, which is keyless**. Enter the relevant API Key in the settings page if you want those features.
 
-            4
-            View Cross-Chain Portfolio
+**4. View Cross-Chain Portfolio**
 
 Back on the Dashboard, you can now see a portfolio overview across all enabled chains: native token balances, [ERC-20](/blog/erc20-token-management)/BEP-20 token holdings, NFT Gallery, and DeFi positions (stETH, ankrETH, ankrBNB staking positions with real-time APY).
 
-            5
-            Export .arcsign Encrypted Backup
+**5. Export .arcsign Encrypted Backup**
 
 After configuring multi-chain, be sure to export a **.arcsign encrypted backup** to a second USB. This backup file contains all your chain wallet settings and key data, encrypted with [AES-256](/blog/aes256-encryption-simple)-GCM — the file is encrypted upon export with no additional password step needed. To restore, simply import with one click.
 
@@ -123,9 +95,9 @@ ArcSign integrates OpenOcean and KyberSwap DEX aggregators, allowing you to swap
 
 For advanced DeFi operations (staking, liquidity mining, cross-chain bridges), you can use ArcSign's [WalletConnect](/blog/walletconnect-dapp-tutorial) v2 feature. Simply scan a DApp's QR code to securely sign transactions from your cold wallet — enjoy DeFi yields while keeping your keys offline. See the [WalletConnect Tutorial](/blog/../walletconnect-dapp-tutorial) for details.
 
-            DeFi Position Tracking
-
-ArcSign automatically detects and displays your DeFi staking positions, including stETH (Lido), ankrETH, and ankrBNB liquid staking tokens with real-time APY. Check the "DeFi" tab in the Dashboard for a consolidated view of passive income across all chains.
+> **DeFi Position Tracking**
+>
+> ArcSign automatically detects and displays your DeFi staking positions, including stETH (Lido), ankrETH, and ankrBNB liquid staking tokens with real-time APY. Check the "DeFi" tab in the Dashboard for a consolidated view of passive income across all chains.
 
 ## Multi-Chain Wallet Comparison
 
@@ -133,7 +105,7 @@ There are several multi-chain management solutions on the market. Here's how the
 
 | Feature | ArcSign | MetaMask | Ledger | Trust Wallet |
 | --- | --- | --- | --- | --- |
-| **BTC + EVM Support** | ✓ 7 chains | EVM only | ✓ Multi-chain | ✓ Multi-chain |
+| **EVM Chain Support** | ✓ 7 chains | EVM only | ✓ Multi-chain | ✓ Multi-chain |
 | **Cold Storage** | ✓ USB offline | ✗ Hot wallet | ✓ Hardware | ✗ Mobile |
 | **Cost** | ✓ Free | ✓ Free | $79-149 USD | ✓ Free |
 | **XOR Three-Shard** | ✓ | ✗ | ✗ | ✗ |
@@ -157,15 +129,15 @@ Cross-chain bridges have been among the highest-value hack targets in recent yea
 
 Although EVM chains share the same address format (0x prefix), assets on different chains are not interchangeable. Sending ETH to a BSC address (or vice versa) may result in lost assets. ArcSign clearly labels the selected chain on the send page to help you avoid this mistake. BTC addresses use a completely different format (bc1 prefix), making confusion impossible.
 
-            Security Reminder
-
-No matter how many chains you manage, **backup is always the most important thing**. ArcSign's .arcsign encrypted backup file covers all chain wallet settings and keys — one backup protects all your assets. Regularly exporting fresh backups to an offline USB is the best practice.
+> **Security Reminder**
+>
+> No matter how many chains you manage, **backup is always the most important thing**. ArcSign's .arcsign encrypted backup file covers all chain wallet settings and keys — one backup protects all your assets. Regularly exporting fresh backups to an offline USB is the best practice.
 
 ## FAQ
 
 ### Q: Which blockchains does ArcSign support?
 
-ArcSign supports 7 chains: Bitcoin (BTC) plus 6 major EVM-compatible chains including Ethereum, BSC, Polygon, Arbitrum, Optimism, Avalanche, Base, Fantom, and more. All chains share a single mnemonic phrase, with independent addresses derived via BIP-44.
+ArcSign supports 7 major EVM-compatible chains: Ethereum, BSC, Polygon, Arbitrum, Optimism, Base, and Avalanche. All chains share a single mnemonic phrase, with independent addresses derived via BIP-44.
 
 ### Q: Is a multi-chain wallet less secure than a single-chain wallet?
 

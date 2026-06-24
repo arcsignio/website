@@ -21,9 +21,9 @@ But unlike BTC and ETH, stablecoin custody comes with three unique consideration
 
 **3. Chain choice changes the economics.** The same 10,000 USDT held on Ethereum mainnet vs Arbitrum vs BNB Chain vs Polygon vs Tron can cost 100× more to move around — with very different security assumptions.
 
-            Who this guide is for
-
-If you hold more than $5,000 in stablecoins, regularly shuffle funds between exchanges and on-chain, or are considering swapping some cash into USDT / USDC as an inflation hedge — this guide will help you make that storage decision sharper, cheaper, and calmer.
+> **Who this guide is for**
+>
+> If you hold more than $5,000 in stablecoins, regularly shuffle funds between exchanges and on-chain, or are considering swapping some cash into USDT / USDC as an inflation hedge — this guide will help you make that storage decision sharper, cheaper, and calmer.
 
 ## USDT, USDC, DAI, FDUSD, USDe: a five-way risk comparison
 
@@ -49,9 +49,9 @@ From on-chain monitoring and Tether's own transparency page, as of Q1 2026:
 
 • Over **2,000 addresses frozen** cumulatively, totaling **more than $2B**.
 
-            • 2022 Bitfinex hacker funds, 2023 North Korea Lazarus Group addresses, and 2024 exchange-scam cash-out wallets have all been frozen.
+- 2022 Bitfinex hacker funds, 2023 North Korea Lazarus Group addresses, and 2024 exchange-scam cash-out wallets have all been frozen.
 
-            • Freezes are overwhelmingly performed under US OFAC, FBI, and Israeli NBCTF law-enforcement requests.
+- Freezes are overwhelmingly performed under US OFAC, FBI, and Israeli NBCTF law-enforcement requests.
 
 ### Circle's freeze record
 
@@ -59,13 +59,13 @@ Circle has been more conservative and more transparent:
 
 • After Tornado Cash was added to OFAC sanctions in 2022, Circle immediately blacklisted USDC directly interacting with the mixer.
 
-            • Every freeze is recorded on-chain under the `blacklister` role's transactions — anyone can verify on Etherscan.
+- Every freeze is recorded on-chain under the `blacklister` role's transactions — anyone can verify on Etherscan.
 
-            • During the 2023 Silicon Valley Bank run, Circle's $3.3B held at SVB was temporarily inaccessible and USDC depegged to $0.88 — a reminder that "stablecoin" means "fiduciary promise priced in dollars," not "dollar."
+- During the 2023 Silicon Valley Bank run, Circle's $3.3B held at SVB was temporarily inaccessible and USDC depegged to $0.88 — a reminder that "stablecoin" means "fiduciary promise priced in dollars," not "dollar."
 
-            How to avoid being wrongly frozen
-
-No absolute guarantee, but the probability can be kept very low: **don't accept unknown airdrops, don't interact with sanctioned addresses or mixers, and don't accept large inbound USDT transfers from anonymous buyers**. If you must receive a large stablecoin transfer, ask for a small test transaction first and check the address via Chainalysis Sanctions Screening or `defillama.com` risk tags. Everyday personal use, salary payments, and transfers between your own accounts almost never trigger anything.
+> **How to avoid being wrongly frozen**
+>
+> No absolute guarantee, but the probability can be kept very low: **don't accept unknown airdrops, don't interact with sanctioned addresses or mixers, and don't accept large inbound USDT transfers from anonymous buyers**. If you must receive a large stablecoin transfer, ask for a small test transaction first and check the address via Chainalysis Sanctions Screening or `defillama.com` risk tags. Everyday personal use, salary payments, and transfers between your own accounts almost never trigger anything.
 
 ## Five storage options, side by side
 
@@ -90,9 +90,9 @@ In practice, the answer is usually "a mix." A pragmatic 80-20 rule:
 
 • **Liquidity pocket (30%)**: cold wallet plus geographically separated backups; keys strictly offline; consider layering multisig.
 
-            Is this the same as BTC / ETH storage?
-
-The principles are the same, with one important wrinkle: stablecoins are "unit-denominated" and unaffected by market moves, which makes them more natural to hold for long durations. But they are also smart-contract tokens, meaning you need to remember both "contract address + chain," not just "wallet address." ArcSign's 22-chain native token recognition prevents the classic beginner mistake of "wrong chain, coin vanished." See also: [5 advantages of USB cold storage](/blog/usb-cold-wallet-benefits) and [cold vs hot wallet comparison](/blog/cold-vs-hot-wallet).
+> **Is this the same as BTC / ETH storage?**
+>
+> The principles are the same, with one important wrinkle: stablecoins are "unit-denominated" and unaffected by market moves, which makes them more natural to hold for long durations. But they are also smart-contract tokens, meaning you need to remember both "contract address + chain," not just "wallet address." ArcSign's 7 EVM chain native token recognition prevents the classic beginner mistake of "wrong chain, coin vanished." See also: [5 advantages of USB cold storage](/blog/usb-cold-wallet-benefits) and [cold vs hot wallet comparison](/blog/cold-vs-hot-wallet).
 
 ## Multi-chain storage: cost, speed, security trade-offs
 
@@ -107,81 +107,67 @@ The same USDT behaves very differently across chains. Here's the real-world land
 | **BNB Chain** | $0.05–0.3 | 3 sec | Medium (few validators) | Asian C2C, launchpads |
 | **Tron (TRC20)** | $0 (energy staking required) | 3 sec | Low (concentrated SR set) | Cross-border small remittance |
 | **Solana** | $0.001 | 
-            1
-            Initialize ArcSign on a clean computer
+**1. Initialize ArcSign on a clean computer**
 
 Download the right build from `arcsign.io`, verify the SHA-256 hash, plug in a fresh USB, and create a new wallet. During creation, ArcSign splits the mnemonic into three XOR shards and encrypts them with [AES-256](/blog/aes256-encryption-simple)-GCM. The private key never leaves the USB from the moment it is generated.
 
-            2
-            Export the encrypted .arcsign backup immediately
+**2. Export the encrypted .arcsign backup immediately**
 
 The `.arcsign` backup file is encrypted the moment it is exported ([AES-256](/blog/aes256-encryption-simple)) — no separate password setup required. Store one copy in cloud storage (Google Drive / iCloud) and one on a second USB. If your main USB is lost, damaged, or stolen, you can always restore the wallet on any clean machine.
 
-            3
-            Add an Alchemy API Key
+**3. (Optional) Add an Alchemy API Key for NFTs & history**
 
-Provider / Indexer setup requires an Alchemy API Key (the free tier is enough) to read on-chain balances and transactions. The private key never goes through Alchemy — it only fetches public blockchain data.
+Reading **balances needs no key** — ArcSign uses built-in public RPC plus Multicall3 and free DefiLlama prices out of the box. An Alchemy API Key (free tier) is only needed to enable the **NFT gallery** and **transaction history**, which require full-chain indexing. The private key never goes through Alchemy — it only fetches public blockchain data.
 
-            4
-            Move stablecoins from the exchange in (test → large)
+**4. Move stablecoins from the exchange in (test → large)**
 
 Send 10 USDT first as a test. Once confirmed, do the large transfer. **Watch the network**: when withdrawing from Binance, pick the correct chain (ERC20 = Ethereum, BEP20 = BNB Chain, TRC20 = Tron, ARBITRUM = Arbitrum). Wrong chain = balance invisible or permanently lost. ArcSign shows EVM addresses as a shared format, but the chain ID must match.
 
-            5
-            Populate your Address Book
+**5. Populate your Address Book**
 
 Add your exchange deposit addresses, counterparties, and your other wallets to ArcSign's address book. Future transfers just pick from the list — no more copy-paste, and [clipboard hijack](/blog/clipboard-hijack-attack) attacks are neutralized.
 
-            6
-            Revoke old ERC-20 approvals
+**6. Revoke old ERC-20 approvals**
 
 If this new wallet was migrated from an older one, use ArcSign's [token approval](/blog/token-approval-revoke)s feature to check and revoke lingering unlimited approvals. Pro users can batch-revoke, cleaning up multiple contracts across multiple chains in one session.
 
-            7
-            Pair WalletConnect for DeFi interactions
+**7. Pair WalletConnect for DeFi interactions**
 
 Connect to Aave, Uniswap, Curve, and any other DApp via [WalletConnect](/blog/walletconnect-dapp-tutorial) v2. Every transaction still requires ArcSign's offline signature — so you can park stablecoins in [cold storage](/blog/what-is-cold-storage) while earning Aave supply rates or providing Uniswap v4 liquidity.
 
-            8
-            Build a quarterly reconciliation habit
+**8. Build a quarterly reconciliation habit**
 
 Every 3 months, export balances across all chains, outstanding approvals, DeFi positions, and tax-relevant records. This is about **control** as much as security: you always know what you hold, where, and what it's worth — invaluable when an exchange collapses, an issuer freezes, or a tax audit lands.
 
-            Further reading
-
-For deeper security setup, see [9 private key management best practices](/blog/private-key-management-best-practices). To understand the cryptography under the hood, see [XOR three-shard encryption explained](/blog/xor-encryption-explained) and [AES-256-GCM + Argon2id in plain English](/blog/aes256-encryption-simple).
+> **Further reading**
+>
+> For deeper security setup, see [9 private key management best practices](/blog/private-key-management-best-practices). To understand the cryptography under the hood, see [XOR three-shard encryption explained](/blog/xor-encryption-explained) and [AES-256-GCM + Argon2id in plain English](/blog/aes256-encryption-simple).
 
 ## The 6 mistakes stablecoin holders make most often
 
 Based on a year of community reports, support tickets, and on-chain forensics, these are the six most common mistakes — may you never make any of them after reading this:
 
-            1
-            Keeping all stablecoins on a single exchange
+**1. Keeping all stablecoins on a single exchange**
 
 FTX, Celsius, and BlockFi victims weren't "crypto beginners" — they were people who "trusted the brand." Even with full trust in an exchange, spread across 2–3 platforms and keep the majority in a cold wallet you control.
 
-            2
-            Writing the seed phrase into a mobile notes app
+**2. Writing the seed phrase into a mobile notes app**
 
 iCloud, Google Keep, and LINE Keep sync to the cloud. One account breach and the [seed phrase](/blog/seed-phrase-backup-guide) is in the attacker's pocket. ArcSign's `.arcsign` file is encrypted at export — that is what goes to the cloud. Plaintext seed phrases never do.
 
-            3
-            Making small transfers on Ethereum mainnet during peak hours
+**3. Making small transfers on Ethereum mainnet during peak hours**
 
 Paying $15 in Gas to send 10 USDT is rocket-posting a stamp. Shift every small everyday transfer to Arbitrum / Base / Polygon / Tron. The cold wallet's private key works across all chains — only the RPC changes.
 
-            4
-            Picking the wrong chain on exchange withdrawal
+**4. Picking the wrong chain on exchange withdrawal**
 
 ERC20 / BEP20 / TRC20 addresses look similar but mean completely different things. ERC20 USDT sent to a Tron address can stick in a contract; Tron USDT withdrawn to an ERC20 address can be permanently lost. ArcSign shows the active chain explicitly — triple-check (withdrawal chain, wallet network, address format) before confirming.
 
-            5
-            Giving unlimited approval to unfamiliar contracts
+**5. Giving unlimited approval to unfamiliar contracts**
 
 Many DApps request unlimited [ERC-20](/blog/erc20-token-management) approvals on first interaction. One exploit or rug later, the attacker drains every token of that class. Best practice: approve only the amount needed, or use ArcSign [token approval](/blog/token-approval-revoke)s to review and revoke regularly.
 
-            6
-            Ignoring regional compliance differences between USDT and USDC
+**6. Ignoring regional compliance differences between USDT and USDC**
 
 Some jurisdictions (e.g. EU under MiCA) pressure certain platforms to delist USDT while leaving USDC largely untouched. If you operate in the EU, USDC is the smoother pick. If you do most of your business in Asian C2C, USDT still dominates liquidity. Holding both is the safest balance.
 

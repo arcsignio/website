@@ -17,9 +17,9 @@ Traditional subscription models have several problems: your membership identity 
 
 ArcSign Pro NFT is deployed on **BSC (BNB Smart Chain)**, chosen for its extremely low [gas fee](/blog/gas-fee-optimization)s (typically under $0.10), minimizing the cost of minting the NFT. Your membership identity is a standard **ERC-721 token**, recorded on the blockchain and fully controlled by your wallet address.
 
-            Core Philosophy
-
-ArcSign's free version already includes **all core security features**. Pro is not a security paywall — security is every user's fundamental right. Pro provides advanced efficiency tools and convenience features.
+> **Core Philosophy**
+>
+> ArcSign's free version already includes **all core security features**. Pro is not a security paywall — security is every user's fundamental right. Pro provides advanced efficiency tools and convenience features.
 
 ## Free vs Pro: Complete Feature Comparison
 
@@ -51,9 +51,9 @@ Every time you interact with a DApp — swapping, staking, or other operations �
 
 ArcSign Free lets you view all [ERC-20](/blog/erc20-token-management) approvals and **revoke them one by one**. But if you're an active DeFi user, you may have accumulated dozens or even hundreds of approvals. Pro's **batch revocation feature** lets you select all risky approvals with one click and **clear them across 6 EVM chains simultaneously**, eliminating the tedium of revoking them individually.
 
-            Security Reminder
-
-Even without Pro, we strongly recommend regularly checking and revoking unnecessary [token approval](/blog/token-approval-revoke)s. ArcSign Free's individual revocation feature is sufficient for occasional cleanup. Learn more about our [security mechanisms](/blog/xor-encryption-explained).
+> **Security Reminder**
+>
+> Even without Pro, we strongly recommend regularly checking and revoking unnecessary [token approval](/blog/token-approval-revoke)s. ArcSign Free's individual revocation feature is sufficient for occasional cleanup. Learn more about our [security mechanisms](/blog/xor-encryption-explained).
 
 ### Feature 2: Advanced DeFi Position Tracking
 
@@ -69,24 +69,21 @@ Pro members enjoy priority response times when submitting support tickets. While
 
 The process to get Pro membership is straightforward and entirely on-chain — no personal information required:
 
-            1
-            Ensure You Have BNB
+**1. Ensure You Have BNB**
 
 Pro NFT is deployed on BSC, so minting requires a small amount of BNB for [gas fee](/blog/gas-fee-optimization)s and the minting cost. Make sure your ArcSign wallet has sufficient BNB. If you're unfamiliar with multi-chain operations, check out our [multi-chain management tutorial](/blog/multi-chain-management).
 
-            2
-            Mint Within ArcSign
+**2. Mint Within ArcSign**
 
 Open ArcSign, navigate to the "Pro Membership" page, and click "Mint Pro NFT." ArcSign automatically constructs the transaction — you just need to confirm the signature. The entire process is securely completed in the USB offline environment.
 
-            3
-            Auto-Activation of Pro Features
+**3. Auto-Activation of Pro Features**
 
 Once the NFT is successfully minted, ArcSign automatically detects whether your wallet address holds a Pro NFT and immediately unlocks all Pro-exclusive features. No serial codes, no login accounts — **your NFT is your membership card**.
 
-            No Personal Information Required
-
-The entire Pro membership process is completed on-chain. ArcSign **never collects your email, name, or any personal information**. This aligns with our privacy-first principle — your membership identity is proven by the blockchain, not recorded in a centralized database.
+> **No Personal Information Required**
+>
+> The entire Pro membership process is completed on-chain. ArcSign **never collects your email, name, or any personal information**. This aligns with our privacy-first principle — your membership identity is proven by the blockchain, not recorded in a centralized database.
 
 ## NFT Membership vs Traditional Subscriptions
 
@@ -108,35 +105,35 @@ The core advantage of NFT membership is **ownership**. You're not "renting" a se
 
 ### Users Who Should Consider Pro
 
-            Active DeFi Users
+> **Active DeFi Users**
+>
+> If you frequently interact with different DApps and have accumulated many [token approval](/blog/token-approval-revoke)s, the batch revocation feature saves significant time and gas costs. Instead of manually revoking one by one, clear all risky approvals at once.
 
-If you frequently interact with different DApps and have accumulated many [token approval](/blog/token-approval-revoke)s, the batch revocation feature saves significant time and gas costs. Instead of manually revoking one by one, clear all risky approvals at once.
+> **Liquid Staking Participants**
+>
+> If you hold stETH, ankrETH, ankrBNB, or similar liquid staking tokens, Pro's advanced DeFi tracking helps you monitor APY changes and position performance in real-time without manually checking each protocol's website.
 
-            Liquid Staking Participants
-
-If you hold stETH, ankrETH, ankrBNB, or similar liquid staking tokens, Pro's advanced DeFi tracking helps you monitor APY changes and position performance in real-time without manually checking each protocol's website.
-
-            Efficiency-Focused Professionals
-
-If you manage multiple wallet addresses and operate across multiple chains simultaneously, Pro's advanced features and priority support can significantly boost your workflow efficiency.
+> **Efficiency-Focused Professionals**
+>
+> If you manage multiple wallet addresses and operate across multiple chains simultaneously, Pro's advanced features and priority support can significantly boost your workflow efficiency.
 
 ### Users Who Don't Need Pro
 
-            Long-Term Holders (HODLers)
+> **Long-Term Holders (HODLers)**
+>
+> If you mainly buy and hold BTC, ETH, and other major coins long-term, the free version's security features ([XOR three-shard encryption](/blog/xor-encryption-explained), [mlock memory protection](/blog/mlock-memory-protection), .arcsign encrypted backup) already provide top-tier security.
 
-If you mainly buy and hold BTC, ETH, and other major coins long-term, the free version's security features ([XOR three-shard encryption](/blog/xor-encryption-explained), [mlock memory protection](/blog/mlock-memory-protection), .arcsign encrypted backup) already provide top-tier security.
+> **Occasional DApp Users**
+>
+> If you only occasionally connect to DApps via [WalletConnect](/blog/walletconnect-dapp-tutorial) and haven't accumulated many approvals, the free version's individual revocation feature is more than sufficient.
 
-            Occasional DApp Users
+> **Beginners**
+>
+> If you're just getting started with cryptocurrency, we recommend [starting with the free version](/blog/arcsign-beginner-setup-guide). Once you're more familiar with DeFi operations, you can evaluate whether Pro features are worth it.
 
-If you only occasionally connect to DApps via [WalletConnect](/blog/walletconnect-dapp-tutorial) and haven't accumulated many approvals, the free version's individual revocation feature is more than sufficient.
-
-            Beginners
-
-If you're just getting started with cryptocurrency, we recommend [starting with the free version](/blog/arcsign-beginner-setup-guide). Once you're more familiar with DeFi operations, you can evaluate whether Pro features are worth it.
-
-            Honest Advice
-
-If you're not sure whether you need Pro, you probably **don't**. ArcSign Free is already one of the most feature-complete free cold wallets on the market. Start free, and when you truly feel the need for batch operations or advanced tracking, consider upgrading then.
+> **Honest Advice**
+>
+> If you're not sure whether you need Pro, you probably **don't**. ArcSign Free is already one of the most feature-complete free cold wallets on the market. Start free, and when you truly feel the need for batch operations or advanced tracking, consider upgrading then.
 
 ## Frequently Asked Questions
 

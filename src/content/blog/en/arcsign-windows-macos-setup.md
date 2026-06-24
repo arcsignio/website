@@ -11,58 +11,49 @@ relatedSlugs: ["ledger-vs-trezor-vs-arcsign", "multi-chain-management", "web3-wa
 
 Quick Start
 
-**Get ArcSign running in 10 minutes.** Download from github.com/arcsignio/arcsign/releases, run the installer, and you'll have a fully operational USB cold wallet ready to secure your crypto across 22 blockchain networks.
+**Get ArcSign running in 10 minutes.** Download from github.com/arcsignio/arcsign/releases, run the installer, and you'll have a fully operational USB cold wallet ready to secure your crypto across 7 EVM chains.
 
 ## System Requirements
 
 Before installing ArcSign, ensure your system meets these minimum requirements:
 
-            ✓
-            Operating System
+> **✓ Operating System**
+>
+> **Windows:** Windows 10 (Build 19041) or later, Windows 11, Windows Server 2019+ | **macOS:** macOS 12 (Monterey) or later
 
-**Windows:** Windows 10 (Build 19041) or later, Windows 11, Windows Server 2019+ | **macOS:** macOS 12 (Monterey) or later
+> **✓ Hardware**
+>
+> Any modern computer with USB 2.0 or higher port. 8GB RAM recommended. Intel or Apple Silicon (M1/M2/M3) fully supported on macOS.
 
-            ✓
-            Hardware
+> **✓ Storage**
+>
+> Minimum 200MB of free disk space for the ArcSign installation. Additional space needed for backup files and the .arcsign encrypted wallet backup.
 
-Any modern computer with USB 2.0 or higher port. 8GB RAM recommended. Intel or Apple Silicon (M1/M2/M3) fully supported on macOS.
+> **✓ USB Device**
+>
+> One dedicated USB drive (USB 2.0 or higher) for [cold storage](/blog/what-is-cold-storage). We recommend a hardware wallet-grade USB or encrypted external drive for maximum security.
 
-            ✓
-            Storage
-
-Minimum 200MB of free disk space for the ArcSign installation. Additional space needed for backup files and the .arcsign encrypted wallet backup.
-
-            ✓
-            USB Device
-
-One dedicated USB drive (USB 2.0 or higher) for [cold storage](/blog/what-is-cold-storage). We recommend a hardware wallet-grade USB or encrypted external drive for maximum security.
-
-            ✓
-            Internet
-
-Required only during setup and wallet operations. ArcSign creates signed transactions offline on your USB device, then you broadcast them online separately.
+> **✓ Internet**
+>
+> Required only during setup and wallet operations. ArcSign creates signed transactions offline on your USB device, then you broadcast them online separately.
 
 ## Windows Installation (10, 11, Server 2019+)
 
 Follow these steps to install ArcSign on your Windows machine. The entire process takes less than 5 minutes.
 
-            1
-            Download ArcSign Installer
+**1. Download ArcSign Installer**
 
 Visit **github.com/arcsignio/arcsign/releases** and download the latest Windows installer (.exe file). Your browser may show a security warning—this is normal. ArcSign is digitally signed by our development team and is completely safe. Save the file to your Downloads folder.
 
-            2
-            Handle Windows SmartScreen (if prompted)
+**2. Handle Windows SmartScreen (if prompted)**
 
 Windows Defender SmartScreen may flag the installer as an unknown app. Click **"More info"** and then **"Run anyway"**. This is common for new applications that haven't accumulated a large install history yet. ArcSign is cryptographically signed and safe to run.
 
-            3
-            Run the Installer
+**3. Run the Installer**
 
 Double-click the ArcSign installer (.exe). A setup wizard will appear. Accept the license agreement and choose your installation directory (default: C:\Program Files\ArcSign). Click **"Install"** to proceed.
 
-            4
-            Complete Installation
+**4. Complete Installation**
 
 The installer will copy files and create desktop shortcuts. Once complete, you'll see a confirmation message. Optionally check **"Launch ArcSign"** to start the app immediately, or close the installer and launch from your Start Menu.
 
@@ -70,28 +61,23 @@ The installer will copy files and create desktop shortcuts. Once complete, you'l
 
 Installing ArcSign on macOS is straightforward. Follow these steps for a smooth setup.
 
-            1
-            Download ArcSign DMG
+**1. Download ArcSign DMG**
 
 Go to **github.com/arcsignio/arcsign/releases** and download the latest macOS installer (.dmg file). This works on both Intel and Apple Silicon (M1/M2/M3) Macs. Save the file to your Downloads folder.
 
-            2
-            Open the DMG File
+**2. Open the DMG File**
 
 Double-click the downloaded ArcSign.dmg file. A Finder window will appear showing the ArcSign application icon and a shortcut to the Applications folder.
 
-            3
-            Drag to Applications
+**3. Drag to Applications**
 
 Drag the ArcSign icon into the Applications folder (visible in the DMG window). This will copy ArcSign to your system Applications directory, making it available from Spotlight and Launchpad.
 
-            4
-            Handle Gatekeeper Security (if prompted)
+**4. Handle Gatekeeper Security (if prompted)**
 
 The first time you launch ArcSign, macOS Gatekeeper may ask if you want to open it. This is a standard macOS security check. Click **"Open"** to proceed. ArcSign is notarized by Apple and is completely safe.
 
-            5
-            Launch ArcSign
+**5. Launch ArcSign**
 
 Navigate to Applications, find ArcSign, and double-click to launch. You can also use Spotlight (Cmd+Space) to search for "ArcSign" and press Enter to open it. Pin it to your Dock for quick access.
 
@@ -115,39 +101,35 @@ Create a strong, memorable PIN (8-16 digits recommended). This PIN protects your
 
 ArcSign will prompt you to create an encrypted backup file (.arcsign). This file is **automatically encrypted with [AES-256](/blog/aes256-encryption-simple)**—there's no additional password step. Download and save this file to a secure location (cloud storage, separate USB drive, or encrypted disk). This backup allows you to restore your wallet if your primary USB is lost or corrupted.
 
-### Step 5: Set Up Your Provider (Alchemy)
+### Step 5 (Optional): Set Up Your Provider (Alchemy)
 
-ArcSign uses a blockchain data provider to read wallet balances, transaction history, and on-chain information. Continue to the next section to learn how to set up your free Alchemy API key.
+Your wallet balances already load with no setup—since v1.5.0 ArcSign reads them via built-in public RPC plus Multicall3 and free DefiLlama prices. This optional step only adds the NFT gallery and transaction history. Continue to the next section if you want those.
 
-## Alchemy API Key Setup
+## Alchemy API Key Setup (Optional — NFT & Transaction History only)
 
-To display token balances, NFTs, and transaction history, ArcSign needs an Alchemy API key. The free tier is sufficient for personal use.
+Token **balances need no API key**—they work out of the box. You only need an Alchemy key to display the **NFT gallery** and **transaction history**, which require full-chain indexing. The free tier is sufficient for personal use.
 
 ### Create an Alchemy Account
 
-            1
-            Sign Up for Free
+**1. Sign Up for Free**
 
 Visit **alchemy.com** and click **"Get Started Free"**. You'll need an email address. Complete the signup process and verify your email.
 
-            2
-            Create an App
+**2. Create an App**
 
-Log in to your Alchemy dashboard. Click **"Create new app"**. Choose a name (e.g., "ArcSign Wallet"), and select the networks you want to track (Ethereum, Polygon, Arbitrum, etc.). The free tier supports all major EVM chains.
+Log in to your Alchemy dashboard. Click **"Create new app"**. Choose a name (e.g., "ArcSign Wallet"), and select the networks you want to track (Ethereum, Polygon, Arbitrum, Optimism, Base). The free tier supports all major EVM chains. BSC uses NodeReal (its own free key); **Avalanche uses Glacier, which is keyless** (anonymous tier).
 
-            3
-            Copy Your API Key
+**3. Copy Your API Key**
 
 Once your app is created, locate the **"API Key"** section in your app settings. Click the copy button to copy your full API key to the clipboard.
 
-            4
-            Paste into ArcSign
+**4. Paste into ArcSign**
 
-Return to ArcSign and navigate to Settings → Providers. Select Alchemy and paste your API key into the input field. Click **"Save"** to activate the provider. ArcSign will immediately start fetching your wallet data.
+Return to ArcSign and navigate to Settings → Providers. Select Alchemy and paste your API key into the input field. Click **"Save"** to activate the provider. ArcSign will immediately start populating your NFT gallery and transaction history (balances were already loading without it).
 
-            Security Note
-
-Your Alchemy API key is stored locally on your device (on your USB). ArcSign never transmits your private keys to Alchemy or any external service. The API key only enables **read-only** access to your wallet data on the blockchain.
+> **Security Note**
+>
+> Your Alchemy API key is stored locally on your device (on your USB). ArcSign never transmits your private keys to Alchemy or any external service. The API key only enables **read-only** access to your wallet data on the blockchain.
 
 ## Troubleshooting Common Issues
 
@@ -177,7 +159,7 @@ Your Alchemy API key is stored locally on your device (on your USB). ArcSign nev
 
 ### Issue: Alchemy API Not Working
 
-**Symptom:** Token balances don't load, or you see "Provider error" messages in ArcSign.
+**Symptom:** The NFT gallery or transaction history stays empty, or you see "Provider error" messages in ArcSign. (Balances are keyless and unaffected—if those show 0, just pull to refresh or import the token.)
 
 **Solution:** (1) Verify your Alchemy API key is correct by comparing it in ArcSign settings with the key in your Alchemy dashboard. (2) Ensure your Alchemy free tier account is active and hasn't reached rate limits. (3) Try removing the API key and re-adding it. (4) Check your internet connection.
 
@@ -199,7 +181,7 @@ While [ArcSign Pro](/blog/arcsign-pro-nft-membership)vides the same core functio
 | Memory Protection | ✓ mlock | ✓ mlock |
 | Private Key Exposure | 1-5ms max | 1-5ms max |
 | XOR 3-Shard Protection | ✓ Yes | ✓ Yes |
-| Supported Chains | 22 (BTC + 6 EVM) | 22 (BTC + 6 EVM) |
+| Supported Chains | 7 EVM chains | 7 EVM chains |
 | WalletConnect v2 | ✓ Yes | ✓ Yes |
 | DEX Swap (OpenOcean + KyberSwap) | ✓ Yes | ✓ Yes |
 | Token Approval Management | ✓ Yes | ✓ Yes |
@@ -215,11 +197,11 @@ While [ArcSign Pro](/blog/arcsign-pro-nft-membership)vides the same core functio
 
 ### Is ArcSign completely free to use?
 
-Yes, ArcSign is completely free to download and use. There are no subscription fees or hidden costs. The software is provided as-is, with no charges for wallet creation, transaction signing, or basic features. You only need a free Alchemy account to read on-chain data, which doesn't require payment for personal use.
+Yes, ArcSign is completely free to download and use. There are no subscription fees or hidden costs. The software is provided as-is, with no charges for wallet creation, transaction signing, or basic features. Balances work out of the box with no account at all; a free Alchemy account is only needed if you want the optional NFT gallery and transaction history, and it doesn't require payment for personal use.
 
 ### Why do I need an Alchemy API key?
 
-ArcSign uses Alchemy to read on-chain data like token balances, NFTs, and transaction history. This information never touches your private keys—Alchemy only reads public blockchain data on your behalf. The Alchemy free tier is sufficient for most users and provides fast, reliable access to all major EVM chains. You'll create your free Alchemy account during ArcSign setup.
+For **balances, you don't**—since v1.5.0 ArcSign reads token balances via built-in public RPC plus Multicall3 and free DefiLlama prices, with no key and no setup. An Alchemy key is only needed for the **NFT gallery** and **transaction history**, which require full-chain indexing that public RPC can't do (Alchemy covers Ethereum/Polygon/Arbitrum/Optimism/Base; BSC uses NodeReal; Avalanche is keyless via Glacier). None of this ever touches your private keys—it only reads public blockchain data on your behalf. The free tiers are more than enough for personal use.
 
 ### What if my antivirus blocks the ArcSign installation?
 

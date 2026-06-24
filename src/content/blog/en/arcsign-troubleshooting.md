@@ -15,9 +15,9 @@ ArcSign is a USB cold-wallet desktop application built on a three-layer architec
 
 Before troubleshooting, ask yourself three questions: **(1)** Is my USB being detected by ArcSign? **(2)** Does the wallet page show balances? **(3)** Can I successfully broadcast a transaction? These three questions map to three "fault lines", and this guide walks through each one.
 
-            ArcSign Is Free Software
-
-Before troubleshooting, confirm you downloaded the **official build**. ArcSign is completely free. All legitimate download sources are `arcsign.io` or `github.com/arcsignio/arcsign/releases`. If you downloaded a version that asks for payment to unlock basic features, it is almost certainly a counterfeit.
+> **ArcSign Is Free Software**
+>
+> Before troubleshooting, confirm you downloaded the **official build**. ArcSign is completely free. All legitimate download sources are `arcsign.io` or `github.com/arcsignio/arcsign/releases`. If you downloaded a version that asks for payment to unlock basic features, it is almost certainly a counterfeit.
 
 ## Issue 1: USB Detection Failures (The Most Common)
 
@@ -27,9 +27,9 @@ Roughly **40% of new-user issues** come from USB detection failures, according t
 
 ArcSign supports **FAT32** and **exFAT**. Windows' default NTFS is not yet supported, to guarantee consistent read/write behavior across Windows, macOS, and Linux. If your USB is NTFS-formatted, back up its contents and reformat it to exFAT (or FAT32 for drives under 64 GB).
 
-            Important
-
-Formatting erases the USB. Copy your data elsewhere first. If the drive already contains ArcSign wallet data, **do not format it**—instead, export the `.arcsign` backup file to your computer, format the drive, and re-import.
+> **Important**
+>
+> Formatting erases the USB. Copy your data elsewhere first. If the drive already contains ArcSign wallet data, **do not format it**—instead, export the `.arcsign` backup file to your computer, format the drive, and re-import.
 
 ### Cause B: Loose Plug or Bad Cable
 
@@ -39,18 +39,15 @@ This sounds basic but is the most frequently overlooked cause. USB-A connectors 
 
 ArcSign needs raw read/write access to USB storage, which requires different permission levels per OS:
 
-            1
-            macOS: Full Disk Access
+**1. macOS: Full Disk Access**
 
 Open System Settings → Privacy & Security → Full Disk Access, click the "+" at the bottom left, add ArcSign.app, and toggle it on. After adding it, fully quit and relaunch ArcSign (not just closing the window). On first launch on Apple Silicon, you may also need to click "Open Anyway" in the Security pane.
 
-            2
-            Windows: Run as Administrator
+**2. Windows: Run as Administrator**
 
 Right-click the ArcSign shortcut → "Run as administrator". To make this permanent, go to Properties → Compatibility → check "Run this program as an administrator". Also confirm Windows Defender or your antivirus isn't flagging ArcSign and blocking its USB access.
 
-            3
-            Linux: Join the plugdev / disk Group
+**3. Linux: Join the plugdev / disk Group**
 
 Run `sudo usermod -aG plugdev,disk $USER` in a terminal, log out, and log back in. For systemd distros you can also add a udev rule granting ArcSign access to specific USB devices. Arch/Manjaro users should additionally ensure `udisks2` is installed.
 
@@ -58,36 +55,23 @@ Run `sudo usermod -aG plugdev,disk $USER` in a terminal, log out, and log back i
 
 Rare, but it happens under frequent hot-plugging. The symptom is ArcSign detecting the device but failing to read it. Fix: go to Settings → Diagnostics → "Rescan USB". If that fails, import your `.arcsign` backup into a healthy USB.
 
-## Issue 2: Zero Balance, Tokens Missing (Provider Problems)
+## Issue 2: Zero Balance, Tokens Missing
 
-ArcSign's USB only stores keys—**balances and token lists are fetched live from public blockchains**. The read path uses a Provider/Indexer service: EVM chains (Ethereum, Polygon, Arbitrum, Optimism, Base, etc.) use Alchemy, while BSC uses NodeReal's enhanced APIs (`nr_getTokenHoldings`, `nr_getNFTHoldings`).
+ArcSign's USB only stores keys—**balances and token lists are fetched live from public blockchains**. As of v1.5.0, reading balances needs **no API key at all**: ArcSign uses built-in public RPC plus Multicall3 and free DefiLlama prices across all EVM chains (Ethereum, Polygon, Arbitrum, Optimism, Base, BSC, Avalanche). So if a balance shows 0, it is almost never a "missing key" problem.
 
-### Fix: Configure an Alchemy API Key
+### Fix: Retry, or Import the Token (no key needed)
 
-Alchemy's developer free tier provides 300 million compute units per month—more than enough for personal use. Setup:
+A balance of 0 usually means one of two things:
 
-            1
-            Sign Up for Alchemy
+**1. Public Node Temporarily Down**
 
-Go to `alchemy.com`, register a free account with your email, verify it, and log in to the Dashboard.
+The built-in public RPC for that chain may be briefly unreachable or rate-limited. Fix: pull to refresh on the accounts page and wait a few seconds. If one chain is flaky, you can also point ArcSign at your own RPC under Settings → Provider & Indexer for that chain.
 
-            2
-            Create an App
+**2. Token Not Imported**
 
-Click "Create new app" in the Dashboard, give it any name (e.g. "ArcSign Wallet"), choose Chain = "Multichain" to enable all EVM chains, and copy the API Key.
+ArcSign reads native and well-known token balances automatically, but a brand-new or obscure ERC-20 may not be in its list yet. Fix: Wallet → "Custom Token" below the token list → paste the contract address. ArcSign calls `balanceOf` directly via public RPC—no key, no indexer required.
 
-            3
-            Paste Into ArcSign
-
-Open ArcSign → Settings → "Provider & Indexer" → paste your Alchemy API Key → Save. Return to the accounts page and pull to refresh. Balances and tokens should appear within seconds.
-
-### Can't See BSC Tokens?
-
-BSC doesn't go through Alchemy—it uses NodeReal's MegaNode API. Go to Settings → Provider & Indexer → BSC tab and enter a NodeReal API Key. NodeReal also has a free tier; the signup flow mirrors Alchemy. Once configured, BSC tokens, NFTs, and [token approval](/blog/token-approval-revoke)s become available.
-
-### A Specific Token Doesn't Show Up?
-
-For newly-launched or obscure tokens, Alchemy may not have indexed them yet. You can add them manually: Wallet → "Custom Token" below the token list → paste the contract address. ArcSign will call `balanceOf` directly via RPC and skip the indexer entirely.
+> **Separate note — NFT gallery and transaction history DO need a key.** Those panels require full-chain indexing, which public RPC can't do. To enable them: add an **Alchemy** key for Ethereum/Polygon/Arbitrum/Optimism/Base, and a **NodeReal** key for BSC (its MegaNode `nr_getTokenHoldings` / `nr_getNFTHoldings` APIs). **Avalanche uses Glacier, which is keyless** (anonymous tier). Both Alchemy and NodeReal have generous free tiers. When a key is missing, the panel clearly states "this feature needs a key" rather than showing blank. This has nothing to do with balances, which already work keyless.
 
 ## Issue 3: WalletConnect Won't Connect, DApp Unresponsive
 
@@ -126,13 +110,11 @@ Almost always slow USB reads. Possible causes: (1) another process is scanning t
 
 This is not an [ArcSign Pro](/blog/arcsign-pro-nft-membership)blem—it's a **gas or nonce** issue on-chain. Check:
 
-            1
-            Gas Too Low
+**1. Gas Too Low**
 
 Check the current gas market on a block explorer (Etherscan, BscScan). If your transaction's gas is clearly below the current baseline, it will sit for a long time. Fix: click "Speed Up" in ArcSign (re-sends the same nonce with higher gas), or cancel and retry.
 
-            2
-            Nonce Mismatch
+**2. Nonce Mismatch**
 
 If you're broadcasting from the same address through multiple wallets at once, nonce collisions can happen. ArcSign auto-fetches the latest on-chain nonce by default, but you can override it in the "Advanced" panel. If you see a nonce error, check the address's pending transactions on a block explorer first, then adjust.
 
@@ -156,9 +138,9 @@ If the backup file was truncated or modified during transfer (for example, via a
 
 Backups exported from older ArcSign versions will always import into newer versions (backward compatible), but not vice versa. If you exported on v1.2 and try to import into v1.0, it will fail. Fix: upgrade ArcSign to the latest version from `github.com/arcsignio/arcsign/releases`, then import.
 
-            Best Backup Practice
-
-Keep at least **two** independent backups: one on a second USB stored offline, and another in an encrypted cloud drive (since `.arcsign` is already AES-256 encrypted, cloud storage doesn't weaken security). Also keep a paper backup of the 12-word mnemonic as a last-resort recovery.
+> **Best Backup Practice**
+>
+> Keep at least **two** independent backups: one on a second USB stored offline, and another in an encrypted cloud drive (since `.arcsign` is already AES-256 encrypted, cloud storage doesn't weaken security). Also keep a paper backup of the 12-word mnemonic as a last-resort recovery.
 
 ## Platform-Specific Fixes: Windows / macOS / Linux
 
@@ -172,7 +154,7 @@ Keep at least **two** independent backups: one on a second USB stored offline, a
 
 **SmartScreen warning:** ArcSign has not yet purchased a Windows code-signing certificate (planned after reaching 10,000 users), so first-run SmartScreen shows a warning. Click "More info" → "Run anyway". You can also temporarily loosen "Windows Security" → "App & browser control".
 
-**Antivirus false positives:** Some antivirus products flag unsigned executables. Fix: whitelist the ArcSign install directory. ArcSign is an open-source-bound project (open source planned after 10,000 users), and will ship reproducible builds that should significantly reduce false positives.
+**Antivirus false positives:** Some antivirus products flag unsigned executables. Fix: whitelist the ArcSign install directory. ArcSign is an open-source project (already open source, Apache 2.0), and will ship reproducible builds that should significantly reduce false positives.
 
 ### Common Linux Issues
 
@@ -188,8 +170,8 @@ Bookmark this table—match the symptom, find the first fix to try.
 | --- | --- | --- |
 | USB not detected at all | Format / permissions | Check FAT32 or exFAT |
 | Detected but can't read wallet | Partition table / permissions | Rescan USB |
-| Balance shows 0 | Provider not set | Paste Alchemy API Key |
-| BSC tokens invisible | NodeReal not set | Paste NodeReal API Key |
+| Balance shows 0 | Public RPC down, or token not imported (no key needed) | Pull to refresh; use "Custom Token" to add the contract |
+| NFT gallery / tx history blank | Indexer key not set | Add Alchemy (ETH/Polygon/Arb/OP/Base) or NodeReal (BSC); Avalanche keyless via Glacier |
 | WalletConnect won't scan | QR expired | Regenerate on DApp |
 | WalletConnect drops | Relay blocked | Switch network / disable VPN |
 | Signing hangs | Slow USB I/O | Pause antivirus scan |
@@ -197,9 +179,9 @@ Bookmark this table—match the symptom, find the first fix to try.
 | DEX swap fails | Slippage too low | Raise to 1-2% |
 | Backup import fails | Wrong password | Check Caps Lock |
 
-            Still Stuck?
-
-If none of the above works, go to Settings → "Diagnostics" → "Export Logs" to generate a file containing system info and recent errors (no private keys included), then file a support ticket at `arcsign.io/support`. Attaching the log file dramatically speeds up investigation.
+> **Still Stuck?**
+>
+> If none of the above works, go to Settings → "Diagnostics" → "Export Logs" to generate a file containing system info and recent errors (no private keys included), then file a support ticket at `arcsign.io/support`. Attaching the log file dramatically speeds up investigation.
 
 ## FAQ
 
@@ -209,7 +191,7 @@ Check these in order: (1) Make sure the USB is fully inserted, try a different p
 
 ### Q: Why does my balance keep showing 0 or fail to load tokens?
 
-Balances are fetched by the Provider/Indexer service. ArcSign needs an Alchemy API Key to read on-chain data from EVM chains (the free tier is enough). Go to Settings → Provider & Indexer, paste your Alchemy API Key, save, and refresh the account page. If still nothing, verify the relevant chains (Ethereum, Polygon, Arbitrum, etc.) are enabled in your Alchemy Dashboard and that your monthly quota isn't exceeded. BSC uses the NodeReal enhanced API—same configuration flow.
+Since v1.5.0, balances need **no API key**—ArcSign reads them via built-in public RPC plus Multicall3 and free DefiLlama prices on every EVM chain. A balance of 0 is usually a transient public-node hiccup (pull to refresh) or a token that simply isn't imported yet (Wallet → "Custom Token" → paste the contract address, which calls `balanceOf` directly, keyless). An API key only matters for the **NFT gallery** and **transaction history**: Alchemy for Ethereum/Polygon/Arbitrum/Optimism/Base, NodeReal for BSC, and Avalanche keyless via Glacier.
 
 ### Q: I scanned the WalletConnect QR code but the DApp doesn't respond?
 

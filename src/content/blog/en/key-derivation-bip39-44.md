@@ -17,37 +17,33 @@ In 2012, Bitcoin developer Pieter Wuille published a specification called **BIP-
 
 The following year, BIP-39 (mnemonics) and BIP-44 (multi-chain derivation paths) filled in the missing pieces: a human-transcribable input and an interoperable output structure. Together these three specifications became the shared backbone of every mainstream wallet today — MetaMask, Ledger, Trezor, Trust Wallet, and ArcSign all speak the same language.
 
-            What you'll walk away with
-
-This article takes you from 12 English words all the way to that `0x…` address you see on Etherscan — showing exactly how each step is stitched together with math. By the end you'll understand why the mnemonic is the one thing you need to protect, and why ArcSign can manage BTC, ETH, BNB, Polygon, and 18 more chains from the same USB stick.
+> **What you'll walk away with**
+>
+> This article takes you from 12 English words all the way to that `0x…` address you see on Etherscan — showing exactly how each step is stitched together with math. By the end you'll understand why the mnemonic is the one thing you need to protect, and why ArcSign can manage ETH, BNB, Polygon, and all 7 EVM chains from the same USB stick.
 
 ## BIP-39: From Entropy to 12 Memorable Words
 
 BIP-39 answers a simple question: **How do you turn 128 or 256 bits of random noise into something a human can copy down without mistakes?** The answer is a standardized 2048-word dictionary, where every 11 bits maps to one English word.
 
-            1
-            Generate entropy
+**1. Generate entropy**
 
 Use a cryptographically secure random number generator (CSPRNG) to produce 128 bits (12 words) or 256 bits (24 words) of randomness. This is the only truly random input in the entire wallet — entropy quality determines wallet security.
 
-            2
-            Append a checksum
+**2. Append a checksum**
 
 Run SHA-256 on the entropy, take the first N/32 bits, and append them. 128-bit entropy + 4-bit checksum = 132 bits; 256-bit entropy + 8-bit checksum = 264 bits. The checksum lets wallets detect transcription mistakes at input time.
 
-            3
-            Slice into 11-bit chunks and map to the dictionary
+**3. Slice into 11-bit chunks and map to the dictionary**
 
 Split into 11-bit chunks, each of which indexes into the BIP-39 dictionary. 132 / 11 = 12 words; 264 / 11 = 24 words. This is where "abandon ability able about…" comes from.
 
-            4
-            Stretch to a 512-bit seed via PBKDF2
+**4. Stretch to a 512-bit seed via PBKDF2**
 
 Feed the mnemonic string plus an optional user passphrase (empty string is allowed) into PBKDF2-HMAC-SHA512 for 2,048 iterations, producing a 512-bit seed. This seed is the input to BIP-32.
 
-            Why exactly 2048 words?
-
-Because 2048 = 211, so every word cleanly represents 11 bits. The word list itself is carefully curated: each word's first 4 letters are unique (enables fuzzy input), no lookalike words, no profanity. Different languages (English, Japanese, Korean, Traditional Chinese, Simplified Chinese) have their own 2048-word lists — but English is strongly recommended for cross-wallet compatibility.
+> **Why exactly 2048 words?**
+>
+> Because 2048 = 211, so every word cleanly represents 11 bits. The word list itself is carefully curated: each word's first 4 letters are unique (enables fuzzy input), no lookalike words, no profanity. Different languages (English, Japanese, Korean, Traditional Chinese, Simplified Chinese) have their own 2048-word lists — but English is strongly recommended for cross-wallet compatibility.
 
 ## BIP-32: One Seed, Infinite Keys
 
@@ -57,31 +53,28 @@ The magic at the heart of BIP-32 is `HMAC-SHA512`: given a parent key and an ind
 
 The 512-bit seed from BIP-39 is split in half: the first 256 bits become the **master private key**, the last 256 bits become the **chain code**. Master key + chain code = an **extended private key** (xprv), the root node of the entire HD tree.
 
-                12-word mnemonic
-                abandon × 11 + about
-
-                ↓ PBKDF2-HMAC-SHA512 (2048 iterations)
-
-                512-bit seed
-                5eb00bbddcf069084889a8ab9…
-
-                ↓ HMAC-SHA512 with key "Bitcoin seed"
-
-                Master key + chain code
-                xprv9s21ZrQH143K…
+```
+12-word mnemonic
+abandon × 11 + about
+        │
+        ▼  PBKDF2-HMAC-SHA512 (2048 iterations)
+512-bit seed
+5eb00bbddcf069084889a8ab9…
+        │
+        ▼  HMAC-SHA512 with key "Bitcoin seed"
+Master key + chain code
+xprv9s21ZrQH143K…
+```
 
 ### Child key derivation (CKD)
 
 With a master key in hand, you can derive the first layer of children. Given a parent extended private key (`k_par`, `c_par`) and an index `i`, BIP-32 defines:
 
-                Compute
-                I = HMAC-SHA512(c_par, data)
-
-                Child private key
-                k_i = (first 256 bits of I) + k_par (mod n)
-
-                Child chain code
-                c_i = last 256 bits of I
+| Item | Formula |
+| :--- | :--- |
+| **Compute** | `I = HMAC-SHA512(c_par, data)` |
+| **Child private key** | `k_i = (first 256 bits of I) + k_par (mod n)` |
+| **Child chain code** | `c_i = last 256 bits of I` |
 
 The critical property: the same parent + same index always produces the same child. That is the "deterministic" in Hierarchical Deterministic Wallet. Your mnemonic's HD tree derives identical addresses whether you load it in ArcSign today, Ledger tomorrow, or MetaMask next week.
 
@@ -91,11 +84,10 @@ BIP-32 says *how* to derive, but not *how to organize*. If every wallet decided 
 
 **BIP-44 fixes that.** It specifies a five-level standard path:
 
-                Standard path
-                m / purpose' / coin_type' / account' / change / address_index
-
-                Example (ETH)
-                m / 44' / 60' / 0' / 0 / 0
+| Path | Format |
+| :--- | :--- |
+| **Standard path** | `m / purpose' / coin_type' / account' / change / address_index` |
+| **Example (ETH)** | `m / 44' / 60' / 0' / 0 / 0` |
 
 ### What each level means
 
@@ -121,9 +113,9 @@ SLIP-44 (Satoshi Labs Improvement Proposal 44) is the registry of `coin_type` va
 | Solana | 501' | `m/44'/501'/0'/0'` |
 | Litecoin (LTC) | 2' | `m/44'/2'/0'/0/0` |
 
-            Why do most EVM chains share 60'?
-
-Because Ethereum, Polygon, BNB Chain, Arbitrum, Base, Optimism, and other EVM-compatible chains use identical address formats, signature schemes, and key lengths. Sharing `coin_type = 60'` means one mnemonic produces the same `0x` address across all of them — which is why your MetaMask address never changes when you switch networks. You're managing one private key that happens to be valid on every EVM-compatible chain. ArcSign still supports per-chain account trees internally so you can either share one address across EVM chains or separate high-value chains into their own accounts.
+> **Why do most EVM chains share 60'?**
+>
+> Because Ethereum, Polygon, BNB Chain, Arbitrum, Base, Optimism, and other EVM-compatible chains use identical address formats, signature schemes, and key lengths. Sharing `coin_type = 60'` means one mnemonic produces the same `0x` address across all of them — which is why your MetaMask address never changes when you switch networks. You're managing one private key that happens to be valid on every EVM-compatible chain. ArcSign still supports per-chain account trees internally so you can either share one address across EVM chains or separate high-value chains into their own accounts.
 
 ## Hardened Derivation: The Meaning Behind the Apostrophe
 
@@ -142,28 +134,25 @@ Normal derivation has a convenient but dangerous property: if an attacker gets h
 
 Hardened derivation closes this hole entirely. It computes the HMAC using the parent's private key instead of the public key, so even someone with the xpub and a child private key can't cross a hardened boundary. BIP-44 hardens the first three levels — purpose, coin_type, account — establishing distinct security domains for each "use / chain / account" in your wallet.
 
-            Mental model
-
-**"Apostrophe = hard firewall."** Any level you don't want an xpub leak to punch through should be hardened. The Bitcoin community consensus: `purpose'/coin_type'/account'` must be hardened. The last two levels (change / address_index) stay normal, which is what lets watch-only wallets derive every receive address from just an xpub without ever touching a private key.
+> **Mental model**
+>
+> **"Apostrophe = hard firewall."** Any level you don't want an xpub leak to punch through should be hardened. The Bitcoin community consensus: `purpose'/coin_type'/account'` must be hardened. The last two levels (change / address_index) stay normal, which is what lets watch-only wallets derive every receive address from just an xpub without ever touching a private key.
 
 ## How ArcSign Implements This Stack
 
 ArcSign follows BIP-39 / BIP-32 / BIP-44 verbatim — but layers three reinforcements on top, turning a standard HD wallet into a USB-grade cold wallet:
 
-            1
-            Mnemonic + .arcsign backup, side by side
+**1. Mnemonic + .arcsign backup, side by side**
 
 When you create a wallet, ArcSign shows the 12-word BIP-39 mnemonic for you to write down and lets you export an `.arcsign` encrypted backup file ([AES-256](/blog/aes256-encryption-simple)-GCM + [Argon2id](/blog/aes256-encryption-simple), encrypted on export). The mnemonic recovers the keys in any compatible wallet; the `.arcsign` file restores your custom accounts, address book, token lists, connection history — everything — in one click. Mnemonic solves cross-wallet portability; `.arcsign` solves "get my exact setup back."
 
-            2
-            The seed never sits around whole
+**2. The seed never sits around whole**
 
 The moment BIP-39 produces the 512-bit seed, ArcSign immediately splits it into three shards using **XOR three-shard encryption** and stores them back on the USB. At signing time, the three shards briefly reassemble inside [mlock](/blog/mlock-memory-protection)-protected memory, derive the private key for the current path, sign, and the whole memory region is zeroed. The private-key exposure window is held under 1–5 milliseconds.
 
-            3
-            One seed, 7 chains of private keys
+**3. One seed, 7 chains of private keys**
 
-ArcSign ships with a BIP-44 path table for 7 chains (Bitcoin mainnet + 6 major EVM-compatible chains). Switching chains in the Dashboard simply switches the derivation path — from `m/44'/0'/0'/0/0` (BTC) to `m/44'/60'/0'/0/0` (ETH), for example. No re-generation. No re-backup. Every chain's assets share the same 12-word seed.
+ArcSign ships with a BIP-44 path table for 7 EVM chains. Switching chains in the Dashboard simply switches the derivation path — all 7 EVM chains share the `m/44'/60'/0'/0/0` (ETH) derivation path, while each chain's balances are queried from its own RPC. No re-generation. No re-backup. Every chain's assets share the same 12-word seed.
 
 ### Watch-only addresses: xpub's practical payoff
 
@@ -171,38 +160,33 @@ BIP-32's extended public key (xpub) has a practical use you can take advantage o
 
 ## Five Pitfalls Users Keep Stepping Into
 
-            1
-            Assuming "mnemonic + passphrase" can be reconstructed later
+**1. Assuming "mnemonic + passphrase" can be reconstructed later**
 
 The BIP-39 passphrase (sometimes called "the 25th word") feeds directly into PBKDF2 at seed-derivation time. **A different passphrase produces a completely different seed** — a completely different wallet. Forget the passphrase you picked and the mnemonic becomes useless, because it points to a different (empty) wallet. If you use a passphrase, back it up separately and don't choose anything guessable.
 
-            2
-            Writing the mnemonic out of order or skipping a word
+**2. Writing the mnemonic out of order or skipping a word**
 
 Word order is everything in BIP-39 — swap words 5 and 6 and you have a different wallet. The BIP-39 checksum only validates "is this set of 12 words a valid mnemonic?" — it cannot point to which word is wrong. Best practice: copy in groups of three (1-3, 4-6, 7-9, 10-12), number them, and rewrite with a different pen at a different time to cross-check.
 
-            3
-            Treating xpub as public information
+**3. Treating xpub as public information**
 
 An xpub contains no private key, but it does expose **every historical and future address** under that account. Anyone holding your xpub can track your flows across the entire HD tree, label your behavior patterns, and even run targeted phishing. Share an xpub only when you're certain the recipient should see every transaction — for ordinary receiving, share a single address instead.
 
-            4
-            Thinking different chains are "independent wallets"
+**4. Thinking different chains are "independent wallets"**
 
 They are all branches off the same seed. If your mnemonic leaks, BTC, ETH, BNB, Polygon, and Arbitrum all fall together — the attacker just types the mnemonic into any compatible wallet and lets it auto-scan balances across every coin_type. This is also why "use the same seed for both a cold wallet and a hot wallet" is a bad idea.
 
-            5
-            Using online tools to "verify" your mnemonic
+**5. Using online tools to "verify" your mnemonic**
 
 Any tool asking you to paste your mnemonic into a webpage, Discord bot, or Telegram bot is a scam. Legitimate wallets never need your mnemonic to pass through a third party — the BIP-39 verification algorithm is entirely local. If you really want to verify, use an open-source offline tool (such as Ian Coleman's BIP-39 tool with networking disabled). ArcSign validates the checksum locally at wallet creation — no lookup needed.
 
-            Further reading
-
-For how the seed gets split into three shards on your USB, see [XOR Three-Shard Encryption (Visual Guide)](/blog/xor-encryption-explained). For five concrete ways to back up a mnemonic, see [The Ultimate Seed Phrase Backup Guide](/blog/seed-phrase-backup-guide). For what actually happens when the USB is stolen, see [USB Backup Strategy](/blog/usb-backup-strategy).
+> **Further reading**
+>
+> For how the seed gets split into three shards on your USB, see [XOR Three-Shard Encryption (Visual Guide)](/blog/xor-encryption-explained). For five concrete ways to back up a mnemonic, see [The Ultimate Seed Phrase Backup Guide](/blog/seed-phrase-backup-guide). For what actually happens when the USB is stolen, see [USB Backup Strategy](/blog/usb-backup-strategy).
 
 ## FAQ
 
-### Q: Why can a single 12-word mnemonic manage wallets on 22 different chains?
+### Q: Why can a single 12-word mnemonic manage wallets on all 7 EVM chains?
 
 Because BIP-39 turns your 12 words into a 512-bit seed, which BIP-32 then expands into a master key via one-way HMAC-SHA512 derivation. BIP-44's standard path (`m/44'/coin_type'/account'/change/index`) assigns each chain a dedicated subtree via the `coin_type` field — Bitcoin is `0'`, Ethereum is `60'`, BNB Chain is `714'`. A single mnemonic can deterministically generate dozens of chains and an unlimited number of addresses, each cryptographically independent from the others.
 

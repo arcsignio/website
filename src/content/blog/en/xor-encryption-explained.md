@@ -15,9 +15,9 @@ In the crypto world, there is a well-known saying: **"Not your keys, not your co
 
 Yet most wallet software simply encrypts the private key with a single password and stores it on disk. If your computer is compromised and malware reads the wallet file, the attacker only needs to crack one password to take everything. ArcSign takes a fundamentally different approach: **XOR three-shard encryption** ensures your private key never exists in complete form in any single location.
 
-            Core Philosophy
-
-ArcSign's security principle: **If a private key never exists in complete form, it cannot be stolen.** XOR three-shard encryption is the mathematical foundation that makes this possible.
+> **Core Philosophy**
+>
+> ArcSign's security principle: **If a private key never exists in complete form, it cannot be stolen.** XOR three-shard encryption is the mathematical foundation that makes this possible.
 
 ## What Is XOR? Core Principles in 3 Minutes
 
@@ -25,14 +25,12 @@ XOR (Exclusive OR) is one of the most fundamental bitwise operations in computer
 
 ### XOR Truth Table
 
-                Input A
-                0 0 1 1
-
-                Input B
-                0 1 0 1
-
-                A XOR B
-                0 1 1 0
+| Input A | Input B | A XOR B |
+| :---: | :---: | :---: |
+| 0 | 0 | 0 |
+| 0 | 1 | 1 |
+| 1 | 0 | 1 |
+| 1 | 1 | 0 |
 
 The cryptographic magic of XOR lies in its **perfect reversibility**: if A XOR B = C, then C XOR B = A, and C XOR A = B. More importantly, if B is a completely random value, then even knowing C, it is impossible to derive A without knowing B. This is the principle behind the One-Time Pad — proven to be information-theoretically unbreakable.
 
@@ -40,17 +38,11 @@ The cryptographic magic of XOR lies in its **perfect reversibility**: if A XOR B
 
 Suppose your "private key" is the number **42** (binary: 101010). Let's use XOR to protect it:
 
-                Private Key
-                1 0 1 0 1 0
-                (= 42)
-
-                Random Shard R
-                1 1 0 1 0 1
-                (= 53, randomly generated)
-
-                Encrypted Result
-                0 1 1 1 1 1
-                (= 31)
+| Item | Binary | Decimal |
+| :--- | :---: | :---: |
+| **Private Key** | `1 0 1 0 1 0` | 42 |
+| **Random Shard R** | `1 1 0 1 0 1` | 53 (randomly generated) |
+| **Encrypted Result** | `0 1 1 1 1 1` | 31 |
 
 Now you store **53** and **31** separately. Even if an attacker obtains either number, they cannot determine that the original key was 42. Only by having both shards and computing 31 XOR 53 can the original be recovered. ArcSign extends this concept to three shards for even greater security.
 
@@ -58,41 +50,35 @@ Now you store **53** and **31** separately. Even if an attacker obtains either n
 
 The moment you create a wallet, ArcSign executes these three steps to protect your private key:
 
-            1
-            Generate Random Shards
+**1. Generate Random Shards**
 
 A cryptographically secure random number generator (CSPRNG) creates two completely random shards — Shard A and Shard B — each the same length as the private key. These shards have no mathematical relationship to the key; they are pure random data.
 
-            2
-            Compute the Third Shard
+**2. Compute the Third Shard**
 
 Shard C is computed as: Private Key XOR Shard A XOR Shard B. Once calculated, **the original private key is immediately wiped from memory**. Only three seemingly random data fragments remain.
 
-            3
-            Distributed Storage
+**3. Distributed Storage**
 
 Each shard is individually encrypted with [AES-256](/blog/aes256-encryption-simple)-GCM and stored in separate locations on the USB device. Any single shard viewed in isolation is meaningless random data — no shard reveals any information about the private key.
 
-            Mathematical Guarantee
-
-The security of XOR three-shard encryption does not rely on algorithm secrecy or key strength. It is based on information theory itself: **any combination of fewer than three shards provides zero information about the original private key**. This is mathematically provable.
+> **Mathematical Guarantee**
+>
+> The security of XOR three-shard encryption does not rely on algorithm secrecy or key strength. It is based on information theory itself: **any combination of fewer than three shards provides zero information about the original private key**. This is mathematically provable.
 
 ## Signing Flow: How Your Key Briefly "Appears"
 
 When you need to sign a transaction, the private key must be briefly reconstructed. ArcSign minimizes the risk of this moment:
 
-            1
-            Lock Memory (mlock)
+**1. Lock Memory (mlock)**
 
 Before reconstruction, ArcSign requests a protected memory region from the OS and locks it with [mlock](/blog/mlock-memory-protection), preventing it from being swapped to disk. Even if the computer loses power, no trace of the key will remain on the hard drive.
 
-            2
-            XOR Reconstruction (1–5 ms)
+**2. XOR Reconstruction (1–5 ms)**
 
 The three shards are XOR'd together in protected memory: Shard A XOR Shard B XOR Shard C = Original Private Key. This computation takes less than 1 millisecond since XOR is the lightest bitwise operation available.
 
-            3
-            Sign and Immediately Destroy
+**3. Sign and Immediately Destroy**
 
 The reconstructed key signs the transaction. The moment signing completes, the entire memory region is overwritten with zeros and released. From reconstruction to destruction: **1–5 milliseconds**.
 
@@ -112,9 +98,9 @@ When it comes to key security, backup is equally important yet often overlooked.
 
 ArcSign offers an exclusive **.arcsign encrypted wallet backup file**. With one click, you export a backup encrypted with [AES-256](/blog/aes256-encryption-simple)-GCM + Argon2id. Store it on a second USB drive, an external hard drive, or even a memory card in a safe. Even if someone else obtains this backup, they cannot decrypt it without your password. When you need to recover, simply import and enter your password — all wallets and settings are restored instantly.
 
-            Backup Best Practice
-
-We recommend keeping both your [seed phrase](/blog/seed-phrase-backup-guide) (sealed in paper, stored securely) and a .arcsign backup file (on a second USB, stored offline). These two methods serve as redundant backups, ensuring you can recover your assets under any circumstance.
+> **Backup Best Practice**
+>
+> We recommend keeping both your [seed phrase](/blog/seed-phrase-backup-guide) (sealed in paper, stored securely) and a .arcsign backup file (on a second USB, stored offline). These two methods serve as redundant backups, ensuring you can recover your assets under any circumstance.
 
 ## XOR Sharding vs Other Key Protection Methods
 
@@ -144,9 +130,9 @@ Malicious software attempts to read the private key from memory. But the key onl
 
 This threat applies to hardware wallets but is completely irrelevant to ArcSign. ArcSign runs on standard operating systems using generic USB devices — there is no proprietary firmware, so there is no firmware backdoor attack surface. Your security comes from open, verifiable cryptographic algorithms, not from "trusting" closed hardware.
 
-            Security Equation
-
-**XOR three-shard + AES-256-GCM dual-layer encryption + mlock memory protection + USB offline storage = multi-layer defense.** An attacker would need to breach every single layer simultaneously to access your private key — practically impossible.
+> **Security Equation**
+>
+> **XOR three-shard + AES-256-GCM dual-layer encryption + mlock memory protection + USB offline storage = multi-layer defense.** An attacker would need to breach every single layer simultaneously to access your private key — practically impossible.
 
 ## Frequently Asked Questions
 

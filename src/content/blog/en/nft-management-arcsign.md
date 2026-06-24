@@ -15,9 +15,9 @@ Here is an uncomfortable fact: NFTs get stolen more often than fungible tokens o
 
 Keeping NFTs in a browser hot wallet like MetaMask exposes you to all of those attack surfaces. Moving them into a **USB cold wallet like ArcSign** means your private key never leaves the device and, for day-to-day browsing of your collection, you don't even need to connect to anything.
 
-            Real case
-
-In 2022 a Bored Ape holder clicked a fake "Otherside land allowlist" link and lost an NFT collection worth over **USD 2.4M** in a single day. The post-mortem revealed the entire collection was held in a hot wallet and had granted `setApprovalForAll` to the phishing contract. A cold wallet with periodic approval cleanup would have prevented the loss entirely.
+> **Real case**
+>
+> In 2022 a Bored Ape holder clicked a fake "Otherside land allowlist" link and lost an NFT collection worth over **USD 2.4M** in a single day. The post-mortem revealed the entire collection was held in a hot wallet and had granted `setApprovalForAll` to the phishing contract. A cold wallet with periodic approval cleanup would have prevented the loss entirely.
 
 ## The 5 most common NFT attacks in 2026
 
@@ -47,23 +47,19 @@ Clipboard-watching malware silently replaces any wallet address you copy with th
 
 The NFT Gallery is one of ArcSign's flagship features for collectors. No matter which chains your NFTs live on, the dashboard fetches and displays them in a single unified view — no network switching, no juggling six browser extensions.
 
-            1
-            Six chains in one view
+**1. Seven chains in one view**
 
-Supports Ethereum, Polygon, Arbitrum, Optimism, Base and BSC. BSC uses NodeReal's enhanced `nr_getNFTHoldings` API while the other chains use Alchemy's NFT API for complete metadata.
+Supports Ethereum, Polygon, Arbitrum, Optimism, Base, BSC and Avalanche. BSC uses NodeReal's enhanced `nr_getNFTHoldings` API, Avalanche uses Glacier, while the other chains use Alchemy's NFT API for complete metadata.
 
-            2
-            ERC-721 and ERC-1155
+**2. ERC-721 and ERC-1155**
 
 Whether you collect 1/1 PFP art or stackable game items (ERC-1155), counts, collections and rarity traits are displayed correctly.
 
-            3
-            Lazy loading and privacy mode
+**3. Lazy loading and privacy mode**
 
 Media is fetched through a built-in image proxy to avoid leaking your IP to third-party IPFS gateways. You can enable "view-only mode" to display an address's holdings without connecting to any dApp.
 
-            4
-            No third-party cloud
+**4. No third-party cloud**
 
 All data is pulled live from chains and official APIs. ArcSign never uploads your holdings to any server. Your collection privacy belongs to you alone.
 
@@ -71,34 +67,29 @@ All data is pulled live from chains and official APIs. ArcSign never uploads you
 
 Here's the full hot-to-cold migration flow, roughly 15 minutes end to end:
 
-            1
-            Prepare a USB and install ArcSign
+**1. Prepare a USB and install ArcSign**
 
 Download the latest build from [arcsign.io](/blog/../../en/index) and install it to a USB stick (16 GB or larger is recommended). ArcSign is free software. Create a new wallet and set a strong password.
 
-            2
-            Configure an Alchemy API key
+**2. Configure an Alchemy API key**
 
 Enter a free Alchemy API key on the Provider settings page to enable the NFT Gallery and [cross-chain](/blog/arcsign-cross-chain-guide) balances. If you hold NFTs on BSC, add a NodeReal key too for the best metadata coverage.
 
-            3
-            Export your .arcsign encrypted backup first
+**3. Export your .arcsign encrypted backup first**
 
 Before transferring in anything of value, export the [AES-256-GCM encrypted .arcsign backup file](/blog/aes256-encryption-simple). It's fully encrypted the moment it hits disk, so you can safely store it in the cloud or on a second USB.
 
-            4
-            Migrate in batches (cheapest first)
+**4. Migrate in batches (cheapest first)**
 
 Never move an entire collection in one go. Transfer one low-value NFT first, confirm it arrives and renders in the Gallery, then move the valuable items in batches. This is the golden rule of any cold wallet migration.
 
-            5
-            Clean up approvals on the old hot wallet
+**5. Clean up approvals on the old hot wallet**
 
 Once the migration is done, return to the old wallet and use [ArcSign Token Approvals](/blog/how-to-revoke-token-approvals) to revoke every lingering setApprovalForAll. Otherwise, if any asset ever returns to the old wallet, those dangling approvals remain a live attack vector.
 
-            Safety reminder
-
-When transferring a valuable NFT, always verify the **full destination address** — the first 6 and last 4 characters are not enough. ArcSign displays the full address and tokenId on the signing screen for you to double-check. See our [phishing prevention guide](/blog/phishing-attack-prevention) for clipboard-hijack examples.
+> **Safety reminder**
+>
+> When transferring a valuable NFT, always verify the **full destination address** — the first 6 and last 4 characters are not enough. ArcSign displays the full address and tokenId on the signing screen for you to double-check. See our [phishing prevention guide](/blog/phishing-attack-prevention) for clipboard-hijack examples.
 
 ## Approval management: don't let old approvals become bombs
 
@@ -119,24 +110,21 @@ ArcSign's [token approval](/blog/token-approval-revoke)s feature lists every app
 
 Putting NFTs into [cold storage](/blog/what-is-cold-storage) doesn't mean you can't trade. ArcSign supports [WalletConnect v2](/blog/walletconnect-dapp-tutorial) and pairs with OpenSea, Blur, Magic Eden and other major marketplaces. The flow:
 
-            1
-            Pick WalletConnect on the marketplace
+**1. Pick WalletConnect on the marketplace**
 
 Go to OpenSea or any marketplace, click "Connect Wallet", choose [WalletConnect](/blog/walletconnect-dapp-tutorial), and you'll get a QR code or a connection URI.
 
-            2
-            Scan or paste into ArcSign
+**2. Scan or paste into ArcSign**
 
 Open the [WalletConnect](/blog/walletconnect-dapp-tutorial) tab in ArcSign, scan the QR or paste the URI, and approve the pairing. ArcSign will display the requesting domain — double-check it.
 
-            3
-            Review every signing request carefully
+**3. Review every signing request carefully**
 
 For listings, bids and trades, ArcSign parses and displays the full EIP-712 structured data. Verify the target contract, the expiry, and which tokenIds are involved before approving.
 
-            Pro tip
-
-WalletConnect v2 supports short-lived sessions. Grant one-time or hours-long sessions instead of indefinite ones — so even if a dApp turns malicious later, the window of impact is limited.
+> **Pro tip**
+>
+> WalletConnect v2 supports short-lived sessions. Grant one-time or hours-long sessions instead of indefinite ones — so even if a dApp turns malicious later, the window of impact is limited.
 
 ## ArcSign vs other NFT storage options
 
@@ -147,7 +135,7 @@ WalletConnect v2 supports short-lived sessions. Grant one-time or hours-long ses
 | **Trezor + Suite** | Yes | Not native | Not built in | $169+ hardware |
 | **ArcSign** | Yes (USB) | 6 chains native | One-click revoke | Free |
 
-Related reading: [Ledger vs Trezor vs ArcSign full comparison](/blog/ledger-vs-trezor-vs-arcsign) and our [BTC + ETH + BSC multi-chain management tutorial](/blog/multi-chain-management).
+Related reading: [Ledger vs Trezor vs ArcSign full comparison](/blog/ledger-vs-trezor-vs-arcsign) and our [ETH + BSC + Polygon multi-chain management tutorial](/blog/multi-chain-management).
 
 ## FAQ
 
@@ -157,7 +145,7 @@ Any valuable NFT belongs in a cold wallet. Hot wallets are convenient but consta
 
 ### Q: Which NFT standards and chains does ArcSign support?
 
-ArcSign supports both ERC-721 (unique NFTs) and ERC-1155 (semi-fungible tokens), across 6 EVM chains: Ethereum, Polygon, Arbitrum, Optimism, Base and BSC. Most chains are powered by Alchemy's NFT API, while BSC uses NodeReal's nr_getNFTHoldings enhanced endpoint for full metadata.
+ArcSign supports both ERC-721 (unique NFTs) and ERC-1155 (semi-fungible tokens), across 7 EVM chains: Ethereum, Polygon, Arbitrum, Optimism, Base, BSC and Avalanche. Most chains are powered by Alchemy's NFT API, while BSC uses NodeReal's nr_getNFTHoldings enhanced endpoint and Avalanche uses Glacier for full metadata.
 
 ### Q: Is it hard to manage NFTs from a cold wallet?
 

@@ -16,11 +16,11 @@ Imagine you have a large sum of cash. You wouldn't carry it in your pocket every
 
 **Cold storage** is the digital equivalent of that safe. In simple terms, cold storage means keeping your cryptocurrency private keys completely offline, making it impossible for hackers to steal them remotely. Your keys only connect to the internet when you actively sign a transaction.
 
-            The Core Principle
-
-**Cold Storage = Offline Private Keys.** Your asset security depends on one simple rule: no internet connection = no remote attacks. This is the highest level of crypto security.
-
-In 2026, cold storage is no longer a luxury only the wealthy can afford. New solutions like ArcSign let anyone use an ordinary USB drive for bank-grade security — at zero cost.
+> **The Core Principle**
+>
+> **Cold Storage = Offline Private Keys.** Your asset security depends on one simple rule: no internet connection = no remote attacks. This is the highest level of crypto security.
+>
+> In 2026, cold storage is no longer a luxury only the wealthy can afford. New solutions like ArcSign let anyone use an ordinary USB drive for bank-grade security — at zero cost.
 
 ## Hot Wallet vs Cold Wallet: Key Differences
 
@@ -82,7 +82,7 @@ The ideal security strategy: **Keep 90% of assets in cold storage (your vault) a
 
 **Best for:** Tech enthusiasts, institutional users
 
-            2026 Best Practice
+**2026 Best Practice**
 
 For beginners, **ArcSign USB cold wallet** is the recommended starting point: solid security, zero cost, easy to use, convenient backups. Once familiar with crypto, you can upgrade to a hardware wallet for maximum isolation.
 
@@ -96,9 +96,9 @@ For beginners, **ArcSign USB cold wallet** is the recommended starting point: so
 
 - **DeFi Protocol Exploits:** Over 30 DeFi protocols were hacked in 2025, causing billions in losses. Assets left in DeFi applications face significant risk.
 
-            The Hard Truth
-
-If your cryptocurrency has been sitting on exchanges or in hot wallets for over a year, there's a 25-30% chance of theft. Cold storage isn't optional anymore — it's essential.
+> **The Hard Truth**
+>
+> If your cryptocurrency has been sitting on exchanges or in hot wallets for over a year, there's a 25-30% chance of theft. Cold storage isn't optional anymore — it's essential.
 
 ### Large Asset Holders Must Use Cold Storage
 
@@ -110,18 +110,15 @@ ArcSign's core innovation: **Ordinary USB + strong encryption = hardware wallet 
 
 ### Three Layers of Security
 
-            1
-            XOR 3-Shard Key Protection
+**1. XOR 3-Shard Key Protection**
 
 Your private key is split into three independent encrypted shards. Any single shard alone is useless; all three must be combined to restore the key. Even if someone steals your USB, without your password they cannot reconstruct the key.
 
-            2
-            AES-256 + Argon2id Encryption
+**2. AES-256 + Argon2id Encryption**
 
 Each key shard receives military-grade encryption. Breaking AES-256 with current computational power would take billions of years — practically impossible.
 
-            3
-            mlock Memory Protection + USB-Only Storage
+**3. mlock Memory Protection + USB-Only Storage**
 
 During signing, the private key exists in protected memory for only 1-5 milliseconds, then is immediately destroyed. All data lives on the USB; remove it and your computer has no trace.
 
@@ -131,7 +128,7 @@ During signing, the private key exists in protected memory for only 1-5 millisec
 
 - **AES-256 Encrypted Backup Files:** Export your wallet to a .arcsign backup file in one click — safer and more convenient than paper seed phrases. Backup files can be copied to multiple locations.
 
-- **22 Blockchain Support:** Bitcoin + 6 major EVM chains (Ethereum, BSC, Polygon, etc.) — manage everything from one wallet.
+- **7 EVM Chain Support:** Ethereum, BSC, Polygon, Arbitrum, Optimism, Base, Avalanche — manage everything from one wallet.
 
 - **Built-in WalletConnect:** Even as a cold wallet, connect to DEX, Staking, NFT markets, and other DApps via WalletConnect.
 
@@ -157,9 +154,9 @@ During signing, the private key exists in protected memory for only 1-5 millisec
 
 - **Crypto Beginners Exploring:** Still learning? Use MetaMask first; upgrade to cold storage as your holdings grow.
 
-            Recommended Strategy
-
-Regardless of where you fall, set up a cold wallet today (ArcSign is free and takes minutes). Transfer your core assets there. Keep 5-10% in a hot wallet for daily trading. If your hot wallet is ever compromised, losses are limited.
+> **Recommended Strategy**
+>
+> Regardless of where you fall, set up a cold wallet today (ArcSign is free and takes minutes). Transfer your core assets there. Keep 5-10% in a hot wallet for daily trading. If your hot wallet is ever compromised, losses are limited.
 
 ## Cold Storage Myths Debunked
 
@@ -175,44 +172,37 @@ Regardless of where you fall, set up a cold wallet today (ArcSign is free and ta
 
 ❌ False! Cold wallets are completely tradeable. Just add one extra step: insert USB, enter password, sign. The entire process still takes seconds. Compared to the risk of theft, this minor inconvenience is negligible.
 
-### Myth 4: ArcSign Isn't Open Source — How Can You Trust It?
+### Myth 4: How Can You Trust ArcSign's Code?
 
-Valid concern, but addressable! ArcSign plans to open-source all code once user count reaches 10,000. Until then, ArcSign uses industry-standard cryptography (XOR, [AES-256](/blog/aes256-encryption-simple), Argon2id) verified by global researchers. Plus, there's zero financial risk — it's a free solution.
+ArcSign is fully open source under Apache 2.0, so all code is publicly auditable. It also uses industry-standard cryptography (XOR, [AES-256](/blog/aes256-encryption-simple), Argon2id) verified by global researchers. Plus, there's zero financial risk — it's a free solution.
 
 ## Getting Started: Your Cold Storage Checklist
 
-            1
-            Assess Your Holdings
+**1. Assess Your Holdings**
 
 Add up all crypto on exchanges and hot wallets. Over $50,000? Cold storage is essential. Even $10,000? Still recommended.
 
-            2
-            Choose Your Solution
+**2. Choose Your Solution**
 
 Beginners: choose ArcSign (zero cost). If budget allows and you want maximum isolation, consider a hardware wallet (Ledger/Trezor).
 
-            3
-            Prepare Hardware
+**3. Prepare Hardware**
 
 Find a 1GB+ USB drive. Ideally prepare two: one for your cold wallet, one for encrypted backups.
 
-            4
-            Download and Set Up
+**4. Download and Set Up**
 
 With ArcSign: Download → Install → Set Provider → Insert USB → Create Wallet. Takes about 10 minutes total.
 
-            5
-            Back Up (Critical!)
+**5. Back Up (Critical!)**
 
 Immediately export your encrypted backup file to a second USB. Optionally hand-write your seed phrase as a last resort backup. Never skip this step.
 
-            6
-            Transfer Assets
+**6. Transfer Assets**
 
 From exchanges or hot wallets to your cold wallet address. Start small (e.g., $100 test transfer) to verify everything works, then transfer larger amounts.
 
-            7
-            Routine Maintenance
+**7. Routine Maintenance**
 
 Periodically check USB integrity, verify backup file safety, update software. Otherwise, your cold wallet requires minimal maintenance. For a comprehensive approach, review our [comprehensive private key management guide](/blog/private-key-management-best-practices).
 
@@ -224,7 +214,7 @@ As long as you have your encrypted backup file or [seed phrase](/blog/seed-phras
 
 #### How many blockchains does a cold wallet support?
 
-ArcSign supports 7 chains: Bitcoin + 6 major EVM-compatible chains (Ethereum, BSC, Polygon, Arbitrum, and others). Using the same seed phrase, you can derive addresses on all chains from one wallet.
+ArcSign supports 7 EVM chains: Ethereum, BSC, Polygon, Arbitrum, Optimism, Base, Avalanche. Using the same seed phrase, you can derive addresses on all chains from one wallet.
 
 #### Is cold storage free?
 

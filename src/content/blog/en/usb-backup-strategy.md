@@ -15,37 +15,34 @@ When people set up a crypto wallet, most focus on "how do I prevent being hacked
 
 The core advantage of a cold wallet is keeping private keys permanently offline. But this double-edged sword creates a serious problem: if your only USB disappears, your assets disappear with it. There's no bank to call, no customer support to file a claim with. This is why **a proper backup strategy is just as important as secure storage — neither is optional**.
 
-            Key Statistic
-
-Chainalysis estimates that approximately **3 to 4 million Bitcoin** (17–23% of total supply) are permanently inaccessible due to lost private keys. The vast majority of these losses stem from inadequate backup practices, not hacking incidents.
-
-The good news is that building a reliable backup strategy is neither complex nor expensive. You need a few USB drives, a clear process, and ArcSign's built-in [.arcsign encrypted backup feature](/blog/xor-encryption-explained) — and you'll have a clear path to recovery no matter what happens.
+> **Key Statistic**
+>
+> Chainalysis estimates that approximately **3 to 4 million Bitcoin** (17–23% of total supply) are permanently inaccessible due to lost private keys. The vast majority of these losses stem from inadequate backup practices, not hacking incidents.
+>
+> The good news is that building a reliable backup strategy is neither complex nor expensive. You need a few USB drives, a clear process, and ArcSign's built-in [.arcsign encrypted backup feature](/blog/xor-encryption-explained) — and you'll have a clear path to recovery no matter what happens.
 
 ## The 3-2-1 Backup Rule: Best Practices from Data Management
 
 The 3-2-1 backup rule is the gold standard in data management, introduced by photographer Peter Krogh in 2009 and widely adopted across the IT industry. This framework maps perfectly onto crypto asset backup:
 
-            3️⃣
 
 #### Keep 3 Copies
 
 Your wallet data should exist in at least three places. Not because you need triple protection per se, but because the probability of all three copies failing simultaneously is statistically negligible. The three copies include: original USB, local backup, and an offsite backup.
 
-            2️⃣
 
 #### Use 2 Different Media Types
 
 Don't store all backups on the same type of media. For example: 2 USB drives + 1 encrypted cloud backup. If a particular media type has a batch defect (such as a manufacturing issue with a specific USB brand), you still have a backup in a different format to fall back on.
 
-            1️⃣
 
 #### Keep 1 Copy Offsite
 
 If all your backups are in the same location (e.g., your home), a single fire or flood could wipe them all out. At least one backup must be stored in a completely different geographic location: a bank safety deposit box, a trusted friend's home, a workplace locker, or encrypted cloud storage.
 
-            ArcSign's 3-2-1 Implementation
-
-Recommended setup: **Primary USB (daily use)** + **Backup USB (home safe or secure drawer)** + **.arcsign backup file stored on a bank vault USB or encrypted cloud**. Three copies, two media types, one offsite location.
+> **ArcSign's 3-2-1 Implementation**
+>
+> Recommended setup: **Primary USB (daily use)** + **Backup USB (home safe or secure drawer)** + **.arcsign backup file stored on a bank vault USB or encrypted cloud**. Three copies, two media types, one offsite location.
 
 ## Choosing the Right USB: Not All Drives Are Built for Long-Term Backup
 
@@ -77,34 +74,29 @@ The following are not recommended for long-term backup: no-name brands, thin-pla
 
 ArcSign's .arcsign backup feature is the core of your entire backup strategy. Unlike traditional cold wallets that require handwriting [seed phrase](/blog/seed-phrase-backup-guide)s, **the .arcsign file is fully encrypted with [AES-256](/blog/aes256-encryption-simple)-GCM + [Argon2id](/blog/aes256-encryption-simple) the moment it's exported** — no additional password setup, no extra steps required.
 
-            1
-            Open ArcSign and Navigate to Settings
+**1. Open ArcSign and Navigate to Settings**
 
 From the ArcSign main interface, click the settings icon in the top right corner and enter the "Backup & Recovery" menu. You'll see the "Export .arcsign Backup File" option.
 
-            2
-            Verify Identity and Enter Your Unlock Password
+**2. Verify Identity and Enter Your Unlock Password**
 
 To ensure only you can export the backup, ArcSign will prompt you to enter your current unlock password. This is also one of the encryption keys for the backup file — make sure you remember this password.
 
-            3
-            Select the Destination and Export
+**3. Select the Destination and Export**
 
 Choose your backup USB as the destination, then click "Export." ArcSign will complete the encryption and generate the .arcsign file within seconds. The entire process is fully offline — no data is uploaded to any network.
 
-            4
-            Verify Backup Integrity
+**4. Verify Backup Integrity**
 
 After exporting, use the "Verify Backup" function in the Backup & Recovery menu to let ArcSign confirm the file's integrity. This takes just 3 seconds but prevents the painful scenario of discovering a corrupted backup when you actually need it.
 
-            5
-            Store the Backup USB in a Secure Location
+**5. Store the Backup USB in a Secure Location**
 
 Once exported, safely eject the USB and place it in your pre-planned offsite backup location. Consider sealing it in a small zip-lock bag for additional protection against dust and moisture.
 
-            Important Reminder
-
-Every time you **add a new wallet account** or **change important settings** in ArcSign, re-export a fresh .arcsign backup and update all backup copies. Older backups won't include newly added account data.
+> **Important Reminder**
+>
+> Every time you **add a new wallet account** or **change important settings** in ArcSign, re-export a fresh .arcsign backup and update all backup copies. Older backups won't include newly added account data.
 
 ## Three Backup Architectures: From Beginner to Advanced
 
@@ -144,31 +136,27 @@ Many people create a backup but never test whether it can actually be restored. 
 
 We recommend performing a full recovery test every 3–6 months. Here's the process:
 
-            1
-            Prepare a Clean Device or Use a Fresh ArcSign Installation
+**1. Prepare a Clean Device or Use a Fresh ArcSign Installation**
 
 On a device where ArcSign is not installed (or using a fresh ArcSign installation on your primary machine), simulate the "just bought a new computer" scenario. This is the only way to genuinely test the full recovery workflow.
 
-            2
-            Import Using the .arcsign File from Your Backup USB
+**2. Import Using the .arcsign File from Your Backup USB**
 
 Open ArcSign, select "Import from Backup File," insert your backup USB, choose the .arcsign file, and enter your password. If everything is working, ArcSign should fully restore all wallet accounts and settings.
 
-            3
-            Verify Addresses Match
+**3. Verify Addresses Match**
 
 After recovery, compare each wallet's public address against your original USB. Matching addresses confirm that the private keys were fully restored. A successful address match means the drill passed.
 
-            4
-            Log the Drill Date and Update if Needed
+**4. Log the Drill Date and Update if Needed**
 
 Record the drill date and result in a note or memo. If the process revealed an outdated backup (e.g., missing recently added accounts), take the opportunity to re-export a fresh backup and update all copies.
 
-            Recommended Schedule
-
-Perform a full recovery drill every **3–6 months**. Additionally, update your backup immediately after adding accounts or completing major operations in ArcSign. USB drives typically last **5–10 years** — replace backup drives every **3–5 years** proactively, before problems arise.
-
-The essence of [cold storage](/blog/what-is-cold-storage) is self-custody, and true self-custody requires you to actively confirm that everything is working as expected. Regular drills are the only way to have genuine confidence in your backup. For more on ArcSign's security architecture, see our guides on [XOR Three-Shard Encryption](/blog/xor-encryption-explained) and [mlock Memory Protection](/blog/mlock-memory-protection), as well as our [Cold Wallet vs Hot Wallet comparison](/blog/cold-vs-hot-wallet) to help you determine the right setup for your needs.
+> **Recommended Schedule**
+>
+> Perform a full recovery drill every **3–6 months**. Additionally, update your backup immediately after adding accounts or completing major operations in ArcSign. USB drives typically last **5–10 years** — replace backup drives every **3–5 years** proactively, before problems arise.
+>
+> The essence of [cold storage](/blog/what-is-cold-storage) is self-custody, and true self-custody requires you to actively confirm that everything is working as expected. Regular drills are the only way to have genuine confidence in your backup. For more on ArcSign's security architecture, see our guides on [XOR Three-Shard Encryption](/blog/xor-encryption-explained) and [mlock Memory Protection](/blog/mlock-memory-protection), as well as our [Cold Wallet vs Hot Wallet comparison](/blog/cold-vs-hot-wallet) to help you determine the right setup for your needs.
 
 ## Frequently Asked Questions
 

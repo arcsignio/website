@@ -187,11 +187,38 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="changelog-content">
     <div class="container">
 
+      <!-- Version 1.5.0 -->
+      <div class="version-item">
+        <div class="version-header">
+          <span class="version-number">v1.5.0</span>
+          <span class="version-tag tag-latest" data-i18n="changelog.tag.latest">最新版</span>
+          <span class="version-date" data-i18n="changelog.v150.date">2026 年 6 月 23 日</span>
+        </div>
+        <div class="change-category">
+          <h3 class="new" data-i18n="changelog.cat.new">✨ 新功能</h3>
+          <ul class="change-list">
+            <li data-i18n="changelog.v150.new.item1">代幣餘額免 API key — 全 7 條 EVM 鏈改走公共 RPC + Multicall3 + DefiLlama 價格，開箱即用，不再需要 Alchemy key</li>
+            <li data-i18n="changelog.v150.new.item2">Clear-signing 所見即所簽 — WalletConnect / mint 簽章在本地解碼 calldata 與 EIP-712，把 hex 變成人類可讀意圖（無上限 approve / setApprovalForAll 標紅）</li>
+            <li data-i18n="changelog.v150.new.item3">新增 Avalanche C-Chain，成為第 7 條 EVM 鏈</li>
+            <li data-i18n="changelog.v150.new.item4">手動匯入代幣 + swap 自動記錄 — 接觸過的代幣免 key 顯示餘額，清單加密存於 USB、永不離開裝置</li>
+            <li data-i18n="changelog.v150.new.item5">線上 ABI fallback（Sourcify）— 本地清單未涵蓋的已驗證合約可選擇性解碼，附一次性隱私說明與加密 USB 快取</li>
+          </ul>
+        </div>
+        <div class="change-category">
+          <h3 class="fixed" data-i18n="changelog.cat.security">🔒 安全</h3>
+          <ul class="change-list">
+            <li data-i18n="changelog.v150.security.item1">黑名單檢查脫離 Pro，對所有人免費 — OFAC + 惡意地址清單（go:embed 離線種子），第一次開啟、完全離線即可用</li>
+            <li data-i18n="changelog.v150.security.item2">簽章安全門移至後端 — 簽往黑名單地址時由後端在動私鑰前拒簽，除非使用者明確知情同意；前端 checkbox 僅呈現，架構上無法繞過</li>
+            <li data-i18n="changelog.v150.security.item3">所有訊息簽章路徑（EIP-191 / EIP-712）統一走 XOR 分片簽章器，無任何路徑以明文形式碰私鑰</li>
+          </ul>
+        </div>
+      </div>
+
       <!-- Version 1.2.0 -->
       <div class="version-item">
         <div class="version-header">
           <span class="version-number">v1.2.0</span>
-          <span class="version-tag tag-latest" data-i18n="changelog.tag.latest">最新版</span>
+          <span class="version-tag tag-release" data-i18n="changelog.tag.release">正式版</span>
           <span class="version-date" data-i18n="changelog.v120.date">2026 年 3 月 3 日</span>
         </div>
         <div class="change-category">
@@ -448,24 +475,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
         <div class="roadmap-item">
           <div class="roadmap-status">
-            <span class="status-progress" data-i18n="changelog.roadmap.status.progress">開發中</span>
-          </div>
-          <div class="roadmap-content">
-            <h4 data-i18n="changelog.roadmap.item2.title">交易可讀確認</h4>
-            <p data-i18n="changelog.roadmap.item2.desc">將交易內容解析成人類可讀的格式，減少盲簽風險</p>
-          </div>
-        </div>
-        <div class="roadmap-item">
-          <div class="roadmap-status">
-            <span class="status-progress" data-i18n="changelog.roadmap.status.progress">開發中</span>
-          </div>
-          <div class="roadmap-content">
-            <h4 data-i18n="changelog.roadmap.item3.title">風險警告系統</h4>
-            <p data-i18n="changelog.roadmap.item3.desc">識別高風險交易和惡意合約，提供安全警告</p>
-          </div>
-        </div>
-        <div class="roadmap-item">
-          <div class="roadmap-status">
             <span class="status-planned" data-i18n="changelog.roadmap.status.planned">規劃中</span>
           </div>
           <div class="roadmap-content">
@@ -479,7 +488,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
           <div class="roadmap-content">
             <h4 data-i18n="changelog.roadmap.item5.title">更多區塊鏈支援</h4>
-            <p data-i18n="changelog.roadmap.item5.desc">Solana、Avalanche、Fantom 等</p>
+            <p data-i18n="changelog.roadmap.item5.desc">Bitcoin、Solana、Fantom 等（Avalanche 已於 v1.5.0 推出）</p>
           </div>
         </div>
       </div>

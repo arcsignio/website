@@ -15,9 +15,9 @@ Ethereum completed "The Merge" in September 2022, transitioning from Proof of Wo
 
 As of 2026, ETH staking annual percentage yield (APY) ranges from approximately **3% to 5%**. While this may seem modest, consider that this is passive income built on the world's second-largest cryptocurrency — with significantly lower risk than most DeFi protocols. More importantly, your principal remains in ETH form. If you were planning to hold ETH long-term anyway, staking is essentially a zero-cost yield enhancement strategy.
 
-            Key Data
-
-Over **34 million ETH** have been staked on the Ethereum Beacon Chain, representing approximately 28% of the total supply. Staking is not just an individual earning opportunity — it is a core component of Ethereum's security infrastructure.
+> **Key Data**
+>
+> Over **34 million ETH** have been staked on the Ethereum Beacon Chain, representing approximately 28% of the total supply. Staking is not just an individual earning opportunity — it is a core component of Ethereum's security infrastructure.
 
 ## Liquid Staking vs Traditional Staking: The Best Choice for Regular Investors
 
@@ -43,24 +43,21 @@ Many people stake ETH directly through browser wallets like MetaMask. While conv
 
 ### Three Security Advantages of Cold Wallet Staking
 
-            1
-            Private Keys Never Leave the USB
+**1. Private Keys Never Leave the USB**
 
 ArcSign stores private keys in [XOR three-shard encrypted](/blog/../xor-encryption-explained) form on the USB device. Even if your computer is infected with malware, attackers cannot access your private keys. Staking transactions are signed locally via [WalletConnect](/blog/walletconnect-dapp-tutorial), and only the signed transaction is sent to the network.
 
-            2
-            Signing Window Only 1-5 Milliseconds
+**2. Signing Window Only 1-5 Milliseconds**
 
 When you confirm a staking transaction, the private key only exists in [mlock-protected memory](/blog/../mlock-memory-protection) for 1-5 milliseconds. Compared to hot wallets that expose private keys throughout the entire browser session, this exposure window is millions of times smaller.
 
-            3
-            Completely Immune When Offline
+**3. Completely Immune When Offline**
 
 After staking is complete, you can unplug the USB and relax. Even if your computer is compromised, attackers won't find any private key data. Your stETH will safely accumulate rewards on-chain automatically — the USB doesn't need to stay connected.
 
-            Security Philosophy
-
-Staking is a long-term investment — security matters more than convenience. With ArcSign cold wallet staking, you can **"set it and forget it"** — earn passive income with peace of mind, without worrying about private key security.
+> **Security Philosophy**
+>
+> Staking is a long-term investment — security matters more than convenience. With ArcSign cold wallet staking, you can **"set it and forget it"** — earn passive income with peace of mind, without worrying about private key security.
 
 ## Complete Step-by-Step Guide to Staking ETH with ArcSign
 
@@ -72,53 +69,46 @@ Before starting, make sure you have:
 
 **1. ArcSign installed and configured** — If not, follow the [beginner setup guide](/blog/../arcsign-beginner-setup-guide).
 
-            **2. Provider configured** — You need an Alchemy API Key (free tier is sufficient) to read on-chain data.
+**2. Balances work keyless** — Reading on-chain balances needs no API key; ArcSign uses built-in public RPC plus Multicall3. An Alchemy API Key (free tier) is only required if you also want the NFT gallery and transaction history.
 
-            **3. Sufficient ETH balance** — The amount you want to stake plus approximately 0.005 ETH for [gas fee](/blog/gas-fee-optimization).
+**3. Sufficient ETH balance** — The amount you want to stake plus approximately 0.005 ETH for [gas fee](/blog/gas-fee-optimization).
 
 ### Step 1: Connect to Lido DApp
 
-            1
-            Open ArcSign and Launch WalletConnect
+**1. Open ArcSign and Launch WalletConnect**
 
 Click the **"WalletConnect"** button in the top-right corner of the ArcSign dashboard. ArcSign will generate a connection code. Simultaneously, open **stake.lido.fi** in your browser, click "Connect Wallet," select "WalletConnect," and scan or paste the connection code displayed by ArcSign.
 
 ### Step 2: Enter Staking Amount
 
-            2
-            Enter the Amount of ETH You Want to Stake on Lido
+**2. Enter the Amount of ETH You Want to Stake on Lido**
 
 Once connected, the Lido page will display your ETH balance. Enter the amount you want to stake (we recommend keeping at least 0.01 ETH for future [gas fee](/blog/gas-fee-optimization)s). The page will show the stETH you'll receive and the estimated APY.
 
 ### Step 3: Confirm and Sign
 
-            3
-            Confirm the Transaction and Sign on ArcSign
+**3. Confirm the Transaction and Sign on ArcSign**
 
 After clicking Lido's "Submit" button, ArcSign will display a transaction confirmation window showing the details (recipient address, amount, estimated Gas Fee). After verifying everything is correct, click **"Sign."** ArcSign will briefly restore the private key in [mlock](/blog/mlock-memory-protection)-protected memory, complete the signature, and immediately zero out the memory — the entire process takes less than 5 milliseconds.
 
 ### Step 4: Wait for Confirmation
 
-            4
-            Transaction Confirms On-Chain, stETH Arrives
+**4. Transaction Confirms On-Chain, stETH Arrives**
 
 After submission, the transaction typically confirms within 1-3 minutes. Once confirmed, your ArcSign wallet will show the received stETH tokens. From this moment on, your stETH balance will automatically grow daily, reflecting accumulated staking rewards.
 
-            You Can Unplug the USB After Staking
-
-Once the staking transaction confirms, you can safely remove the USB. stETH reward accumulation happens automatically on-chain — ArcSign doesn't need to be running. The next time you plug in your USB and open ArcSign, you'll see your stETH balance has grown.
+> **You Can Unplug the USB After Staking**
+>
+> Once the staking transaction confirms, you can safely remove the USB. stETH reward accumulation happens automatically on-chain — ArcSign doesn't need to be running. The next time you plug in your USB and open ArcSign, you'll see your stETH balance has grown.
 
 ## Track Your Staking Rewards in ArcSign
 
 ArcSign includes a built-in **DeFi position tracker** that automatically detects and displays your liquid staking assets. In the dashboard's "DeFi" tab, you can see:
 
-**stETH holdings** — Increases slightly daily with staking rewards.
-
-            **Real-time APY** — The current annual yield, typically fluctuating between 3-5%.
-
-            **Accumulated rewards** — Total ETH earned since you started staking.
-
-            **USD valuation** — Dollar estimate based on real-time ETH price.
+- **stETH holdings** — Increases slightly daily with staking rewards.
+- **Real-time APY** — The current annual yield, typically fluctuating between 3-5%.
+- **Accumulated rewards** — Total ETH earned since you started staking.
+- **USD valuation** — Dollar estimate based on real-time ETH price.
 
 ArcSign currently supports tracking positions and yields for **stETH (Lido)**, **ankrETH (Ankr)**, and **ankrBNB** liquid staking tokens. This data is fetched in real-time through Alchemy and NodeReal APIs for accuracy.
 
@@ -155,9 +145,9 @@ Here's a comparison of the major ETH liquid staking protocols in 2026 to help yo
 
 **Recommended approach:** If you prioritize stability and liquidity, Lido's stETH is the most mature choice. If decentralization matters more to you, Rocket Pool's rETH is worth considering. Regardless of which protocol you choose, ArcSign can connect securely via WalletConnect.
 
-            ArcSign Built-in DEX Swap
-
-If you want to swap stETH back to ETH, you don't need to leave ArcSign. The built-in **[DEX swap](/blog/how-to-dex-swap-arcsign) feature** (integrating OpenOcean + KyberSwap) lets you complete the swap directly within ArcSign, automatically finding the best rate path while enjoying cold-wallet-grade security.
+> **ArcSign Built-in DEX Swap**
+>
+> If you want to swap stETH back to ETH, you don't need to leave ArcSign. The built-in **[DEX swap](/blog/how-to-dex-swap-arcsign) feature** (integrating OpenOcean + KyberSwap) lets you complete the swap directly within ArcSign, automatically finding the best rate path while enjoying cold-wallet-grade security.
 
 ## Frequently Asked Questions
 

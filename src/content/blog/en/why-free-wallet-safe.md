@@ -17,9 +17,9 @@ This myth stems from two cognitive biases. The first is **the "price = quality" 
 
 But here's the truth: **a crypto wallet's security comes from cryptographic algorithms and software architecture, not price tags**. The [AES-256](/blog/aes256-encryption-simple) encryption, ECDSA digital signatures, and [BIP-39](/blog/key-derivation-bip39-44) mnemonic standards you use are all public, free cryptographic technologies. No paid wallet has "invented" a more secure encryption algorithm — they use the same math as free wallets.
 
-            Core Insight
-
-Security is an **engineering problem**, not a pricing problem. Linux is free, yet powers 90% of the world's servers. Signal is free, yet is recognized by cryptographers as the most secure messaging app. The value of security software comes from its architectural design, not its commercial pricing.
+> **Core Insight**
+>
+> Security is an **engineering problem**, not a pricing problem. Linux is free, yet powers 90% of the world's servers. Signal is free, yet is recognized by cryptographers as the most secure messaging app. The value of security software comes from its architectural design, not its commercial pricing.
 
 ## Dissecting the Paid Hardware Wallet Business Model
 
@@ -37,9 +37,9 @@ Ironically, some business decisions by hardware wallet makers have introduced ne
 
 Additionally, hardware wallets face [supply chain attack](/blog/../supply-chain-attack-hardware-wallet) risks: during manufacturing and shipping, devices could be intercepted and implanted with backdoors. Is the Ledger you received identical to the one that left the factory? This is a question consumers can never independently verify.
 
-            Food for Thought
-
-If the secure element chip were the sole guarantee of security, why could Ledger bypass it through a firmware update to extract users' private keys? This tells us: **hardware is just one layer of security — software architecture and trust models are what truly matter.**
+> **Food for Thought**
+>
+> If the secure element chip were the sole guarantee of security, why could Ledger bypass it through a firmware update to extract users' private keys? This tells us: **hardware is just one layer of security — software architecture and trust models are what truly matter.**
 
 ## Security Depends on Architecture, Not Price
 
@@ -49,18 +49,15 @@ An important corollary of this principle is: **security doesn't require "payment
 
 ### The Three Security Dimensions That Actually Matter
 
-            1
-            Private Key Storage Method
+**1. Private Key Storage Method**
 
 How is the private key stored? Plaintext or encrypted? Single file or sharded? On a connected device or in offline storage? These design decisions determine how difficult it is to steal the private key.
 
-            2
-            Private Key Protection During Use
+**2. Private Key Protection During Use**
 
 When signing transactions, the private key must be briefly accessed. The protective measures during this process — memory locking, zero-wiping, exposure time control — are critical security factors.
 
-            3
-            Backup and Recovery Mechanism
+**3. Backup and Recovery Mechanism**
 
 Is the backup encrypted? Is the recovery process secure? These often-overlooked aspects are frequently the actual weakest links in security.
 
@@ -70,29 +67,25 @@ Notice: none of these three dimensions **require money to do well**. They're all
 
 As a free USB cold wallet, how does ArcSign deliver top-tier security without charging a cent? The answer lies in four interlocking security layers:
 
-            1
-            XOR Three-Shard Encryption — Private Key Never Exists Whole
+**1. XOR Three-Shard Encryption — Private Key Never Exists Whole**
 
 ArcSign splits your private key into three random shards (Shard A, B, C) using cryptographically secure XOR operations. No single shard contains any information about the original private key. This is backed by an [information-theoretic mathematical guarantee](/blog/../xor-encryption-explained), not marketing speak.
 
-            2
-            AES-256-GCM Double-Layer Encryption — Each Shard Re-Encrypted
+**2. AES-256-GCM Double-Layer Encryption — Each Shard Re-Encrypted**
 
 Each of the three shards is further encrypted with [AES-256](/blog/aes256-encryption-simple)-GCM + Argon2id before being stored on the USB drive. Even if an attacker obtains the USB, they're facing double-encrypted random data. [AES-256 is the highest-grade encryption standard](/blog/../aes256-encryption-simple) approved by the NSA.
 
-            3
-            mlock Memory Protection — Millisecond-Level Defense During Signing
+**3. mlock Memory Protection — Millisecond-Level Defense During Signing**
 
 During transaction signing, the private key exists only in [mlock-protected memory](/blog/../mlock-memory-protection) for 1–5 milliseconds. This memory block is never swapped to disk, and is immediately overwritten with zeros after signing completes. An attacker would need to breach the operating system's memory protection within a millisecond-level time window — practically impossible.
 
-            4
-            USB Offline Storage — Physical Isolation from Network Attacks
+**4. USB Offline Storage — Physical Isolation from Network Attacks**
 
 All encrypted data is stored on a USB flash drive — no internet connection, no cloud, no servers involved. No matter how skilled a remote hacker is, they cannot reach your private key through the network. This is the fundamental security difference from hot wallets like MetaMask or Trust Wallet.
 
-            Security Equation
-
-**XOR Three-Shard + AES-256-GCM Double Encryption + [mlock](/blog/mlock-memory-protection) Memory Protection + USB Offline Storage = Four-Layer Defense**. All of these technologies are open cryptographic standards. They don't require proprietary hardware or paid licenses. ArcSign integrates them into a free, user-friendly product.
+> **Security Equation**
+>
+> **XOR Three-Shard + AES-256-GCM Double Encryption + [mlock](/blog/mlock-memory-protection) Memory Protection + USB Offline Storage = Four-Layer Defense**. All of these technologies are open cryptographic standards. They don't require proprietary hardware or paid licenses. ArcSign integrates them into a free, user-friendly product.
 
 ## Free vs Paid Wallets: A Comprehensive Comparison
 
@@ -103,15 +96,15 @@ Let's put ArcSign (free) side by side with mainstream paid hardware wallets for 
 | **Price** | ✓ Free | $79 USD | $169 USD |
 | **Key Storage** | ✓ XOR 3-shard + AES-256 | Secure Element | General MCU |
 | **Memory Protection** | ✓ mlock (1-5ms exposure) | ✓ SE isolation | Limited |
-| **Supported Chains** | ✓ 22 (BTC + 6 EVM) | ✓ 5000+ coins | ✓ 1000+ coins |
+| **Supported Chains** | ✓ 7 EVM chains | ✓ 5000+ coins | ✓ 1000+ coins |
 | **Built-in DEX Swap** | ✓ OpenOcean + KyberSwap | Via third party | Via third party |
 | **WalletConnect v2** | ✓ Native support | Via Ledger Live | Limited support |
 | **Backup Method** | ✓ Encrypted .arcsign file + mnemonic | Mnemonic (paper) | Mnemonic (paper) |
 | **Supply Chain Risk** | ✓ None (generic USB) | Yes (proprietary HW) | Yes (proprietary HW) |
 | **Firmware Backdoor Risk** | ✓ None (no firmware) | Yes (Ledger Recover) | Lower (open firmware) |
-| **Code Transparency** | Open-source planned at 10K users | Closed firmware | ✓ Fully open-source |
+| **Code Transparency** | ✓ Fully open source (Apache 2.0) | Closed firmware | ✓ Fully open-source |
 
-As the comparison shows, ArcSign matches or exceeds paid solutions in key areas like private key protection, backup mechanisms, and supply chain security. Its relative weaknesses are fewer supported coins (focused on BTC + major EVM chains) and not yet being fully open-source — but these are development-stage limitations, not architectural security flaws.
+As the comparison shows, ArcSign matches or exceeds paid solutions in key areas like private key protection, backup mechanisms, and supply chain security. Its relative weakness is fewer supported coins (focused on 7 major EVM chains) — but this is a development-stage limitation, not an architectural security flaw.
 
 ## Open Transparency vs Closed Trust: Which Is Safer?
 
@@ -125,11 +118,11 @@ ArcSign chose a different trust model: **trust math, not brands**. XOR's securit
 
 If you still think "free = insecure," consider these examples: **Linux** is free and open-source, powering over 90% of the world's servers and cloud infrastructure. **Signal** is free and open-source, recommended by journalists, human rights workers, and cryptographers as the most secure messaging tool. **Bitcoin Core** is free and open-source, securing a multi-trillion-dollar Bitcoin network.
 
-These cases all prove one thing: **software security comes from architectural design and community auditing, not price tags**. ArcSign plans to go fully open-source after reaching 10,000 users, enabling global developers to audit and verify its security.
+These cases all prove one thing: **software security comes from architectural design and community auditing, not price tags**. ArcSign is fully open source under Apache 2.0, so global developers can audit and verify its security (source at github.com/arcsignio/arcsign).
 
-            ArcSign's Transparency Commitment
-
-ArcSign has already published full technical details of its security architecture and encryption schemes. The plan is to open-source all code after reaching 10,000 users, achieving fully transparent security verification. In the meantime, users can independently verify ArcSign's security claims through the encryption behavior of .arcsign backup files and on-chain verifiability of signatures.
+> **ArcSign's Transparency Commitment**
+>
+> ArcSign has already published full technical details of its security architecture and encryption schemes. All code is fully open source under Apache 2.0, achieving fully transparent security verification. Users can also independently verify ArcSign's security claims through the encryption behavior of .arcsign backup files and on-chain verifiability of signatures.
 
 ## Real-World Cases: Paid ≠ Secure
 
@@ -147,9 +140,9 @@ Security researchers at Kraken Security Labs demonstrated how to extract mnemoni
 
 Conversely, free software has a stellar security track record. OpenSSL (free) protects over 70% of the world's HTTPS communications. WireGuard (free) was adopted by the Linux kernel as the most secure VPN protocol. VeraCrypt (free) is one of the world's most trusted disk encryption tools.
 
-            Conclusion
-
-Price is neither a guarantee nor a prerequisite for security. **True security comes from transparent architecture, verified cryptography, and rigorous engineering practices.** [ArcSign Pro](/blog/arcsign-pro-nft-membership)ves one thing: you don't need to spend $79 to protect your crypto assets — you need the right technical architecture.
+> **Conclusion**
+>
+> Price is neither a guarantee nor a prerequisite for security. **True security comes from transparent architecture, verified cryptography, and rigorous engineering practices.** [ArcSign Pro](/blog/arcsign-pro-nft-membership)ves one thing: you don't need to spend $79 to protect your crypto assets — you need the right technical architecture.
 
 ## FAQ
 

@@ -25,9 +25,9 @@ Hardware wallets are purpose-built physical devices — **Ledger** (Nano X, Nano
 
 USB cold wallets represent a newer approach: using a standard USB drive paired with strong encryption software to achieve hardware-wallet-level offline security — at near-zero cost. **ArcSign** is the leading application in this category. Private keys are split into encrypted shards stored on the USB, and only briefly reconstructed in [mlock](/blog/mlock-memory-protection)-protected memory during signing.
 
-            The Core Principle
-
-All cold wallet approaches share the same fundamental security guarantee: **private keys never touch the internet**. The differences come down to cost, convenience, backup flexibility, and the additional risks introduced by hardware supply chains and proprietary firmware.
+> **The Core Principle**
+>
+> All cold wallet approaches share the same fundamental security guarantee: **private keys never touch the internet**. The differences come down to cost, convenience, backup flexibility, and the additional risks introduced by hardware supply chains and proprietary firmware.
 
 ## Full Comparison Table: 5 Wallets × 8 Criteria
 
@@ -39,7 +39,7 @@ The table below compares the five most commonly used wallets in 2026 across eigh
 | **Cost** | Free | $149 | $219 | Free ($0–$5) | Free |
 | **Private Key Security** | Stored online, browser-accessible | Secure Element chip, never leaves device | Open firmware, never leaves device | AES-256-GCM + XOR 3-shard, offline USB | Stored online, browser-accessible |
 | **Firmware / Supply Chain Risk** | N/A — software only | Closed firmware; Recover controversy (2023) | Open firmware; physical access risk | No proprietary firmware; standard USB | N/A — software only |
-| **Supported Chains** | EVM only | 5,500+ tokens, multi-chain | Multi-chain | BTC + ETH, BSC, Polygon, Arbitrum, Optimism, Base | EVM only |
+| **Supported Chains** | EVM only | 5,500+ tokens, multi-chain | Multi-chain | 7 EVM chains: ETH, BSC, Polygon, Arbitrum, Optimism, Base, Avalanche | EVM only |
 | **DeFi / WalletConnect** | Native browser extension | WalletConnect v2 | WalletConnect v2 | WalletConnect v2 + built-in DEX Swap | Native, with approval scanner |
 | **Backup Method** | Paper seed phrase (user manages) | Paper seed phrase; Recovery Sheet | Paper seed phrase | AES-256-GCM encrypted .arcsign file — store anywhere | Paper seed phrase (user manages) |
 | **Token Approvals Management** | No native tool | No native tool | No native tool | View + revoke across 6 EVM chains; batch revoke (Pro) | Built-in approval scanner |
@@ -61,7 +61,7 @@ Trezor pioneered the hardware wallet category and remains the choice for open-so
 
 ### ArcSign
 
-ArcSign is a USB cold wallet desktop application (macOS/Windows/Linux). Private keys are stored as [AES-256](/blog/aes256-encryption-simple)-GCM encrypted shards on a standard USB drive — never on the internet-connected machine. ArcSign supports Bitcoin and six EVM chains, includes [WalletConnect](/blog/walletconnect-dapp-tutorial) v2 for DApp interaction, has a built-in [DEX swap](/blog/how-to-dex-swap-arcsign), and provides the industry's most convenient encrypted backup system: the **.arcsign file is already fully encrypted on export** — you can store it on USB, cloud, or email without an extra password-setting step. [token approval](/blog/token-approval-revoke)s management is built-in. **ArcSign is free, open-source plans underway, and delivers cold-wallet security without buying hardware.**
+ArcSign is a USB cold wallet desktop application (macOS/Windows/Linux). Private keys are stored as [AES-256](/blog/aes256-encryption-simple)-GCM encrypted shards on a standard USB drive — never on the internet-connected machine. ArcSign supports seven EVM chains, includes [WalletConnect](/blog/walletconnect-dapp-tutorial) v2 for DApp interaction, has a built-in [DEX swap](/blog/how-to-dex-swap-arcsign), and provides the industry's most convenient encrypted backup system: the **.arcsign file is already fully encrypted on export** — you can store it on USB, cloud, or email without an extra password-setting step. [token approval](/blog/token-approval-revoke)s management is built-in. **ArcSign is free, fully open source (Apache 2.0), and delivers cold-wallet security without buying hardware.**
 
 ### Rabby
 
@@ -71,25 +71,24 @@ Rabby is a browser extension hot wallet made by the DeBank team, positioned as a
 
 The right wallet depends entirely on how you use crypto. Here is our honest recommendation for each major user type in 2026:
 
-            Day Trader / Active DeFi User
-            Best choice: MetaMask + Rabby (hot wallet pair)
+**Day Trader / Active DeFi User**
+> **Best choice: MetaMask + Rabby (hot wallet pair)**
+>
+> If you're making multiple transactions per day across many DApps, the friction of a cold wallet may hurt your workflow. Keep only the funds you actively need in MetaMask or Rabby — think of it like a checking account. Store your long-term holdings separately in a cold wallet. Use Rabby's transaction preview to catch malicious approvals before they happen.
 
-If you're making multiple transactions per day across many DApps, the friction of a cold wallet may hurt your workflow. Keep only the funds you actively need in MetaMask or Rabby — think of it like a checking account. Store your long-term holdings separately in a cold wallet. Use Rabby's transaction preview to catch malicious approvals before they happen.
+> **Long-Term Hodler — Best choice: ArcSign or Ledger Nano X**
+>
+> If you're holding crypto for months or years without frequent transactions, [cold storage](/blog/what-is-cold-storage) is the right choice. ArcSign gives you Ledger-class offline security at zero hardware cost. The encrypted .arcsign backup file solves the perennial problem of paper [seed phrase](/blog/seed-phrase-backup-guide) management. For users who prefer a dedicated physical device they can touch, the Ledger Nano X remains excellent.
 
-            Long-Term Hodler
-            Best choice: ArcSign or Ledger Nano X
+Institutional / High-Value Holdings
+> **Best choice: Ledger + multisig setup**
+>
+> For holdings above $100,000 USD, consider a multisig arrangement where multiple hardware wallets (held by different people in different locations) are required to sign a transaction. Ledger's broad ecosystem makes this practical with tools like Gnosis Safe. ArcSign's multisig support is on the roadmap.
 
-If you're holding crypto for months or years without frequent transactions, [cold storage](/blog/what-is-cold-storage) is the right choice. ArcSign gives you Ledger-class offline security at zero hardware cost. The encrypted .arcsign backup file solves the perennial problem of paper [seed phrase](/blog/seed-phrase-backup-guide) management. For users who prefer a dedicated physical device they can touch, the Ledger Nano X remains excellent.
-
-            Institutional / High-Value Holdings
-            Best choice: Ledger + multisig setup
-
-For holdings above $100,000 USD, consider a multisig arrangement where multiple hardware wallets (held by different people in different locations) are required to sign a transaction. Ledger's broad ecosystem makes this practical with tools like Gnosis Safe. ArcSign's multisig support is on the roadmap.
-
-            Beginners / First-Time Crypto Users
-            Best choice: ArcSign
-
-ArcSign was designed with beginners in mind. The guided setup wizard, encrypted backup system (no complicated paper seed phrase management), and [cross-chain](/blog/arcsign-cross-chain-guide) support make it ideal for someone setting up their first wallet. It is completely free, works on all major desktop OS platforms, and provides professional-grade cold storage security from day one.
+Beginners / First-Time Crypto Users
+> **Best choice: ArcSign**
+>
+> ArcSign was designed with beginners in mind. The guided setup wizard, encrypted backup system (no complicated paper seed phrase management), and [cross-chain](/blog/arcsign-cross-chain-guide) support make it ideal for someone setting up their first wallet. It is completely free, works on all major desktop OS platforms, and provides professional-grade cold storage security from day one.
 
 ## Why ArcSign Wins for Most Users
 
@@ -109,9 +108,9 @@ After evaluating all five wallets against real-world usage patterns, ArcSign off
 
 - **Token Approvals management built-in** — View and revoke ERC-20 approvals across all supported chains. Pro users get batch revoke. This is a critical security hygiene feature that most wallets lack.
 
-            One Thing to Keep in Mind
-
-ArcSign stores keys on a USB drive connected to your computer during signing. This means the security of your setup depends partly on your computer's hygiene — keeping OS updated, avoiding malware, not using public computers. For most individuals this is a fully manageable risk. For ultra-high-value institutional holdings, a dedicated hardware device with a Secure Element chip provides an additional layer of hardware isolation.
+> **One Thing to Keep in Mind**
+>
+> ArcSign stores keys on a USB drive connected to your computer during signing. This means the security of your setup depends partly on your computer's hygiene — keeping OS updated, avoiding malware, not using public computers. For most individuals this is a fully manageable risk. For ultra-high-value institutional holdings, a dedicated hardware device with a Secure Element chip provides an additional layer of hardware isolation.
 
 ## Frequently Asked Questions
 
@@ -129,8 +128,8 @@ Yes. ArcSign supports WalletConnect v2 — connect to any WalletConnect-compatib
 
 ### Q: What is the best crypto wallet for beginners in 2026?
 
-ArcSign is ideal for beginners: free, works on macOS/Windows/Linux, supports ETH/BTC/BSC/Polygon/Arbitrum/Optimism/Base, and provides a guided setup wizard. The .arcsign encrypted backup removes the burden of managing a paper seed phrase. For beginners who only interact with one chain and value simplicity above all, MetaMask is also a valid starting point — just understand it is a hot wallet.
+ArcSign is ideal for beginners: free, works on macOS/Windows/Linux, supports 7 EVM chains (ETH/BSC/Polygon/Arbitrum/Optimism/Base/Avalanche), and provides a guided setup wizard. The .arcsign encrypted backup removes the burden of managing a paper seed phrase. For beginners who only interact with one chain and value simplicity above all, MetaMask is also a valid starting point — just understand it is a hot wallet.
 
 ### Q: Does ArcSign support Bitcoin?
 
-Yes. ArcSign supports Bitcoin (BTC) alongside ETH, BSC, Polygon, Arbitrum, Optimism, and Base — all from a single wallet setup on a single USB. The same cold storage setup manages keys for all supported chains simultaneously.
+No. ArcSign does not support native Bitcoin yet — it focuses on 7 EVM chains: ETH, BSC, Polygon, Arbitrum, Optimism, Base, and Avalanche, all from a single wallet setup on a single USB. The same cold storage setup manages keys for all 7 EVM chains simultaneously. If you need native BTC cold storage, pair ArcSign with a Bitcoin-specific tool.

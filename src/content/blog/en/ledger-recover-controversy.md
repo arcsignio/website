@@ -15,31 +15,27 @@ In May 2023, hardware wallet leader Ledger announced a paid service called "Ledg
 
 The backlash was so intense because **Ledger's core selling point has always been "private keys never leave the device."** The very existence of the Recover service proved that the firmware has the technical capability to extract and transmit private keys externally — even if you never activate the feature. This discovery fundamentally shook user trust in Ledger's security model.
 
-            Timeline
-
-May 2023: Announcement → Massive community backlash → Ledger delays launch and promises partial open-sourcing → October 2023: Official launch (select regions) → Remains one of the most debated topics in crypto to this day.
+> **Timeline**
+>
+> May 2023: Announcement → Massive community backlash → Ledger delays launch and promises partial open-sourcing → October 2023: Official launch (select regions) → Remains one of the most debated topics in crypto to this day.
 
 ## How Ledger Recover Works: Technical Breakdown
 
 Before diving into the controversy, let's understand how Ledger Recover technically operates:
 
-            1
-            Firmware Extracts the Seed Phrase
+**1. Firmware Extracts the Seed Phrase**
 
 The [seed phrase](/blog/seed-phrase-backup-guide) stored in Ledger's Secure Element is read by the firmware and prepared for sharding. This step is the crux of the controversy — the seed phrase is actively accessed by firmware for the purpose of transmission.
 
-            2
-            Encrypted Sharding
+**2. Encrypted Sharding**
 
 The seed phrase is split into three encrypted fragments using a Shamir-like secret sharing scheme. In theory, no single fragment can reconstruct the complete seed phrase.
 
-            3
-            Transmission to Three Custodians
+**3. Transmission to Three Custodians**
 
 The three encrypted fragments are sent via secure channels to Coincover, Ledger itself, and a third independent backup provider. Recovery requires fragments from any two custodians plus identity verification.
 
-            4
-            Identity Verification Binding
+**4. Identity Verification Binding**
 
 Users must provide a government-issued ID (passport or national ID card) linked to their fragments. Recovery requires passing identity verification to retrieve the fragments.
 
@@ -59,9 +55,9 @@ Ledger's Secure Element runs closed-source firmware. Users cannot audit the firm
 
 The Recover service requires government-issued ID and entrusts fragments to specific companies. This raises deeper concerns: what if a government compels custodians to hand over fragment data? What if a custodian is hacked? What if Ledger changes recovery conditions due to business pressures? **Cryptocurrency's core ethos is decentralization and self-sovereignty**, and Recover fundamentally introduces centralized trust dependencies.
 
-            Key Insight
-
-The issue isn't whether Recover's encryption is strong enough. The issue is that **the firmware has the capability to transmit private keys out of the device**. Once this capability exists, whether it's only used in scenarios you choose depends entirely on your trust in Ledger.
+> **Key Insight**
+>
+> The issue isn't whether Recover's encryption is strong enough. The issue is that **the firmware has the capability to transmit private keys out of the device**. Once this capability exists, whether it's only used in scenarios you choose depends entirely on your trust in Ledger.
 
 ## The Fundamental Trust Model Contradiction
 
@@ -108,36 +104,31 @@ The entire process is completely offline. No network connection needed, no third
 
 When a transaction needs signing, ArcSign briefly reconstructs the private key in [mlock-protected memory](/blog/mlock-memory-protection), then zeroes it immediately after signing. The entire key exposure window is just 1-5 milliseconds, and the memory is never swapped to disk. Even during the signing moment, malware has virtually no chance of intercepting the key.
 
-            ArcSign vs Ledger Recover: The Core Difference
-
-Ledger Recover **uploads your seed phrase to the cloud** for third-party custody. ArcSign's .arcsign backup file **never leaves your physical device**. One requires trusting three companies and network security. The other requires trusting only math and yourself.
+> **ArcSign vs Ledger Recover: The Core Difference**
+>
+> Ledger Recover **uploads your seed phrase to the cloud** for third-party custody. ArcSign's .arcsign backup file **never leaves your physical device**. One requires trusting three companies and network security. The other requires trusting only math and yourself.
 
 ## Self-Custody Security Checklist
 
 Regardless of which wallet you use, here's a fundamental checklist for self-custody security:
 
-            1
-            Verify Keys Never Leave the Device
+**1. Verify Keys Never Leave the Device**
 
 Does your wallet have any mechanism that can transmit private keys externally? If so — even if "optional" — it means a larger attack surface.
 
-            2
-            Evaluate Your Backup Method
+**2. Evaluate Your Backup Method**
 
 Is your backup a paper seed phrase (physical security risk), cloud service (third-party risk), or offline encrypted file (best practice)?
 
-            3
-            Check Firmware/Software Verifiability
+**3. Check Firmware/Software Verifiability**
 
 Can you verify that your wallet software or firmware does only what it claims? Open-source software has a natural advantage here.
 
-            4
-            Establish Redundant Backups
+**4. Establish Redundant Backups**
 
 Don't put all your eggs in one basket. We recommend keeping both a seed phrase (sealed storage) and an encrypted backup file (second USB, offline).
 
-            5
-            Regularly Test Your Recovery Process
+**5. Regularly Test Your Recovery Process**
 
 A backup is only valuable if you've confirmed it works. Periodically test your recovery process with a test wallet to ensure everything runs smoothly.
 

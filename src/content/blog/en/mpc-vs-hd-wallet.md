@@ -16,9 +16,9 @@ If you've been researching crypto wallets, you've likely encountered "MPC wallet
 
 But is that really the case? Before you entrust your crypto assets to any wallet, you need to understand the core differences between these two approaches — not just the marketing pitch, but the **underlying security architecture, recovery mechanisms, and real-world use cases**. This article will help you make the right choice for your situation.
 
-            Key Takeaway
-
-MPC vs HD isn't about "which is better" — it's about **"which is better for your specific use case."** The best choice for individual users and institutions may be completely different.
+> **Key Takeaway**
+>
+> MPC vs HD isn't about "which is better" — it's about **"which is better for your specific use case."** The best choice for individual users and institutions may be completely different.
 
 ## What Is an HD Wallet? BIP-39/44 Explained
 
@@ -28,18 +28,15 @@ HD stands for **Hierarchical Deterministic**, defined by BIP-32 and later enhanc
 
 An HD wallet starts with a set of 12 or 24 English words ([seed phrase](/blog/seed-phrase-backup-guide)/mnemonic). Through a series of deterministic mathematical derivations, it generates a "key tree." Each branch corresponds to a blockchain account, and each account maps to a unique private key and public key pair.
 
-            1
-            Generate Seed Phrase
+**1. Generate Seed Phrase**
 
 A cryptographically secure random number generator (CSPRNG) produces 128/256 bits of entropy, converted into 12/24 English words.
 
-            2
-            Derive Master Key
+**2. Derive Master Key**
 
 The [seed phrase](/blog/seed-phrase-backup-guide) is processed through PBKDF2-HMAC-SHA512 to produce a 512-bit seed, from which the master private key and chain code are derived.
 
-            3
-            Derive Child Keys
+**3. Derive Child Keys**
 
 Following BIP-44 paths (e.g., m/44'/60'/0'/0/0), child keys are derived layer by layer for each blockchain. One seed phrase manages BTC, ETH, BSC, and all other accounts.
 
@@ -53,26 +50,23 @@ MPC wallets use **Multi-Party Computation** technology. The core idea: **split t
 
 Unlike HD wallets, MPC wallets never generate a complete private key. Instead, they use a Distributed Key Generation (DKG) protocol:
 
-            1
-            Distributed Key Generation
+**1. Distributed Key Generation**
 
 Multiple parties (e.g., user device + cloud server + recovery server) each generate their own key fragment. A mathematical protocol ensures these fragments correspond to the same public key, but no one holds the complete private key.
 
-            2
-            Collaborative Signing
+**2. Collaborative Signing**
 
 When you want to send a transaction, each party participates in a multi-round communication protocol to jointly compute a valid digital signature — without revealing their individual fragments.
 
-            3
-            Threshold Mechanism
+**3. Threshold Mechanism**
 
 Typically designed as a T-of-N threshold scheme (e.g., 2-of-3): out of N fragment holders, only T need to agree for signing. This provides redundancy and fault tolerance.
 
 Notable MPC wallet products include Fireblocks (institutional), Zengo (consumer), and Coinbase's MPC wallet service. MPC excels in **institutional custody** and **enterprise multi-party management** scenarios.
 
-            Important Note
-
-MPC sounds cutting-edge, but its security assumptions differ fundamentally from HD wallets. It **requires multiple nodes to be online and communicating**, meaning you must trust that the MPC service provider won't shut down, get hacked, or be compelled to hand over data.
+> **Important Note**
+>
+> MPC sounds cutting-edge, but its security assumptions differ fundamentally from HD wallets. It **requires multiple nodes to be online and communicating**, meaning you must trust that the MPC service provider won't shut down, get hacked, or be compelled to hand over data.
 
 ## Security Architecture: Which Resists Attacks Better?
 
@@ -104,15 +98,15 @@ MPC wallet recovery is far more complex. Since the private key never exists in c
 
 **Multi-party collaboration** — You need your key fragment plus the provider's fragment to recover. **Proprietary process** — Each MPC wallet has its own recovery flow, usually requiring identity verification. **Provider availability** — If the provider goes out of business or experiences system failure, recovery may become extremely difficult or impossible.
 
-            The Critical Difference
-
-HD wallet recovery is **self-sovereign** — you don't need any third party. MPC wallet recovery is **collaborative** — you must depend on other participants. In the "Not your keys, not your coins" philosophy of cryptocurrency, this is a fundamental trade-off.
+> **The Critical Difference**
+>
+> HD wallet recovery is **self-sovereign** — you don't need any third party. MPC wallet recovery is **collaborative** — you must depend on other participants. In the "Not your keys, not your coins" philosophy of cryptocurrency, this is a fundamental trade-off.
 
 ## User Experience & Use Cases
 
 ### HD Wallet: Best For
 
-**Personal self-custody** — You want complete control over your assets with zero third-party dependency. **Multi-chain management** — One seed phrase manages BTC, ETH, BSC, and more. ArcSign supports 7 chains. **Offline security** — Paired with USB [cold storage](/blog/what-is-cold-storage), the entire signing process stays offline, minimizing the attack surface. **Long-term holding** — Seed phrases and .arcsign backups can be preserved for decades, unaffected by any company's fate.
+**Personal self-custody** — You want complete control over your assets with zero third-party dependency. **Multi-chain management** — One seed phrase manages ETH, BSC, Avalanche, and more. ArcSign supports 7 EVM chains. **Offline security** — Paired with USB [cold storage](/blog/what-is-cold-storage), the entire signing process stays offline, minimizing the attack surface. **Long-term holding** — Seed phrases and .arcsign backups can be preserved for decades, unaffected by any company's fate.
 
 ### MPC Wallet: Best For
 
@@ -128,7 +122,7 @@ HD wallet recovery is **self-sovereign** — you don't need any third party. MPC
 | **Offline Signing** | Supported | Requires multi-party online comms | USB fully offline |
 | **Third-Party Dependency** | Fully self-sovereign | Depends on MPC provider | Fully self-sovereign |
 | **Cross-Platform Compat.** | BIP-39 universal standard | Proprietary, non-interoperable | BIP-39/44 standard |
-| **Multi-Chain Support** | BIP-44 native support | Depends on provider | 7 chains (BTC + 6 EVM) |
+| **Multi-Chain Support** | BIP-44 native support | Depends on provider | 7 EVM chains |
 | **Memory Protection** | Most don't implement | Depends on implementation | mlock + 1-5ms exposure window |
 | **Cost** | Mostly free | Enterprise plans are expensive | Completely free |
 | **Best For** | Individual users, long-term holders | Enterprises, institutional custody | Individual to advanced users |
@@ -137,36 +131,31 @@ HD wallet recovery is **self-sovereign** — you don't need any third party. MPC
 
 ArcSign chose the HD wallet architecture (BIP-39/BIP-44) because it provides maximum **self-sovereignty and cross-platform compatibility**. But we didn't stop at the standard HD implementation — we layered multiple security enhancements on top, making it match or exceed MPC solutions in security:
 
-            1
-            XOR Three-Shard Encryption
+**1. XOR Three-Shard Encryption**
 
 The private key is split into three XOR fragments on the USB — information-theoretically unbreakable. Even if the USB is stolen, the attacker gets only random data. [Learn about XOR three-shard &rarr;](/blog/../xor-encryption-explained)
 
-            2
-            mlock Memory Protection
+**2. mlock Memory Protection**
 
 During signing, the private key exists in protected memory for only 1-5 milliseconds, never swapped to disk or captured by malware. [Learn about mlock protection &rarr;](/blog/../mlock-memory-protection)
 
-            3
-            AES-256-GCM Dual-Layer Encryption
+**3. AES-256-GCM Dual-Layer Encryption**
 
 Each XOR fragment is further encrypted with AES-256-GCM, creating a "fragment encryption + overall encryption" dual-layer defense.
 
-            4
-            USB Offline Cold Storage
+**4. USB Offline Cold Storage**
 
 From key generation to signing, everything happens on the USB — completely air-gapped. With [WalletConnect](/blog/walletconnect-dapp-tutorial) v2, you can even interact with DApps securely from cold storage.
 
-            5
-            .arcsign Encrypted Backup
+**5. .arcsign Encrypted Backup**
 
 Export-equals-encrypted backup files, more secure than paper seed phrases. Store on a second USB — even if someone else gets it, they can't decrypt it. [Learn USB backup strategy &rarr;](/blog/../usb-backup-strategy)
 
 The result: you get all the convenience of an HD wallet (standard seed phrase, cross-platform compatibility, multi-chain support) with security that exceeds most MPC wallets — **and it's completely free**. Learn how to [protect your private keys properly](/blog/private-key-management-best-practices) regardless of wallet architecture.
 
-            Bottom Line
-
-MPC wallets solve the "private keys shouldn't exist in one place" problem, but at the cost of third-party dependency and communication complexity. ArcSign achieves the same security goal with XOR three-shard + USB cold storage — **the private key never exists in complete form** — but **with zero third-party dependency**.
+> **Bottom Line**
+>
+> MPC wallets solve the "private keys shouldn't exist in one place" problem, but at the cost of third-party dependency and communication complexity. ArcSign achieves the same security goal with XOR three-shard + USB cold storage — **the private key never exists in complete form** — but **with zero third-party dependency**.
 
 ## Frequently Asked Questions
 

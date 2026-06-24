@@ -17,9 +17,9 @@ Traditional [cold storage](/blog/what-is-cold-storage) solutions require purchas
 
 This tutorial will walk you through the entire process, from downloading ArcSign to making your first transaction. No technical background is required — just a USB drive and 10 minutes of your time.
 
-            ArcSign's Core Advantages
-
-**Zero Cost**: Software is completely free; use any USB drive. **Cold Storage Security**: XOR 3-shard encryption + [AES-256](/blog/aes256-encryption-simple) + [mlock](/blog/mlock-memory-protection) memory protection. **Multi-Chain Support**: Manage Ethereum, BSC, Polygon, and more from one wallet. **Open Source Plans**: All source code will be made public once the user base reaches 10,000, enabling full community audit.
+> **ArcSign's Core Advantages**
+>
+> **Zero Cost**: Software is completely free; use any USB drive. **Cold Storage Security**: XOR 3-shard encryption + [AES-256](/blog/aes256-encryption-simple) + [mlock](/blog/mlock-memory-protection) memory protection. **Multi-Chain Support**: Manage Ethereum, BSC, Polygon, and more from one wallet. **Fully Open Source**: All source code is publicly available under Apache 2.0 (source at github.com/arcsignio/arcsign), enabling full community audit.
 
 ## Before You Start: What You Need
 
@@ -31,31 +31,29 @@ Setting up ArcSign requires just three things:
 | **USB Flash Drive** | Any brand, 1GB+ capacity | New or freshly formatted recommended |
 | **Backup USB (Optional)** | For storing ArcSign encrypted wallet backup | Safer and more convenient than pen & paper |
 
-            ArcSign Exclusive: Encrypted Wallet Backup
-
-Traditional cold wallets require you to write down [seed phrase](/blog/seed-phrase-backup-guide)s on paper — paper can be lost, water-damaged, stolen, and it can't be encrypted. ArcSign offers a better solution: **one-click encrypted wallet backup files**. Save them to a second USB or offline storage device. Backup files are protected by [AES-256](/blog/aes256-encryption-simple) encryption and XOR shard technology — even if someone gets the file, they can't crack it. To restore, simply import the backup + enter your password — safer, easier, and more reliable than pen & paper.
+> **ArcSign Exclusive: Encrypted Wallet Backup**
+>
+> Traditional cold wallets require you to write down [seed phrase](/blog/seed-phrase-backup-guide)s on paper — paper can be lost, water-damaged, stolen, and it can't be encrypted. ArcSign offers a better solution: **one-click encrypted wallet backup files**. Save them to a second USB or offline storage device. Backup files are protected by [AES-256](/blog/aes256-encryption-simple) encryption and XOR shard technology — even if someone gets the file, they can't crack it. To restore, simply import the backup + enter your password — safer, easier, and more reliable than pen & paper.
 
 ## Step 1: Download and Install ArcSign
 
-            1
-            Download the ArcSign Desktop Application
+**1. Download the ArcSign Desktop Application**
 
 Visit the official ArcSign website at **arcsign.io** and click the "Free Download" button. The site automatically detects your operating system and provides the right installer: **.msi** for Windows users, **.dmg** for macOS users.
 
 Once downloaded, double-click the installer to begin. The process is identical to installing any other application — just follow the prompts and click "Next." Installation typically completes within 30 seconds.
 
-After installation, launch ArcSign. You'll see a welcome screen. Before creating a wallet, we need to set up a blockchain data provider — this is what allows ArcSign to query on-chain assets.
+After installation, launch ArcSign. You'll see a welcome screen. As a beginner you can head straight to wallet creation — **token balances work out of the box with no setup**. The optional provider step below only unlocks the NFT gallery and transaction history.
 
-## Step 2: Set Up a Provider (Blockchain Data Source)
+## Step 2 (Optional): Set Up a Provider for NFTs & Transaction History
 
-            2
-            Connect an Indexer Service Like Alchemy to Query On-Chain Data
+**2. (Optional) Connect an Indexer for the NFT Gallery and Transaction History**
 
-            Why Do You Need a Provider?
+> **Do You Need a Provider?**
+>
+> Since v1.5.0, **no — not for balances.** ArcSign reads your asset balances via built-in public RPC plus Multicall3 and free DefiLlama prices, so balances appear out of the box on every EVM chain with zero setup. You only need a Provider key to enable the **NFT gallery** and **transaction history**, which require full-chain indexing that public RPC can't provide. If you don't care about those yet, **skip ahead to Step 3** — you can always add a key later. (Your private keys are never transmitted either way.)
 
-ArcSign is a cold wallet — your private keys stay offline on your USB. But to display your **asset balances, transaction history**, and other on-chain information, ArcSign needs to query the blockchain through a Provider (like Alchemy). Think of it like your phone needing Wi-Fi to check email — the Provider only "reads" public on-chain data. **Your private keys are never transmitted.**
-
-### Get a Free Alchemy API Key
+### Get a Free Alchemy API Key (only for NFT/tx-history)
 
 1. Visit **alchemy.com** and sign up for a free account
 
@@ -73,29 +71,27 @@ ArcSign is a cold wallet — your private keys stay offline on your USB. But to 
 
 4. Click "Test Connection" to confirm it works, then click "Save"
 
-            Multi-Chain Setup
-
-If you plan to use multiple blockchains (e.g., Ethereum and BSC simultaneously), you can create separate Apps in Alchemy for each chain and get individual API Keys. Alchemy's free plan provides generous monthly request quotas — more than enough for personal use.
-
-Once your Provider is configured, ArcSign can display your on-chain assets in real time. This setup only needs to be done once — ArcSign will automatically connect on every subsequent launch.
+> **Multi-Chain Setup**
+>
+> Alchemy covers Ethereum, Polygon, Arbitrum, Optimism, and Base for NFT/tx-history. BSC uses NodeReal (its own free key), and **Avalanche uses Glacier, which is keyless** (anonymous tier — nothing to configure). Alchemy's free plan provides generous monthly request quotas — more than enough for personal use.
+>
+> Once configured, ArcSign can display your NFTs and transaction history. This setup only needs to be done once — and remember, balances already work without any of it.
 
 ## Step 3: Insert Your USB Drive
 
-            3
-            Plug Your USB Flash Drive into Your Computer
+**3. Plug Your USB Flash Drive into Your Computer**
 
 Insert your USB flash drive into your computer's USB port. ArcSign will automatically detect the USB device and display its information (brand, capacity, etc.) within the application.
 
 If ArcSign doesn't detect your USB right away, don't worry. Try unplugging and reinserting the drive, or switching to a different USB port. Detection typically completes within 3-5 seconds.
 
-            USB Drive Recommendations
-
-Your USB drive doesn't need to be anything special. Any commercially available flash drive with 1GB+ capacity will work. However, if you plan to use it long-term, choose a reliable brand (like Samsung or SanDisk) for better data durability. Consider preparing a second USB as a backup.
+> **USB Drive Recommendations**
+>
+> Your USB drive doesn't need to be anything special. Any commercially available flash drive with 1GB+ capacity will work. However, if you plan to use it long-term, choose a reliable brand (like Samsung or SanDisk) for better data durability. Consider preparing a second USB as a backup.
 
 ## Step 4: Create Your First Wallet
 
-            4
-            Set a Password and Create Your HD Wallet
+**4. Set a Password and Create Your HD Wallet**
 
 Once your USB is detected, ArcSign will guide you through the wallet creation process. First, you'll set a wallet password. This password is used for daily login and transaction confirmation — choose a strong one (12+ characters with uppercase, lowercase, numbers, and special characters).
 
@@ -105,12 +101,11 @@ During creation, ArcSign uses **XOR 3-shard technology** to split your private k
 
 ## Step 5: Back Up Your Wallet (Critical!)
 
-            5
-            Secure Your Wallet with ArcSign Encrypted Backup
+**5. Secure Your Wallet with ArcSign Encrypted Backup**
 
-            This Is the Most Important Step in the Entire Setup
-
-If your USB is lost, damaged, or stolen, your backup is the **only way to recover your wallet and assets**. Please take this step seriously.
+> **This Is the Most Important Step in the Entire Setup**
+>
+> If your USB is lost, damaged, or stolen, your backup is the **only way to recover your wallet and assets**. Please take this step seriously.
 
 ### The Problem with Traditional Methods: Pen & Paper
 
@@ -136,7 +131,7 @@ ArcSign offers a modern, more secure alternative — **one-click encrypted walle
 
 4. Done! Your backup is protected by military-grade encryption
 
-            Why Encrypted Backup Files Are Better Than Pen & Paper
+Why Encrypted Backup Files Are Better Than Pen & Paper
 
 |  | Paper Seed Phrase | ArcSign Encrypted Backup |
 | --- | --- | --- |
@@ -160,8 +155,7 @@ Key principles for backup file storage:
 
 ## Step 6: Basic Operations — Receive and Send
 
-            6
-            Start Using Your USB Cold Wallet
+**6. Start Using Your USB Cold Wallet**
 
 Congratulations! Your USB cold wallet is now set up. Let's explore ArcSign's basic operations.
 
@@ -193,9 +187,9 @@ Each key fragment is additionally protected by AES-256-GCM encryption, paired wi
 
 When you need to sign a transaction, the private key is briefly restored in mlock-protected memory (1-5 milliseconds). mlock prevents the operating system from swapping this memory to disk, ensuring sensitive data isn't unknowingly written to permanent storage. After signing, the memory is immediately zeroed out. Combined with all data residing exclusively on the USB, nothing remains on your computer after you unplug.
 
-            Security Summary
-
-Even assuming an attacker has full access to your USB drive, without your password they face XOR sharding + AES-256 dual-layer encryption. To crack this combination, even the world's most powerful supercomputer would need a time far exceeding the age of the universe. Your private keys are safe.
+> **Security Summary**
+>
+> Even assuming an attacker has full access to your USB drive, without your password they face XOR sharding + AES-256 dual-layer encryption. To crack this combination, even the world's most powerful supercomputer would need a time far exceeding the age of the universe. Your private keys are safe.
 
 ## Common Questions and Tips for Beginners
 
@@ -213,7 +207,7 @@ This is where ArcSign's encrypted backup files shine. Simply import your backup 
 
 ### Is ArcSign open source?
 
-ArcSign is not yet open source, but **all source code will be made public once the user base reaches 10,000**. Open sourcing is a key milestone on our roadmap, and when it happens, every line of code will be open to audit by the global developer community. In the meantime, ArcSign's security architecture (XOR sharding, AES-256, mlock) is built on industry-standard cryptographic primitives that you can verify in any textbook.
+Yes. ArcSign is **fully open source under Apache 2.0** (source at github.com/arcsignio/arcsign), so every line of code is publicly auditable by the global developer community. ArcSign's security architecture (XOR sharding, AES-256, mlock) is also built on industry-standard cryptographic primitives that you can verify in any textbook.
 
 ## FAQ
 

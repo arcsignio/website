@@ -21,9 +21,9 @@ Since the London upgrade introduced **EIP-1559** in 2021, Ethereum's fee market 
 
 Total Gas Fee = (Base Fee + Priority Fee) × Gas Used. Gas Used depends on the complexity of the operation: a plain transfer is about 21,000 gas, a [DEX swap](/blog/how-to-dex-swap-arcsign) is typically 150,000-300,000 gas, and a complex NFT mint can exceed 500,000 gas.
 
-            Three Levers You Actually Control
-
-You can't change the Base Fee, but you can control: **(1) when you send the transaction**, **(2) the Priority Fee you're willing to pay**, and **(3) which chain you operate on**. Every gas-saving strategy flows from these three levers.
+> **Three Levers You Actually Control**
+>
+> You can't change the Base Fee, but you can control: **(1) when you send the transaction**, **(2) the Priority Fee you're willing to pay**, and **(3) which chain you operate on**. Every gas-saving strategy flows from these three levers.
 
 ## Why Gas Fees Swing So Wildly
 
@@ -70,26 +70,23 @@ Based on two years of on-chain data, Ethereum mainnet gas typically hits lows du
 
 Conversely, avoid **weekday 13:00-22:00 UTC** — US East Coast daytime overlapping with European close. That's when DeFi, NFTs, and MEV activity concentrate.
 
-            Pro Tip
-
-In ArcSign, the **Dashboard → Gas Tracker** panel shows real-time Base Fee and the last 24 hours' trend. Making it a habit to "glance before you sign" adds up to serious savings over time.
+> **Pro Tip**
+>
+> In ArcSign, the **Dashboard → Gas Tracker** panel shows real-time Base Fee and the last 24 hours' trend. Making it a habit to "glance before you sign" adds up to serious savings over time.
 
 ### Strategy 2: Match Priority Fee to Urgency
 
 Most wallets default Priority Fee to 1-3 Gwei, but many transactions don't need instant inclusion. Split them into three tiers:
 
-            1
-            Low priority (30-60 min OK)
+**1. Low priority (30-60 min OK)**
 
 Set Priority Fee to 0.01-0.1 Gwei. Off-peak, most land within an hour. Good for non-urgent transfers, DCA strategies, and long-horizon moves.
 
-            2
-            Standard (5-15 min)
+**2. Standard (5-15 min)**
 
 Priority Fee 1-2 Gwei. ArcSign's default — good for everyday swaps, transfers, and DApp interactions.
 
-            3
-            High priority (liquidation rescue, NFT mint)
+**3. High priority (liquidation rescue, NFT mint)**
 
 Priority Fee 5-20+ Gwei. Only use when instant inclusion is truly critical.
 
@@ -116,9 +113,9 @@ For small [stablecoin](/blog/stablecoin-storage-guide) transfers and routine swa
 - **Polygon PoS**: USDC/USDT transfers around $0.01 — ideal for merchant payments.
 
 - **BNB Smart Chain**: PancakeSwap's home ground; swap fees usually 
-            Risk Reminder
-
-L2s and alternative chains come with their own trust assumptions: sequencer centralization, bridge contract risk, validator concentration. **Keep large holdings on mainnet inside your cold wallet** and migrate day-to-day operations and experimental positions to L2. ArcSign lets you manage 7 chains from a single [seed phrase](/blog/seed-phrase-backup-guide), making a layered storage strategy easy.
+> **Risk Reminder**
+>
+> L2s and alternative chains come with their own trust assumptions: sequencer centralization, bridge contract risk, validator concentration. **Keep large holdings on mainnet inside your cold wallet** and migrate day-to-day operations and experimental positions to L2. ArcSign lets you manage 7 chains from a single [seed phrase](/blog/seed-phrase-backup-guide), making a layered storage strategy easy.
 
 ## Strategy 5-8: ArcSign in Practice
 
@@ -161,9 +158,9 @@ Average USD cost for common operations as of April 2026 (estimates, market-depen
 
 The table makes it obvious: **simply switching chains cuts 95%+ off your fees**. That's why we recommend a layered architecture — mainnet cold storage for the bulk of holdings, L2/alt-chain for daily activity.
 
-            Related Reading
-
-Want to go deeper on multi-chain operations? See: [Cross-Chain Made Easy: Managing BTC + EVM with ArcSign](/blog/arcsign-cross-chain-guide), [Swap Tutorials on Polygon & BSC](/blog/polygon-bsc-swap-guide), and [BTC + ETH + BSC in One Place](/blog/multi-chain-management).
+> **Related Reading**
+>
+> Want to go deeper on multi-chain operations? See: [Cross-Chain Made Easy: Managing 7 EVM Chains with ArcSign](/blog/arcsign-cross-chain-guide), [Swap Tutorials on Polygon & BSC](/blog/polygon-bsc-swap-guide), and [ETH + BSC + Polygon in One Place](/blog/multi-chain-management).
 
 ## FAQ
 

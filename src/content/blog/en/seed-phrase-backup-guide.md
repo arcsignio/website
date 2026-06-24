@@ -15,11 +15,11 @@ Your **seed phrase is the master key to your entire crypto empire**. Whether you
 
 Once someone obtains your seed phrase, they can restore your wallet anywhere, anytime, on any device, and steal all your assets instantly. There is **no reversal, no customer support, no insurance**. In the world of crypto, managing your private keys securely is the same as managing your wealth securely.
 
-            Seed Phrase Security = Asset Security
-
-Even if your computer gets hacked or your software wallet is stolen, as long as attackers don't have your seed phrase, your assets remain safe. Conversely, once a seed phrase is leaked, asset loss is permanent.
-
-But how should you safely store your seed phrase? Each backup method has different trade-offs. This guide analyzes 5 mainstream approaches to help you find the best solution for your situation.
+> **Seed Phrase Security = Asset Security**
+>
+> Even if your computer gets hacked or your software wallet is stolen, as long as attackers don't have your seed phrase, your assets remain safe. Conversely, once a seed phrase is leaked, asset loss is permanent.
+>
+> But how should you safely store your seed phrase? Each backup method has different trade-offs. This guide analyzes 5 mainstream approaches to help you find the best solution for your situation.
 
 ## Method 1: Paper Backup
 
@@ -103,11 +103,11 @@ Modern users might think: why not just store the seed phrase in a password manag
 
 - **Government pressure risk** — Authorities may compel password manager companies to hand over data
 
-            Do NOT Store Seed Phrases in Password Managers
-
-This method places your asset security entirely in third-party hands. For irreversible assets like crypto, any single point of failure is too dangerous.
-
-**Risk Index: Extremely High** — This method is not recommended.
+> **Do NOT Store Seed Phrases in Password Managers**
+>
+> This method places your asset security entirely in third-party hands. For irreversible assets like crypto, any single point of failure is too dangerous.
+>
+> **Risk Index: Extremely High** — This method is not recommended.
 
 ## Method 4: Shamir Secret Sharing
 
@@ -173,17 +173,17 @@ When you export an ArcSign backup file, the system executes these steps:
 
 ### Disadvantages
 
-- **Not yet open-source** — While encryption is based on standard cryptography, the code cannot be independently audited. (ArcSign plans to open-source after 10K users)
+- **✓ Fully open source** — the code is publicly auditable (Apache 2.0), and encryption is based on standard cryptography.
 
 - **Password-dependent security** — Backup file security depends on your wallet password strength; weak password = weak encryption
 
 - **Requires password memory** — Forgetting your password means you cannot decrypt the backup (though you can restore via seed phrase if saved separately)
 
-            Why ArcSign Encrypted Backup Stands Out
-
-Compared to paper backup, ArcSign's encrypted file provides **encryption protection** (safe even if discovered), **instant recovery** (no tedious manual input), and **safe duplication** (multiple backups with zero additional risk). For USB cold wallet users, this is the ideal modern backup approach.
-
-**Risk Index: Very Low** — Assuming a strong password, this is the most balanced modern backup method.
+> **Why ArcSign Encrypted Backup Stands Out**
+>
+> Compared to paper backup, ArcSign's encrypted file provides **encryption protection** (safe even if discovered), **instant recovery** (no tedious manual input), and **safe duplication** (multiple backups with zero additional risk). For USB cold wallet users, this is the ideal modern backup approach.
+>
+> **Risk Index: Very Low** — Assuming a strong password, this is the most balanced modern backup method.
 
 ## Complete Comparison Table
 
@@ -243,7 +243,7 @@ For plaintext (paper/metal) backups, immediately move your assets to a new walle
 
 #### Can I recover an ArcSign backup in other wallets?
 
-ArcSign backup files are designed for ArcSign specifically. Since the format isn't yet open-source, only ArcSign can decrypt them. This is why we recommend also keeping your seed phrase as a final failsafe — if ArcSign ever becomes unavailable, you can restore using any [BIP-39](/blog/key-derivation-bip39-44) compatible wallet.
+ArcSign backup files are designed for ArcSign specifically. Because the format is ArcSign-specific, only ArcSign can decrypt them (though the format is documented in ArcSign's open-source code, Apache 2.0). This is why we recommend also keeping your seed phrase as a final failsafe — if ArcSign ever becomes unavailable, you can restore using any [BIP-39](/blog/key-derivation-bip39-44) compatible wallet.
 
 #### How often should I test my backup?
 

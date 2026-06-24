@@ -15,9 +15,9 @@ Crypto infrastructure has made enormous leaps in the last decade: Layer 2s cut t
 
 In 2023, Ethereum officially adopted the **ERC-4337 Account Abstraction (AA)** standard. Through 2024-2025, Smart Account wallets like Safe, Kernel, Biconomy, and Argent have flourished. By 2026, Account Abstraction is a trend Web3 wallets can no longer ignore. So for someone using a cold wallet, what does this "wallet revolution" actually mean? Is [cold storage](/blog/what-is-cold-storage) still valuable in the AA era? This article walks you through AA systematically and explains exactly where ArcSign fits in.
 
-            The core thesis
-
-Account Abstraction doesn't replace cold wallets — it **frees cold wallets to focus on what they do best: safekeeping private keys**. Smart Accounts handle UX, cold wallets handle security. The endgame for Web3 wallets is both working together, not one winning out.
+> **The core thesis**
+>
+> Account Abstraction doesn't replace cold wallets — it **frees cold wallets to focus on what they do best: safekeeping private keys**. Smart Accounts handle UX, cold wallets handle security. The endgame for Web3 wallets is both working together, not one winning out.
 
 ## EOA vs Smart Account: Two Account Models, Side by Side
 
@@ -45,28 +45,23 @@ A Smart Account is, at its core, an on-chain smart contract with fully programma
 
 The genius of ERC-4337 is that **it requires zero changes to Ethereum's consensus layer**. The entire protocol is delivered through "off-chain infrastructure + on-chain contracts", which means any EVM chain can support AA without hard forks. Here are the five core components:
 
-            1
-            UserOperation (UserOp)
+**1. UserOperation (UserOp)**
 
 A structured expression of user intent. Not a traditional transaction — it's a data structure that captures "who, what action, how much gas, sponsored by whom". The Smart Account validates the UserOp signature, then executes the action.
 
-            2
-            Bundler
+**2. Bundler**
 
 A new role analogous to miners or validators. Bundlers pull UserOps from an off-chain mempool, bundle them into a single Ethereum transaction, and submit it to the EntryPoint contract. They earn gas rebates for the service.
 
-            3
-            EntryPoint (Global On-Chain Entry Contract)
+**3. EntryPoint (Global On-Chain Entry Contract)**
 
 The single on-chain entry point for all AA traffic. EntryPoint verifies UserOp signatures, calls the Paymaster to settle gas, dispatches the action to the Smart Account, and refunds leftover gas. This is the security heart of ERC-4337.
 
-            4
-            Paymaster (Gas Sponsor)
+**4. Paymaster (Gas Sponsor)**
 
 Optional. The Paymaster can pay gas on behalf of the user. Common models: DApp sponsors new users (onboarding), user pays gas in USDC ([ERC-20](/blog/erc20-token-management) payment), employer subsidizes employees (enterprise). A Paymaster is itself a smart contract with an ETH deposit.
 
-            5
-            Aggregator (Signature Aggregator)
+**5. Aggregator (Signature Aggregator)**
 
 Optional. Used for batch-verifying multiple UserOp signatures (e.g., BLS aggregate signatures). Suited for large-scale applications — verification cost for N signatures approaches the cost of one, which further compresses gas on L2s.
 
@@ -117,9 +112,9 @@ No free lunch. Unlocking new UX also means new attack surfaces that didn't exist
 | **Cross-chain address mismatch** | Different Factories on different chains can yield different Smart Account addresses | Use Factories that support deterministic CREATE2 deployment |
 | **Bundler censorship** | Specific Bundlers may refuse to include UserOps from certain addresses (compliance or political reasons) | Diverse Bundler ecosystem + public mempool mitigates |
 
-            Core principle
-
-AA pushes "code is the rule" to its extreme — which buys powerful programmability, but also means **any signature can trigger complex state changes**. The value of a cold wallet in the AA era is arguably greater: every signature must be fully inspectable on an offline device so that malicious intent hidden inside UserOps can't slip through.
+> **Core principle**
+>
+> AA pushes "code is the rule" to its extreme — which buys powerful programmability, but also means **any signature can trigger complex state changes**. The value of a cold wallet in the AA era is arguably greater: every signature must be fully inspectable on an offline device so that malicious intent hidden inside UserOps can't slip through.
 
 ## The Cold Wallet's Role in the AA Era: How ArcSign Fits In
 
@@ -139,29 +134,25 @@ No matter how advanced AA becomes, sending 10 ETH to a new address, upgrading yo
 
 ### ArcSign × Smart Account: the practical setup
 
-            1
-            Create an EOA with ArcSign, use it as your Smart Account Owner
+**1. Create an EOA with ArcSign, use it as your Smart Account Owner**
 
 In the ArcSign Dashboard, create a new wallet — the resulting `0x...` address is your Owner EOA. The 12-word seed is protected by ArcSign's XOR three-shard + [AES-256](/blog/aes256-encryption-simple) scheme.
 
-            2
-            Deploy a Smart Account on Safe, Kernel, or Biconomy
+**2. Deploy a Smart Account on Safe, Kernel, or Biconomy**
 
 On Safe.global (or any Smart Account service), register your ArcSign EOA as Owner. ArcSign signs the deployment transaction over WalletConnect, paying the one-time deployment gas.
 
-            3
-            Use the Smart Account daily to enjoy AA features
+**3. Use the Smart Account daily to enjoy AA features**
 
 Interact with DApps through the Smart Account and enjoy gas sponsorship, USDC payments, batch transactions. Every UserOp is signed offline by ArcSign — the private key never leaves the USB.
 
-            4
-            Add Guardians as disaster recovery
+**4. Add Guardians as disaster recovery**
 
 Set up 2-of-3 or 3-of-5 Guardians (a second ArcSign, trusted friends, DID services). This is your last line of defense if the USB is damaged or lost.
 
-            The recommended architecture
-
-**ArcSign (Owner) + Smart Account (execution layer) + Guardians (recovery layer)** is, in 2026, the most mature personal Web3 wallet setup. Cold wallet for security, Smart Account for UX, Guardians for disaster recovery — three layers working together.
+> **The recommended architecture**
+>
+> **ArcSign (Owner) + Smart Account (execution layer) + Guardians (recovery layer)** is, in 2026, the most mature personal Web3 wallet setup. Cold wallet for security, Smart Account for UX, Guardians for disaster recovery — three layers working together.
 
 ## 2026-2028 Web3 Wallet Evolution Roadmap
 

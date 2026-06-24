@@ -15,31 +15,31 @@ On March 24, 2026, the open-source AI community faced a nightmare scenario. **Li
 
 LiteLLM is a widely-used AI proxy framework that allows developers to call OpenAI, Anthropic, Google, and other LLM APIs through a unified interface. According to Wiz's research, **LiteLLM is present in 36% of cloud environments**. The potential blast radius of this attack is staggering.
 
-            Impact Scale
-
-LiteLLM averages 3.4 million downloads per day and exists in 36% of cloud environments. The malicious versions were live on PyPI for approximately **3 hours** before being quarantined. Any system that installed and ran the affected versions during this window should assume all accessible credentials have been compromised.
-
-What makes this incident particularly alarming is that **the attackers didn't directly compromise LiteLLM**. Instead, they first infiltrated another well-known open-source security tool — Aqua Security's **Trivy** vulnerability scanner. Through Trivy's CI/CD pipeline, the attackers obtained LiteLLM's PyPI publishing credentials (`PYPI_PUBLISH` token), then published the backdoored versions as a legitimate maintainer. This is the terrifying reality of modern [supply chain attack](/blog/supply-chain-attack-hardware-wallet)s: **the tools you trust may already be weaponized**.
+> **Impact Scale**
+>
+> LiteLLM averages 3.4 million downloads per day and exists in 36% of cloud environments. The malicious versions were live on PyPI for approximately **3 hours** before being quarantined. Any system that installed and ran the affected versions during this window should assume all accessible credentials have been compromised.
+>
+> What makes this incident particularly alarming is that **the attackers didn't directly compromise LiteLLM**. Instead, they first infiltrated another well-known open-source security tool — Aqua Security's **Trivy** vulnerability scanner. Through Trivy's CI/CD pipeline, the attackers obtained LiteLLM's PyPI publishing credentials (`PYPI_PUBLISH` token), then published the backdoored versions as a legitimate maintainer. This is the terrifying reality of modern [supply chain attack](/blog/supply-chain-attack-hardware-wallet)s: **the tools you trust may already be weaponized**.
 
 ## Attack Timeline
 
 This was a carefully orchestrated, multi-stage operation carried out by a threat actor known as **TeamPCP**. Here is the complete timeline:
 
-                March 19 — Trivy Compromised
+> **March 19 — Trivy Compromised**
+>
+> TeamPCP compromised Aqua Security's open-source vulnerability scanner Trivy. Trivy is widely used in CI/CD pipelines for security scanning and is trusted infrastructure for many open-source projects.
 
-TeamPCP compromised Aqua Security's open-source vulnerability scanner Trivy. Trivy is widely used in CI/CD pipelines for security scanning and is trusted infrastructure for many open-source projects.
+> **March 21 — Attack Spreads to Checkmarx and KICS**
+>
+> TeamPCP expanded the attack to Checkmarx and KICS GitHub Actions, using these compromised CI/CD tools as pivot points to harvest additional target credentials.
 
-                March 21 — Attack Spreads to Checkmarx and KICS
+> **March 24 — LiteLLM Backdoored**
+>
+> Using PyPI publishing credentials obtained through Trivy, TeamPCP published backdoored versions 1.82.7 and 1.82.8 as a legitimate LiteLLM maintainer. The malicious code executed automatically when Python started.
 
-TeamPCP expanded the attack to Checkmarx and KICS GitHub Actions, using these compromised CI/CD tools as pivot points to harvest additional target credentials.
-
-                March 24 — LiteLLM Backdoored
-
-Using PyPI publishing credentials obtained through Trivy, TeamPCP published backdoored versions 1.82.7 and 1.82.8 as a legitimate LiteLLM maintainer. The malicious code executed automatically when Python started.
-
-                March 24 (~3 hours later) — Malicious Versions Quarantined
-
-Security researchers detected the anomaly and PyPI's team emergency-quarantined the affected versions. However, during those 3 hours, a significant number of users had already downloaded and executed the malicious package.
+> **March 24 (~3 hours later) — Malicious Versions Quarantined**
+>
+> Security researchers detected the anomaly and PyPI's team emergency-quarantined the affected versions. However, during those 3 hours, a significant number of users had already downloaded and executed the malicious package.
 
 ## Deep Dive: The Deadly .pth File Exploit
 
@@ -47,29 +47,25 @@ The most ingenious aspect of this attack was its exploitation of an obscure Pyth
 
 Python's `.pth` files were originally designed to modify module search paths. But they have a deadly feature: **if a line in a `.pth` file starts with `import`, that line is automatically executed when the Python interpreter starts**. This means the malicious code didn't need the user to explicitly `import litellm` — any Python program starting up would trigger the payload.
 
-            Critical Technical Detail
+> **Critical Technical Detail**
+>
+> The malicious package installed a file named `litellm_init.pth` that executed **every time the Python interpreter started**, not just when `import litellm` was called. This means even running a Python script completely unrelated to LiteLLM would result in your environment variables being stolen.
+>
+> Here's the complete attack flow:
 
-The malicious package installed a file named `litellm_init.pth` that executed **every time the Python interpreter started**, not just when `import litellm` was called. This means even running a Python script completely unrelated to LiteLLM would result in your environment variables being stolen.
-
-Here's the complete attack flow:
-
-            1
-            Installation Trigger
+**1. Installation Trigger**
 
 User runs `pip install litellm==1.82.8`, and the malicious `litellm_init.pth` file is placed in Python's site-packages directory.
 
-            2
-            Automatic Execution
+**2. Automatic Execution**
 
 The next time any Python program starts, the import statement in the `.pth` file automatically executes, loading the malicious payload. The entire process is completely silent — no prompts, no warnings.
 
-            3
-            Data Harvesting
+**3. Data Harvesting**
 
 The malicious code scans the entire computer, collecting environment variables, SSH keys, cloud credentials, wallet files, and every piece of sensitive data it can find.
 
-            4
-            Data Exfiltration
+**4. Data Exfiltration**
 
 Collected data is encrypted and sent to attacker-controlled remote servers. The entire process runs in the background — the user is completely unaware.
 
@@ -90,9 +86,9 @@ According to analyses by ReversingLabs, Snyk, and Sonatype, the malicious code h
 | **Shell History** | Commands from `.bash_history`, `.zsh_history` | High |
 | **Crypto Wallet Files** | Local wallet configs and keystore files | Critical |
 
-            The Most Dangerous Part
-
-Many developers store API keys and wallet private keys in environment variables or local config files. This attack **precisely targeted these locations**. If you use MetaMask or other hot wallets, your crypto assets may already be compromised.
+> **The Most Dangerous Part**
+>
+> Many developers store API keys and wallet private keys in environment variables or local config files. This attack **precisely targeted these locations**. If you use MetaMask or other hot wallets, your crypto assets may already be compromised.
 
 ## The Unique Threat to Crypto Holders
 
@@ -108,9 +104,9 @@ Even worse, many developers store **wallet private keys directly in environment 
 
 Even if you use a Ledger or Trezor hardware wallet, if you've interacted with DApps through a browser wallet on an affected machine, your **[token approval](/blog/token-approval-revoke)s** may have been exploited. While attackers can't access your private keys, stolen session tokens or authorized DApp connection data from your environment could potentially be leveraged.
 
-            Common Dangerous Developer Practices
-
-The following practices were proven fatal in the LiteLLM attack: storing wallet private keys in `.env` files, setting [seed phrase](/blog/seed-phrase-backup-guide)s in environment variables, saving unencrypted keystore files locally, leaving commands containing private keys in shell history. **These practices are completely defenseless against supply chain attacks.**
+> **Common Dangerous Developer Practices**
+>
+> The following practices were proven fatal in the LiteLLM attack: storing wallet private keys in `.env` files, setting [seed phrase](/blog/seed-phrase-backup-guide)s in environment variables, saving unencrypted keystore files locally, leaving commands containing private keys in shell history. **These practices are completely defenseless against supply chain attacks.**
 
 ## Why ArcSign Cold Wallet Users Were Unaffected
 
@@ -138,9 +134,9 @@ When ArcSign briefly needs to handle private keys in memory (e.g., signing trans
 
 As a final safeguard, even if you accidentally authorized a suspicious smart contract in an unsafe environment, ArcSign's built-in **[token approval](/blog/token-approval-revoke)s management** lets you view and revoke all token approvals across 6 EVM chains. Pro users get batch revocation, helping you cut losses the moment you detect a threat.
 
-            ArcSign Security Architecture vs LiteLLM Attack Vectors
-
-Every attack vector in LiteLLM's malware is perfectly blocked by ArcSign's security architecture: no private keys in environment variables (USB offline storage), no keystore files on disk (XOR triple-shard), no plaintext seed phrases to steal (.arcsign encrypted backup), no traces in memory ([mlock](/blog/mlock-memory-protection) protection). This is the power of **"secure by design."**
+> **ArcSign Security Architecture vs LiteLLM Attack Vectors**
+>
+> Every attack vector in LiteLLM's malware is perfectly blocked by ArcSign's security architecture: no private keys in environment variables (USB offline storage), no keystore files on disk (XOR triple-shard), no plaintext seed phrases to steal (.arcsign encrypted backup), no traces in memory ([mlock](/blog/mlock-memory-protection) protection). This is the power of **"secure by design."**
 
 ## Wallet Types vs Supply Chain Attack Resilience
 
@@ -158,28 +154,23 @@ Every attack vector in LiteLLM's malware is perfectly blocked by ArcSign's secur
 
 If you installed or updated LiteLLM around March 24, 2026, or if you're unsure whether your environment was affected, take these steps immediately:
 
-            1
-            Check Your Installed Version
+**1. Check Your Installed Version**
 
 Run `pip show litellm` to confirm your installed version. If it's v1.82.7 or v1.82.8, your system **has been compromised**. Even if the version is different, stay vigilant if you ran `pip install` on March 24.
 
-            2
-            Rotate All Credentials
+**2. Rotate All Credentials**
 
 Immediately rotate all API keys (OpenAI, Anthropic, Google Cloud, etc.), cloud service credentials (AWS, GCP, Azure), SSH keys, and database passwords. **Assume every credential accessible in that environment has been compromised.**
 
-            3
-            Secure Your Crypto Assets
+**3. Secure Your Crypto Assets**
 
 If your computer had any crypto wallet private keys, keystore files, or seed phrases (even in .env files), immediately transfer all assets to a brand new wallet address — preferably an offline cold wallet like ArcSign.
 
-            4
-            Revoke Suspicious Approvals
+**4. Revoke Suspicious Approvals**
 
 Use ArcSign's Token Approvals feature or Revoke.cash to review and revoke all unfamiliar smart contract approvals. Session information obtained through the supply chain attack may have been used to initiate malicious approvals.
 
-            5
-            Clean and Rebuild Your Environment
+**5. Clean and Rebuild Your Environment**
 
 Upgrade to a safe version of LiteLLM, or remove it until confirmed safe. Check for suspicious `.pth` files. Ideally, set up your development machine fresh in a clean environment.
 
@@ -207,9 +198,9 @@ Integrate dependency security scanning tools (like Snyk, Dependabot, Socket) int
 
 Regardless of which wallet you use, regularly check and revoke smart contract approvals you no longer need. ArcSign's **Token Approvals management** supports one-stop viewing across 6 EVM chains, so you don't have to manually check chain by chain. This is your last safety net against unknown attacks.
 
-            Core Philosophy: Secure by Design
-
-Security shouldn't be an afterthought — it should be a **core principle of architectural design**. From day one, ArcSign adopted a multi-layer defense architecture: USB offline storage + XOR triple-shard + [mlock](/blog/mlock-memory-protection) memory protection + [AES-256](/blog/aes256-encryption-simple) encrypted backup. The LiteLLM incident proves that when supply chain attacks strike, only products that are "secure by design" can truly protect users.
+> **Core Philosophy: Secure by Design**
+>
+> Security shouldn't be an afterthought — it should be a **core principle of architectural design**. From day one, ArcSign adopted a multi-layer defense architecture: USB offline storage + XOR triple-shard + [mlock](/blog/mlock-memory-protection) memory protection + [AES-256](/blog/aes256-encryption-simple) encrypted backup. The LiteLLM incident proves that when supply chain attacks strike, only products that are "secure by design" can truly protect users.
 
 ## FAQ
 

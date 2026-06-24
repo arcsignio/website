@@ -18,9 +18,9 @@ ArcSign takes a fundamentally different approach. It is **free software** — no
 
 Both are genuine cold wallets: private keys never touch the internet. But their security models, backup strategies, feature sets, and costs differ significantly. This article cuts through the marketing to give you an honest, technical comparison.
 
-            Disclosure
-
-This article is written by the ArcSign team. We have done our best to represent Trezor's capabilities accurately and fairly. All Trezor pricing is in USD and reflects publicly listed prices as of early 2026.
+> **Disclosure**
+>
+> This article is written by the ArcSign team. We have done our best to represent Trezor's capabilities accurately and fairly. All Trezor pricing is in USD and reflects publicly listed prices as of early 2026.
 
 ## Quick Verdict: Two Cards
 
@@ -64,13 +64,13 @@ This article is written by the ArcSign team. We have done our best to represent 
 | **Secure Element Chip** | Software encryption (XOR + AES-256-GCM) | No — STM32 general-purpose MCU | Safe 5 only (EAL6+) |
 | **Encryption** | XOR three-shard + AES-256-GCM + mlock | PIN-protected flash storage | PIN-protected + optional passphrase |
 | **Backup Method** | Encrypted .arcsign file (AES-256-GCM on export) | 12/24-word paper seed phrase | Shamir Backup or 12/24-word phrase |
-| **Chains Supported** | ETH, BSC, Polygon, Arbitrum, Optimism, Base, Bitcoin (7+) | BTC, ETH, and many altcoins | BTC, ETH, and many altcoins |
-| **EVM Multi-Chain** | 6 EVM chains natively | Via MetaMask bridge | Via MetaMask bridge |
+| **Chains Supported** | 7 EVM chains: ETH, BSC, Polygon, Arbitrum, Optimism, Base, Avalanche | BTC, ETH, and many altcoins | BTC, ETH, and many altcoins |
+| **EVM Multi-Chain** | 7 EVM chains natively | Via MetaMask bridge | Via MetaMask bridge |
 | **WalletConnect** | Built-in v2 support | Via Trezor Suite | Via Trezor Suite |
 | **Token Approvals Management** | Built-in, 6 EVM chains, batch revoke (Pro) | Not built-in (requires revoke.cash) | Not built-in (requires revoke.cash) |
 | **DeFi Positions** | stETH, ankrETH, ankrBNB with live APY | Not included | Not included |
 | **NFT Gallery** | Cross-chain ERC-721/1155 gallery | Limited in Trezor Suite | Limited in Trezor Suite |
-| **Open Source Firmware** | Not yet (planned at 10K Pro members) | Yes — fully open source | Yes — fully open source |
+| **Open Source Firmware** | ✓ Fully open source (Apache 2.0) | Yes — fully open source | Yes — fully open source |
 | **Physical Screen** | No (uses your PC display) | Small OLED, 2 buttons | Color touchscreen |
 | **Supply Chain Risk** | No hardware supply chain | Hardware must ship from manufacturer | Hardware must ship from manufacturer |
 | **Physical Attack Resistance** | XOR shards: random data if USB stolen | Voltage glitching can extract seed (STM32) | Safe 5 has EAL6+ SE; Model T vulnerable |
@@ -102,9 +102,9 @@ Trezor's security model is based on a dedicated hardware device that runs open-s
 
 ## Trezor Hardware Vulnerability: The 2023 Ledger Donjon Disclosure
 
-            Security Research Disclosure (2023)
-
-In 2023, security researchers at **Ledger Donjon** publicly demonstrated a **voltage glitching attack** capable of extracting [seed phrase](/blog/seed-phrase-backup-guide)s from Trezor One and Trezor Model T devices. The attack targets the STM32 general-purpose microcontroller chip used in both devices.
+> **Security Research Disclosure (2023)**
+>
+> In 2023, security researchers at **Ledger Donjon** publicly demonstrated a **voltage glitching attack** capable of extracting [seed phrase](/blog/seed-phrase-backup-guide)s from Trezor One and Trezor Model T devices. The attack targets the STM32 general-purpose microcontroller chip used in both devices.
 
 ### What the Attack Demonstrated
 
@@ -124,9 +124,9 @@ For the vast majority of individual users, this vulnerability is not a practical
 
 ArcSign has a different physical attack profile: if a USB drive is stolen, the attacker obtains three XOR shards — pure random data, with zero information leaked about the actual key without all three shards. There is no chip to voltage-glitch; there is no firmware to exploit. The security is entirely mathematical.
 
-            Key Distinction
-
-Trezor's security relies on the tamper-resistance of its STM32 chip (not a secure element for Model One/T). ArcSign's security relies on mathematics — XOR + AES-256. Neither is absolutely unbreakable, but they defend against different adversaries. Consider your own threat model carefully.
+> **Key Distinction**
+>
+> Trezor's security relies on the tamper-resistance of its STM32 chip (not a secure element for Model One/T). ArcSign's security relies on mathematics — XOR + AES-256. Neither is absolutely unbreakable, but they defend against different adversaries. Consider your own threat model carefully.
 
 ## When to Use Each
 
@@ -150,7 +150,7 @@ Trezor's security relies on the tamper-resistance of its STM32 chip (not a secur
 
 **You need Shamir Backup.** Trezor Model T and Safe 5 support Shamir's Secret Sharing, which splits the seed into multiple shares (e.g., 3-of-5). This is a hardware-native feature that ArcSign does not currently replicate (though XOR three-shard provides a conceptually similar split at the key storage level).
 
-**You need audited open-source firmware today.** Trezor's firmware is fully open source and has been audited by the community and security researchers for over a decade. ArcSign plans to open-source its code once it reaches 10,000 Pro members, but it is not open source yet.
+**You need firmware with a decade of audit history.** Trezor's firmware is fully open source and has been audited by the community and security researchers for over a decade. ArcSign is also fully open source under Apache 2.0 (source at github.com/arcsignio/arcsign), though its codebase is newer and has not yet accumulated the same multi-year audit track record.
 
 ## Frequently Asked Questions
 

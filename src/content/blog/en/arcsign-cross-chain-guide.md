@@ -1,6 +1,6 @@
 ---
-title: "Cross-Chain Made Easy: Managing BTC + EVM Chains with ArcSign"
-description: "Manage Bitcoin and 6 major EVM chains from one USB cold wallet. Complete guide to cross-chain operations, DEX swaps, and WalletConnect integration with ArcSign."
+title: "Cross-Chain Made Easy: Managing 7 EVM Chains with ArcSign"
+description: "Manage 7 major EVM chains from one USB cold wallet. Complete guide to cross-chain operations, DEX swaps, and WalletConnect integration with ArcSign."
 pubDate: 2026-04-12
 locale: en
 tags: ["Tutorial", "Cross-Chain"]
@@ -25,11 +25,11 @@ But managing assets across multiple chains using traditional methods is a securi
 
 - **WalletConnect fatigue:** DApp interactions require constant switching between wallets or browser extensions.
 
-**ArcSign solves this:** One USB device, one [seed phrase](/blog/seed-phrase-backup-guide), 7 chains. Bitcoin, Ethereum, BSC, Polygon, Arbitrum, Optimism, Avalanche, Fantom, Linea, Scroll, and more—all derived from the same [HD wallet](/blog/key-derivation-bip39-44).
+**ArcSign solves this:** One USB device, one [seed phrase](/blog/seed-phrase-backup-guide), 7 EVM chains. Ethereum, BSC, Polygon, Arbitrum, Optimism, Base, and Avalanche—all derived from the same [HD wallet](/blog/key-derivation-bip39-44).
 
-            What is HD Wallet?
-
-HD (Hierarchical Deterministic) wallets use [BIP-39](/blog/key-derivation-bip39-44) and BIP-44 standards to derive an unlimited number of addresses from a single [seed phrase](/blog/seed-phrase-backup-guide). Different derivation paths generate addresses for different blockchains. One backup, infinite addresses across 7 chains.
+> **What is HD Wallet?**
+>
+> HD (Hierarchical Deterministic) wallets use [BIP-39](/blog/key-derivation-bip39-44) and BIP-44 standards to derive an unlimited number of addresses from a single [seed phrase](/blog/seed-phrase-backup-guide). Different derivation paths generate addresses for different blockchains. One backup, infinite addresses across 7 chains.
 
 ## ArcSign's Cross-Chain Architecture: One Seed, Many Chains
 
@@ -37,17 +37,15 @@ ArcSign's architecture is built on proven cryptographic standards. Here's how it
 
 ### The HD Wallet Structure
 
-When you create an ArcSign wallet, you generate a **12-word or 24-word BIP-39 mnemonic**. This single seed phrase is the root of all your blockchain addresses.
+When you create an ArcSign wallet, you generate a **12-word BIP-39 mnemonic**. This single seed phrase is the root of all your blockchain addresses.
 
 ArcSign applies BIP-44 derivation paths to this seed:
-
-- **Bitcoin:** `m/44'/0'/0'/0/0` (generates native SegWit addresses)
 
 - **Ethereum:** `m/44'/60'/0'/0/0` (generates account addresses)
 
 - **BSC:** Uses the same Ethereum path (compatible EVM chain)
 
-- **Other EVM chains:** Standard Ethereum paths for all 6 major EVM networks
+- **Other EVM chains:** Standard Ethereum paths shared by all 7 major EVM networks
 
 The beauty of this design: **you never need to remember multiple seed phrases**. One backup file (your `.arcsign` encrypted archive) contains all the information needed to recover every address on all 7 chains.
 
@@ -69,38 +67,33 @@ When you sign a transaction, ArcSign combines the shards, signs locally on your 
 
 Your `.arcsign` backup file contains your encrypted wallet data. It is **[AES-256](/blog/aes256-encryption-simple) encrypted** by default—no separate password step needed. When you export your backup, you get an encrypted file immediately. Store it on cloud storage, an external hard drive, or printed as a QR code. If you lose your USB device, import the backup into a new ArcSign instance and regain access to all 7 chains.
 
-## Step-by-Step: Managing BTC + ETH + BSC in ArcSign
+## Step-by-Step: Managing ETH + BSC + Polygon in ArcSign
 
-Let's walk through a practical example: you want to check your Bitcoin balance, receive Ethereum, and send BSC tokens—all from one ArcSign wallet.
+Let's walk through a practical example: you want to check your Polygon balance, receive Ethereum, and send BSC tokens—all from one ArcSign wallet.
 
-            1
-            Set Up Your Wallet
+**1. Set Up Your Wallet**
 
-Plug your ArcSign USB device into your computer and open the ArcSign dashboard. If this is your first time, click **"Create New Wallet"**. ArcSign generates a 24-word BIP-39 mnemonic and displays it once. Write it down on paper (or use the encrypted backup file). This single phrase is your master key to all 7 chains.
+Plug your ArcSign USB device into your computer and open the ArcSign dashboard. If this is your first time, click **"Create New Wallet"**. ArcSign generates a 12-word BIP-39 mnemonic and displays it once. Write it down on paper (or use the encrypted backup file). This single phrase is your master key to all 7 chains.
 
-            2
-            Switch Chains in the Dashboard
+**2. Switch Chains in the Dashboard**
 
-In the ArcSign dashboard, you'll see a chain selector at the top. Click it and choose **Bitcoin**. The dashboard displays your Bitcoin balance and SegWit address. To check Ethereum, switch to **Ethereum**. To see BSC tokens, switch to **BSC**. All three addresses are derived from the same seed phrase automatically.
+In the ArcSign dashboard, you'll see a chain selector at the top. Click it and choose **Polygon**. The dashboard displays your Polygon balance and address. To check Ethereum, switch to **Ethereum**. To see BSC tokens, switch to **BSC**. All addresses are derived from the same seed phrase automatically.
 
-            3
-            Receive Funds
+**3. Receive Funds**
 
-To receive Bitcoin, stay on the Bitcoin chain and click **"Receive"**. The dashboard shows your Bitcoin address and a QR code. Anyone can send BTC to this address. Same process for Ethereum and BSC—just switch chains first. Your addresses are deterministic, so you can receive to the same address repeatedly. (ArcSign also supports address derivation for new receive addresses if you prefer privacy.)
+To receive ETH, stay on the Ethereum chain and click **"Receive"**. The dashboard shows your Ethereum address and a QR code. Anyone can send ETH to this address. Same process for Polygon and BSC—just switch chains first. Your addresses are deterministic, so you can receive to the same address repeatedly. (ArcSign also supports address derivation for new receive addresses if you prefer privacy.)
 
-            4
-            Send Transactions
+**4. Send Transactions**
 
 To send BSC tokens, switch to the BSC chain and click **"Send"**. Enter the recipient address and amount. ArcSign constructs the transaction and displays a preview for you to confirm. When you approve, the USB device signs the transaction locally (your private key never leaves the device). The signed transaction is broadcast to the BSC network. You'll see the transaction hash immediately.
 
-            5
-            Monitor Balances Across All Chains
+**5. Monitor Balances Across All Chains**
 
-ArcSign's dashboard integrates with Alchemy and NodeReal APIs to fetch real-time balances for all 7 chains. Switch between chains quickly to see your total portfolio. Check individual token balances, NFTs, and staking positions all from one interface.
+ArcSign's dashboard fetches real-time balances for all 7 chains with **no API key** — it uses built-in public RPC plus Multicall3 and free DefiLlama prices, out of the box. Switch between chains quickly to see your total portfolio. Check individual token balances, NFTs, and staking positions all from one interface.
 
-            Provider Setup
-
-To fetch on-chain data, you'll need an Alchemy API key. Head to **alchemy.com**, sign up (free tier), and copy your API key into ArcSign settings. For BSC, NodeReal APIs are pre-configured, but you can optionally set your own.
+> **Provider Setup (Optional — NFTs & History)**
+>
+> Balances are keyless and need no setup. A Provider key is only required to enable the **NFT gallery** and **transaction history**: head to **alchemy.com**, sign up (free tier), and copy your API key into ArcSign settings for Ethereum/Polygon/Arbitrum/Optimism/Base. BSC uses NodeReal (pre-configured, or set your own), and **Avalanche uses Glacier, which is keyless**.
 
 ## DEX Swap Across Chains
 
@@ -144,9 +137,9 @@ You hold 1 BNB on BSC and want to convert it to USDT without visiting a website:
 
 - Transaction broadcasts. In 20 seconds, you have 600 USDT in your wallet.
 
-            Slippage Control
-
-ArcSign defaults to 0.5% slippage tolerance (protects you from sandwich attacks). You can adjust this in settings, but lower slippage means swaps may fail if liquidity shifts during execution.
+> **Slippage Control**
+>
+> ArcSign defaults to 0.5% slippage tolerance (protects you from sandwich attacks). You can adjust this in settings, but lower slippage means swaps may fail if liquidity shifts during execution.
 
 ## WalletConnect v2: Bridging Cold Storage to DApps
 
@@ -188,9 +181,9 @@ You want to deposit ETH into an Arbitrum lending protocol. Using WalletConnect:
 
 - Your DApp shows the deposit confirmed. Earnings accrue. Your private key was never exposed.
 
-            WalletConnect Phishing Protection
-
-Always verify the DApp URL before connecting. WalletConnect is secure—your keys are protected—but phishing websites can still trick you into approving malicious contracts. ArcSign will show you exactly what you're approving. Read carefully.
+> **WalletConnect Phishing Protection**
+>
+> Always verify the DApp URL before connecting. WalletConnect is secure—your keys are protected—but phishing websites can still trick you into approving malicious contracts. ArcSign will show you exactly what you're approving. Read carefully.
 
 ## Security Considerations for Cross-Chain Management
 
@@ -199,8 +192,8 @@ Managing assets across multiple chains requires careful attention to security. L
 | Feature | ArcSign (USB) | MetaMask | Ledger Hardware Wallet |
 | --- | --- | --- | --- |
 | **Private Key Storage** | ✓ USB only | ✗ Browser/Computer | ✓ Secure chip |
-| **BTC Support** | ✓ Native | ✗ No | ✓ Via Ledger Live |
-| **EVM Chains (21+)** | ✓ All 22 | ✓ All major chains | ✓ All major chains |
+| **BTC Support** | ✗ No (EVM only) | ✗ No | ✓ Via Ledger Live |
+| **EVM Chains** | ✓ 7 EVM chains | ✓ All major chains | ✓ All major chains |
 | **HD Wallet (1 Seed)** | ✓ Yes | ✓ Yes | ✓ Yes |
 | **Built-in DEX Swap** | ✓ OpenOcean + KyberSwap | ✓ MetaMask Swaps | ✗ No (browser required) |
 | **WalletConnect** | ✓ Yes (v2) | ✓ Yes (v2) | ✓ Yes (v2) |
@@ -225,7 +218,7 @@ Managing assets across multiple chains requires careful attention to security. L
 
 - **Store your .arcsign backup securely:** Cloud storage (iCloud, Google Drive) with strong password, external hard drive, or printed as a QR code. AES-256 encryption means even cloud providers cannot read it.
 
-- **Never share your 24-word mnemonic:** If someone gets this phrase, they can recover your entire wallet on all 7 chains.
+- **Never share your 12-word mnemonic:** If someone gets this phrase, they can recover your entire wallet on all 7 chains.
 
 - **Verify DApp URLs before WalletConnect:** Phishing sites can still trick you. Always check the address bar.
 
@@ -235,9 +228,9 @@ Managing assets across multiple chains requires careful attention to security. L
 
 ## Frequently Asked Questions
 
-### Can I manage both Bitcoin and Ethereum from the same ArcSign wallet?
+### Can I manage Ethereum and BSC from the same ArcSign wallet?
 
-Yes. ArcSign uses BIP-39/BIP-44 HD wallet standards, so one mnemonic seed phrase derives addresses for all 22 supported chains simultaneously. You're not managing separate wallets—it's one wallet with multiple chain addresses. Switch chains in the dashboard and see your balance on each chain.
+Yes. ArcSign uses BIP-39/BIP-44 HD wallet standards, so one mnemonic seed phrase derives addresses for all 7 supported EVM chains simultaneously. You're not managing separate wallets—it's one wallet with multiple chain addresses. Switch chains in the dashboard and see your balance on each chain. (Note: ArcSign does not support native Bitcoin; it focuses on EVM chains.)
 
 ### Is my private key exposed when I swap tokens using DEX?
 
@@ -249,4 +242,4 @@ You can recover all chains from your `.arcsign` backup file. This encrypted back
 
 ### Do I need an Alchemy API key?
 
-Yes, to read on-chain data (balances, tokens, NFTs) you need an Alchemy API key. The free tier is sufficient for most users. Head to **alchemy.com**, sign up, and paste your API key in ArcSign settings. For BSC, NodeReal APIs are pre-configured, so it works immediately.
+Not for balances. Reading token balances needs **no key at all** — ArcSign uses built-in public RPC plus Multicall3 and free DefiLlama prices out of the box. An Alchemy API key (free tier) is only needed to enable the **NFT gallery** and **transaction history**, which require full-chain indexing: Alchemy for Ethereum/Polygon/Arbitrum/Optimism/Base, NodeReal (pre-configured) for BSC, and Avalanche keyless via Glacier.

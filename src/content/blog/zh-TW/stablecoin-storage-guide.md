@@ -21,9 +21,9 @@ relatedSlugs: ["zero-trust-wallet", "usb-backup-strategy", "arcsign-beginner-set
 
 **三、多鏈選擇影響成本與安全。**同樣 1 萬 USDT，放在 Ethereum 主網、Arbitrum、BNB Chain、Polygon、Tron 上的安全假設與轉帳成本差距可達 100 倍以上。
 
-            誰該讀這篇
-
-如果你持有超過 5,000 美元以上的穩定幣、經常在交易所與鏈上之間搬資金、或者正在考慮把部分現金部位換成 USDT / USDC 對抗本地通膨，這篇文章會幫你把「存放決策」做得更細、更省、更安心。
+> **誰該讀這篇**
+>
+> 如果你持有超過 5,000 美元以上的穩定幣、經常在交易所與鏈上之間搬資金、或者正在考慮把部分現金部位換成 USDT / USDC 對抗本地通膨，這篇文章會幫你把「存放決策」做得更細、更省、更安心。
 
 ## USDT、USDC、DAI、FDUSD、USDe：五種主流風險對比
 
@@ -49,9 +49,9 @@ relatedSlugs: ["zero-trust-wallet", "usb-backup-strategy", "arcsign-beginner-set
 
 • 累計凍結地址 **超過 2,000 個**，凍結總金額 **超過 20 億美元**。
 
-            • 2022 年 Bitfinex 駭客案資金、2023 北韓 Lazarus Group 相關地址、2024 多起交易所詐騙案的出金錢包，都曾被凍結。
+- 2022 年 Bitfinex 駭客案資金、2023 北韓 Lazarus Group 相關地址、2024 多起交易所詐騙案的出金錢包，都曾被凍結。
 
-            • 大多數凍結均配合美國 OFAC、FBI、以色列 NBCTF 的執法請求執行。
+- 大多數凍結均配合美國 OFAC、FBI、以色列 NBCTF 的執法請求執行。
 
 ### Circle 的凍結紀錄
 
@@ -59,13 +59,13 @@ Circle 對凍結態度更為保守但也更透明：
 
 • 2022 Tornado Cash 被 OFAC 列入制裁名單後，Circle 立即凍結與該混幣器直接互動的 USDC。
 
-            • 每一次凍結都會更新到公開的 `blacklister` 角色交易紀錄，可由任何人在 Etherscan 驗證。
+- 每一次凍結都會更新到公開的 `blacklister` 角色交易紀錄，可由任何人在 Etherscan 驗證。
 
-            • 2023 Silicon Valley Bank 擠兌時，因 33 億美元儲備暫時無法取得，USDC 一度脫錨至 0.88 美元 — 提醒市場「穩定幣不等於美元」，而是「美元計價的受信承諾」。
+- 2023 Silicon Valley Bank 擠兌時，因 33 億美元儲備暫時無法取得，USDC 一度脫錨至 0.88 美元 — 提醒市場「穩定幣不等於美元」，而是「美元計價的受信承諾」。
 
-            如何避免被誤凍？
-
-絕對保證不可能，但風險可以降到極低：**不收來路不明的空投、不與制裁地址 / 混幣器互動、不接受匿名買家用 USDT 直接轉帳給你**。如果你一定要接收大額穩定幣，要求對方先做一次小額測試，並檢查地址在 Chainalysis Sanctions Screening 或 `defillama.com/chains` 的風險標籤。一般自用、工作收入、自我交易帳戶之間的轉移幾乎不會觸發。
+> **如何避免被誤凍？**
+>
+> 絕對保證不可能，但風險可以降到極低：**不收來路不明的空投、不與制裁地址 / 混幣器互動、不接受匿名買家用 USDT 直接轉帳給你**。如果你一定要接收大額穩定幣，要求對方先做一次小額測試，並檢查地址在 Chainalysis Sanctions Screening 或 `defillama.com/chains` 的風險標籤。一般自用、工作收入、自我交易帳戶之間的轉移幾乎不會觸發。
 
 ## 5 種保管方案正面對決
 
@@ -90,9 +90,9 @@ Circle 對凍結態度更為保守但也更透明：
 
 • **日常流動（30% 總資產）**：冷錢包 + 異地備份，私鑰絕對離線，甚至考慮配合多簽。
 
-            和 BTC / ETH 的存放一樣嗎？
-
-原則相同但有一個重要差異：穩定幣「幣本位」，不受市場波動影響，所以更適合「放一段時間」。但也因為穩定幣是合約代幣，你需要同時記住「合約地址 + 鏈」而不只是「錢包地址」。ArcSign 內建 7 條鏈的原生代幣辨識，不會出現「鏈選錯、代幣消失」的常見新手錯誤。延伸閱讀：[USB 冷錢包的 5 大優勢](/blog/usb-cold-wallet-benefits)、[冷錢包 vs 熱錢包完整比較](/blog/cold-vs-hot-wallet)。
+> **和 BTC / ETH 的存放一樣嗎？**
+>
+> 原則相同但有一個重要差異：穩定幣「幣本位」，不受市場波動影響，所以更適合「放一段時間」。但也因為穩定幣是合約代幣，你需要同時記住「合約地址 + 鏈」而不只是「錢包地址」。ArcSign 內建 7 條鏈的原生代幣辨識，不會出現「鏈選錯、代幣消失」的常見新手錯誤。延伸閱讀：[USB 冷錢包的 5 大優勢](/blog/usb-cold-wallet-benefits)、[冷錢包 vs 熱錢包完整比較](/blog/cold-vs-hot-wallet)。
 
 ## 多鏈存放：成本、速度、安全的三角平衡
 
@@ -107,81 +107,67 @@ Circle 對凍結態度更為保守但也更透明：
 | **BNB Chain** | $0.05–0.3 | 3 秒 | 中（少數驗證者） | 亞洲 C2C、Launchpad |
 | **Tron（TRC20）** | $0（需先質押能量） | 3 秒 | 低（超級節點集中） | 跨境小額匯款 |
 | **Solana** | $0.001 | 
-            1
-            在乾淨的電腦上初始化 ArcSign USB 錢包
+**1. 在乾淨的電腦上初始化 ArcSign USB 錢包**
 
 從 `arcsign.io` 下載對應平台版本，驗證 SHA-256 雜湊，插入全新 USB 建立新錢包。建立過程中 ArcSign 會用 [XOR 三分片](/blog/xor-encryption-explained)把[助記詞](/blog/seed-phrase-backup-guide)分離，並用 [AES-256](/blog/aes256-encryption-simple)-GCM 加密儲存。私鑰從生成的那一刻起，就沒有離開過 USB。
 
-            2
-            立即匯出 .arcsign 加密備份檔
+**2. 立即匯出 .arcsign 加密備份檔**
 
 ArcSign 的 `.arcsign` 備份檔匯出即加密（[AES-256](/blog/aes256-encryption-simple)），不需要你另外設密碼。備份一份存雲端（Google Drive / iCloud）、一份存第二支 USB。萬一主 USB 遺失、損壞、被偷，你仍能在任何電腦上用備份還原錢包。
 
-            3
-            在 ArcSign 加入 Alchemy API Key
+**3. 餘額免設定；NFT / 交易歷史才需 key**
 
-Provider / Indexer 設定需要 Alchemy API Key（免費方案足夠），用來讀取鏈上餘額與交易資料。私鑰從不會透過 Alchemy — 它只是讀取公開的鏈上資料。
+從 v1.5.0 起，**穩定幣餘額不需要任何 API key**——ArcSign 走公共 RPC + Multicall3 讀取，開箱即用。只有 NFT 與交易歷史需要 Alchemy（5 鏈）/ NodeReal（BSC）的免費 key，Avalanche 走 Glacier 免 key。私鑰從不會透過這些服務 — 它們只讀取公開的鏈上資料。
 
-            4
-            在交易所把穩定幣轉進來（小額測試 → 大額轉入）
+**4. 在交易所把穩定幣轉進來（小額測試 → 大額轉入）**
 
 先轉 10 USDT 作測試，確認到帳後再轉大額。**特別注意鏈別**：在 Binance 提領時要選正確鏈（ERC20 = Ethereum、BEP20 = BNB Chain、TRC20 = Tron、ARBITRUM = Arbitrum），選錯鏈輕則資產無法顯示、重則永久丟失。ArcSign 顯示的錢包地址在 EVM 鏈共用，但「鏈 ID」要對得上。
 
-            5
-            設定地址簿（Address Book）
+**5. 設定地址簿（Address Book）**
 
 把你的交易所充值地址、合作方收款地址、自己其他錢包地址全部加入地址簿。以後轉帳直接從清單選取，不用每次手動複製貼上 — 這樣同時防了[剪貼簿劫持攻擊](/blog/clipboard-hijack-attack)。
 
-            6
-            撤銷舊的 ERC-20 授權
+**6. 撤銷舊的 ERC-20 授權**
 
 如果這支新錢包是從舊錢包遷移過來的，先用 ArcSign 的 Token Approvals 功能檢查是否有遺留的舊授權，並撤銷不必要的無限額度授權。Pro 用戶可以批次撤銷，一次處理多條鏈多個合約。
 
-            7
-            設定 WalletConnect 用於 DeFi 互動
+**7. 設定 WalletConnect 用於 DeFi 互動**
 
 把錢包與 Aave、Uniswap、Curve 等常用 DeFi 透過 [WalletConnect](/blog/walletconnect-dapp-tutorial) v2 連接。所有交易仍需要 ArcSign 離線簽名 — 你可以把穩定幣放在冷錢包，但同時賺 Aave 的供應利率，或在 Uniswap v4 做 LP。
 
-            8
-            建立「每季對帳」習慣
+**8. 建立「每季對帳」習慣**
 
 每 3 個月把冷錢包所有鏈的餘額、未撤銷的授權、DeFi 倉位、稅務紀錄匯出一次。這不是為了資安，而是為了**可控性**：你隨時知道錢包裡有什麼、在哪條鏈、值多少 — 這在交易所暴雷、發行商凍結、個人稅務稽查時都會救你。
 
-            延伸閱讀
-
-更深入的安全設定，請參考 [私鑰管理最佳實踐 9 原則](/blog/private-key-management-best-practices)。想了解 ArcSign 背後的加密架構，可看 [XOR 三分片加密圖解](/blog/xor-encryption-explained) 與 [AES-256-GCM + Argon2id 簡單說](/blog/aes256-encryption-simple)。
+> **延伸閱讀**
+>
+> 更深入的安全設定，請參考 [私鑰管理最佳實踐 9 原則](/blog/private-key-management-best-practices)。想了解 ArcSign 背後的加密架構，可看 [XOR 三分片加密圖解](/blog/xor-encryption-explained) 與 [AES-256-GCM + Argon2id 簡單說](/blog/aes256-encryption-simple)。
 
 ## 穩定幣用戶最常犯的 6 個錯誤
 
 過去一年，我們從社群回報、支援單與鏈上紀錄整理出 6 個高頻錯誤 — 希望你看完這篇之後，一個都不要犯：
 
-            1
-            把所有穩定幣都放同一個交易所
+**1. 把所有穩定幣都放同一個交易所**
 
 FTX、Celsius、BlockFi 的受害者都不是「不懂加密」的人，而是「相信品牌」的人。即使你完全信任某家交易所，也請分散至少 2–3 個平台，並且永遠保留大部分在自己掌控的冷錢包。
 
-            2
-            把助記詞手抄在手機筆記 App
+**2. 把助記詞手抄在手機筆記 App**
 
 iCloud、Google Keep、LINE Keep 都是雲端同步 — 一旦帳號被入侵，助記詞就進了攻擊者的口袋。ArcSign 的 `.arcsign` 備份檔本身已經加密，才是可以放雲端的東西；純文字的助記詞永遠不能。
 
-            3
-            在 Ethereum 主網高峰期做小額轉帳
+**3. 在 Ethereum 主網高峰期做小額轉帳**
 
 10 USDT 轉帳付 15 美元 Gas 費，是你在用火箭送郵票。把小額日常轉帳全部移到 Arbitrum / Base / Polygon / Tron。冷錢包的私鑰跨鏈共用，你只需要切換 RPC。
 
-            4
-            從交易所提領時鏈別選錯
+**4. 從交易所提領時鏈別選錯**
 
 ERC20 / BEP20 / TRC20 的地址格式相似但意義完全不同。ERC20 USDT 轉到 Tron 地址會卡在合約、Tron 提領到 ERC20 地址可能永久丟失。ArcSign 在介面上會明確標示當前鏈，提領前對三次（交易所提領鏈、錢包網路、地址格式）再按確認。
 
-            5
-            對不熟悉的合約授權 Unlimited Approval
+**5. 對不熟悉的合約授權 Unlimited Approval**
 
 很多 DApp 在你第一次互動時要求無限額度的 ERC-20 授權。一旦合約被駭或項目方跑路，攻擊者可以用這個授權把你錢包裡所有同類代幣轉走。建議做法：每次只授權當次需要的額度，或使用 ArcSign 的 Token Approvals 介面定期檢查與撤銷。
 
-            6
-            忽略 USDT 與 USDC 的「地域合規」差異
+**6. 忽略 USDT 與 USDC 的「地域合規」差異**
 
 某些司法管轄區（例如歐盟的 MiCA 框架）對 USDT 在特定平台有下架壓力；對 USDC 則幾乎無影響。如果你身處歐盟或常在歐盟交易所操作，USDC 會是更順暢的選擇；如果主要在亞洲 C2C，USDT 流動性仍佔絕對優勢。分散持有是最穩的做法。
 

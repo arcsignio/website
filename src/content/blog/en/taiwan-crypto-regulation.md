@@ -25,9 +25,9 @@ As crypto adoption accelerated globally, Taiwan began formalizing its stance. In
 
 Taiwan now operates with a formal regulatory framework for Virtual Asset Service Providers. The FSC has not implemented direct licensing (like Singapore's MAS approach), but instead supervises through industry self-regulatory organizations (SROs). This reflects Taiwan's preference for market-driven oversight combined with government supervision — a middle ground between permissive and restrictive approaches.
 
-            Key Takeaway
-
-Taiwan's regulatory journey shows evolution toward clarity without excessive restriction. Self-custody wallet users have never been the primary focus — regulations target service providers, not individual asset holders.
+> **Key Takeaway**
+>
+> Taiwan's regulatory journey shows evolution toward clarity without excessive restriction. Self-custody wallet users have never been the primary focus — regulations target service providers, not individual asset holders.
 
 ## 2026 Regulatory Framework: FSC & VASP Management
 
@@ -61,29 +61,25 @@ Rather than creating a new government licensing bureau, Taiwan relies on industr
 
 Taiwan defines VASPs broadly as entities providing services involving virtual assets. Key examples include:
 
-            1
-            Crypto Exchanges & Trading Platforms
+**1. Crypto Exchanges & Trading Platforms**
 
 Any platform allowing users to buy, sell, or trade virtual assets against fiat currency or other assets.
 
-            2
-            Custodians & Wallet Service Providers
+**2. Custodians & Wallet Service Providers**
 
 Entities that hold or manage virtual assets on behalf of customers, such as custodial wallet providers or institutional asset managers.
 
-            3
-            Staking & Lending Services
+**3. Staking & Lending Services**
 
 Platforms offering staking services, crypto lending, or yield-bearing asset products.
 
-            4
-            Payment & Settlement Services
+**4. Payment & Settlement Services**
 
 Services facilitating payments or settlements using virtual assets.
 
-            Critical Distinction
-
-**Self-custody wallets (like ArcSign) are NOT classified as VASPs** because the user maintains full control of private keys, and no intermediary manages the assets. This is the most important regulation for individual wallet users to understand.
+> **Critical Distinction**
+>
+> **Self-custody wallets (like ArcSign) are NOT classified as VASPs** because the user maintains full control of private keys, and no intermediary manages the assets. This is the most important regulation for individual wallet users to understand.
 
 ## Taiwan's VASP Registration System
 
@@ -93,28 +89,23 @@ For businesses providing crypto services, Taiwan's VASP registration involves se
 
 Entities seeking to operate as VASPs in Taiwan must:
 
-            1
-            Business Registration & Structure
+**1. Business Registration & Structure**
 
 Register as a legitimate business entity with proper incorporation, clear ownership structure, and corporate governance. Sole proprietorships or unregistered operations are not permitted.
 
-            2
-            Appoint Compliance Officer
+**2. Appoint Compliance Officer**
 
 Designate a senior compliance officer responsible for KYC/AML procedures, transaction monitoring, and regulatory communications with the FSC or SRO.
 
-            3
-            Implement KYC/AML Programs
+**3. Implement KYC/AML Programs**
 
 Establish robust customer identification, identity verification, beneficial ownership verification, and ongoing customer due diligence (CDD) procedures.
 
-            4
-            Transaction Monitoring & Reporting
+**4. Transaction Monitoring & Reporting**
 
 Monitor all transactions for suspicious activity, document findings, and report suspicious activities to Taiwan's RAML (Financial Intelligence Unit) as required.
 
-            5
-            Financial Audit & Record Keeping
+**5. Financial Audit & Record Keeping**
 
 Maintain comprehensive audit trails, conduct regular financial audits, and keep records of all customer transactions for at least 5 years.
 
@@ -166,18 +157,15 @@ This means:
 
 Although self-custody wallet users are exempt from VASP regulations, you should understand these requirements when:
 
-            1
-            Using Exchanges or Custodial Services
+**1. Using Exchanges or Custodial Services**
 
 When you deposit crypto on a Taiwan exchange, that exchange is a VASP and must comply with KYC/AML. You'll need to complete identity verification. Ensure your chosen exchange has proper VASP registration or SRO membership.
 
-            2
-            Staking or Yield Platforms
+**2. Staking or Yield Platforms**
 
 Services offering crypto staking or lending are classified as VASPs. Choose only platforms with formal VASP compliance or SRO registration to ensure your assets are properly protected.
 
-            3
-            Large Transactions (AML Concerns)
+**3. Large Transactions (AML Concerns)**
 
 While self-custody users don't have personal AML obligations, exchanges DO have suspicious transaction monitoring. Unusual withdrawal patterns may trigger VASP scrutiny. Keep documentation of transaction reasons for your own records.
 
@@ -193,9 +181,9 @@ Taiwan's regulatory framework actually reinforces the security advantages of sel
 
 - **Asset Certainty:** Your assets are physically on your USB drive — no counterparty risk
 
-            Bottom Line
-
-Taiwan's crypto regulations exist to protect users from bad actors operating exchanges and custodial services. If you hold your keys yourself with ArcSign, you're already operating at the most secure and most regulation-compliant level possible.
+> **Bottom Line**
+>
+> Taiwan's crypto regulations exist to protect users from bad actors operating exchanges and custodial services. If you hold your keys yourself with ArcSign, you're already operating at the most secure and most regulation-compliant level possible.
 
 ## Tax Implications for Taiwan Crypto Users
 
@@ -233,29 +221,25 @@ Taiwan has not established automatic reporting of crypto transactions to the tax
 
 ### Practical Tax Compliance Tips
 
-            1
-            Keep Transaction Records
+**1. Keep Transaction Records**
 
 Maintain detailed records of all crypto purchases, sales, exchanges, dates, prices, and amounts. This allows you to calculate accurate gains/losses and substantiate tax returns.
 
-            2
-            Track Cost Basis
+**2. Track Cost Basis**
 
 Use a cost basis method (FIFO, LIFO, or average cost) consistently to determine which assets you're selling. This affects your tax liability significantly.
 
-            3
-            Report Gains Honestly
+**3. Report Gains Honestly**
 
 Although enforcement is still developing, Taiwan's tax authority is increasingly scrutinizing crypto transactions. Reporting gains honestly now protects you from future penalties and interest.
 
-            4
-            Consult a Tax Professional
+**4. Consult a Tax Professional**
 
 Taiwan's crypto tax rules are still evolving. A tax professional familiar with both Taiwan tax law and crypto transactions can help you navigate edge cases and optimize your tax position legally.
 
-            Important Note
-
-This is not tax advice. Taiwan's crypto taxation is complex and evolving. We strongly recommend consulting a licensed Taiwan tax professional (會計師 or 稅務代理人) to understand your specific obligations based on your circumstances.
+> **Important Note**
+>
+> This is not tax advice. Taiwan's crypto taxation is complex and evolving. We strongly recommend consulting a licensed Taiwan tax professional (會計師 or 稅務代理人) to understand your specific obligations based on your circumstances.
 
 ## Compliance Tips for Cold Wallet Users
 
@@ -263,33 +247,27 @@ While self-custody wallet users like ArcSign users are not directly regulated, f
 
 ### Best Practices for Taiwan Crypto Users
 
-            1
-            Use Regulated Exchanges for Fiat Conversions
+**1. Use Regulated Exchanges for Fiat Conversions**
 
 When you buy crypto with Taiwan dollars or sell crypto for fiat, use exchanges that are registered with Taiwan VASPs or SRO members. This ensures proper KYC/AML compliance and protects you from unregistered operators.
 
-            2
-            Maintain Clear Records
+**2. Maintain Clear Records**
 
 Keep records of all crypto transactions, including purchase prices, sale prices, dates, and wallet addresses. This is essential for tax compliance and proves the legitimacy of your holdings to authorities if questioned.
 
-            3
-            Separate Storage from Exchanges
+**3. Separate Storage from Exchanges**
 
 Store your long-term holdings on a cold wallet like ArcSign, not on exchanges. This separates your personal assets (unregulated) from custodial assets (VASP-regulated), reducing regulatory complexity.
 
-            4
-            Document Backup Procedures
+**4. Document Backup Procedures**
 
 Because ArcSign uses [AES-256 encrypted .arcsign backup files](/blog/../usb-backup-strategy), ensure you have secure backup procedures documented. Keep backups in separate physical locations and test recovery procedures annually.
 
-            5
-            Avoid Mixing Sources
+**5. Avoid Mixing Sources**
 
 If your crypto comes from legitimate sources (salary, bonuses, personal investments), keep those records separate from any trading gains. This demonstrates clear tax residency and income source legitimacy.
 
-            6
-            Monitor Regulatory Changes
+**6. Monitor Regulatory Changes**
 
 Taiwan's crypto regulations are still evolving. Subscribe to FSC announcements and follow official sources to stay informed about new rules affecting wallet users.
 
@@ -301,7 +279,7 @@ ArcSign's design includes several features that support regulatory compliance:
 
 - **Encrypted Backups:** [AES-256 encrypted .arcsign backup files](/blog/../seed-phrase-backup-guide) protect recovery data even if stolen
 
-- **Multi-Chain Support:** Manage 7 chains (BTC + 6 EVMs) in one interface, simplifying tax record-keeping
+- **Multi-Chain Support:** Manage 7 EVM chains in one interface, simplifying tax record-keeping
 
 - **Transaction History:** Built-in transaction logging for easy record-keeping and tax reporting
 
@@ -353,9 +331,9 @@ Taiwan's moderate regulatory stance has several advantages:
 
 - SRO system is flexible and can adapt faster than government licensing
 
-            Regional Takeaway
-
-Among major Asian jurisdictions, Taiwan strikes a pragmatic balance: enough regulation to prevent fraud and money laundering, but not so restrictive that it stifles innovation or burdens individual wallet users with compliance requirements.
+> **Regional Takeaway**
+>
+> Among major Asian jurisdictions, Taiwan strikes a pragmatic balance: enough regulation to prevent fraud and money laundering, but not so restrictive that it stifles innovation or burdens individual wallet users with compliance requirements.
 
 ## Frequently Asked Questions
 

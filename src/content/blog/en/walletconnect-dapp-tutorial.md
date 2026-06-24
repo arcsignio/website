@@ -17,9 +17,9 @@ Traditional hot wallets like MetaMask store your private key directly in the bro
 
 WalletConnect solves this with a third approach: **remote signing protocol**. The core idea is this: DApps don't need your private key. They send a signing request to your wallet app (ArcSign), you verify the transaction details on your own device, approve it, and ArcSign sends back a signature. Throughout this entire process, the DApp never sees your private key.
 
-            WalletConnect v2 vs v1
-
-ArcSign supports the latest **WalletConnect v2 protocol**. Compared to the older version, v2 offers better security, lower latency, and a clearer transaction approval flow. If you find a DApp that only supports v1, we recommend requesting an upgrade.
+> **WalletConnect v2 vs v1**
+>
+> ArcSign supports the latest **WalletConnect v2 protocol**. Compared to the older version, v2 offers better security, lower latency, and a clearer transaction approval flow. If you find a DApp that only supports v1, we recommend requesting an upgrade.
 
 ## How ArcSign Implements WalletConnect v2
 
@@ -57,37 +57,33 @@ Even if a DApp website is compromised or contains malicious code, it cannot:
 
 Let's walk through connecting to Uniswap (a DEX) as an example. This process applies to any DApp supporting WalletConnect.
 
-            1
-            Preparation: Open ArcSign and Confirm USB Connection
+**1. Preparation: Open ArcSign and Confirm USB Connection**
 
 First, launch ArcSign on your computer and make sure your USB is plugged in. ArcSign should display a "USB Connected" indicator. If not, try unplugging and reinserting the USB.
 
 With USB confirmed, ArcSign will show the main dashboard. You should see your wallet balance (assuming your Provider is configured correctly). This confirms ArcSign is ready to sign transactions.
 
-            2
-            Open a DApp in Your Browser and Select WalletConnect
+**2. Open a DApp in Your Browser and Select WalletConnect**
 
 Open your browser and navigate to Uniswap.org (or any DApp supporting WalletConnect). Click the "Connect Wallet" button. You'll see a wallet selection list including MetaMask, WalletConnect, and others.
 
 Select **WalletConnect**. Do not select MetaMask—that's for hot wallets.
 
-            3
-            Scan the QR Code or Paste the Connection URI
+**3. Scan the QR Code or Paste the Connection URI**
 
 Uniswap will display a QR code. This QR code contains a special URI (Uniform Resource Identifier) to establish the WalletConnect connection. You have two options:
 
 **Option A: Scan the QR Code (Recommended)**
 
-            In ArcSign, find the WalletConnect scanning option and use ArcSign's camera to scan the QR code displayed on Uniswap. This is the most convenient and safest method because you fully control what you're scanning.
+> **In ArcSign, find the WalletConnect scanning option and use ArcSign's camera to scan the QR code displayed on Uniswap. This is the most convenient and safest method because you fully control what you're scanning.**
+>
+> **Option B: Manually Paste the URI**
 
-**Option B: Manually Paste the URI**
+> **If ArcSign's scan doesn't work, click "Copy to Clipboard" below the QR code on Uniswap, then find the "Paste URI" option in ArcSign's WalletConnect section and paste the connection string.**
+>
+> ![](/blog/images/walletconnect-qr-scan.png)
 
-            If ArcSign's scan doesn't work, click "Copy to Clipboard" below the QR code on Uniswap, then find the "Paste URI" option in ArcSign's WalletConnect section and paste the connection string.
-
-![](/blog/images/walletconnect-qr-scan.png)
-
-            4
-            Approve the Connection Request in ArcSign
+**4. Approve the Connection Request in ArcSign**
 
 After scanning or pasting the URI, ArcSign displays a connection request dialog saying "Uniswap wants to connect to your wallet." The dialog shows:
 
@@ -99,19 +95,17 @@ After scanning or pasting the URI, ArcSign displays a connection request dialog 
 
 **Review this information carefully.** Once you confirm you want to connect to this DApp on this network, click "Approve" or "Connect".
 
-            Security Reminder: Check the Domain
+> **Security Reminder: Check the Domain**
+>
+> Malicious websites can fake a DApp's name and icon. Before approving, **check the URL in your browser's address bar**. Uniswap's official URL should be `https://app.uniswap.org`, not `uniswap.fake.site` or similar.
 
-Malicious websites can fake a DApp's name and icon. Before approving, **check the URL in your browser's address bar**. Uniswap's official URL should be `https://app.uniswap.org`, not `uniswap.fake.site` or similar.
-
-            5
-            Connection Successful: DApp Now Sees Your Wallet Address
+**5. Connection Successful: DApp Now Sees Your Wallet Address**
 
 Once approved, Uniswap displays "Wallet connected" and shows your wallet address and balance. In ArcSign, you'll see "WalletConnect: Connected" status.
 
 At this point, Uniswap knows your address but has never seen your private key. This is the beauty of WalletConnect.
 
-            6
-            Execute a Transaction: Select Token and Amount on Uniswap
+**6. Execute a Transaction: Select Token and Amount on Uniswap**
 
 Now that you're connected, you can trade on Uniswap. For example, let's say you want to swap ETH for USDC. On Uniswap:
 
@@ -125,8 +119,7 @@ Now that you're connected, you can trade on Uniswap. For example, let's say you 
 
 Uniswap calculates the required [gas fee](/blog/gas-fee-optimization) and displays the final transaction details.
 
-            7
-            Sign the Transaction: Review Details in ArcSign
+**7. Sign the Transaction: Review Details in ArcSign**
 
 When you click "Swap", Uniswap sends a signing request through WalletConnect to ArcSign. ArcSign immediately shows a dialog with the complete transaction details:
 
@@ -144,15 +137,13 @@ When you click "Swap", Uniswap sends a signing request through WalletConnect to 
 
 ![](/blog/images/walletconnect-sign-transaction.png)
 
-            8
-            Enter Your Password and Sign
+**8. Enter Your Password and Sign**
 
 After reviewing transaction details, [ArcSign Pro](/blog/arcsign-pro-nft-membership)mpts you to enter your wallet password. This is the password you created when setting up your ArcSign wallet. The password ensures only you can sign transactions.
 
 With the correct password, ArcSign uses your private key on the USB to sign the transaction. The entire signing process happens locally on your computer in under 1 second. **After signing, the private key is immediately zeroed and destroyed.**
 
-            9
-            Verify the Transaction on Blockchain
+**9. Verify the Transaction on Blockchain**
 
 Once signed, ArcSign sends the signed transaction back to Uniswap. Uniswap broadcasts it to the Ethereum blockchain. You'll see the transaction status on Uniswap change from "Processing" to "Completed" (or failed, if there was an issue).
 
@@ -172,15 +163,15 @@ Any DApp implementing WalletConnect v2 works with ArcSign. Here are some popular
 
 ### Supported Blockchains
 
-ArcSign supports 7 chains, including:
+ArcSign supports 7 EVM chains, including:
 
-- **Layer 1:** Bitcoin, Ethereum, BNB Chain, Polygon, Avalanche, Arbitrum, Optimism, Base, and more
+- **Layer 1:** Ethereum, BNB Chain, Polygon, Avalanche, Arbitrum, Optimism, and Base
 
 - **Connectivity:** All EVM-compatible chains connect through WalletConnect v2 to various DApps
 
-            Blockchain Selection Matters
-
-When connecting to a DApp, **ensure ArcSign and the DApp use the same blockchain.** If ArcSign is on Ethereum but Uniswap switches to Polygon, your transaction may fail or behave unexpectedly. DApps typically show the current network in the top right corner; ArcSign clearly indicates it in connection requests.
+> **Blockchain Selection Matters**
+>
+> When connecting to a DApp, **ensure ArcSign and the DApp use the same blockchain.** If ArcSign is on Ethereum but Uniswap switches to Polygon, your transaction may fail or behave unexpectedly. DApps typically show the current network in the top right corner; ArcSign clearly indicates it in connection requests.
 
 ## Security Benefits: Why Cold Storage Signing is Safer
 
@@ -216,9 +207,9 @@ With MetaMask: The fake site steals your private key from the browser, or create
 
 With ArcSign + WalletConnect: The fake site tries to establish a WalletConnect connection. Assume it succeeds and requests you sign a transaction sending 1 ETH to the attacker. But in ArcSign's signing confirmation dialog, you clearly see "Send to `0xattacker...`" not Uniswap's contract. You recognize the attack and refuse to sign. Your assets remain safe.
 
-            Cold Storage Cannot Prevent User Error
-
-However, [cold storage](/blog/what-is-cold-storage) cannot protect you from your own carelessness. If you **actively approve a malicious transaction** (e.g., accidentally click "Confirm" in the signing dialog), even cold storage can't help. So always **carefully review transaction details before signing.**
+> **Cold Storage Cannot Prevent User Error**
+>
+> However, [cold storage](/blog/what-is-cold-storage) cannot protect you from your own carelessness. If you **actively approve a malicious transaction** (e.g., accidentally click "Confirm" in the signing dialog), even cold storage can't help. So always **carefully review transaction details before signing.**
 
 ## Troubleshooting Common Issues
 

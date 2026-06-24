@@ -15,9 +15,9 @@ Pick up any crypto wallet's marketing page and you'll see terms like "AES-256 en
 
 This article breaks the whole stack down in plain English. By the end, you'll understand why "AES-256 alone" isn't enough, why passwords absolutely must go through Argon2id, and why ArcSign's **.arcsign encrypted backup file** is one of the strongest backup schemes any individual user can get today.
 
-            One-Sentence Summary
-
-**AES-256-GCM handles encryption and tamper-detection; Argon2id turns a memorable password into a strong cryptographic key.** You need both. A military-grade vault with a paper lock is still worthless.
+> **One-Sentence Summary**
+>
+> **AES-256-GCM handles encryption and tamper-detection; Argon2id turns a memorable password into a strong cryptographic key.** You need both. A military-grade vault with a paper lock is still worthless.
 
 ## AES-256 in Plain English (3-Minute Version)
 
@@ -29,9 +29,9 @@ The **256** in AES-256 refers to the key length: 256 bits, or 2^256 possible com
 
 AES-256 is approved by the U.S. National Security Agency (NSA) to protect documents classified as Top Secret. That's the highest classification level any U.S. government agency can assign. Banks, militaries, and intelligence agencies worldwide use AES as their baseline. When a product says "military-grade encryption," it almost always means AES-256.
 
-            Key Reminder
-
-AES-256 is extraordinarily secure on paper, but **real security comes from using it correctly**: the right mode (like GCM), the right key source (like Argon2id), and the right randomness (CSPRNG). AES used wrong is worse than no encryption at all.
+> **Key Reminder**
+>
+> AES-256 is extraordinarily secure on paper, but **real security comes from using it correctly**: the right mode (like GCM), the right key source (like Argon2id), and the right randomness (CSPRNG). AES used wrong is worse than no encryption at all.
 
 ## GCM Mode: Prevents Both Eavesdropping and Tampering
 
@@ -39,13 +39,11 @@ AES itself is a block cipher primitive — it only encrypts 128-bit blocks at a 
 
 ### GCM's Two Superpowers
 
-            1
-            Confidentiality
+**1. Confidentiality**
 
 Counter-mode encryption turns your data into ciphertext that looks completely random. Without the key, an attacker sees only noise and cannot recover the plaintext.
 
-            2
-            Authenticated Integrity
+**2. Authenticated Integrity**
 
 While encrypting, GCM also produces a 128-bit authentication tag. If anyone flips even a single bit of the ciphertext, decryption will fail verification and the system refuses to output anything — rather than happily spitting out garbled data.
 
@@ -66,57 +64,49 @@ That's why **Key Derivation Functions (KDFs)** exist. Argon2id is currently the 
 
 ### How Argon2id Defends You
 
-            1
-            Salting
+**1. Salting**
 
 Every derivation uses a unique random salt. Even if two people chose the exact same password, they get completely different keys — neutralizing rainbow-table attacks.
 
-            2
-            Memory-Hard
+**2. Memory-Hard**
 
 The computation deliberately consumes a lot of memory (often 64 MB to 1 GB). That prevents attackers from running cheap parallel attacks on GPUs or ASICs — each guess now carries expensive memory cost.
 
-            3
-            Time-Hard
+**3. Time-Hard**
 
 Derivation intentionally takes a few hundred milliseconds. For you that's just an extra half-second after typing your password. For an attacker trying billions of guesses, it's an unbearable cost multiplier.
 
-            4
-            Hybrid Mode (id)
+**4. Hybrid Mode (id)**
 
 Argon2 has three flavors: d, i, and id. The "id" variant combines Argon2d's GPU-resistance with Argon2i's side-channel resistance, and is the officially recommended default.
 
-            Small Numbers, Huge Impact
-
-With a plain SHA-256 derivation, an attacker can try billions of passwords per second. With Argon2id on the same hardware, they're limited to a few hundred to a few thousand. **That's a million-fold cost increase** — and it's why every modern wallet should use a memory-hard KDF.
+> **Small Numbers, Huge Impact**
+>
+> With a plain SHA-256 derivation, an attacker can try billions of passwords per second. With Argon2id on the same hardware, they're limited to a few hundred to a few thousand. **That's a million-fold cost increase** — and it's why every modern wallet should use a memory-hard KDF.
 
 ## How ArcSign Uses This Combo to Protect .arcsign Backups
 
 With the fundamentals out of the way, let's look at what actually happens inside ArcSign's **.arcsign encrypted backup file**. The moment you click "Export Backup," this pipeline runs automatically:
 
-            1
-            Generate Random Salt and Nonce
+**1. Generate Random Salt and Nonce**
 
 ArcSign uses the OS cryptographically secure RNG (CSPRNG) to generate a 16-byte Argon2id salt and a 12-byte AES-GCM nonce. Both are stored in plaintext in the backup file header — they're not secret, and they're freshly generated every export.
 
-            2
-            Derive a 256-bit Key via Argon2id
+**2. Derive a 256-bit Key via Argon2id**
 
 Your wallet password + the salt are fed into Argon2id with tuned memory and time parameters, producing a 256-bit key. This key **lives only in memory — it is never written to disk**.
 
-            3
-            Encrypt the Backup with AES-256-GCM
+**3. Encrypt the Backup with AES-256-GCM**
 
 Your wallet state (including the private-key shards already protected by [XOR three-shard encryption](/blog/xor-encryption-explained), address book, settings, etc.) is encrypted with AES-256-GCM, producing ciphertext plus an authentication tag. The resulting bundle (ciphertext + tag + salt + nonce) is written as your .arcsign file.
 
-            4
-            Zero Out the Key Immediately
+**4. Zero Out the Key Immediately**
 
 Once export finishes, the derived AES key is wiped from memory. Combined with [mlock memory protection](/blog/mlock-memory-protection), the key is guaranteed never to be swapped to disk at any point in its short lifetime.
 
-            Key Point: Export Equals Encrypted
-
-Unlike some wallets, the .arcsign file **has no "first export, then set a password" intermediate state**. The moment the file exists on disk, it's already fully encrypted. If your computer is stolen right then, the attacker still gets nothing but an unbreakable blob.
+> **Key Point: Export Equals Encrypted**
+>
+> Unlike some wallets, the .arcsign file **has no "first export, then set a password" intermediate state**. The moment the file exists on disk, it's already fully encrypted. If your computer is stolen right then, the attacker still gets nothing but an unbreakable blob.
 
 ## How It Compares to Other Encryption Schemes
 

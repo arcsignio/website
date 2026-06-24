@@ -17,9 +17,9 @@ Unlike network vulnerabilities or smart contract bugs, social engineering exploi
 
 This guide covers the 7 most prevalent social engineering tactics targeting crypto users, how to recognize them, and practical steps to defend yourself.
 
-            Key Reality Check
-
-No legitimate exchange, wallet provider, or community admin will ever ask for your private keys, [seed phrase](/blog/seed-phrase-backup-guide)s, or 2FA codes via DM, email, or public chat. Ever.
+> **Key Reality Check**
+>
+> No legitimate exchange, wallet provider, or community admin will ever ask for your private keys, [seed phrase](/blog/seed-phrase-backup-guide)s, or 2FA codes via DM, email, or public chat. Ever.
 
 ## 1. Fake Exchange & Wallet Customer Support
 
@@ -41,24 +41,21 @@ A user experiences a problem—account locked, transaction pending, recovery nee
 
 Legitimate support sometimes *does* ask for technical details. The scammer exploits this by mixing real-sounding protocol with the ask—making it feel authentic.
 
-            1
-            Verify Official Channels Only
+**1. Verify Official Channels Only**
 
 Always go directly to the official website (type URL yourself) and use the support form there. Check the domain carefully. Scammers use domains like "coinbase-help.com" or "metamask-support.io"—one letter off.
 
-            2
-            Legitimate Support Never Asks for Private Keys
+**2. Legitimate Support Never Asks for Private Keys**
 
 Not Coinbase. Not MetaMask. Not anyone. If someone asks, it's a scam. Block and report immediately.
 
-            3
-            Use Built-In Support Channels
+**3. Use Built-In Support Channels**
 
 MetaMask support is in the app menu. Coinbase support is in the app or verified links on the website. Ledger support is at ledger.com/support. Never use DM or external links.
 
-            Pro Tip: Use Cold Storage
-
-With ArcSign—a USB cold wallet—your private keys never touch the internet. Even if a scammer compromises your computer, they can't access your keys. Recovery is via the encrypted .arcsign backup file, which you control locally.
+> **Pro Tip: Use Cold Storage**
+>
+> With ArcSign—a USB cold wallet—your private keys never touch the internet. Even if a scammer compromises your computer, they can't access your keys. Recovery is via the encrypted .arcsign backup file, which you control locally.
 
 ## 2. Fake Discord & Telegram Community Admins
 
@@ -78,18 +75,15 @@ Crypto communities (Discord servers, Telegram groups) are goldmines for scammers
 
 Community members are emotionally invested and may let their guard down. Trust in a "fellow community member" is lower friction than trust in a support agent.
 
-            1
-            Verify Admin Status In-Channel
+**1. Verify Admin Status In-Channel**
 
 If someone DMs you claiming to be an admin, ask them a question in the public Discord/Telegram channel. Real admins can respond publicly or verify via the official server/group verification method.
 
-            2
-            Check Account Age & Activity
+**2. Check Account Age & Activity**
 
 Scammers often use new or hijacked accounts. Check how long the account has existed and its activity history. Impersonation accounts often have sudden spikes in messaging or no prior conversation.
 
-            3
-            Never Connect Your Wallet to Third-Party Links
+**3. Never Connect Your Wallet to Third-Party Links**
 
 If an "admin" sends a verification link, open it in a separate browser and carefully check the domain. Most scam links are hosted on temporary services. Real airdrop verification happens on official project websites, not random links.
 
@@ -113,18 +107,15 @@ Scammers create fake token contracts and airdrop announcements, then use phishin
 
 FOMO (fear of missing out) is a powerful motivator. People see "free tokens" and click before thinking critically.
 
-            1
-            Never Claim Unexpected Airdrops
+**1. Never Claim Unexpected Airdrops**
 
 If you didn't sign up for an airdrop, ignore it. Real projects announce airdrops clearly on official channels and don't require verification clicks.
 
-            2
-            Check Token Contract Address
+**2. Check Token Contract Address**
 
 Copy the token address from your wallet and paste it (not click) into a block explorer like Etherscan. Check the creator, transaction history, and holder count. Fake tokens often have only a few holders and zero liquidity.
 
-            3
-            Never "Connect Wallet" to Unknown Sites
+**3. Never "Connect Wallet" to Unknown Sites**
 
 Every time you click "Connect Wallet" on a website, you're exposing your accounts. Use [WalletConnect](/blog/walletconnect-dapp-tutorial) cautiously, verify the domain, and use a separate wallet for high-risk interactions.
 
@@ -144,18 +135,15 @@ Every time you click "Connect Wallet" on a website, you're exposing your account
 
 This exploits both financial and emotional vulnerability. The emotional investment makes victims ignore red flags.
 
-            1
-            Be Skeptical of "Crypto Success Stories" Online
+**1. Be Skeptical of "Crypto Success Stories" Online**
 
 If someone you just met has a guaranteed investment opportunity, it's likely a scam. Legitimate investment advisors don't recruit through dating apps.
 
-            2
-            Never Invest in Apps Shared via Personal Connections
+**2. Never Invest in Apps Shared via Personal Connections**
 
 If a romantic interest wants you to use a specific app or platform for crypto, pause. Research the app independently. Check app store reviews and whois data for the domain.
 
-            3
-            Test Withdrawals Before Large Deposits
+**3. Test Withdrawals Before Large Deposits**
 
 With legitimate platforms, you can withdraw small amounts freely. If withdrawal is blocked, the platform is fake. Real exchanges (Binance, Coinbase) allow instant withdrawals (minus standard fees).
 
@@ -179,24 +167,21 @@ A dApp (decentralized app) asks you to approve a token transfer. You approve a h
 
 Approval is a standard web3 interaction, so users assume it's safe. The phishing site looks legitimate but has a malicious contract.
 
-            1
-            Always Set Approval Limits
+**1. Always Set Approval Limits**
 
 When approving a token, change the approval amount to **exactly what you need** (e.g., the amount you're swapping), not unlimited. Most wallets let you edit the approval amount.
 
-            2
-            Monitor & Revoke Old Approvals
+**2. Monitor & Revoke Old Approvals**
 
 Websites like Revoke.cash let you see all your [token approval](/blog/token-approval-revoke)s and revoke them. Regularly review this. If you've approved tokens to apps you no longer use, revoke them.
 
-            3
-            Use ArcSign's Built-In Approvals Manager
+**3. Use ArcSign's Built-In Approvals Manager**
 
 ArcSign shows all your [ERC-20](/blog/erc20-token-management) [token approval](/blog/token-approval-revoke)s across 6 EVM chains and lets you revoke them from the dashboard. This gives you full visibility and control—preventing forgotten approvals from becoming attack vectors.
 
-            Pro Security Measure
-
-ArcSign's USB [cold storage](/blog/what-is-cold-storage) means even if a phishing site tricks you into approving tokens, the attacker can't actually initiate transactions without physical access to your USB device. Your private keys remain secure.
+> **Pro Security Measure**
+>
+> ArcSign's USB [cold storage](/blog/what-is-cold-storage) means even if a phishing site tricks you into approving tokens, the attacker can't actually initiate transactions without physical access to your USB device. Your private keys remain secure.
 
 ## 6. SIM Swap + Social Engineering
 
@@ -220,18 +205,15 @@ A hacker convinces your mobile carrier to transfer your phone number to a SIM ca
 
 Carrier reps are trained to be helpful. With enough personal details, they'll grant a replacement SIM request without rigorous verification. Once they have your number, SMS 2FA is useless.
 
-            1
-            Use App-Based 2FA, Not SMS
+**1. Use App-Based 2FA, Not SMS**
 
 Enable authenticator apps (Google Authenticator, Authy) on all crypto exchanges. SMS 2FA is vulnerable to [SIM swap](/blog/sim-swap-attack-prevention)s. App-based codes can't be intercepted without access to your phone.
 
-            2
-            Add a SIM PIN / Carrier Lock
+**2. Add a SIM PIN / Carrier Lock**
 
 Contact your carrier and request a SIM PIN (some carriers call it a "Account PIN") and a port freeze. These require additional verification before any SIM changes.
 
-            3
-            Don't Store Large Funds on Exchanges
+**3. Don't Store Large Funds on Exchanges**
 
 Keep the majority of your crypto on a cold wallet (like ArcSign). Even if an exchange account is compromised, only the amount you actively trade is at risk. With ArcSign's USB [cold storage](/blog/what-is-cold-storage), your keys never leave the device—SIM swaps are irrelevant.
 
@@ -263,18 +245,15 @@ Scammers send fake packages (claiming to be Ledger, Trezor, hardware wallet comp
 
 Physical packages feel legitimate. People trust official-looking packaging and instructions. [supply chain attack](/blog/supply-chain-attack-hardware-wallet)s are harder to detect because they exploit perceived legitimacy.
 
-            1
-            Only Buy Hardware Wallets from Official Sources
+**1. Only Buy Hardware Wallets from Official Sources**
 
 Purchase Ledger directly from ledger.com, not Amazon or eBay (third-party sellers can ship tampered devices). Verify the seal and check the device's authenticity using the official verification process.
 
-            2
-            Verify Setup URLs Carefully
+**2. Verify Setup URLs Carefully**
 
 Ledger setup is at ledger.com. Trezor at trezor.io. Never use URLs from packaging if it arrived unexpectedly. Type the official domain directly into your browser.
 
-            3
-            Verify Job Offers Independently
+**3. Verify Job Offers Independently**
 
 If a recruiter contacts you from a crypto company, verify the recruiter's identity directly on the company's website (don't use contact info from the email). Check LinkedIn to confirm they work there.
 
@@ -314,9 +293,9 @@ If a recruiter contacts you from a crypto company, verify the recruiter's identi
 
 ### Why ArcSign Protects Against Social Engineering
 
-            Cold Storage: The Ultimate Defense
-
-ArcSign is a USB cold wallet—your private keys never leave the device and never touch the internet. Even if:
+> **Cold Storage: The Ultimate Defense**
+>
+> ArcSign is a USB cold wallet—your private keys never leave the device and never touch the internet. Even if:
 
 - A scammer tricks you into approving malicious dApp transactions, they can't execute them without physical USB access.
 

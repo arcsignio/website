@@ -271,6 +271,30 @@ const schema = [
     overflow-x: auto;
     margin-bottom: 1.25rem;
   }
+  .blog-article :global(blockquote) {
+    background: rgba(45,212,191,0.06);
+    border: 1px solid rgba(45,212,191,0.25);
+    border-left: 3px solid var(--primary);
+    border-radius: var(--radius-md);
+    padding: 16px 20px;
+    margin: 1.5rem 0;
+  }
+  .blog-article :global(blockquote > p) {
+    margin-bottom: 0.75rem;
+    color: rgba(255,255,255,0.85);
+  }
+  .blog-article :global(blockquote > p:first-child) {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+  .blog-article :global(blockquote > p:last-child) {
+    margin-bottom: 0;
+  }
+  .blog-article :global(blockquote > p:only-child) {
+    color: rgba(255,255,255,0.85);
+    font-weight: 400;
+  }
   .blog-article :global(table) {
     width: 100%;
     border-collapse: collapse;

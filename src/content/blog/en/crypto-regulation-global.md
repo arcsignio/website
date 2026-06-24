@@ -17,9 +17,9 @@ Here's what changed: In early 2024, the EU's **MiCA (Markets in Crypto-Assets Re
 
 For crypto users, this means both **risks and opportunities**. Legitimate platforms are consolidating under compliance pressure. Bad actors are being pushed out. But personal users of self-custody wallets face new complexity: Travel Rule implementation, KYC/AML scrutiny at exchange onramps, and different rules in different countries.
 
-            Key Insight
-
-2026 is when the "compliance era" truly arrives. Regulations aren't coming — they're already here. The question is no longer "will regulation happen?" but "how do I adapt?"
+> **Key Insight**
+>
+> 2026 is when the "compliance era" truly arrives. Regulations aren't coming — they're already here. The question is no longer "will regulation happen?" but "how do I adapt?"
 
 ## Regulation Status Across Major Economies
 
@@ -61,20 +61,17 @@ For US users, the message is clear: **self-custody is safest**, but regulatory u
 
 Asia-Pacific shows the most variance in regulation, with each country taking a distinct approach:
 
-            🇯🇵
-            Japan: Permissive with Guardrails
+> **🇯🇵 — Japan: Permissive with Guardrails**
+>
+> Japan's Payment Services Act (PSA) treats exchanges as licensed service providers, but [allows self-custody wallets completely unrestricted](/blog/../japan-crypto-regulation). Users can hold Bitcoin and Ethereum freely. Exchanges must maintain [cold storage](/blog/what-is-cold-storage) and pass security audits. This balanced approach has made Japan a crypto hub in Asia.
 
-Japan's Payment Services Act (PSA) treats exchanges as licensed service providers, but [allows self-custody wallets completely unrestricted](/blog/../japan-crypto-regulation). Users can hold Bitcoin and Ethereum freely. Exchanges must maintain [cold storage](/blog/what-is-cold-storage) and pass security audits. This balanced approach has made Japan a crypto hub in Asia.
+> **🇸🇬 — Singapore: Strict Licensing, Clear Rules**
+>
+> Singapore's MAS (Monetary Authority of Singapore) requires crypto exchanges and custodians to be licensed. Self-custody is unrestricted, but the regulatory burden on exchanges is high. This creates a clear divide: retail users should self-custody, professionals use licensed platforms. It's a "compliance-first" approach.
 
-            🇸🇬
-            Singapore: Strict Licensing, Clear Rules
-
-Singapore's MAS (Monetary Authority of Singapore) requires crypto exchanges and custodians to be licensed. Self-custody is unrestricted, but the regulatory burden on exchanges is high. This creates a clear divide: retail users should self-custody, professionals use licensed platforms. It's a "compliance-first" approach.
-
-            🇭🇰
-            Hong Kong: Crypto Ambitions with Constraints
-
-Hong Kong's SFC regulates crypto trading platforms and funds. Self-custody remains unregulated, but Hong Kong is cautious about retail adoption. The city is positioning itself as a crypto infrastructure hub for institutions, not mass-market users.
+> **🇭🇰 — Hong Kong: Crypto Ambitions with Constraints**
+>
+> Hong Kong's SFC regulates crypto trading platforms and funds. Self-custody remains unregulated, but Hong Kong is cautious about retail adoption. The city is positioning itself as a crypto infrastructure hub for institutions, not mass-market users.
 
 ### Taiwan: Progress on Virtual Asset Management Law
 
@@ -120,9 +117,9 @@ For self-custody users, this mainly means:
 
 - **Exchange-to-exchange transfers are most regulated:** These trigger the highest compliance burden
 
-            Privacy Protection
-
-Self-custody wallets like ArcSign reduce your exposure to the Travel Rule. By holding assets offline and only using exchanges for onramps/offramps, you minimize the time your funds are subject to exchange-level surveillance.
+> **Privacy Protection**
+>
+> Self-custody wallets like ArcSign reduce your exposure to the Travel Rule. By holding assets offline and only using exchanges for onramps/offramps, you minimize the time your funds are subject to exchange-level surveillance.
 
 ### Stablecoin Regulation: USDT and USDC's Compliance Journey
 
@@ -138,52 +135,48 @@ Self-custody wallets like ArcSign reduce your exposure to the Travel Rule. By ho
 
 As regulation tightens, the choice between self-custody and custodial wallets becomes more nuanced. Here's how to think about it in 2026:
 
-                    Factor
-                    Self-Custody (Cold Wallet)
-                    Custodial Wallet (Exchange)
+**Factor**
+**Self-Custody (Cold Wallet)**
+**Custodial Wallet (Exchange)**
 
-                    **Legal Status 2026**
-                    Explicitly protected
-                    Regulated but safe if licensed
+**Legal Status 2026**
+**Explicitly protected**
+**Regulated but safe if licensed**
 
-                    **KYC/AML Burden**
-                    None on holdings
-                    Full KYC required
+**KYC/AML Burden**
+**None on holdings**
+**Full KYC required**
 
-                    **Privacy Level**
-                    Maximum
-                    Limited (exchange has records)
+**Privacy Level**
+**Maximum**
+**Limited (exchange has records)**
 
-                    **Travel Rule Exposure**
-                    Low (peer-to-peer transfers unrestricted)
-                    High (exchange monitored)
+**Travel Rule Exposure**
+Low (peer-to-peer transfers unrestricted)
+**High (exchange monitored)**
 
-                    **Trading Convenience**
-                    Moderate (need to connect to DEX)
-                    High (instant trading)
+**Trading Convenience**
+Moderate (need to connect to DEX)
+**High (instant trading)**
 
-                    **Risk if Platform Fails**
-                    None (you control keys)
-                    Potential loss (depends on insurance)
+**Risk if Platform Fails**
+**None (you control keys)**
+Potential loss (depends on insurance)
 
-                    **Regulatory Risk 2026**
-                    Minimal
-                    Moderate (account freezes possible)
+**Regulatory Risk 2026**
+> **Minimal — Moderate (account freezes possible)**
+>
+> The verdict: **2026 is the year to combine both strategies**. Use self-custody wallets for long-term holdings (5+ years) and security-conscious storing. Use licensed custodial wallets for frequent trading and liquidity. This way, you minimize Travel Rule exposure while maintaining tradability.
 
-The verdict: **2026 is the year to combine both strategies**. Use self-custody wallets for long-term holdings (5+ years) and security-conscious storing. Use licensed custodial wallets for frequent trading and liquidity. This way, you minimize Travel Rule exposure while maintaining tradability.
-
-            1
-            Hold 80-90% in Self-Custody Cold Wallet
+**1. Hold 80-90% in Self-Custody Cold Wallet**
 
 Keep your main portfolio in a secure, offline cold wallet like ArcSign. This protects against exchange hacks, Travel Rule surveillance, and regulatory account freezes.
 
-            2
-            Keep 10-20% on Licensed Exchanges
+**2. Keep 10-20% on Licensed Exchanges**
 
 Maintain a small amount on major regulated exchanges (Kraken, Coinbase, Bitstamp in US; Kraken, Bitstamp in EU; local exchanges in Asia). This keeps you liquid for trading opportunities without exposing your full portfolio.
 
-            3
-            Use Multiple Jurisdictions if Possible
+**3. Use Multiple Jurisdictions if Possible**
 
 Avoid putting all assets with exchanges in a single country's jurisdiction. If you're internationally mobile, distribute across regulated exchanges in different regions to reduce regulatory concentration risk.
 
@@ -199,7 +192,7 @@ All your private keys are encrypted with [AES-256](/blog/aes256-encryption-simpl
 
 ### Multi-Chain Compliance-Ready
 
-[ArcSign supports 7 chains](/blog/../multi-chain-support-arcsign) — Bitcoin, Ethereum, and 6 major EVM chains including Polygon, Arbitrum, Optimism, BSC, and Avalanche. This gives you flexibility to distribute holdings across multiple chains if regulations in your jurisdiction target specific blockchains.
+[ArcSign supports 7 EVM chains](/blog/../multi-chain-support-arcsign): Ethereum, Polygon, Arbitrum, Optimism, BSC, Base, and Avalanche. This gives you flexibility to distribute holdings across multiple chains if regulations in your jurisdiction target specific blockchains.
 
 ### Travel Rule Ready: Built-in DEX Swap and WalletConnect
 

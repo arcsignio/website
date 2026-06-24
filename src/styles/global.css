@@ -1145,6 +1145,7 @@ h4 { font-size: 1.125rem; }
 .chain-badge.arb { background: rgba(40, 160, 240, 0.2); color: #28a0f0; }
 .chain-badge.op { background: rgba(255, 4, 32, 0.2); color: #ff6666; }
 .chain-badge.base { background: rgba(0, 82, 255, 0.2); color: #6699ff; }
+.chain-badge.avax { background: rgba(232, 65, 66, 0.2); color: #ff7a7a; }
 
 .feature-badge {
     display: inline-block;

@@ -15,9 +15,9 @@ In traditional finance, when someone passes away, banks, brokerages, and insuran
 
 According to a 2024 estimate from the Cambridge Centre for Alternative Finance (CCAF), roughly **20% of all bitcoin (about 3.8 million BTC) has been permanently lost**, and a sizable share of that is attributable to holders who died without leaving inheritance instructions. With BTC trading well above $100,000, that adds up to **$380+ billion** in crypto wealth that families around the world cannot reclaim.
 
-            The Core Tension
-
-Crypto inheritance has a built-in contradiction: **security and inheritability seem to fight each other**. The tighter you lock your keys away, the harder it is for your family to access them; the more accessible you make them, the easier it is for attackers to win. This guide is about achieving both at once.
+> **The Core Tension**
+>
+> Crypto inheritance has a built-in contradiction: **security and inheritability seem to fight each other**. The tighter you lock your keys away, the harder it is for your family to access them; the more accessible you make them, the easier it is for attackers to win. This guide is about achieving both at once.
 
 ## Why Is Crypto Inheritance Harder Than Traditional Inheritance?
 
@@ -35,9 +35,9 @@ Most jurisdictions now recognize crypto as inheritable digital property — see 
 
 Most wallets back up with a 12- to 24-word BIP39 seed phrase. Writing it on paper and locking it in a safe is reasonable, but it concentrates the entire key in one place — fire, flood, theft, or a family member finding it accidentally can all become catastrophic. Worse, a single glance is enough to compromise a plaintext seed, and there is no second line of defense.
 
-            Real-World Case
-
-In 2018, the founder of Canadian crypto exchange QuadrigaCX, Gerald Cotten, died unexpectedly while traveling in India. **$190 million** in customer assets vanished with the private keys he kept on his personal laptop, and most of it has never been recovered. While that was an exchange tragedy rather than an individual inheritance, it vividly illustrates the consequences of a single key disappearing.
+> **Real-World Case**
+>
+> In 2018, the founder of Canadian crypto exchange QuadrigaCX, Gerald Cotten, died unexpectedly while traveling in India. **$190 million** in customer assets vanished with the private keys he kept on his personal laptop, and most of it has never been recovered. While that was an exchange tragedy rather than an individual inheritance, it vividly illustrates the consequences of a single key disappearing.
 
 ### 4. The Knowledge Barrier Creates a Second Wave of Risk
 
@@ -83,7 +83,7 @@ ArcSign is naturally suited to inheritance. The core idea is simple: **let your 
 
 The .arcsign backup file is a single file encrypted with **AES-256-GCM**. It is encrypted at the moment of export — there is no separate "set a password" step afterwards. That gives it several inheritance-friendly properties:
 
-            Inheritance-Friendly Properties
+Inheritance-Friendly Properties
 
 1. **Single, portable file.** Your whole wallet collapses into one file that fits on a USB stick, in cloud storage, in a safe deposit box, or even on a printed QR code.
 2. **Harmless when exposed.** Even if the file leaks, no password means no access. It can live in places lawyers can reach.
@@ -94,22 +94,19 @@ The .arcsign backup file is a single file encrypted with **AES-256-GCM**. It is 
 
 The architecture we recommend places each ingredient with a different custodian in a different location:
 
-            Layer 1
-            Encrypted Backup File (.arcsign)
+> **Layer 1 — Encrypted Backup File (.arcsign)**
+>
+> Can live on: a personal USB, a home safe, encrypted cloud storage, or with your lawyer. **This file alone cannot access funds.**
 
-Can live on: a personal USB, a home safe, encrypted cloud storage, or with your lawyer. **This file alone cannot access funds.**
+> **Layer 2 — Unlock Password**
+>
+> Can live in: a bank safe deposit box, a sealed envelope held by your lawyer, or a password manager's "emergency contact" feature (e.g., 1Password Legacy Contact). **This password alone cannot access funds either.**
 
-            Layer 2
-            Unlock Password
-
-Can live in: a bank safe deposit box, a sealed envelope held by your lawyer, or a password manager's "emergency contact" feature (e.g., 1Password Legacy Contact). **This password alone cannot access funds either.**
-
-            Layer 3
-            The Operating Manual
-
-Specifies where the .arcsign file is located, how to obtain the password, how to install ArcSign, how to import the backup, and recommended immediate actions (such as moving funds to the heir's own new wallet to retire the inherited keys). Keep both a printed copy and a digital one.
-
-**Why does this design balance security and inheritability?** Because no single custodian — lawyer, family, bank — holds enough of the puzzle to act alone. You need elements held by at least two distinct parties to unlock the assets. This reproduces the spirit of multisig without paying its gas cost or complexity.
+> **Layer 3 — The Operating Manual**
+>
+> Specifies where the .arcsign file is located, how to obtain the password, how to install ArcSign, how to import the backup, and recommended immediate actions (such as moving funds to the heir's own new wallet to retire the inherited keys). Keep both a printed copy and a digital one.
+>
+> **Why does this design balance security and inheritability?** Because no single custodian — lawyer, family, bank — holds enough of the puzzle to act alone. You need elements held by at least two distinct parties to unlock the assets. This reproduces the spirit of multisig without paying its gas cost or complexity.
 
 ## Building Your ArcSign Inheritance Plan, Step by Step
 
@@ -141,9 +138,9 @@ The manual should include:
 - Step-by-step restore instructions (consider linking to the [beginner setup guide](/blog/arcsign-beginner-setup-guide))
 - Recommended follow-up actions (e.g., create a new wallet and migrate funds, revoke any old [token approvals](/blog/how-to-revoke-token-approvals))
 
-            Important
-
-The operating manual **must not contain the password itself**. It should only say "the password is held by Lawyer X." If the manual contains both the file location and the password, you have just bypassed the entire three-layer architecture.
+> **Important**
+>
+> The operating manual **must not contain the password itself**. It should only say "the password is held by Lawyer X." If the manual contains both the file location and the password, you have just bypassed the entire three-layer architecture.
 
 ### Step 5: Run a Drill
 
@@ -159,7 +156,7 @@ In your formal will, name the crypto assets explicitly: "I authorize [heir name]
 | --- | --- | --- | --- | --- |
 | **Single-point failure risk** | High (paper theft = total loss) | Medium (need N shares) | Low (multiple keys) | Low (need file + password) |
 | **Heir's technical bar** | Low (but phishing-prone) | High (must know SLIP-39) | High (must know multisig) | Low (GUI restore) |
-| **Chain coverage** | Wallet-dependent | Hardware-dependent | EVM-mostly | BTC + 6 EVM chains |
+| **Chain coverage** | Wallet-dependent | Hardware-dependent | EVM-mostly | 7 EVM chains |
 | **Hardware purchase required** | No | Yes (Trezor etc.) | No | No (any USB) |
 | **Legal integration** | Easy (paper attaches to will) | Medium (special clauses) | Hard (smart contract) | Easy (file attaches to will) |
 | **Day-to-day usability** | Annoying | Annoying | High (daily usable) | High (USB plug & play) |

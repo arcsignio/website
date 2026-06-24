@@ -394,17 +394,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
         </div>
         <div class="tutorial-card">
-          <h3>設定區塊鏈節點 (RPC Provider)</h3>
-          <p style="color: rgba(255,255,255,0.7); margin-bottom: 16px;">ArcSign 需要透過 RPC Provider 與區塊鏈互動。目前需要手動設定 API Key：</p>
+          <h3>餘額開箱即用，NFT / 交易歷史才需設定</h3>
+          <p style="color: rgba(255,255,255,0.7); margin-bottom: 16px;">從 v1.5.0 起，代幣餘額走內建的公共 RPC + Multicall3，<strong>全 7 條 EVM 鏈都不需要任何 API Key</strong>，價格由 DefiLlama 免費提供——開箱即用、零設定。</p>
+          <div class="tip-box" style="background: rgba(45, 212, 191, 0.1); border-color: rgba(45, 212, 191, 0.3);">
+            <h4 style="color: #14b8a6;">✅ 餘額免 key</h4>
+            <p style="color: rgba(255, 255, 255, 0.7);">
+              插上 USB、建立或匯入錢包，餘額就會顯示。不需要去任何第三方註冊帳號。
+            </p>
+          </div>
+          <p style="color: rgba(255,255,255,0.7); margin: 16px 0;">只有 <strong>NFT 圖庫與交易歷史</strong>需要 API Key（那是全鏈索引，公共 RPC 做不到）。需要時：</p>
           <ul>
             <li>前往「設定 → Provider 設定」</li>
             <li>選擇 Provider 類型並輸入你的 API Key</li>
           </ul>
           <div class="tip-box">
-            <h4>💡 支援的 Provider</h4>
+            <h4>💡 支援的 Provider（NFT / 交易歷史）</h4>
             <p>
               <strong>Alchemy</strong> — Ethereum、Polygon、Arbitrum、Optimism、Base<br />
-              <strong>NodeReal</strong> — BNB Smart Chain (BSC)
+              <strong>NodeReal</strong> — BNB Smart Chain (BSC)<br />
+              <strong>Glacier</strong> — Avalanche（匿名，免 key）
             </p>
           </div>
           <div class="warning-box">
@@ -412,13 +420,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <p>
               前往 <a href="https://dashboard.alchemy.com" target="_blank" style="color: #2dd4bf;">Alchemy</a> 以及
               <a href="https://dashboard.nodereal.io" target="_blank" style="color: #2dd4bf;">NodeReal</a> 免費註冊帳號，
-              建立專案後即可取得 API Key。免費方案足夠一般使用。
-            </p>
-          </div>
-          <div class="tip-box" style="background: rgba(45, 212, 191, 0.1); border-color: rgba(45, 212, 191, 0.3);">
-            <h4 style="color: #14b8a6;">🚀 即將推出：內建節點</h4>
-            <p style="color: rgba(255, 255, 255, 0.7);">
-              未來版本將內建預設的 RPC 節點，讓你無需手動設定即可直接使用。敬請期待！
+              建立專案後即可取得 API Key。免費方案足夠一般使用。Avalanche 走 Glacier，不需要 key。
             </p>
           </div>
         </div>

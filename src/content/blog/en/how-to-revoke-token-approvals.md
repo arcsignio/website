@@ -17,9 +17,9 @@ Technically, this is the `approve(spender, amount)` function in the [ERC-20](/bl
 
 The critical thing to understand: **this allowance persists forever on-chain unless you explicitly revoke it.** Closing the DApp tab, disconnecting your wallet, even transferring your tokens elsewhere — none of these actions cancel the approval. The permission lives on the blockchain until you send a revocation transaction.
 
-            Key Concept
-
-A [token approval](/blog/token-approval-revoke) is a standing permission stored on-chain. If you have approved 100 DeFi protocols over two years of trading, you may have 100 open permissions right now — even if you haven't used most of those protocols in months.
+> **Key Concept**
+>
+> A [token approval](/blog/token-approval-revoke) is a standing permission stored on-chain. If you have approved 100 DeFi protocols over two years of trading, you may have 100 open permissions right now — even if you haven't used most of those protocols in months.
 
 ## Why Forgotten Approvals Are Dangerous
 
@@ -35,25 +35,25 @@ The attack scenario is straightforward and has played out repeatedly:
 
 5. Your USDC is drained — without you signing anything, without your private key being touched.
 
-            Critical Risk: Unlimited Approvals
-
-Many DeFi UIs default to requesting **unlimited approval** (the maximum uint256 value) to improve UX by avoiding repeated approval prompts. This means a single approval can expose your *entire* token balance — including tokens you deposit later — to a compromised contract indefinitely.
-
-The risk compounds with every new DeFi protocol you use, every chain you operate on, and every year that passes. A veteran DeFi user with 2–3 years of activity across multiple chains may have hundreds of open approvals, many to protocols they have completely forgotten about.
+> **Critical Risk: Unlimited Approvals**
+>
+> Many DeFi UIs default to requesting **unlimited approval** (the maximum uint256 value) to improve UX by avoiding repeated approval prompts. This means a single approval can expose your *entire* token balance — including tokens you deposit later — to a compromised contract indefinitely.
+>
+> The risk compounds with every new DeFi protocol you use, every chain you operate on, and every year that passes. A veteran DeFi user with 2–3 years of activity across multiple chains may have hundreds of open approvals, many to protocols they have completely forgotten about.
 
 ## Real Attack Examples: Billions Lost to Approval Exploits
 
-            Bybit Hack — February 2025 (~$1.5 Billion)
+> **Bybit Hack — February 2025 (~$1.5 Billion)**
+>
+> The Bybit hack in February 2025 became one of the largest crypto security incidents in history. While the primary vector involved a compromise of Safe multisig wallet UI (a [supply chain attack](/blog/supply-chain-attack-hardware-wallet)), approval-based exploits played a role in enabling fund movements. The incident highlighted that even institutional-grade setups can be compromised through smart contract interaction patterns — and that every standing approval is a potential attack vector when the upstream contract is compromised.
 
-The Bybit hack in February 2025 became one of the largest crypto security incidents in history. While the primary vector involved a compromise of Safe multisig wallet UI (a [supply chain attack](/blog/supply-chain-attack-hardware-wallet)), approval-based exploits played a role in enabling fund movements. The incident highlighted that even institutional-grade setups can be compromised through smart contract interaction patterns — and that every standing approval is a potential attack vector when the upstream contract is compromised.
+> **Unlimited Approval Drain Attacks — Multiple DeFi Protocols**
+>
+> Dozens of DeFi protocols have suffered hacks where the primary damage vector was existing unlimited approvals. When a protocol's contract is upgraded maliciously (via a compromised admin key or governance attack), the attacker can drain all wallets that hold standing approvals — often millions of dollars in seconds, affecting users who haven't interacted with the protocol in months.
 
-            Unlimited Approval Drain Attacks — Multiple DeFi Protocols
-
-Dozens of DeFi protocols have suffered hacks where the primary damage vector was existing unlimited approvals. When a protocol's contract is upgraded maliciously (via a compromised admin key or governance attack), the attacker can drain all wallets that hold standing approvals — often millions of dollars in seconds, affecting users who haven't interacted with the protocol in months.
-
-            Phishing + Approval Attacks
-
-A common phishing pattern: a fake DApp site asks you to "approve" a transaction. You sign what looks like a routine approval, but the spender address is the attacker's contract. Your tokens are drained immediately. The first line of defense is knowing which contracts hold your approvals and revoking suspicious or unnecessary ones promptly.
+> **Phishing + Approval Attacks**
+>
+> A common phishing pattern: a fake DApp site asks you to "approve" a transaction. You sign what looks like a routine approval, but the spender address is the attacker's contract. Your tokens are drained immediately. The first line of defense is knowing which contracts hold your approvals and revoking suspicious or unnecessary ones promptly.
 
 ## How to Check Your Current Approvals
 
@@ -69,39 +69,33 @@ Before you can revoke approvals, you need to know what approvals exist. Your opt
 
 ArcSign's Token Approvals management is built directly into the wallet — no third-party site, no external wallet connection, no additional trust assumption. Here is how to use it:
 
-            1
-            Open ArcSign and plug in your USB
+**1. Open ArcSign and plug in your USB**
 
 Launch the ArcSign desktop app and insert your wallet USB. Unlock your wallet with your PIN.
 
-            2
-            Navigate to Token Approvals
+**2. Navigate to Token Approvals**
 
 In the left sidebar, click "Token Approvals." ArcSign will automatically scan all 6 EVM chains for active approvals on your address: Ethereum, BSC, Polygon, Arbitrum, Optimism, and Base.
 
-            3
-            Review the approval list
+**3. Review the approval list**
 
 The list shows each approval with: the token (e.g., USDC, WETH), the spender contract name/address, the approved amount (watch for "Unlimited"), and the chain it is on. Look for: approvals you don't recognize, unlimited approvals, and approvals for protocols you no longer use.
 
-            4
-            Click "Revoke" on any approval you want to remove
+**4. Click "Revoke" on any approval you want to remove**
 
 Select the approval to revoke and click the Revoke button. ArcSign will prepare a transaction that sets the allowance to zero for that spender. Review the transaction details on screen.
 
-            5
-            Sign the revocation transaction with your USB
+**5. Sign the revocation transaction with your USB**
 
 Confirm the transaction. Because ArcSign is a cold wallet, signing happens on your USB — your private key never leaves the device. The revocation transaction is broadcast to the network. You will need a small amount of native gas (ETH, BNB, MATIC, etc.) on the relevant chain.
 
-            6
-            Verify the approval is cleared
+**6. Verify the approval is cleared**
 
 After the transaction confirms, the approval disappears from your list. You can verify on the relevant block explorer by checking the Token Approvals tab for your address.
 
-            Gas Cost Note
-
-Each revocation is one on-chain transaction. On Ethereum mainnet, this costs a small amount of ETH. On L2s (Arbitrum, Optimism, Base, Polygon), gas costs are typically a few cents. BSC gas is also very cheap. If you have many approvals to clear on Ethereum mainnet, consider whether the [ArcSign Pro](/blog/arcsign-pro-nft-membership) batch revoke option (see below) is more cost-effective.
+> **Gas Cost Note**
+>
+> Each revocation is one on-chain transaction. On Ethereum mainnet, this costs a small amount of ETH. On L2s (Arbitrum, Optimism, Base, Polygon), gas costs are typically a few cents. BSC gas is also very cheap. If you have many approvals to clear on Ethereum mainnet, consider whether the [ArcSign Pro](/blog/arcsign-pro-nft-membership) batch revoke option (see below) is more cost-effective.
 
 ## Alternative: Using Revoke.cash
 

@@ -21,11 +21,11 @@ This guide provides a deep comparison of USB [cold storage](/blog/what-is-cold-s
 
 Whether it's USB [cold storage](/blog/what-is-cold-storage) or a hardware wallet, **the core reason they're secure is the same: they're offline**. When your private keys aren't connected to the internet, hackers have no remote attack vector. This is the "zero attack surface" principle.
 
-            Key Insight
-
-A hardware wallet's security advantage isn't in its chip or brand — it's in being "offline." When you unplug your USB drive, it's essentially a cold wallet. The only difference is the software architecture running on it.
-
-This means that if we can build a sufficiently robust encryption and key management system on a USB drive, its security is on par with dedicated hardware. And since it doesn't require proprietary chips or firmware, the cost drops to virtually zero.
+> **Key Insight**
+>
+> A hardware wallet's security advantage isn't in its chip or brand — it's in being "offline." When you unplug your USB drive, it's essentially a cold wallet. The only difference is the software architecture running on it.
+>
+> This means that if we can build a sufficiently robust encryption and key management system on a USB drive, its security is on par with dedicated hardware. And since it doesn't require proprietary chips or firmware, the cost drops to virtually zero.
 
 ## Six-Dimension Comparison
 
@@ -36,7 +36,7 @@ Here's a detailed comparison of USB cold storage (using ArcSign) versus mainstre
 | **Offline Storage** | ✓ Fully offline when unplugged | ✓ Fully offline |
 | **Cost** | $0 (Free software + any USB) | $79 ~ $150+ |
 | **Encryption** | XOR 3-shard + AES-256 + mlock | Secure Element (SE) chip |
-| **Code Transparency** | Open-source planned (after 10K users) | Partially open (firmware mostly closed) |
+| **Code Transparency** | ✓ Fully open source (Apache 2.0) | Partially open (firmware mostly closed) |
 | **Supply Chain Risk** | ✓ None (uses commodity USB) | ⚠ Present (must trust manufacturer) |
 | **DApp Support** | ✓ Full WalletConnect | Partial (requires middleware) |
 | **Multi-Chain** | ✓ Ethereum, BSC, Polygon, etc. | ✓ Wide support |
@@ -51,7 +51,7 @@ Hardware wallets rely on a dedicated Secure Element chip to protect private keys
 
 ### 3. Code Transparency
 
-Trust is the foundation of security. ArcSign plans to fully open-source its codebase once the user base exceeds 10,000, at which point every line of code will be publicly auditable. By comparison, most hardware wallet firmware is closed — you can't fully verify what's happening inside the device. The 2023 Ledger "Recover" controversy exposed exactly this trust problem. Open-sourcing is a key milestone on ArcSign's roadmap, and we're committed to releasing all source code as soon as our community is large enough.
+Trust is the foundation of security. ArcSign is fully open source under Apache 2.0 — every line of code is publicly auditable (source at github.com/arcsignio/arcsign). By comparison, most hardware wallet firmware is closed — you can't fully verify what's happening inside the device. The 2023 Ledger "Recover" controversy exposed exactly this trust problem.
 
 ## ArcSign's Security Architecture
 
@@ -69,9 +69,9 @@ When you need to sign a transaction, the key is briefly reconstructed in [mlock]
 
 All encrypted data exists only on the USB drive. Unplug it, and no trace of your private key remains on your computer. This is conceptually identical to a hardware wallet's offline approach — the only difference is one uses a dedicated device, the other uses a commodity USB. But the core security logic is the same.
 
-            Technical Highlight
-
-ArcSign's design philosophy: **even if an attacker gains complete access to your USB drive, they cannot extract your private key**. This is achieved through multi-layer encryption and key sharding, without relying on any hardware trust assumptions.
+> **Technical Highlight**
+>
+> ArcSign's design philosophy: **even if an attacker gains complete access to your USB drive, they cannot extract your private key**. This is achieved through multi-layer encryption and key sharding, without relying on any hardware trust assumptions.
 
 ## Supply Chain Risks: The Overlooked Blind Spot
 
@@ -85,18 +85,18 @@ USB cold storage completely sidesteps this problem. You can use any brand of USB
 
 ### Great Fit
 
-**Crypto beginners**: zero-cost entry with no waiting for hardware to ship. **Tech enthusiasts**: code will be auditable once open-sourced. **Budget-conscious holders**: cold storage protection without spending $150. **Multi-device backup**: easily create backups across multiple USB drives at near-zero cost.
+**Crypto beginners**: zero-cost entry with no waiting for hardware to ship. **Tech enthusiasts**: the code is fully open source (Apache 2.0) and publicly auditable. **Budget-conscious holders**: cold storage protection without spending $150. **Multi-device backup**: easily create backups across multiple USB drives at near-zero cost.
 
 ### When Hardware Wallets May Be Better
 
 **Institutional-scale assets**: if you're managing millions in assets, a dedicated SE chip provides an additional physical security layer. **Completely non-technical users**: hardware wallets offer a more "plug-and-play" experience for those who want zero technical involvement.
 
-            Our Recommendation
-
-For 90% of individual users, USB cold storage with proper encryption architecture is more than sufficient. Security isn't determined by price — it's determined by architectural design.
+> **Our Recommendation**
+>
+> For 90% of individual users, USB cold storage with proper encryption architecture is more than sufficient. Security isn't determined by price — it's determined by architectural design.
 
 ## Conclusion
 
 The 2026 crypto security trend is clear: **users are moving from custodial to self-custodial, from "trusting hardware" to "trusting architecture"**. USB cold storage isn't a "cheap alternative" to hardware wallets — it's a solution based on a different security philosophy, replacing hardware trust assumptions with mathematics and cryptography.
 
-ArcSign's mission is to let everyone use the simplest tool at hand — a USB drive — to enjoy the highest level of private key protection. Free, offline, 3-shard encryption, open-source planned — this is what cold storage should look like in 2026.
+ArcSign's mission is to let everyone use the simplest tool at hand — a USB drive — to enjoy the highest level of private key protection. Free, offline, 3-shard encryption, fully open source (Apache 2.0) — this is what cold storage should look like in 2026.

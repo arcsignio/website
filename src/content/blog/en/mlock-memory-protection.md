@@ -17,11 +17,11 @@ The problem is: **most wallets don't properly handle the private key in memory a
 
 Once a private key is written to disk, it can persist for days, weeks, or even months. Anyone who gains access to your disk — whether a hacker, malware, or someone with physical access to your computer — could recover your private key and drain all your crypto assets.
 
-            Real-World Example
-
-In the 2023 LastPass breach, attackers extracted decryption keys from a developer's memory dump, leading to over $150 million in stolen crypto assets. This is exactly what happens when memory protection is insufficient.
-
-**mlock** exists to solve this problem. It's an operating system "memory lock" that ensures your private keys are never written to disk.
+> **Real-World Example**
+>
+> In the 2023 LastPass breach, attackers extracted decryption keys from a developer's memory dump, leading to over $150 million in stolen crypto assets. This is exactly what happens when memory protection is insufficient.
+>
+> **mlock** exists to solve this problem. It's an operating system "memory lock" that ensures your private keys are never written to disk.
 
 ## What Is mlock? A Simple Analogy
 
@@ -31,27 +31,27 @@ This is fine for ordinary documents. But what if there's a note on your desk wit
 
 **mlock is like putting a sticker on that note telling the OS: "This document must never go in the cabinet. Keep it on the desk."** When the computer shuts down, everything on the desk vanishes (RAM is volatile memory), but the cabinet's contents remain.
 
-            Without mlock
+**Without mlock:**
 
-                Private key loaded into RAM
-                →
-                OS swaps RAM to disk
-                →
-                Key persists on disk
-                →
-                Attacker recovers it
+```
+Private key loaded into RAM
+   → OS swaps RAM to disk
+   → Key persists on disk
+   → Attacker recovers it  ✗
+```
 
-            With mlock Protection
+**With mlock protection:**
 
-                Private key loaded into RAM
-                →
-                mlock locks memory pages
-                →
-                Key stays in RAM only
-                →
-                Gone on shutdown
+```
+Private key loaded into RAM
+   → mlock locks memory pages
+   → Key stays in RAM only
+   → Gone on shutdown  ✓
+```
 
-Technically, **mlock** is a POSIX-standard system call available on Linux and macOS. The Windows equivalent is **VirtualLock**. Once mlock is called, the OS guarantees that the specified memory pages will not be swapped to the swap partition.
+> **Technical detail**
+>
+> Technically, **mlock** is a POSIX-standard system call available on Linux and macOS. The Windows equivalent is **VirtualLock**. Once mlock is called, the OS guarantees that the specified memory pages will not be swapped to the swap partition.
 
 ## Three Types of Memory Attacks
 
@@ -85,29 +85,25 @@ The defense: **minimize how long the private key lives in memory**. ArcSign's si
 
 ArcSign doesn't just use mlock — it implements a comprehensive four-layer memory protection system to keep your private keys as secure as possible in every scenario:
 
-            1
-            mlock Memory Locking
+**1. mlock Memory Locking**
 
 The instant ArcSign loads a private key, it calls mlock on the memory region holding the key. This guarantees the OS will never swap those memory pages to disk. On macOS and Linux it uses `syscall.Mlock()`; on Windows it uses `VirtualLock()`.
 
-            2
-            Minimized Exposure Time (1–5 Milliseconds)
+**2. Minimized Exposure Time (1–5 Milliseconds)**
 
 ArcSign's signing pipeline is highly optimized: load private key from USB → sign transaction → zero out immediately. The entire process takes just 1–5 milliseconds. By contrast, many software wallets keep the private key in memory for the entire duration the app is running.
 
-            3
-            Immediate Post-Use Zeroing
+**3. Immediate Post-Use Zeroing**
 
 After signing, ArcSign doesn't simply "free" the memory (freeing doesn't mean erasing). It actively overwrites every byte of the key storage with zeros. This ensures that even if someone reads that memory region afterward, they'll find nothing but zeros. In Go, this is done with `for i := range key { key[i] = 0 }` combined with compiler optimization barriers to prevent the zeroing from being optimized away.
 
-            4
-            XOR Three-Shard Protection
+**4. XOR Three-Shard Protection**
 
 Even on the USB drive, private keys aren't stored in raw form. ArcSign uses XOR three-shard technology to split each key into three fragments stored separately. Only all three fragments combined can reconstruct the key. This means even if an attacker breaks through memory protection, they'd capture only a fragment — not the complete key.
 
-            Synergy of Four Layers
-
-These four layers don't replace each other — they reinforce one another. mlock prevents disk leaks, minimal time reduces the attack window, zeroing eliminates residual data, and XOR sharding ensures even a breach of one layer doesn't yield the complete key. An attacker would need to break all four layers simultaneously — and do so within a 1–5 millisecond window.
+> **Synergy of Four Layers**
+>
+> These four layers don't replace each other — they reinforce one another. mlock prevents disk leaks, minimal time reduces the attack window, zeroing eliminates residual data, and XOR sharding ensures even a breach of one layer doesn't yield the complete key. An attacker would need to break all four layers simultaneously — and do so within a 1–5 millisecond window.
 
 ## Wallet Memory Protection Comparison
 
@@ -153,9 +149,9 @@ ArcSign offers a better solution: **one-click export of an [AES-256](/blog/aes25
 | **Multiple copy risk** | High (each copy is plaintext) | Low (each copy is encrypted) |
 | **Durability** | Paper degrades | Digital files last indefinitely |
 
-            Best Backup Strategy
-
-Store your .arcsign encrypted backup file on a second USB drive, kept in a different physical location (e.g., one at home and one at the office). Even if one USB is damaged or lost, you can fully restore from the other. And even if someone gets the backup file, they can't decrypt it without your password.
+> **Best Backup Strategy**
+>
+> Store your .arcsign encrypted backup file on a second USB drive, kept in a different physical location (e.g., one at home and one at the office). Even if one USB is damaged or lost, you can fully restore from the other. And even if someone gets the backup file, they can't decrypt it without your password.
 
 ## Technical Deep Dive: How mlock Works
 
@@ -169,35 +165,25 @@ This process is transparent to applications — programs don't know their memory
 
 ### The mlock System Call Interface
 
-            // Using mlock in Go (simplified)
+```go
+// Using mlock in Go (simplified)
+import "syscall"
 
-            import "syscall"
+func protectKey(key []byte) error {
+    // Lock the memory pages containing the key in RAM
+    // OS guarantees these pages won't be swapped to disk
+    return syscall.Mlock(key)
+}
 
-            func protectKey(key []byte) error {
-
-                // Lock the memory pages containing the key in RAM
-
-                // OS guarantees these pages won't be swapped to disk
-
-                return syscall.Mlock(key)
-
-            }
-
-            func cleanupKey(key []byte) {
-
-                // Zero out every byte after use
-
-                for i := range key {
-
-                    key[i] = 0
-
-                }
-
-                // Unlock the memory pages
-
-                syscall.Munlock(key)
-
-            }
+func cleanupKey(key []byte) {
+    // Zero out every byte after use
+    for i := range key {
+        key[i] = 0
+    }
+    // Unlock the memory pages
+    syscall.Munlock(key)
+}
+```
 
 ### Cross-Platform Implementation
 
@@ -237,4 +223,4 @@ mlock primarily prevents swap-to-disk attacks and cold boot attacks. For running
 
 #### How does ArcSign's memory protection compare to hardware wallet security chips?
 
-Hardware wallets use dedicated security chips (ST31, ATECC608) to isolate private keys in a separate processor. ArcSign uses USB isolation + mlock + XOR sharding + [AES-256](/blog/aes256-encryption-simple) encryption as a multi-layer software defense. Both aim to prevent key theft. ArcSign's advantages are that it's completely free, architecturally transparent (open-source planned after 10K users), and carries no supply chain risks.
+Hardware wallets use dedicated security chips (ST31, ATECC608) to isolate private keys in a separate processor. ArcSign uses USB isolation + mlock + XOR sharding + [AES-256](/blog/aes256-encryption-simple) encryption as a multi-layer software defense. Both aim to prevent key theft. ArcSign's advantages are that it's completely free, architecturally transparent and fully open source (Apache 2.0), and carries no supply chain risks.

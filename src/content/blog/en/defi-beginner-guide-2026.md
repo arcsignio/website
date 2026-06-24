@@ -19,23 +19,17 @@ But DeFi comes with real risks. Smart contract bugs, rug pulls, and forgotten [t
 
 To use a DeFi app, you connect your crypto wallet to the application's interface (a "dApp" — decentralized application) and sign transactions from your wallet. The transaction goes directly to the smart contract on-chain. Your funds never pass through the app company's servers.
 
-            Key Distinction from CeFi
-
-Centralized finance (CeFi) — Coinbase, Binance, Kraken — holds your assets on your behalf. DeFi protocols never custody your assets; your funds stay in your wallet until you explicitly interact with a contract. You are always in control.
+> **Key Distinction from CeFi**
+>
+> Centralized finance (CeFi) — Coinbase, Binance, Kraken — holds your assets on your behalf. DeFi protocols never custody your assets; your funds stay in your wallet until you explicitly interact with a contract. You are always in control.
 
 ## The Three Core Categories of DeFi
 
-                ⇄
-                Decentralized Exchanges (DEXs)
-                Trade tokens directly from your wallet with no sign-up. Uniswap, Curve, and PancakeSwap use automated market makers (AMMs) with on-chain liquidity pools.
+- **Decentralized Exchanges (DEXs)** — Trade tokens directly from your wallet with no sign-up. Uniswap, Curve, and PancakeSwap use automated market makers (AMMs) with on-chain liquidity pools.
 
-                
-                Lending & Borrowing
-                Deposit crypto as collateral to borrow other assets, or supply liquidity to earn interest. Aave and Compound are the largest protocols. Interest rates adjust algorithmically.
+- **Lending & Borrowing** — Deposit crypto as collateral to borrow other assets, or supply liquidity to earn interest. Aave and Compound are the largest protocols. Interest rates adjust algorithmically.
 
-                
-                Liquid Staking
-                Stake ETH or BNB through protocols like Lido or Ankr and receive a liquid token (stETH, ankrETH, ankrBNB) that earns staking rewards while remaining tradeable.
+- **Liquid Staking** — Stake ETH or BNB through protocols like Lido or Ankr and receive a liquid token (stETH, ankrETH, ankrBNB) that earns staking rewards while remaining tradeable.
 
 ### Decentralized Exchanges (DEXs)
 
@@ -53,29 +47,17 @@ Standard Ethereum staking locks 32 ETH and requires technical node operation. Li
 
 DeFi's permissionless nature is its strength — and its vulnerability. Here are the three risks that matter most for beginners:
 
-            High
+- **Smart Contract Bugs** (High) — Smart contracts are immutable once deployed. A bug in the code can be exploited to drain funds. Even audited protocols have been hacked. In 2025, DeFi exploits exceeded $1 billion in losses. Stick to protocols with long track records, multiple audits, and bug bounties.
 
-                Smart Contract Bugs
-                Smart contracts are immutable once deployed. A bug in the code can be exploited to drain funds. Even audited protocols have been hacked. In 2025, DeFi exploits exceeded $1 billion in losses. Stick to protocols with long track records, multiple audits, and bug bounties.
+- **Rug Pulls** (High) — A rug pull happens when project founders drain the liquidity pool and disappear. New or anonymous projects with unaudited contracts and enormous APY promises are the highest risk. Never chase 1000%+ APY on unknown protocols — it is almost always a rug waiting to happen.
 
-            High
+- **Token Approval Exploits** (High) — When you interact with a DeFi protocol, you grant a smart contract permission to spend your tokens. If you approve unlimited spending and the contract is later exploited, attackers can drain your wallet using your stored approval — even months or years after your last interaction. This is one of the most common attack vectors in DeFi.
 
-                Rug Pulls
-                A rug pull happens when project founders drain the liquidity pool and disappear. New or anonymous projects with unaudited contracts and enormous APY promises are the highest risk. Never chase 1000%+ APY on unknown protocols — it is almost always a rug waiting to happen.
+- **Impermanent Loss** (Medium) — When you provide liquidity to a DEX pool, price divergence between the two assets can leave you with less value than simply holding. This isn't a hack — it's a structural property of AMMs. Understand it before providing liquidity.
 
-            High
-
-                Token Approval Exploits
-                When you interact with a DeFi protocol, you grant a smart contract permission to spend your tokens. If you approve unlimited spending and the contract is later exploited, attackers can drain your wallet using your stored approval — even months or years after your last interaction. This is one of the most common attack vectors in DeFi.
-
-            Medium
-
-                Impermanent Loss
-                When you provide liquidity to a DEX pool, price divergence between the two assets can leave you with less value than simply holding. This isn't a hack — it's a structural property of AMMs. Understand it before providing liquidity.
-
-            The Approval Trap
-
-Many users are unaware they've approved contracts to spend their tokens indefinitely. Regularly audit your approvals — especially after using a new protocol. ArcSign's built-in [token approval](/blog/token-approval-revoke)s manager shows all active approvals across 6 EVM chains and lets you revoke them in one click.
+> **The Approval Trap**
+>
+> Many users are unaware they've approved contracts to spend their tokens indefinitely. Regularly audit your approvals — especially after using a new protocol. ArcSign's built-in [token approval](/blog/token-approval-revoke)s manager shows all active approvals across 6 EVM chains and lets you revoke them in one click.
 
 ## How to Stay Safe: Cold Wallet + WalletConnect + Token Approvals
 
@@ -97,33 +79,33 @@ ArcSign's **Token Approvals** feature covers 6 EVM chains: Ethereum, BSC, Polygo
 
 ## Step-by-Step: Connect ArcSign to Uniswap via WalletConnect
 
-            1Open Uniswap and Click "Connect Wallet"
+**1. Open Uniswap and Click "Connect Wallet"**
 
 Go to **app.uniswap.org** in your browser. Click the "Connect" button in the top right corner. A wallet selection modal will appear.
 
-            2Select "WalletConnect"
+**2. Select "WalletConnect"**
 
 In the wallet modal, choose WalletConnect. Uniswap will display a QR code and a "Copy to clipboard" link. Click "Copy to clipboard" to copy the WalletConnect URI.
 
-            3Open ArcSign and Navigate to WalletConnect
+**3. Open ArcSign and Navigate to WalletConnect**
 
 Launch ArcSign with your USB drive inserted. In the sidebar, click the WalletConnect icon. Then click "New Connection" or paste the URI into the connection field.
 
-            4Paste the WalletConnect Link
+**4. Paste the WalletConnect Link**
 
 Paste the WalletConnect URI you copied from Uniswap. ArcSign will show a connection request with the dApp name, domain, and requested chains. Review it and click "Approve."
 
-            5Uniswap Is Now Connected to Your Cold Wallet
+**5. Uniswap Is Now Connected to Your Cold Wallet**
 
 Uniswap will show your ArcSign wallet address as connected. You can now browse the interface, configure a swap, and click "Swap." ArcSign will receive the transaction request and display it for your approval.
 
-            6Review and Sign the Transaction in ArcSign
+**6. Review and Sign the Transaction in ArcSign**
 
 ArcSign shows the full transaction details: contract address, token amounts, gas estimate. Review carefully — especially the "To" address and approval amounts. If everything looks correct, click "Sign." ArcSign signs with your cold wallet key and broadcasts the transaction. Your private key never left your USB drive.
 
-            Works With Any WalletConnect v2 dApp
-
-This same process works with Aave, Curve, Lido, PancakeSwap, Aerodrome, and hundreds of other WalletConnect-compatible dApps. ArcSign supports Ethereum, BSC, Polygon, Arbitrum, Optimism, and Base.
+> **Works With Any WalletConnect v2 dApp**
+>
+> This same process works with Aave, Curve, Lido, PancakeSwap, Aerodrome, and hundreds of other WalletConnect-compatible dApps. ArcSign supports Ethereum, BSC, Polygon, Arbitrum, Optimism, and Base.
 
 ## Liquid Staking with ArcSign
 
@@ -139,9 +121,9 @@ ArcSign's **DeFi Positions** dashboard tracks your liquid staking positions auto
 
 ArcSign displays your balance of each token and the **live APY** for each position, so you always know what you're earning without visiting the staking protocol's website separately.
 
-            How to Start Liquid Staking
-
-Use WalletConnect to connect ArcSign to [stake.lido.fi](https://stake.lido.fi) (for stETH) or [ankr.com/staking](https://www.ankr.com/staking) (for ankrETH or ankrBNB). Deposit ETH or BNB via the site, sign in ArcSign, and your liquid staking position will appear in ArcSign's DeFi dashboard automatically.
+> **How to Start Liquid Staking**
+>
+> Use WalletConnect to connect ArcSign to [stake.lido.fi](https://stake.lido.fi) (for stETH) or [ankr.com/staking](https://www.ankr.com/staking) (for ankrETH or ankrBNB). Deposit ETH or BNB via the site, sign in ArcSign, and your liquid staking position will appear in ArcSign's DeFi dashboard automatically.
 
 ## FAQ
 

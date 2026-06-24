@@ -15,9 +15,9 @@ The madness of DeFi Summer 2020 is long gone. Back then, any random yield-farmin
 
 According to DefiLlama Q1 2026 data, global DeFi TVL sits around $180 billion, with the top 10 protocols commanding over 60% of it. Liquid staking (LST), lending, fixed income, and decentralized exchanges form the four pillars of DeFi yield. The "see 200% APY, ape in" era is over — today's smart money cares about **real yield**: whether rewards come from genuine protocol revenue or just inflationary token emissions.
 
-            Three Big Shifts in 2026 DeFi
-
-(1) Real revenue replaces token emissions — protocols distribute actual fee revenue; (2) Restaking rises — ETH stakers secure multiple networks for compound rewards; (3) Fixed-income markets mature — Pendle lets users lock in annualized rates like bonds.
+> **Three Big Shifts in 2026 DeFi**
+>
+> (1) Real revenue replaces token emissions — protocols distribute actual fee revenue; (2) Restaking rises — ETH stakers secure multiple networks for compound rewards; (3) Fixed-income markets mature — Pendle lets users lock in annualized rates like bonds.
 
 ## The APY Reality: Why High Yields Are Often a Trap
 
@@ -25,23 +25,19 @@ Before evaluating any protocol, understand this: **the APY you see and the retur
 
 ### Four Factors That Erode Real Returns
 
-            1
-            Token-Denominated Risk
+**1. Token-Denominated Risk**
 
 Most high-APY protocols pay rewards in their own governance token. When markets turn or emissions accelerate, the reward token can crash. A protocol advertising "40% APY" may see its reward token drop 60% in a month, turning your real return into -30%. Only yields denominated in [stablecoin](/blog/stablecoin-storage-guide)s or ETH are reasonably reliable.
 
-            2
-            Impermanent Loss (IL)
+**2. Impermanent Loss (IL)**
 
 Liquidity providers often ignore this hidden cost. When the ratio of the two pool assets shifts, LP total value falls below simply holding both assets. In volatile pairs, IL can easily devour all trading-fee earnings.
 
-            3
-            Gas Fees
+**3. Gas Fees**
 
 A single DeFi deposit on Ethereum mainnet can cost $20–$80 in gas. For a $1,000 account, round-trip gas alone eats over 10% of principal. Smaller accounts should prioritize L2 protocols on Arbitrum, Base, or Polygon.
 
-            4
-            Smart Contract Risk
+**4. Smart Contract Risk**
 
 DefiLlama tracked over $8 billion lost to DeFi exploits between 2020 and 2025. Any APY, no matter how attractive, becomes zero if the contract gets hacked. This is why blue-chip protocols with high TVL, multiple audits, and years of live operation often win on a risk-adjusted basis, even at lower headline yields.
 
@@ -121,9 +117,9 @@ Goal: higher returns while keeping principal mostly intact. Suggested allocation
 
 Goal: outsized returns, willing to lose part of principal. Suggested allocation: **40% blue-chip base + 30% Pendle YT + 20% Uniswap v4 LP + 10% early-stage protocols**. Expected 15–50% annualized, but drawdowns beyond -30% are possible. Use only capital you can fully afford to lose.
 
-            The Golden Rule
-
-Regardless of profile, follow the **"blue-chip core, satellite exploration"** principle: at least 60% of capital belongs in protocols like Lido, Aave, and Curve — 3+ years live, $3B+ TVL. Only the remainder should chase higher-yield newer opportunities.
+> **The Golden Rule**
+>
+> Regardless of profile, follow the **"blue-chip core, satellite exploration"** principle: at least 60% of capital belongs in protocols like Lido, Aave, and Curve — 3+ years live, $3B+ TVL. Only the remainder should chase higher-yield newer opportunities.
 
 ## Participating in DeFi From a Cold Wallet
 
@@ -135,29 +131,25 @@ Most DeFi losses don't come from contract exploits — they come from **compromi
 
 ### How ArcSign Connects to Major DeFi Protocols
 
-            1
-            Click "Connect Wallet" on Lido / Aave / Pendle
+**1. Click "Connect Wallet" on Lido / Aave / Pendle**
 
 Choose [WalletConnect](/blog/walletconnect-dapp-tutorial). The site shows a QR code or a connection string. ArcSign supports WalletConnect v2 and connects to every EVM-compatible DeFi protocol.
 
-            2
-            Paste the Connection String Into the ArcSign Desktop App
+**2. Paste the Connection String Into the ArcSign Desktop App**
 
 Open ArcSign, go to the WalletConnect tab, and paste the string. ArcSign validates the DApp's domain and origin to block man-in-the-middle attacks.
 
-            3
-            Sign Every Transaction Locally on the USB Device
+**3. Sign Every Transaction Locally on the USB Device**
 
 When you stake or withdraw on the DApp, ArcSign shows a transaction preview with full calldata and target contract. Confirm on the USB to sign. The private key is exposed for only 1–5 milliseconds, protected by [mlock](/blog/mlock-memory-protection) memory locking.
 
-            4
-            Track DeFi Positions In-App
+**4. Track DeFi Positions In-App**
 
 ArcSign's DeFi positions page shows real-time APY for Lido (stETH), Ankr (ankrETH, ankrBNB), and other liquid staking tokens, so you can track your yield without juggling multiple websites.
 
-            Further Reading
-
-Want to see how ArcSign manages DeFi assets across multiple chains with one mnemonic? Check our [cross-chain guide](/blog/arcsign-cross-chain-guide) — one seed manages BTC + 6 EVM chains. For an [ETH staking](/blog/eth-staking-arcsign) walkthrough, see [Earn Passive Income by Staking ETH with ArcSign](/blog/eth-staking-arcsign).
+> **Further Reading**
+>
+> Want to see how ArcSign manages DeFi assets across multiple chains with one mnemonic? Check our [cross-chain guide](/blog/arcsign-cross-chain-guide) — one seed manages 7 EVM chains. For an [ETH staking](/blog/eth-staking-arcsign) walkthrough, see [Earn Passive Income by Staking ETH with ArcSign](/blog/eth-staking-arcsign).
 
 ## Practical 2026 Allocation Suggestions
 

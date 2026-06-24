@@ -18,9 +18,9 @@ But self-custody isn't a silver bullet either. If your private key management ha
 
 This article outlines **9 critical principles for private key management**, covering storage, usage, and long-term maintenance. Whether you're a beginner or an experienced crypto user, these principles are worth reviewing one by one.
 
-            Core Concept
-
-Private key management isn't a one-time action — it's a **continuous security practice**. Proper management covers three dimensions: storing securely, using securely, and maintaining securely. A failure in any single area can lead to permanent asset loss.
+> **Core Concept**
+>
+> Private key management isn't a one-time action — it's a **continuous security practice**. Proper management covers three dimensions: storing securely, using securely, and maintaining securely. A failure in any single area can lead to permanent asset loss.
 
 ## Principles 1-3: Storage Security — Where Your Keys Should Live
 
@@ -30,9 +30,9 @@ This is the most fundamental and important principle. Your private keys should *
 
 Common offline storage options include hardware wallets and USB cold wallets. ArcSign uses your own USB drive as a [cold storage](/blog/what-is-cold-storage) device, keeping all private keys stored in **XOR three-shard encrypted** format on the USB — never touching the network. Compared to proprietary hardware wallets, USB cold wallets let you choose your own device, require no trust in specific manufacturers, and are completely free.
 
-            Practical Tip
-
-When using ArcSign, only insert the USB when you need to sign a transaction. The rest of the time, store it in a safe offline location (a drawer, safe, or lockbox) — never leave it plugged into your computer.
+> **Practical Tip**
+>
+> When using ArcSign, only insert the USB when you need to sign a transaction. The rest of the time, store it in a safe offline location (a drawer, safe, or lockbox) — never leave it plugged into your computer.
 
 ### Principle 2: Create Multiple Backups
 
@@ -66,9 +66,9 @@ Many people don't realize that DeFi interactions often grant third-party contrac
 
 ArcSign includes built-in **Token Approval management**, letting you see which contracts hold your approvals and their limits. Regularly reviewing and revoking unnecessary approvals is a critical part of key management. ArcSign Pro members can batch-revoke across 6 EVM chains at once ([view Pro pricing](/blog/../../pricing)).
 
-            High-Risk Approval Warning
-
-If you've ever granted "Unlimited" approval to a DeFi contract, consider **revoking immediately and re-approving with a precise amount**. Unlimited approvals are the root cause behind many major DeFi exploits that drained large amounts of user funds.
+> **High-Risk Approval Warning**
+>
+> If you've ever granted "Unlimited" approval to a DeFi contract, consider **revoking immediately and re-approving with a precise amount**. Unlimited approvals are the root cause behind many major DeFi exploits that drained large amounts of user funds.
 
 ## Principles 7-9: Long-Term Maintenance — Sustaining Key Security Over Time
 
@@ -90,9 +90,9 @@ This is the most overlooked aspect, yet critically important: **if something hap
 
 The recommended approach: prepare a sealed "inheritance guide" explaining where your crypto assets are stored and how to use ArcSign and the .arcsign backup to recover wallets. Give it to a trusted family member or attorney, along with the physical location of your USB backups. You don't need to write the seed phrase in the guide — just explain where it's stored.
 
-            Inheritance Security Tip
-
-Use an "information separation" strategy: one trusted person knows you have crypto assets and the recovery steps; another knows the physical location of backups. Neither knows the other's information. This prevents single-point trust risks.
+> **Inheritance Security Tip**
+>
+> Use an "information separation" strategy: one trusted person knows you have crypto assets and the recovery steps; another knows the physical location of backups. Neither knows the other's information. This prevents single-point trust risks.
 
 ## Key Management Solutions Compared
 
@@ -112,28 +112,23 @@ ArcSign is currently the only free cold wallet solution that simultaneously prov
 
 Based on the 9 principles above, here's an actionable checklist. Review it **quarterly** to ensure your security posture hasn't degraded:
 
-            1
-            Offline Storage Confirmed
+**1. Offline Storage Confirmed**
 
 Are your private keys stored on an offline device? Have they never appeared on an internet-connected device? ArcSign users: is your USB properly stored offline when not in use?
 
-            2
-            Backup Integrity
+**2. Backup Integrity**
 
 Do you have at least 2 backup copies? Is the paper seed phrase intact? Can the .arcsign backup file be successfully imported?
 
-            3
-            Approval Audit
+**3. Approval Audit**
 
 Are there expired or unnecessary token approvals? Use ArcSign's approval management to revoke all unnecessary smart contract permissions.
 
-            4
-            Software Version
+**4. Software Version**
 
 Are ArcSign and your OS up to date? Are there pending security updates waiting to be installed?
 
-            5
-            Inheritance Plan
+**5. Inheritance Plan**
 
 Do you have an executable inheritance plan? Does a trusted family member or attorney know how to access your backups?
 
@@ -157,7 +152,7 @@ Both. Your seed phrase is the ultimate recovery method (compatible with all BIP-
 
           🔐
 
-            ArcSign Security Team
-            Cryptography & Wallet Security Research
-
-The ArcSign Security Team specializes in HD wallet architecture, private key cryptography, and cold storage security. Our research underpins the XOR three-shard encryption system at the core of ArcSign. Read our [security whitepaper](/blog/../../whitepaper) for full technical details.
+**ArcSign Security Team**
+> **Cryptography & Wallet Security Research**
+>
+> The ArcSign Security Team specializes in HD wallet architecture, private key cryptography, and cold storage security. Our research underpins the XOR three-shard encryption system at the core of ArcSign. Read our [security whitepaper](/blog/../../whitepaper) for full technical details.

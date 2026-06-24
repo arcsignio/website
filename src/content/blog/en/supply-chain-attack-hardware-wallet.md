@@ -15,36 +15,35 @@ When you order a Ledger or Trezor from an online store, have you ever considered
 
 A supply chain attack targets a product at any point between manufacturing and delivery to the end user. For hardware wallets, this means the device you receive may look perfectly normal on the outside, but its firmware, chips, or circuitry could have been replaced or tampered with. Your private keys may have been at risk from day one.
 
-            Why Are Hardware Wallets Particularly Vulnerable?
-
-The security model of hardware wallets is built on one assumption: **you trust that the hardware you received has not been tampered with**. But in today's globalized supply chains, this assumption is increasingly fragile. Devices manufactured in China, assembled in Europe, and shipped through global logistics — every step is a potential attack surface.
+> **Why Are Hardware Wallets Particularly Vulnerable?**
+>
+> The security model of hardware wallets is built on one assumption: **you trust that the hardware you received has not been tampered with**. But in today's globalized supply chains, this assumption is increasingly fragile. Devices manufactured in China, assembled in Europe, and shipped through global logistics — every step is a potential attack surface.
 
 ## 5 Supply Chain Attack Methods Against Hardware Wallets
 
-            Method 1: Firmware Tampering
-            Risk Level: Critical
+**Method 1: Firmware Tampering**
+> **Risk Level: Critical**
+>
+> Attackers flash modified firmware before shipment or during transit. The firmware functions identically to the genuine version, but uses predictable pseudo-random numbers during key generation, or secretly encodes private key information into transaction data. Users cannot detect any abnormality from the user experience.
 
-Attackers flash modified firmware before shipment or during transit. The firmware functions identically to the genuine version, but uses predictable pseudo-random numbers during key generation, or secretly encodes private key information into transaction data. Users cannot detect any abnormality from the user experience.
+> **Method 2: Chip Swap — Risk Level: High**
+>
+> The original Secure Element chip is replaced with a visually identical counterfeit containing a backdoor. This attack requires advanced technical capability, but is well within reach for state-level adversaries. The counterfeit chip can pass all software-level verification because it returns forged authentication data.
 
-            Method 2: Chip Swap
-            Risk Level: High
+**Method 3: Package Forgery**
+> **Risk Level: Medium-High**
+>
+> Attackers replace the entire device with a pre-configured counterfeit, perfectly replicating the original packaging, tamper-evident seals, serial numbers, and documentation. These counterfeits generate a [seed phrase](/blog/seed-phrase-backup-guide) already known to the attacker, so users believe they have an independent wallet while the attacker has held the keys from day one.
 
-The original Secure Element chip is replaced with a visually identical counterfeit containing a backdoor. This attack requires advanced technical capability, but is well within reach for state-level adversaries. The counterfeit chip can pass all software-level verification because it returns forged authentication data.
+Method 4: Logistics Interception
+> **Risk Level: Medium**
+>
+> Packages are intercepted in transit, opened, devices modified or replaced, then resealed. This attack is particularly easy in international shipping, where packages stop at multiple transit points. Intelligence agencies in certain countries have been documented systematically intercepting electronics shipments.
 
-            Method 3: Package Forgery
-            Risk Level: Medium-High
-
-Attackers replace the entire device with a pre-configured counterfeit, perfectly replicating the original packaging, tamper-evident seals, serial numbers, and documentation. These counterfeits generate a [seed phrase](/blog/seed-phrase-backup-guide) already known to the attacker, so users believe they have an independent wallet while the attacker has held the keys from day one.
-
-            Method 4: Logistics Interception
-            Risk Level: Medium
-
-Packages are intercepted in transit, opened, devices modified or replaced, then resealed. This attack is particularly easy in international shipping, where packages stop at multiple transit points. Intelligence agencies in certain countries have been documented systematically intercepting electronics shipments.
-
-            Method 5: Insider Threat
-            Risk Level: Medium
-
-Employees at the hardware wallet company plant backdoors during the design or production phase. This is the most covert attack method, as insiders understand the system architecture and know how to evade internal security reviews. There have been multiple documented cases of tech company employees being bribed or coerced in the past.
+**Method 5: Insider Threat**
+> **Risk Level: Medium**
+>
+> Employees at the hardware wallet company plant backdoors during the design or production phase. This is the most covert attack method, as insiders understand the system architecture and know how to evade internal security reviews. There have been multiple documented cases of tech company employees being bribed or coerced in the past.
 
 ## Real Cases: Hardware Wallets That Were Tampered With
 
@@ -60,9 +59,9 @@ Security researchers who performed teardown analysis on Trezor devices purchased
 
 In March 2026, the AI framework [LiteLLM — with 3.4 million daily downloads — suffered a supply chain attack](/blog/litellm-supply-chain-attack). Malicious packages stole environment variables, API keys, and crypto wallet files. While this was a software supply chain attack, it perfectly illustrates a key fact: **supply chain attacks aren't limited to hardware — any third-party component you "trust" can become an attack vector**. And hardware wallets have far more physical touchpoints that can be compromised.
 
-            The Real Danger of Supply Chain Attacks
-
-The greatest threat of supply chain attacks isn't any single incident — it's that **you can never be sure whether you're a victim**. Unlike [phishing attack](/blog/phishing-attack-prevention)s that leave identifiable traces, supply chain attack victims may not discover anything wrong until their assets are stolen — and by then it's too late.
+> **The Real Danger of Supply Chain Attacks**
+>
+> The greatest threat of supply chain attacks isn't any single incident — it's that **you can never be sure whether you're a victim**. Unlike [phishing attack](/blog/phishing-attack-prevention)s that leave identifiable traces, supply chain attack victims may not discover anything wrong until their assets are stolen — and by then it's too late.
 
 ## Why Supply Chain Attacks Are So Hard to Detect
 
@@ -96,61 +95,51 @@ Even when manufacturers provide comprehensive verification tools, most users don
 
 ArcSign's architecture fundamentally eliminates the possibility of supply chain attacks. This isn't about "better protection" against attacks — it's about **making attacks architecturally meaningless**.
 
-            1
-            Generic Hardware, Zero Proprietary Components
+**1. Generic Hardware, Zero Proprietary Components**
 
 ArcSign works with any USB flash drive from any brand. You can buy a Kingston from a convenience store, a SanDisk from an electronics shop, or use an old drive from your desk drawer. USB flash drives are among the most widely produced storage devices in the world — no attacker can launch a supply chain attack against "all USB drives."
 
-            2
-            Security Comes from Software, Not Hardware
+**2. Security Comes from Software, Not Hardware**
 
 ArcSign's security is built entirely on publicly verifiable cryptographic algorithms: XOR 3-shard key splitting, [AES-256](/blog/aes256-encryption-simple)-GCM encryption for each shard, [mlock](/blog/mlock-memory-protection) memory protection to prevent swapping, and [Argon2id](/blog/aes256-encryption-simple) for backup file protection. These are standard algorithms rigorously reviewed by the cryptographic community for decades, with no dependency on hardware components that require "trust."
 
-            3
-            XOR 3-Shard Splitting + Millisecond Exposure Window
+**3. XOR 3-Shard Splitting + Millisecond Exposure Window**
 
 Even if an attacker somehow obtains your USB drive, they face three AES-256 encrypted random data shards. Without the ArcSign software and your password, these shards are useless. During normal use, the private key exists in [mlock](/blog/mlock-memory-protection)-protected memory for only 1-5 milliseconds — leaving attackers no opportunity to strike.
 
-            4
-            .arcsign Encrypted Backup — Migrate Anytime
+**4. .arcsign Encrypted Backup — Migrate Anytime**
 
 ArcSign's .arcsign backup file is AES-256 encrypted the moment it's exported. You can import the backup onto a brand new USB at any time, with no concern about the old device being tampered with. Even if someone swaps out your USB drive, you simply restore from the backup onto a new one — a flexibility that hardware wallets cannot match.
 
-            Architectural Immunity
-
-Hardware wallets try to solve hardware security problems with "more secure hardware" — an endless cat-and-mouse game. ArcSign's approach is to **exit the game entirely**: no proprietary hardware dependency means no hardware supply chain risk. This is the power of "software-defined security."
+> **Architectural Immunity**
+>
+> Hardware wallets try to solve hardware security problems with "more secure hardware" — an endless cat-and-mouse game. ArcSign's approach is to **exit the game entirely**: no proprietary hardware dependency means no hardware supply chain risk. This is the power of "software-defined security."
 
 ## Self-Protection Guide: 6 Steps to Reduce Supply Chain Risk
 
 Regardless of what wallet type you use, these steps can help you reduce supply chain-related risks:
 
-            1
-            Buy Only from Official Channels
+**1. Buy Only from Official Channels**
 
 If you choose a hardware wallet, always purchase from the manufacturer's website or authorized resellers. Avoid Amazon Marketplace, eBay, or secondhand platforms. No discount is worth the risk.
 
-            2
-            Verify Firmware and Software Integrity
+**2. Verify Firmware and Software Integrity**
 
 Use official tools to check firmware versions and signatures. For ArcSign users, download software from [arcsign.io](https://arcsign.io) and verify the file's SHA-256 hash.
 
-            3
-            Generate Your Own Seed Phrase
+**3. Generate Your Own Seed Phrase**
 
 Never use a pre-configured seed phrase or recovery phrase that comes with the device. Legitimate cold wallets will generate a fresh seed phrase during initial setup. If a device comes with preset recovery words, it's almost certainly a counterfeit.
 
-            4
-            Test with Small Amounts First
+**4. Test with Small Amounts First**
 
 Before transferring significant assets to a new wallet, run complete deposit, send, and recovery tests with small amounts. Only transfer your main holdings after confirming everything works correctly.
 
-            5
-            Regular Backup and Recovery Drills
+**5. Regular Backup and Recovery Drills**
 
 Regularly export .arcsign backup files (ArcSign users) or verify your seed phrase is correct. Perform at least one complete recovery drill per quarter to ensure your backups actually work.
 
-            6
-            Consider Eliminating Hardware Trust Dependencies
+**6. Consider Eliminating Hardware Trust Dependencies**
 
 The most fundamental solution is to use a [cold storage](/blog/what-is-cold-storage) solution that doesn't depend on proprietary hardware. ArcSign lets you use any USB flash drive as a cold wallet, completely eliminating hardware supply chain risk while providing multi-layered security through XOR 3-shard splitting, AES-256 encryption, and mlock memory protection.
 

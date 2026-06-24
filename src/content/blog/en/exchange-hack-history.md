@@ -15,53 +15,41 @@ relatedSlugs: ["defi-security-trends-2026", "why-free-wallet-safe", "arcsign-pro
 
 This is fundamentally different from traditional banking with deposit insurance. Most crypto exchanges have no government guarantees, no deposit insurance, and if a hack, internal fraud, or bankruptcy occurs, your assets can vanish instantly. History has proven this repeatedly — from the Mt. Gox collapse in 2014 to the FTX implosion in 2022, **over $10 billion in user assets have evaporated from centralized exchanges**.
 
-            Key Insight
-
-The essence of crypto is **decentralized self-sovereignty**. Storing assets on a centralized exchange means surrendering the most important feature of cryptocurrency. Self-custody isn't optional — it's the foundation of asset protection.
+> **Key Insight**
+>
+> The essence of crypto is **decentralized self-sovereignty**. Storing assets on a centralized exchange means surrendering the most important feature of cryptocurrency. Self-custody isn't optional — it's the foundation of asset protection.
 
 ## Major Exchange Hacks: From Mt. Gox to Bybit
 
 Looking back at crypto's relatively short history, the frequency and scale of exchange security incidents are staggering. Here are the most significant cases:
 
-            2014
-            Mt. Gox Collapse
-            ~850,000 BTC lost (~$450M at the time)
+> **2014 — Mt. Gox Collapse — ~850,000 BTC lost (~$450M at the time)**
+>
+> Mt. Gox once handled 70% of all global Bitcoin transactions. Long-term security vulnerabilities led to the theft of 850,000 BTC. The exchange filed for bankruptcy, and users waited over 10 years for partial compensation. This was crypto's first major "crisis of trust."
 
-Mt. Gox once handled 70% of all global Bitcoin transactions. Long-term security vulnerabilities led to the theft of 850,000 BTC. The exchange filed for bankruptcy, and users waited over 10 years for partial compensation. This was crypto's first major "crisis of trust."
+> **2016 — Bitfinex Hack — ~120,000 BTC lost (~$72M at the time)**
+>
+> Hackers exploited vulnerabilities in Bitfinex's multi-signature wallet system to steal approximately 120,000 BTC. Bitfinex imposed a "socialized loss" — cutting every user's balance by 36%. While they eventually repaid users through BFX tokens, the incident revealed that even "advanced" security architectures can have fatal flaws.
 
-            2016
-            Bitfinex Hack
-            ~120,000 BTC lost (~$72M at the time)
+> **2018 — Coincheck Hack — ~$530M in NEM tokens stolen**
+>
+> Japanese exchange Coincheck stored massive amounts of NEM tokens in hot wallets rather than [cold storage](/blog/what-is-cold-storage), making them easy targets for hackers. This incident led Japan's FSA to significantly tighten regulations on crypto exchanges, and underscored the **critical importance of cold storage**.
 
-Hackers exploited vulnerabilities in Bitfinex's multi-signature wallet system to steal approximately 120,000 BTC. Bitfinex imposed a "socialized loss" — cutting every user's balance by 36%. While they eventually repaid users through BFX tokens, the incident revealed that even "advanced" security architectures can have fatal flaws.
+> **2019 — Binance Hack — ~7,000 BTC lost (~$40M)**
+>
+> Even the world's largest exchange wasn't immune. Hackers used phishing to obtain user API keys and 2FA codes, withdrawing 7,000 BTC from hot wallets in a single transaction. Binance fully compensated users using their SAFU fund, but the incident proved that **even top-tier exchanges cannot guarantee 100% security**.
 
-            2018
-            Coincheck Hack
-            ~$530M in NEM tokens stolen
+> **2022 — FTX Collapse — ~$8 billion in user losses**
+>
+> FTX's collapse wasn't a technical hack — it was something far worse: **internal misappropriation of user funds**. Founder Sam Bankman-Fried was found to have transferred customer deposits to sister company Alameda Research for high-risk trading. This event completely demolished the argument for "trusting centralized institutions."
 
-Japanese exchange Coincheck stored massive amounts of NEM tokens in hot wallets rather than [cold storage](/blog/what-is-cold-storage), making them easy targets for hackers. This incident led Japan's FSA to significantly tighten regulations on crypto exchanges, and underscored the **critical importance of cold storage**.
+> **2025 — Bybit Hack — ~$1.46 billion in ETH stolen**
+>
+> In February 2025, Bybit suffered the largest single hack in crypto history. North Korean hacking group Lazarus Group exploited vulnerabilities in the multi-sig wallet interface, stealing nearly 500,000 ETH. Even exchanges with multiple security layers remain vulnerable to state-sponsored hackers.
 
-            2019
-            Binance Hack
-            ~7,000 BTC lost (~$40M)
-
-Even the world's largest exchange wasn't immune. Hackers used phishing to obtain user API keys and 2FA codes, withdrawing 7,000 BTC from hot wallets in a single transaction. Binance fully compensated users using their SAFU fund, but the incident proved that **even top-tier exchanges cannot guarantee 100% security**.
-
-            2022
-            FTX Collapse
-            ~$8 billion in user losses
-
-FTX's collapse wasn't a technical hack — it was something far worse: **internal misappropriation of user funds**. Founder Sam Bankman-Fried was found to have transferred customer deposits to sister company Alameda Research for high-risk trading. This event completely demolished the argument for "trusting centralized institutions."
-
-            2025
-            Bybit Hack
-            ~$1.46 billion in ETH stolen
-
-In February 2025, Bybit suffered the largest single hack in crypto history. North Korean hacking group Lazarus Group exploited vulnerabilities in the multi-sig wallet interface, stealing nearly 500,000 ETH. Even exchanges with multiple security layers remain vulnerable to state-sponsored hackers.
-
-            Sobering Numbers
-
-According to estimates, **over $15 billion in user assets have been lost from crypto exchanges due to hacking and internal issues since 2011**. This doesn't even include countless small exchange "exit scams." Behind every dollar lost is someone's hard-earned money.
+> **Sobering Numbers**
+>
+> According to estimates, **over $15 billion in user assets have been lost from crypto exchanges due to hacking and internal issues since 2011**. This doesn't even include countless small exchange "exit scams." Behind every dollar lost is someone's hard-earned money.
 
 ## The FTX Collapse: Beyond Hacking — A Crisis of Trust
 
@@ -71,18 +59,15 @@ The reality was that FTX user assets were systematically misappropriated. You th
 
 The FTX collapse taught us several important lessons:
 
-            1
-            Audit Reports Don't Equal Safety
+**1. Audit Reports Don't Equal Safety**
 
 FTX passed audits from multiple accounting firms, none of which detected the fund misappropriation. **Third-party audits are no substitute for self-custody**.
 
-            2
-            Brand Reputation Doesn't Equal Trustworthiness
+**2. Brand Reputation Doesn't Equal Trustworthiness**
 
 FTX spent hundreds of millions on advertising and sports sponsorships, appearing "too big to fail." But the flashy exterior masked internal rot.
 
-            3
-            Proof of Reserves (PoR) Has Limitations
+**3. Proof of Reserves (PoR) Has Limitations**
 
 Exchange "Proof of Reserves" can only prove assets at a single point in time and cannot prevent subsequent transfers. True security comes in only one form — **holding your own private keys**.
 
@@ -117,58 +102,49 @@ Software hot wallets are convenient but store private keys on internet-connected
 
 The main reasons people avoid self-custody are concerns about complexity and fear of losing private keys. ArcSign addresses these pain points with comprehensive solutions:
 
-            1
-            XOR Three-Shard Encryption: Multi-Layer Protection
+**1. XOR Three-Shard Encryption: Multi-Layer Protection**
 
 Your private key never exists in complete form. [XOR three-shard technology](/blog/../xor-encryption-explained) splits the private key into three random fragments, each meaningless on its own. Even if your USB is stolen, the attacker cannot recover your private key.
 
-            2
-            .arcsign Encrypted Backup: One-Click Backup
+**2. .arcsign Encrypted Backup: One-Click Backup**
 
 Worried about USB damage or loss? ArcSign's .arcsign backup file is encrypted on export ([AES-256](/blog/aes256-encryption-simple)-GCM) — just save it to a second USB. Even if someone obtains the backup file, they cannot crack it. Safer and less error-prone than hand-writing [seed phrase](/blog/seed-phrase-backup-guide)s.
 
-            3
-            mlock Memory Protection: Millisecond Exposure
+**3. mlock Memory Protection: Millisecond Exposure**
 
 [mlock technology](/blog/../mlock-memory-protection) ensures private keys are never swapped to disk during signing. The entire private key exposure window is just 1–5 milliseconds, and the key is destroyed from memory immediately after signing.
 
-            4
-            22 Chains + WalletConnect Support
+**4. 7 EVM Chains + WalletConnect Support**
 
-Supports BTC and 6 major EVM chains, with built-in [DEX swap](/blog/how-to-dex-swap-arcsign) (OpenOcean + KyberSwap) and [WalletConnect](/blog/walletconnect-dapp-tutorial) v2 for connecting to DApps. Self-custody no longer means sacrificing convenience.
+Supports 7 major EVM chains, with built-in [DEX swap](/blog/how-to-dex-swap-arcsign) (OpenOcean + KyberSwap) and [WalletConnect](/blog/walletconnect-dapp-tutorial) v2 for connecting to DApps. Self-custody no longer means sacrificing convenience.
 
-            Free with Zero Supply Chain Risk
-
-ArcSign is **completely free software** that works with your own USB drive. No need to buy specialized hardware from any company — no firmware backdoor risks, no [supply chain attack](/blog/supply-chain-attack-hardware-wallet) vectors. Your security comes from open, verifiable cryptographic algorithms, not "trusted" proprietary hardware.
+> **Free with Zero Supply Chain Risk**
+>
+> ArcSign is **completely free software** that works with your own USB drive. No need to buy specialized hardware from any company — no firmware backdoor risks, no [supply chain attack](/blog/supply-chain-attack-hardware-wallet) vectors. Your security comes from open, verifiable cryptographic algorithms, not "trusted" proprietary hardware.
 
 ## 5 Steps to Migrate from Exchanges to Self-Custody
 
 If you've decided to start self-custodying your assets, here's a safe migration plan:
 
-            1
-            Download and Set Up ArcSign
+**1. Download and Set Up ArcSign**
 
 Download the version for your OS from [arcsign.io](https://arcsign.io) ([Windows / macOS setup guide](/blog/arcsign-windows-macos-setup)). Insert a USB drive and follow the [beginner's guide](/blog/arcsign-beginner-setup-guide) to complete setup in 10 minutes.
 
-            2
-            Create Your Backup
+**2. Create Your Backup**
 
 Immediately after setup, export an .arcsign encrypted backup file to a second USB. Also record your 12-word [seed phrase](/blog/seed-phrase-backup-guide) as an additional backup (see [seed phrase backup guide](/blog/seed-phrase-backup-guide) and [USB backup strategy](/blog/usb-backup-strategy)).
 
-            3
-            Test with a Small Transfer
+**3. Test with a Small Transfer**
 
 Withdraw a small amount from the exchange (e.g., 10 USDT) to your ArcSign address. Confirm receipt before proceeding. Always double-check addresses to guard against [phishing attacks](/blog/phishing-attack-prevention).
 
-            4
-            Migrate Main Holdings in Batches
+**4. Migrate Main Holdings in Batches**
 
 Transfer your major holdings from the exchange to ArcSign in 3–5 batches. Don't withdraw everything at once — batching minimizes potential losses from errors. Confirm each transfer arrives before sending the next.
 
-            5
-            Set Up Provider and Manage Assets
+**5. Set Up Provider and Manage Assets**
 
-Configure your Alchemy API Key in ArcSign (free tier is sufficient) to view balances, perform [DEX Swaps](/blog/how-to-dex-swap-arcsign), and manage [multi-chain assets](/blog/multi-chain-management). Keep a small amount on exchanges for daily trading.
+Balances, [DEX Swaps](/blog/how-to-dex-swap-arcsign), and [multi-chain assets](/blog/multi-chain-management) all work out of the box with no API key — ArcSign reads on-chain data via built-in public RPC plus Multicall3. An Alchemy API Key (free tier) is only needed if you also want the NFT gallery and transaction history. Keep a small amount on exchanges for daily trading.
 
 ## Frequently Asked Questions
 

@@ -19,9 +19,9 @@ Each EVM chain sees thousands of new contracts deployed daily. Ethereum mainnet 
 
 That's why "add / hide / customize tokens" isn't an advanced feature — it's an everyday EVM wallet skill. Once you internalize it, you'll see clearly: your assets are always there, you just have to invite them into the UI.
 
-            Mental model
-
-On-chain balance = the truth. Wallet UI = a window onto the truth. Even when the UI shows 0, if Etherscan shows the balance and the contract address is correct, your tokens are safe. Token management is the act of telling your wallet which contracts to look at.
+> **Mental model**
+>
+> On-chain balance = the truth. Wallet UI = a window onto the truth. Even when the UI shows 0, if Etherscan shows the balance and the contract address is correct, your tokens are safe. Token management is the act of telling your wallet which contracts to look at.
 
 ## 2. ERC-20 standard and how token lists actually work
 
@@ -51,29 +51,25 @@ Together, the two tiers cover virtually every legitimate token you'll encounter.
 
 Say you just received a new token from a DEX, but ArcSign's UI doesn't show it. Here's the standard playbook to bring it in. Every step happens offline, inside your USB, with zero on-chain transactions:
 
-            1
-            Get the contract address from Etherscan / BscScan
+**1. Get the contract address from Etherscan / BscScan**
 
 Never use a Google search. Go directly to `etherscan.io` (or its sibling: `bscscan.com`, `polygonscan.com`, `arbiscan.io`, `optimistic.etherscan.io`, `basescan.org`), search for the token name, find the "Contract" tab and the 0x address. **Confirm the green "✓ Verified" badge in the upper-left** before copying.
 
-            2
-            Switch ArcSign to the correct chain
+**2. Switch ArcSign to the correct chain**
 
 Plug in USB → unlock ArcSign → use the chain selector at the top to switch to the right network (Ethereum / BSC / Polygon / Arbitrum / Optimism / Base). Token contracts are **chain-specific** — USDT on BSC and USDT on Ethereum are different contracts with different addresses, so make sure they line up.
 
-            3
-            "Add Token" → paste the contract address
+**3. "Add Token" → paste the contract address**
 
 From the assets page, hit "Add Token" (or the "+" button) → paste the address you copied. ArcSign auto-fetches `name`, `symbol`, and `decimals` via read-only RPC (Alchemy on most chains, NodeReal on BSC) and shows a preview. If the contract is a known scam or flagged by multiple sources, a red warning banner appears.
 
-            4
-            Confirm — no signature required
+**4. Confirm — no signature required**
 
 Verify the name and symbol match what Etherscan shows → click "Confirm." The token immediately appears in your asset list with the real balance. The whole flow uses **no on-chain transaction, no signature, no gas** — you simply edited the local token list on your USB.
 
-            Pro tip: add directly from the Activity feed
-
-If you've already received the token in a transaction, ArcSign's "Activity" page lists that tx with an "Add this token" shortcut. One click and it's in your list — no manual address copying.
+> **Pro tip: add directly from the Activity feed**
+>
+> If you've already received the token in a transaction, ArcSign's "Activity" page lists that tx with an "Add this token" shortcut. One click and it's in your list — no manual address copying.
 
 ## 4. Hide tokens: clean UI & defend against spam
 
@@ -89,9 +85,9 @@ If you've already received the token in a transaction, ArcSign's "Activity" page
 
 Long-press (or right-click) the token in your asset list → choose "Hide token" → confirm. It vanishes from the UI but can be unhidden from "Settings → Hidden Tokens" any time. Hiding does not affect: (1) your on-chain balance; (2) your ability to re-add the token later via [WalletConnect](/blog/walletconnect-dapp-tutorial) or the custom-token flow.
 
-            Critical principle: hide ≠ "safely dispose of"
-
-If you receive an obvious phishing token, **do not** try to `transfer` or swap it out (even if your goal is just to "throw it away"). Any active interaction can trigger the malicious contract. The right move is to hide it and forget it. Trying to deal with it might be the very action that drains the rest of your wallet.
+> **Critical principle: hide ≠ "safely dispose of"**
+>
+> If you receive an obvious phishing token, **do not** try to `transfer` or swap it out (even if your goal is just to "throw it away"). Any active interaction can trigger the malicious contract. The right move is to hide it and forget it. Trying to deal with it might be the very action that drains the rest of your wallet.
 
 ## 5. Fake tokens: 5 common scams and a detection checklist
 
@@ -117,31 +113,27 @@ Fake tokens are a chronic problem in the EVM ecosystem. According to Etherscan 2
 
 5. **No red warning in ArcSign's preview.** The built-in scam-list filters known fakes automatically.
 
-            Iron rule
-
-If you don't recognize a token: **don't approve, don't swap, don't click any embedded links**. Default assumption: it's a scam. Sleep on it for three days — legitimate opportunities don't evaporate that fast. Related reading: our [Phishing Attack Prevention guide](/blog/phishing-attack-prevention) and [Token Approval Management](/blog/token-approval-revoke).
+> **Iron rule**
+>
+> If you don't recognize a token: **don't approve, don't swap, don't click any embedded links**. Default assumption: it's a scam. Sleep on it for three days — legitimate opportunities don't evaporate that fast. Related reading: our [Phishing Attack Prevention guide](/blog/phishing-attack-prevention) and [Token Approval Management](/blog/token-approval-revoke).
 
 ## 6. The 6-chain EVM token governance SOP
 
 ArcSign supports **Ethereum, BSC, Polygon, Arbitrum, Optimism, and Base** — each with its own token list. Multi-chain users should run a personal token-governance SOP, ideally once a month:
 
-            1
-            Monthly reconciliation: align on-chain reality with the UI
+**1. Monthly reconciliation: align on-chain reality with the UI**
 
 For each chain, compare ArcSign's asset list against the ERC-20 Token tab on Etherscan / BscScan / etc. New legit tokens? Add them. Spam? Hide. The point is to keep the UI faithful to the on-chain truth.
 
-            2
-            Categorize: Core / Investment / Watch / Hidden
+**2. Categorize: Core / Investment / Watch / Hidden**
 
 ArcSign supports custom labels. Suggested four-bucket model: (1) Core (USDT, ETH, BTC long-term holdings); (2) Investment (mid-term swing trades); (3) Watch (small test positions); (4) Hidden (spam). Combined with monthly reconciliation, you'll always know where you stand.
 
-            3
-            Sync custom-token list to your backup USB
+**3. Sync custom-token list to your backup USB**
 
 After adding a batch of custom tokens, export an updated `.arcsign` encrypted backup file and copy it to your secondary USB. The backup is [AES-256](/blog/aes256-encryption-simple) encrypted out of the box — even if the file lands in someone else's hands, they can't decrypt it.
 
-            4
-            Pair with your quarterly approval audit
+**4. Pair with your quarterly approval audit**
 
 Run "token governance" and "approval audit" in the same session each quarter. Forgotten tokens often correspond to forgotten approvals; tackling them together is the highest-leverage cleanup of the year.
 
@@ -153,7 +145,7 @@ ArcSign derives multiple addresses from the same seed. Allocate tokens across ac
 
 ### 2. Use a custom RPC endpoint to reduce IP correlation
 
-By default, balance reads go through Alchemy / NodeReal public RPCs. If privacy matters, switch to a custom RPC (Infura, QuickNode, or self-hosted) in ArcSign's settings. Multiple wallets sharing one Alchemy key are easy to correlate; rotating providers or self-hosting raises the bar significantly. We'll dive deeper in our upcoming [Custom RPC tutorial](/blog/arcsign-custom-rpc).
+By default, balance reads go through built-in **public RPC plus Multicall3** with no API key and no third-party account binding — there's no shared Alchemy key tying your wallets together. If you want even more privacy, you can still switch to a custom RPC (Infura, QuickNode, or self-hosted) in ArcSign's settings; rotating providers or self-hosting raises the bar further. We'll dive deeper in our upcoming [Custom RPC tutorial](/blog/arcsign-custom-rpc).
 
 ### 3. Zero-interaction principle for dust attacks
 
@@ -163,15 +155,15 @@ When small unsolicited tokens land in your wallet, **don't** consolidate them in
 
 Want to track a new token's price and balance without putting funds at risk? Add the contract address to a watch-only address and observe from afar. Watch-only addresses don't have a corresponding private key — perfect for paper trading and market scouting.
 
-            ArcSign's commitment
-
-Whether you manage 5 ERC-20 tokens or 500, ArcSign sticks to three principles: **(1) the token list lives on USB only; (2) every signature happens offline, the private key never leaves the device; (3) token management is free with no Pro tier locks.** Token governance is a daily habit, not a one-time chore.
+> **ArcSign's commitment**
+>
+> Whether you manage 5 ERC-20 tokens or 500, ArcSign sticks to three principles: **(1) the token list lives on USB only; (2) every signature happens offline, the private key never leaves the device; (3) token management is free with no Pro tier locks.** Token governance is a daily habit, not a one-time chore.
 
 ## FAQ
 
 ### Q: I sent tokens to my wallet, but the UI shows 0. Why?
 
-Wallets ship with a curated token list of a few hundred mainstream assets (USDT, USDC, WBTC, etc.). With millions of ERC-20 contracts deployed across each EVM chain, no wallet can preload them all. If you transferred a less-common token, the balance is on-chain — your wallet just hasn't "noticed" the contract yet. Add it manually via the contract address and the balance appears immediately. ArcSign's custom-token flow works the same way across all 6 supported EVM chains.
+Wallets ship with a curated token list of a few hundred mainstream assets (USDT, USDC, WBTC, etc.). With millions of ERC-20 contracts deployed across each EVM chain, no wallet can preload them all. If you transferred a less-common token, the balance is on-chain — your wallet just hasn't "noticed" the contract yet. Add it manually via the contract address and the balance appears immediately. ArcSign's custom-token flow works the same way across all 7 supported EVM chains.
 
 ### Q: A free token suddenly appeared in my wallet. Should I claim it?
 
@@ -179,8 +171,8 @@ It's almost certainly not a real airdrop — most likely a dust attack or fake-t
 
 ### Q: Does adding a custom token in ArcSign require an internet connection or expose my private key?
 
-Adding/hiding/customizing tokens only edits the local token list on your USB — no on-chain transaction, no signature, no private key access. Reading balances uses read-only RPC calls (Alchemy, or NodeReal for BSC) that only send your public address. Anything that writes to chain (transfer, swap, revoke) is the only operation that touches the private key — and even then, the key is reassembled inside the USB from three XOR shards for 1–5 ms, signs, and is wiped immediately.
+Adding/hiding/customizing tokens only edits the local token list on your USB — no on-chain transaction, no signature, no private key access. Reading balances uses keyless read-only calls over built-in public RPC plus Multicall3 that only send your public address. Anything that writes to chain (transfer, swap, revoke) is the only operation that touches the private key — and even then, the key is reassembled inside the USB from three XOR shards for 1–5 ms, signs, and is wiped immediately.
 
 ### Q: How is ArcSign's token management different from MetaMask or Trust Wallet?
 
-All three let you add custom tokens, but the security model differs. MetaMask / Trust Wallet are hot wallets — keys live on a device that's online, so any compromise can drain your assets along with the token list. ArcSign is a USB cold wallet: the token list and private key both live on the USB, and management works fully offline. Signing happens inside the USB; the private key never leaves the device. ArcSign also ships curated token lists for all 6 EVM chains (including BSC) and auto-flags known scam contracts — a layer most hot wallets simply don't have.
+All three let you add custom tokens, but the security model differs. MetaMask / Trust Wallet are hot wallets — keys live on a device that's online, so any compromise can drain your assets along with the token list. ArcSign is a USB cold wallet: the token list and private key both live on the USB, and management works fully offline. Signing happens inside the USB; the private key never leaves the device. ArcSign also ships curated token lists for all 7 EVM chains (including BSC) and auto-flags known scam contracts — a layer most hot wallets simply don't have.
