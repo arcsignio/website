@@ -140,29 +140,29 @@ Drainers Manufacture a "Sense of Normalcy"
 
 More sophisticated drainers will first ask you to sign an **innocuous "sign-in message"** (just a plain string), getting you used to pressing approve. Then the **second signature** is the actual drain. This technique is called **Trust Priming**. The only defense is: **treat every signature as an independent event from scratch** — never relax because the previous one was safe.
 
-## How ArcSign Intercepts Drainers Before You Sign
+## How ArcSign Helps You Catch Drainers Before You Sign
 
-ArcSign was designed from day one around "stop the drainer before the signature." That defense is layered four deep:
+The honest framing the rest of this post already nails: **drainers don't steal your key — they steal your signature.** So a cold wallet's defense against drainers comes down to whether it lets you *see and understand* what you're about to sign. Here's what ArcSign actually does:
 
-**1. Clear Signing: Every Signature Translated to Plain English**
+**1. Clear-signing: see what you're really signing**
 
-For all EIP-712 signatures (Permit, Permit2, ERC-20 approve, ERC-721 `setApprovalForAll`), ArcSign performs full schema parsing and renders in plain English. When a Permit2 PermitBatch arrives, ArcSign doesn't show `0x...` — it shows "You are about to authorize [spender address + known label] to move up to [USDC: 5,000 / USDT: 3,000 / DAI: 2,000] before [human-readable deadline]." See the [Clear Signing deep dive](/blog/blind-signing-risks).
+ArcSign locally decodes WalletConnect / mint calldata and EIP-712 typed data (Permit, Permit2, ERC-20 `approve`, ERC-721 `setApprovalForAll`) into readable intent. It uses a small set of curated ABI fragments matched by 4-byte selector for the common cases; a Permit2 message surfaces the spender and token rather than a raw hex blob. Crucially, an infinite `approve` (amount = max uint) and `setApprovalForAll(..., true)` each get an **inline red flag** — the exact two patterns most drainer signatures rely on. See the [Clear Signing deep dive](/blog/blind-signing-risks).
 
-**2. Automatic High-Risk Pattern Detection**
+**2. Blacklist check on the destination (free for everyone)**
 
-ArcSign ships with a "drainer fingerprint database" that checks: (a) is the `spender` address on a known drainer relay list; (b) does the signature shape match common drainer templates (e.g., a `Permit2.PermitBatch` sweeping 5+ tokens at once); (c) is it an "unlimited amount + far-future deadline" combo. If any check trips, the UI throws a full-screen red warning and requires the user to tick "I understand this might be phishing" before continuing.
+Before releasing a signature, ArcSign checks the signing destination address against an offline blacklist (OFAC + ScamSniffer + MetaMask phishing lists). If the spender / destination is a known-malicious address, the backend refuses to sign unless you explicitly acknowledge. This runs offline and is free for all users — not a Pro-gated feature.
 
-**3. Transaction Simulation: See Net Asset Change Before You Sign**
+**3. Transaction simulation (Pro): net asset change before you sign**
 
-For EVM transactions, ArcSign simulates the call against a local or trusted RPC and displays "what happens to your wallet" before signing — e.g., "−5,000 USDC, −3,000 USDT, −1 NFT (BAYC #4xxx)." If the simulation doesn't match what you thought you were doing (you thought you were minting an NFT, but the sim shows multiple NFTs leaving your wallet), reject.
+For EVM transactions, ArcSign Pro simulates the call and previews "what happens to your wallet" before signing — e.g., "−5,000 USDC, −3,000 USDT, −1 NFT (BAYC #4xxx)." If that doesn't match what you thought you were doing (you expected to mint one NFT, but the sim shows multiple leaving your wallet), reject. Simulation surfaces a warning to inform your decision; it covers 5 major EVM chains and is a Pro feature.
 
-**4. Private Key Never Leaves the USB**
+**4. The private key never leaves the USB**
 
-Even if a drainer tricks you into signing one authorization, [ArcSign's XOR three-shard key protection](/blog/xor-encryption-explained) and [mlock memory hardening](/blog/mlock-memory-protection) ensure the private key itself never leaks. The attack surface is strictly bounded to "what that one signature could authorize" — never "every future asset you ever put in this wallet." That's the last line of defense, but the best line is still "don't sign wrong."
+Even if a drainer tricks you into signing one authorization, [ArcSign's XOR three-shard key protection](/blog/xor-encryption-explained) and [mlock memory hardening](/blog/mlock-memory-protection) ensure the private key itself never leaks. The attack surface is strictly bounded to "what that one signature could authorize" — never "every future asset you ever put in this wallet." That's the last line of defense, but the best line is still "don't sign what you can't read."
 
 Design Philosophy: Extending [Zero Trust](/blog/zero-trust-wallet) From Key Storage to the Signing UI
 
-Many cold wallets define "security" narrowly as "the key doesn't leak." But drainers never steal your key — they steal your signature. ArcSign extends zero-trust into the entire signing interaction: every signature is treated as a potential attack by default, and only released after three layers of verification (ABI parse, drainer-fingerprint match, simulation).
+Many cold wallets define "security" narrowly as "the key doesn't leak." But drainers never steal your key — they steal your signature. ArcSign extends zero-trust into the signing interaction itself: clear-signing so you can read what you're authorizing, a free blacklist check on the destination, and Pro simulation so you can preview the outcome before you confirm.
 
 ## Eight Specific Habits That Beat Drainers
 
@@ -217,7 +217,7 @@ The big one: **drainers leave zero artifacts on your computer**. They live entir
 
 ### Q: Will a hardware wallet (Ledger, Trezor) block drainers?
 
-Partially. Both Ledger and Trezor have added Clear Signing for major DApps since 2023, parsing the common signatures into readable text. But for drainer-style dynamically generated Permit2 PermitBatch payloads, `setApprovalForAll` calls, or obscure contract methods, **the hardware screen often falls back to raw hex** — that's [blind signing](/blog/blind-signing-risks). Drainers deliberately pick contract call patterns hardware screens can't render. So "I'm safe because I use hardware" is no longer a valid assumption in 2026. ArcSign's USB cold wallet has the advantage of unlimited screen real estate, allowing full ABI parsing + simulation.
+Partially. Both Ledger and Trezor have added Clear Signing for major DApps since 2023, parsing the common signatures into readable text. But for drainer-style dynamically generated Permit2 PermitBatch payloads, `setApprovalForAll` calls, or obscure contract methods, **the hardware screen often falls back to raw hex** — that's [blind signing](/blog/blind-signing-risks). Drainers deliberately pick contract call patterns hardware screens can't render. So "I'm safe because I use hardware" is no longer a valid assumption in 2026. ArcSign is a desktop app, so its signing screen isn't constrained by a tiny hardware display — it can show readable clear-signing for the common signature types, an inline red flag on infinite `approve` / `setApprovalForAll`, and Pro simulation.
 
 ### Q: Can drainers actually steal from a USB cold wallet?
 

@@ -39,7 +39,7 @@ EIP-712 introduced structured signatures so users *could* see `{ to: 0x..., amou
 
 EIP-712 Isn't the Villain — Blind Signing Is
 
-EIP-712 itself is a *good* design. Its whole point is to make signatures **more** legible, not less. The problem is whether **wallets and hardware actually parse it**. If your hardware wallet treats EIP-712 as just another hex blob, no amount of standardization saves the user. ArcSign's Clear Signing parses the full EIP-712 schema, splitting `domain`, `types`, and `message` into three readable panels.
+EIP-712 itself is a *good* design. Its whole point is to make signatures **more** legible, not less. The problem is whether **wallets and hardware actually parse it**. If your hardware wallet treats EIP-712 as just another hex blob, no amount of standardization saves the user. ArcSign's clear-signing parses the EIP-712 typed data and surfaces it as readable rows — who the spender is, what amount, what deadline.
 
 ## Why Is Blind Signing Especially Deadly? Three Amplifiers
 
@@ -94,23 +94,23 @@ Permit and Permit2 signatures are **not transactions** — they are off-chain me
 
 ## How ArcSign Defends Against Blind Signing
 
-ArcSign was designed from version one with "users should never blind-sign" as a core principle. The implementation has four layers:
+ArcSign was designed from version one with "users should never blind-sign" as a core principle. Here's what it actually does:
 
-**1. Full ABI parsing (7 EVM chains, 4,000+ mainstream contracts preloaded)**
+**1. Local clear-signing of the common cases**
 
-ArcSign ships with ABIs for over 4,000 mainstream DeFi, NFT, and bridge contracts across its 7 supported EVM chains. The signing screen never shows `0x...` hex — it shows `Uniswap V3 Router: exactInputSingle({ tokenIn: WETH, tokenOut: USDC, amountIn: 1.5 ETH, ... })`. For uncommon contracts, the UI tries to fetch ABI from Etherscan / Sourcify; only if that fails does it fall back to hex — and **hex mode triggers a prominent warning**, requiring the user to tick "I understand I am blind-signing" before proceeding.
+ArcSign locally decodes WalletConnect / mint calldata and EIP-712 typed data into readable intent. Rather than a giant preloaded database, it matches calls against a small set of curated ABI fragments by 4-byte selector — covering the patterns that actually carry risk: ERC-20 / ERC-721 (`transfer`, `approve`, `setApprovalForAll`), Permit2, and major DEX router swaps. So instead of `0x095ea7b3...` you see something like `approve(Uniswap V3 Router, 100 USDC)`. For a contract it can't decode locally, ArcSign offers an optional online **Sourcify** ABI fallback; if that also fails, it honestly falls back to raw hex with a warning and requires you to tick "I understand the risk and still want to sign" before proceeding.
 
-**2. EIP-712 three-layer decomposition + Permit/Permit2 red banners**
+**2. EIP-712 surfaced as readable rows + Permit/Permit2 risk flag**
 
-For every EIP-712 structured signature, ArcSign splits `domain` (DApp origin), `types` (data schema), and `message` (actual payload) into three panels. If a `Permit`, `PermitSingle`, or `PermitBatch` is detected, the top of the screen flashes a **red banner**: "⚠ This is an authorization signature — you are granting [spender / known label] permission to move up to [amount] until [deadline]. Once signed, an attacker can drain at any time." The user must reconfirm before the signature is released.
+For EIP-712 structured signatures, ArcSign lays out the fields as readable rows (who the spender is, what amount, what deadline) rather than a hex blob. Permit / Permit2 detection is deliberately conservative — a regex match on the EIP-712 domain / primaryType — and when it trips, the signature gets an inline **"approval signature" risk badge** so you treat it like the authorization it is, not a harmless login.
 
-**3. Special handling for infinite allowance and setApprovalForAll**
+**3. Inline red flag on infinite allowance and setApprovalForAll**
 
-When `amount = 2^256-1` (infinite) or `setApprovalForAll(operator, true)` appears, ArcSign: (a) shows a full-screen red warning; (b) displays your current balance of the affected token / collection so the impact is concrete ("you hold 5,124 USDC — granting unlimited approval"); (c) automatically suggests the bounded-allowance equivalent and shows how to modify the call to `approve(N)`.
+When `amount = 2^256-1` (infinite) or `setApprovalForAll(operator, true)` appears, ArcSign attaches an **inline red flag / badge** to that field, so the single most dangerous patterns in drainer signatures never blend in with the rest of the request.
 
-**4. Transaction simulation + asset-delta preview**
+**4. Transaction simulation + asset-delta preview (Pro)**
 
-For EVM transactions, ArcSign simulates the entire call against a local or trusted RPC before signing and shows "your wallet after this transaction": e.g. "-1.5 ETH, +3,124 USDC, +0 NFT, -1 NFT (CryptoPunk #4xxx)". If the simulation shows "-N NFT" when you thought you were just "minting one NFT" — stop. Reject.
+For EVM transactions, ArcSign Pro simulates the call before signing and shows "your wallet after this transaction": e.g. "-1.5 ETH, +3,124 USDC, -1 NFT (CryptoPunk #4xxx)". If the simulation shows "-N NFT" when you thought you were just "minting one NFT" — stop and reject. Simulation surfaces a warning to inform your decision (it doesn't block the signature), covers 5 major EVM chains, and is a Pro feature.
 
 Design Philosophy: [Zero Trust](/blog/zero-trust-wallet) Carried Through to the Last 1ms Before Signing
 
@@ -159,7 +159,7 @@ The most common secondary scam after a drain is a Telegram / X / Discord DM from
 
 ### Q: If I use Ledger / Trezor, am I safe from blind signing?
 
-Not necessarily. Ledger and Trezor have progressively added partial Clear Signing since 2023 (especially for Uniswap, 1inch, and other top DApps), but **for less-common contracts, newly deployed contracts, and custom EIP-712 structures, hardware screens still show only hex or function selectors**. a16z crypto's 2024 study found that mainstream hardware wallets had a Clear-Signing coverage rate of roughly 60–75% across 100 random DApp signature requests — the remaining 25–40% were blind. ArcSign's software-based USB cold wallet has an advantage here: unconstrained screen real estate lets it display full ABI parsing, simulation, and warnings, yielding higher coverage.
+Not necessarily. Ledger and Trezor have progressively added partial Clear Signing since 2023 (especially for Uniswap, 1inch, and other top DApps), but **for less-common contracts, newly deployed contracts, and custom EIP-712 structures, hardware screens still show only hex or function selectors**. a16z crypto's 2024 study found that mainstream hardware wallets had a Clear-Signing coverage rate of roughly 60–75% across 100 random DApp signature requests — the remaining 25–40% were blind. ArcSign is a desktop app, so its signing screen isn't constrained by a tiny hardware display: it clear-signs the common risk-carrying patterns, can pull an ABI from Sourcify for contracts it doesn't recognize, and falls back to an explicit acknowledge step when it genuinely can't decode something.
 
 ### Q: Is an EIP-712 "Sign Typed Data" request safer than a normal transaction?
 
@@ -171,4 +171,4 @@ Permit (EIP-2612) was proposed in 2020 as an ERC-20 extension letting token hold
 
 ### Q: What does ArcSign do when it doesn't recognize a contract?
 
-Two steps: (1) try to fetch and decode the ABI live from Etherscan / BscScan / Sourcify; (2) if that fails, surface a **full-screen red warning**: "⚠ This contract's ABI is unverified — you are entering blind-signing mode." The user must check an explicit "I understand I am blind-signing and accept the risk" box before continuing. The UI also recommends "check whether this contract is verified on Etherscan first — 90% of unverified contracts are malicious." That forced "pause" mechanism blocked over 85% of phishing success in ArcSign's internal testing.
+Two steps: (1) try an optional online **Sourcify** ABI lookup to decode the call; (2) if that fails, it falls back to raw hex with a warning that you're blind-signing. The user must tick an explicit "I understand the risk and still want to sign" box before continuing. That deliberate "pause" — refusing to make an undecodable signature feel safe — is the whole point: if you can't read it, the honest default is to stop.

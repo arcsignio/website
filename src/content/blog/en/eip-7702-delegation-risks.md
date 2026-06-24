@@ -1,6 +1,6 @@
 ---
 title: "EIP-7702 Delegation Attacks Explained: How Pectra Turned Every EOA Into a Programmable Account"
-description: "Pectra activated EIP-7702 — any EOA can now delegate code to a contract with a single signature. That signature is also the most dangerous new phishing primitive of 2026. We break down SET_CODE attack vectors, cross-chain replay risks, real-world cases, and how ArcSign parses type-4 transactions to stop delegation phishing before you confirm."
+description: "Pectra activated EIP-7702 — any EOA can now delegate code to a contract with a single signature. That signature is also the most dangerous new phishing primitive of 2026. We break down SET_CODE attack vectors, cross-chain replay risks, real-world cases, why clear-signing and a blacklist check still matter, and why ArcSign is honest that dedicated type-4 decoding is still on its roadmap."
 pubDate: 2026-05-19
 locale: en
 tags: ["Security"]
@@ -19,7 +19,7 @@ This capability was designed as a gentle on-ramp to account abstraction — you 
 
 **Why Read This Carefully**
 
-If you still use an EOA to connect to DApps and you sign EIP-712 messages from a browser wallet, you're already inside the EIP-7702 attack surface. This piece walks through the technical mechanics, the actual attack vectors that have appeared in 2025–2026, and how ArcSign surfaces `0x04` transactions and `SET_CODE` authorizations in the signing UI so they don't slip past as another [blind sign](/blog/blind-signing-risks).
+If you still use an EOA to connect to DApps and you sign EIP-712 messages from a browser wallet, you're already inside the EIP-7702 attack surface. This piece walks through the technical mechanics, the actual attack vectors that have appeared in 2025–2026, and — honestly — where a cold wallet like ArcSign can help today and where it can't yet, so you don't let a delegation slip past as another [blind sign](/blog/blind-signing-risks).
 
 ## What EIP-7702 Actually Does: Putting Contract Skin on an EOA
 
@@ -137,33 +137,31 @@ When a legitimate smart-account team (Coinbase Smart Wallet, Safe, Biconomy) wan
 
 If any of those five fail, stop. **You will not be excluded from DeFi for skipping an upgrade**, but you can absolutely be drained for signing the wrong one.
 
-## How ArcSign Defends Against EIP-7702
+## How ArcSign Helps — and Where Its Limits Are
 
-ArcSign treats EIP-7702 with the same severity as Permit2 and `setApprovalForAll`. In our Clear Signing engine, type-4 transactions and bare EIP-7702 authorizations share the same alerting pipeline:
+Let's be upfront about the current state: **ArcSign v1.5.0's clear-signing engine does not yet specifically decode EIP-7702 type-4 (`SET_CODE`) transactions.** EIP-7702 is a brand-new transaction type that only went live with Pectra in 2025, and dedicated parsing of the type-4 `authorization_list` is still on our roadmap. We're not going to pretend we already support a feature we haven't shipped — for a security-first cold wallet, that honesty is the baseline.
 
-**1. Full ABI Decoding of Type-4 Transactions**
+So what can ArcSign actually do today? Here are the capabilities that **really exist**, and their boundaries:
 
-The signing UI never displays `0x04` and hex. ArcSign parses the entire `authorization_list` into English: "You are about to authorize EOA `0xYou` on [chain name / 'all EVM chains'] to delegate code to [target contract address + Etherscan label + deployment date + verified status]." This is the same design philosophy as the [blind-signing piece](/blog/blind-signing-risks) — a signature you can't read should never be signed.
+**1. Clear-signing: a transaction you can read is a transaction you can sign with confidence**
 
-**2. chain_id = 0 Triggers a Mandatory Red Warning**
+ArcSign v1.5.0 locally decodes WalletConnect / mint calldata and EIP-712 typed data into human-readable intent (transfer, `approve`, `setApprovalForAll`, DEX swap). Infinite `approve` and `setApprovalForAll(..., true)` get an inline red flag. **When a transaction can't be decoded, the UI honestly shows it as unreadable, falls back to raw hex, and requires you to tick "I understand the risk and still want to sign" before continuing** — it never hands you a false sense of safety. That "don't sign what you can't understand" principle is the most fundamental mindset against EIP-7702 phishing.
 
-If the authorization's `chain_id` is 0, ArcSign throws a **full-screen red warning** and requires the user to manually tick "I understand this signature is valid on every EVM chain" before continuing. For nearly every legitimate use case, that field should be bound to the current chain — it should not be 0.
+**2. Blacklist check: signing toward a known-malicious address gets stopped**
 
-**3. Static Analysis of the Target Contract**
+If the destination of the transaction you're signing (or a delegation target) lands on ArcSign's offline blacklist (OFAC + ScamSniffer + MetaMask phishing lists), the backend refuses to release the signature before touching the private key, unless you explicitly acknowledge. This check is free for everyone and works offline. See [the signing security gate piece](/blog/signing-security-gate).
 
-ArcSign runs a local static analysis on the target contract: (a) does it contain `setOwner` / `upgrade` / `migrateAdmin` -style functions; (b) is the deployment timestamp newer than 30 days; (c) is it on a known sweeper blacklist; (d) does it share fund flows with known [drainer toolkit](/blog/wallet-drainer-toolkits-explained) relays. Any anomaly → full-screen warning.
+**3. Transaction simulation (Pro): preview asset changes before you sign**
 
-**4. Simulation: What Happens to the Next Inbound Transfer**
+ArcSign Pro offers transaction simulation, previewing the net asset change a transaction would cause before you confirm. This is especially useful for transactions that "look harmless but actually move money." (Simulation is a Pro feature and currently covers 5 major EVM chains. It surfaces a warning — it does not block signing.)
 
-Before you press "Confirm," ArcSign simulates: "**after this delegation, what happens to the next ETH / token that arrives at this EOA?**" If the simulation shows funds will immediately `transfer` to a different address — the signature is blocked, period.
+**4. The private key never leaves the USB**
 
-**5. Private Key Never Leaves the USB, and the Authorization Is Confirmed Cold-Side**
+Regardless of transaction type, ArcSign's [private keys](/blog/private-key-management-best-practices) always live on the USB in [XOR three-shard](/blog/xor-encryption-explained) encrypted form, reconstructed only briefly in [mlock-protected memory](/blog/mlock-memory-protection) during signing. The core of an EIP-7702 attack is "**signing one wrong authorization**" — so a cold wallet's defense against it ultimately depends on whether you **understand what you're signing and are willing to stop when unsure**.
 
-The EIP-7702 attack hinges on "**signing one wrong authorization**," so locking the private key in a USB is not enough — the signing UI itself has to render on the cold side. ArcSign moves the entire type-4 parse, contract static analysis, and cross-chain warning onto the USB device's screen, integrated with [XOR three-shard key storage](/blog/xor-encryption-explained) and [mlock memory hardening](/blog/mlock-memory-protection) into a complete zero-trust signing chain.
+The Honest Conclusion
 
-Design Philosophy: Treat Account Abstraction Like a Contract Deployment
-
-The moment EIP-7702 made EOAs programmable, the wallet security model needed rewriting. ArcSign's choice is: **no one-click "upgrade" shortcut**. Every EIP-7702 authorization is treated like a **contract-deployment-grade** decision, because the consequences are at contract-deployment grade. See [the zero-trust wallet piece](/blog/zero-trust-wallet) for the full design.
+For a new attack surface like EIP-7702, the most reliable defense right now is still **you**: don't click a DApp's self-described "one-click upgrade to a smart account," reject `chain_id = 0` authorizations, verify the target contract before signing. A cold wallet can lock your key away, block known-malicious addresses, and let you read most transactions — but for a brand-new transaction type its software doesn't yet specifically decode, it won't (and shouldn't) pretend it can intercept 100% of attacks automatically. See [the zero-trust wallet piece](/blog/zero-trust-wallet) for ArcSign's full design philosophy.
 
 ## Seven Habits That Keep You Out of EIP-7702 Phishing
 
@@ -213,11 +211,11 @@ Because **the attacker will use it on your behalf**. The danger of EIP-7702 is t
 
 ### Q: Do hardware wallets (Ledger, Trezor) parse EIP-7702?
 
-Partially. Ledger added type-4 parsing in 2025-Q3 but many older firmware versions still don't have it; Trezor only added full support in 2026-Q1. Even on the latest firmware, **most hardware wallets render the `authorization_list` as hex** — what you see on the screen is `chain_id: 0` and `address: 0x73...AB`, without any contract static analysis, blacklist lookup, or simulation. ArcSign performs full ABI parsing + contract static analysis + cross-chain warnings on the USB device screen, which is possible because USB cold wallets don't have the tiny-screen limitation of hardware wallets.
+Partially. Ledger added type-4 parsing in 2025-Q3 but many older firmware versions still don't have it; Trezor only added full support in 2026-Q1. Even on the latest firmware, **most hardware wallets render the `authorization_list` as hex** — what you see on the screen is `chain_id: 0` and `address: 0x73...AB`, with no human-readable explanation. ArcSign is candid here too: its clear-signing engine does not yet specifically decode EIP-7702 type-4 transactions either (it's on the roadmap). What ArcSign does provide today — clear-signing for the common transaction types, an offline blacklist check on the destination, and Pro transaction simulation — runs in the desktop app, not on the USB, since the USB is plain encrypted storage with no screen.
 
 ### Q: Can a USB cold wallet completely block EIP-7702 phishing?
 
-"Completely" is too strong. A USB cold wallet completely blocks [private-key exfiltration](/blog/private-key-management-best-practices) — the key never leaves the device. But EIP-7702 attacks work by **getting the user to sign an authorization themselves**, so the cold wallet's job is to make sure you can **see clearly what you're signing**. If the user manually ticks "I understand the risk" on ArcSign's full-screen red warning and confirms anyway, **no cold wallet can stop that**. The design goal of a cold wallet is not to override the user's decision — it's to put every relevant piece of information in front of them, in human-readable form, so they can decide on real information.
+"Completely" is too strong. A USB cold wallet completely blocks [private-key exfiltration](/blog/private-key-management-best-practices) — the key never leaves the device. But EIP-7702 attacks work by **getting the user to sign an authorization themselves**, so the cold wallet's job is to make sure you can **see clearly what you're signing**. If the user manually ticks "I understand the risk and still want to sign" and confirms anyway, **no cold wallet can stop that**. The design goal of a cold wallet is not to override the user's decision — it's to put every relevant piece of information in front of them, in human-readable form, so they can decide on real information.
 
 ### Q: How is EIP-7702 different from ERC-4337 (account abstraction)?
 

@@ -152,31 +152,31 @@ If any of those five is off, stop. **A legitimate swap does not need infinite al
 
 ## How ArcSign Defends Against Permit2
 
-ArcSign treats EIP-712 message signing in the same pipeline as [blind signing](/blog/blind-signing-risks) and [EIP-7702 delegation](/blog/eip-7702-delegation-risks) — once a Permit2 message is detected, the signing UI enters **on-chain-transaction-grade** review:
+ArcSign treats EIP-712 message signing in the same clear-signing pipeline as [blind signing](/blog/blind-signing-risks) — when a Permit / Permit2 message is detected, it's surfaced as an authorization, not a harmless login. Here's what it actually does:
 
-**1. Full Permit2 Decoding — Never Raw Hex**
+**1. Permit2 decoding — not a raw hex blob**
 
-The signing screen never shows `PermitBatch` plus a hex blob. ArcSign decodes the message into plain English: "You are about to authorize spender `0x7a2...e91` to drain [USDC: infinite / USDT: infinite / WETH: infinite / WBTC: infinite] from your wallet over the next [27,394 days / never expires]." A signature you can't read should never be a signature you confirm.
+The signing screen doesn't just dump `PermitBatch` plus typed-data hex. ArcSign decodes the Permit2 calldata and surfaces the parts that matter — the **spender**, the **expiration shown as a date**, and the token(s) involved — with an unlimited amount flagged. For an EIP-712 Permit signature, the spender and token are surfaced the same way. So instead of a string of zeros you can see "this authorizes spender `0x7a2...e91`, with an unlimited amount, until [date]." A signature you can't read should never be one you confirm.
 
-**2. Auto-Flag Abnormal Parameters With a Full-Screen Warning**
+**2. The "approval signature" risk flag**
 
-Any of these triggers a red full-screen warning that requires an explicit checkbox to bypass: (a) `amount` at or near `2^160-1`; (b) `expiration` more than current time + 1 year; (c) `sigDeadline` more than current time + 7 days; (d) PermitBatch containing ≥ 3 tokens; (e) `spender` is a contract deployed less than 30 days ago.
+Permit / Permit2 detection is deliberately conservative — a regex match on the EIP-712 domain / primaryType. When it trips, or when the amount is unlimited (max uint), the request carries an inline **red "approval signature" risk badge** so you treat it like the on-chain `approve()` it's equivalent to.
 
-**3. Spender Static Analysis and Blacklist Lookup**
+**3. Blacklist check on the destination (free for everyone)**
 
-ArcSign's local engine runs immediate checks on the spender address: (a) match against known [drainer toolkit](/blog/wallet-drainer-toolkits-explained) infrastructure blacklists; (b) deployment age; (c) presence of repetitive `transferFrom` traffic (typical sweeper signature); (d) funds-flow correlation with known phishing relays. Any flag → full-screen warning.
+Before releasing a signature, ArcSign checks the signing destination address against an offline blacklist (OFAC + ScamSniffer + MetaMask phishing lists). If the spender / destination is a known-malicious address, the backend refuses to sign unless you explicitly acknowledge. This runs offline and is free for all users.
 
-**4. Simulation: What Happens If This Signature Is Used**
+**4. Transaction simulation (Pro): preview the asset change**
 
-Before you press Confirm, ArcSign simulates the outcome **if the attacker submitted this signature immediately**. The tokens and amounts that would leave your wallet are shown in red on the signing screen. If the simulation shows funds being drained — the signature is blocked outright.
+ArcSign Pro can simulate an EVM transaction and preview the net asset change before you confirm — useful for a call that "looks harmless but actually moves money." Simulation surfaces a warning to inform your decision (it doesn't block signing), covers 5 major EVM chains, and is a Pro feature.
 
-**5. Private Key Never Leaves USB; Full Message on the Cold Screen**
+**5. The private key never leaves the USB**
 
-The core of a Permit2 attack is "**signing the wrong message**" — keeping the private key on USB is not enough by itself. The signing interface itself must live on the cold side. ArcSign renders the full Permit2 decode, static analysis, and simulation results on the USB device's screen, integrated with [XOR three-shard key protection](/blog/xor-encryption-explained) and [mlock memory protection](/blog/mlock-memory-protection) for a complete zero-trust signing chain.
+The core of a Permit2 attack is "**signing the wrong message**," so a cold wallet's defense ultimately depends on whether you can read what you're signing. ArcSign's signing happens in the desktop app (the USB is plain encrypted storage with no screen), with [private keys](/blog/private-key-management-best-practices) kept in [XOR three-shard](/blog/xor-encryption-explained) form on the USB and reconstructed only briefly in [mlock-protected memory](/blog/mlock-memory-protection) during signing.
 
 Design Philosophy: Every EIP-712 Is a Latent On-Chain Action
 
-ArcSign refuses to treat EIP-712 messages as "the cheap kind of signature" — they are authorization grants **exactly equivalent** to on-chain transactions. So we put Permit2 messages and ERC-20 approve transactions through identical review. See [zero-trust wallet](/blog/zero-trust-wallet) for ArcSign's full security model.
+ArcSign refuses to treat EIP-712 messages as "the cheap kind of signature" — they are authorization grants **exactly equivalent** to on-chain transactions. So a Permit2 message gets the same clear-signing scrutiny and the same inline risk flag as an ERC-20 `approve`. See [zero-trust wallet](/blog/zero-trust-wallet) for ArcSign's full security model.
 
 ## 7 Habits That Keep You Out of Permit2 Phishing
 
@@ -226,11 +226,11 @@ No. Permit2 was designed for "any DApp to reuse" — 1inch, CoW Swap, Matcha, Op
 
 ### Q: Do hardware wallets (Ledger, Trezor) protect against Permit2 phishing?
 
-Partially. Ledger added Permit2 clear signing in Q3 2024; Trezor followed in Q1 2025. But it's **mostly limited to the Ethereum-mainnet Uniswap Permit2 instance** — other chains, custom Permit2 deployments, PermitBatch multi-token decoding, and spender blacklist comparison are still unsupported on most firmware. Even on the latest firmware, **hardware wallets typically can't do spender contract static analysis, simulation, or cross-chain blacklist lookups**. ArcSign renders all of those on the larger USB-device screen.
+Partially. Ledger added Permit2 clear signing in Q3 2024; Trezor followed in Q1 2025. But it's **mostly limited to the Ethereum-mainnet Uniswap Permit2 instance** — other chains and custom Permit2 deployments are still unsupported on most firmware, and a tiny hardware screen often falls back to raw hex. ArcSign is a desktop app, so its signing screen isn't constrained that way: it decodes Permit2 to surface the spender, expiration date, and tokens, flags an unlimited amount, runs an offline blacklist check on the destination (free), and offers Pro simulation. It does not claim to do spender contract static analysis or cross-chain blacklist comparison — those aren't features it ships.
 
 ### Q: Can a USB cold wallet still get phished on Permit2?
 
-**Yes.** A USB cold wallet protects against [private key exfiltration](/blog/private-key-management-best-practices) — the key never leaves the device. But Permit2 phishing's core mechanism is "**getting you to actively sign an authorization**." A cold wallet's job there is to **make it obvious what you are signing**. If a user manually checks "I understand the risk" on the full-screen red warning ArcSign throws and clicks Confirm anyway — no cold wallet on earth can stop them. The design goal is to put every relevant fact in front of you so you can make an informed decision, not to override your judgment.
+**Yes.** A USB cold wallet protects against [private key exfiltration](/blog/private-key-management-best-practices) — the key never leaves the device. But Permit2 phishing's core mechanism is "**getting you to actively sign an authorization**." A cold wallet's job there is to **make it obvious what you are signing**. If a user manually ticks "I understand the risk and still want to sign" and clicks Confirm anyway — no cold wallet on earth can stop them. The design goal is to put every relevant fact in front of you so you can make an informed decision, not to override your judgment.
 
 ### Q: Why is revoking Permit2 so complicated? Two layers?
 

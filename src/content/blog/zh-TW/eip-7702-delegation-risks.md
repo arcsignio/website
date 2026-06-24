@@ -1,6 +1,6 @@
 ---
 title: "EIP-7702 委派攻擊全解析：Pectra 升級後 EOA 變成「智能帳戶」的新風險"
-description: "Pectra 升級啟用了 EIP-7702，讓 EOA 能委派代碼給合約 — 等同把錢包權限暫時交給智能帳戶。本文拆解 SetCode 委派的攻擊向量、跨鏈重放風險、實際發生的釣魚案例，以及 ArcSign 如何在簽名前識別 0x04 委派交易並阻擋濫用。"
+description: "Pectra 升級啟用了 EIP-7702，讓 EOA 能委派代碼給合約 — 等同把錢包權限暫時交給智能帳戶。本文拆解 SetCode 委派的攻擊向量、跨鏈重放風險、實際發生的釣魚案例，以及在簽下委派授權前該檢查的關鍵事項。"
 pubDate: 2026-05-19
 locale: zh-TW
 tags: ["安全教育"]
@@ -19,7 +19,7 @@ EIP-7702 讓任何一個普通錢包地址（EOA），都能透過一張**授權
 
 **為什麼這篇值得一讀**
 
-如果你還在用 EOA 連 DApp、用瀏覽器錢包簽 EIP-712 — 你已經在 EIP-7702 的攻擊面上了。本文從技術原理講到實戰案例，並說明 ArcSign 如何在簽名介面把 `0x04` 委派交易與 `SET_CODE` 授權清楚標示出來，避免[盲簽](/blog/blind-signing-risks)落入委派陷阱。
+如果你還在用 EOA 連 DApp、用瀏覽器錢包簽 EIP-712 — 你已經在 EIP-7702 的攻擊面上了。本文從技術原理講到實戰案例，並說明在簽下一張委派授權前你該檢查什麼，以及為什麼[「看不懂就不要簽」](/blog/blind-signing-risks)是對抗委派陷阱最根本的防線。
 
 ## EIP-7702 是什麼：給 EOA 一身合約皮
 
@@ -137,33 +137,31 @@ Authorization List:
 
 只要五點任何一點不符合，停下來。**你不會因為錯過一次「升級」就被排除在 DeFi 之外**，但你可能會因為簽錯一張授權就被清空。
 
-## ArcSign 如何在 EIP-7702 上設防
+## ArcSign 的相關防線與限制
 
-ArcSign 把 EIP-7702 視為與 Permit2、`setApprovalForAll` 同等級的高風險簽名類型。在我們的 Clear Signing 引擎裡，type-4 交易與裸 EIP-7702 authorization 都走同一條告警管線：
+先說清楚現況：**ArcSign v1.5.0 的 clear-signing 引擎尚未針對 EIP-7702 type-4（`SET_CODE`）交易做專門解碼。** EIP-7702 是 2025 年 Pectra 才啟用的新交易類型，type-4 的 `authorization_list` 專門解析仍在我們的路線圖上。我們不想假裝已經支援一個還沒做的功能 — 這對一個主打安全的冷錢包來說，是最基本的誠實。
 
-**1. Type-4 交易完整 ABI 解析**
+那 ArcSign 現在能幫上什麼？以下是**實際存在**的能力，以及它們的邊界：
 
-簽名介面不會顯示 `0x04` + hex。ArcSign 會把整個 `authorization_list` 解析成人話：「你即將授權 EOA `0xYou` 在 [鏈名 / 「所有 EVM 鏈」] 上委派代碼到 [目標合約地址 + Etherscan label + 部署日期 + verified 狀態]」。這跟[盲簽](/blog/blind-signing-risks)的設計哲學一致 — 看不懂的簽名永遠不該被按下。
+**1. Clear-signing：看得懂的交易，才簽得安心**
 
-**2. chain_id = 0 強制紅色警告**
+ArcSign v1.5.0 會在本地把 WalletConnect / mint 的 calldata 與 EIP-712 typed data 解碼成人類可讀的意圖（轉帳、`approve`、`setApprovalForAll`、DEX swap）。無上限 `approve` 與 `setApprovalForAll` 會標紅警告。**解不出來的交易，介面會老實顯示「無法解讀」並退回原始 hex，要求你勾選「我了解風險仍要簽」才能繼續** — 不給你假的安全感。這個「看不懂就不要簽」的原則，正是對抗 EIP-7702 釣魚最根本的心態。
 
-只要 authorization 的 `chain_id` 是 0，ArcSign 會在簽名介面跳出**全螢幕紅色警告**，必須額外勾選「我了解這張簽名會在所有 EVM 鏈生效」才能繼續。對絕大多數使用者，這個欄位應該被綁定到當前鏈 — 不應該是 0。
+**2. 黑名單檢查：簽往已知惡意地址會被擋**
 
-**3. 目標合約靜態分析**
+如果你要簽的交易目的地（或委派目標）落在 ArcSign 的離線黑名單（OFAC + ScamSniffer + MetaMask 釣魚清單）裡，後端會在動私鑰前拒簽，除非你明確知情同意。這個檢查對所有人免費、離線可用。詳見 [簽章安全門那篇](/blog/signing-security-gate)。
 
-ArcSign 的本地引擎會對目標合約做即時靜態分析：(a) 是否有 `setOwner` / `upgrade` / `migrateAdmin` 等可疑函數；(b) 部署時間是否在 30 天以內；(c) 是否在已知 Sweeper 黑名單中；(d) 是否與已知 [Drainer 工具包](/blog/wallet-drainer-toolkits-explained)中繼地址有資金往來。任一項異常 → 全螢幕警告。
+**3. 交易模擬（Pro）：簽前看資產變化**
 
-**4. 模擬執行：升級後第一筆會發生什麼**
+ArcSign Pro 提供交易模擬，在你確認前預覽這筆交易會造成的資產淨變化。這對「看起來無害、實際在搬錢」的交易特別有用。（模擬是 Pro 功能，且目前涵蓋 5 條主要 EVM 鏈。）
 
-ArcSign 會在你按下「Confirm」前，模擬「**EOA 委派之後，下一筆送進來的 ETH / token 會發生什麼**」。如果模擬顯示「資金會立刻被 `transfer` 到非你的地址」 — 直接攔截，不允許簽名。
+**4. 私鑰永不離開 USB**
 
-**5. 私鑰永不離開 USB，授權路徑全程冷端確認**
+不論交易類型，ArcSign 的[私鑰](/blog/private-key-management-best-practices)永遠以 [XOR 三分片](/blog/xor-encryption-explained)加密形式存在 USB 上，簽名只在 [mlock 保護的記憶體](/blog/mlock-memory-protection)中短暫重組。EIP-7702 的攻擊核心是「**簽錯一張授權**」 — 所以冷錢包對它的防禦力，最終取決於你**看不看得懂、願不願意在不確定時停手**。
 
-EIP-7702 的攻擊核心是「**簽錯一張授權**」，所以光是把私鑰鎖在 USB 還不夠 — 簽名介面本身也得在冷端顯示。ArcSign 把整個 type-4 解析、合約靜態分析、跨鏈警告都搬到 USB 裝置螢幕，與[XOR 三分片金鑰](/blog/xor-encryption-explained)、[mlock 記憶體保護](/blog/mlock-memory-protection)整合成完整零信任簽名鏈。
+**誠實的結論**
 
-**設計哲學：把帳戶抽象當成「需要被審查的合約呼叫」**
-
-EIP-7702 把 EOA 變成「可程式化」的瞬間，整個錢包安全模型就需要重寫。ArcSign 的選擇是：**不允許「點一下就升級」的快捷簽名**。每一張 EIP-7702 授權都被當成「**部署合約等級**」的決定來對待，因為它的後果就是部署合約等級的。看[零信任錢包](/blog/zero-trust-wallet)一文了解 ArcSign 的完整零信任設計。
+對 EIP-7702 這種新攻擊面，最可靠的防線目前仍是**你自己**：不點 DApp 自稱的「一鍵升級智能帳戶」、拒絕 `chain_id = 0` 的授權、簽前確認目標合約。冷錢包能把私鑰鎖好、能擋已知惡意地址、能讓你看懂多數交易 — 但對一個錢包軟體還沒專門解碼的新交易類型，它不會、也不應該假裝能 100% 自動攔截。看[零信任錢包](/blog/zero-trust-wallet)一文了解 ArcSign 的完整設計理念。
 
 ## 7 個讓你遠離 EIP-7702 釣魚的習慣
 
@@ -174,7 +172,7 @@ EIP-7702 把 EOA 變成「可程式化」的瞬間，整個錢包安全模型就
 | 3 | **升級前先看目標合約**：Etherscan verified、部署 ≥ 90 天、TVL 公開 | 升級陷阱 |
 | 4 | **大額資產用全新、未連任何 DApp 的[冷錢包](/blog/usb-cold-wallet-benefits)** | 所有向量 |
 | 5 | **熱錢包月度檢查**：`eth_getCode(yourEOA)` 是否回傳 `0x`（未委派） | Sweeper 委派 |
-| 6 | **使用支援 type-4 完整解析的[冷錢包](/blog/best-crypto-wallet-2026)** | 盲簽委派 |
+| 6 | **不確定就不要簽** — 看不懂的 type-4 / 委派授權一律拒簽，用[冷錢包](/blog/best-crypto-wallet-2026)守住私鑰 | 盲簽委派 |
 | 7 | **追蹤 Pectra 後的安全研究**：blog.openzeppelin、Trail of Bits、Slowmist | 早期識別 |
 
 ### 進階：把 EIP-7702 升級當作一次性事件
@@ -213,11 +211,11 @@ EIP-7702 把 EOA 變成「可程式化」的瞬間，整個錢包安全模型就
 
 ### Q：硬體錢包（Ledger、Trezor）能看出 EIP-7702 嗎？
 
-部分能。Ledger 在 2025-Q3 加入了 type-4 交易解析，但很多舊韌體還沒更新；Trezor 在 2026-Q1 才補上完整支援。即使在最新韌體上，**多數硬體錢包仍然只把 authorization_list 顯示成 hex** — 你看到的還是 `chain_id: 0`、`address: 0x73...AB` 這種螢幕資訊，沒有合約靜態分析、沒有黑名單比對、也沒有模擬。ArcSign 在 USB 裝置螢幕上做完整 ABI 解析 + 合約靜態檢查 + 跨鏈警告，是因為冷錢包介面的螢幕空間沒有硬體錢包那種限制。
+部分能。Ledger 在 2025-Q3 加入了 type-4 交易解析，但很多舊韌體還沒更新；Trezor 在 2026-Q1 才補上完整支援。即使在最新韌體上，**多數硬體錢包仍然只把 authorization_list 顯示成 hex** — 你看到的還是 `chain_id: 0`、`address: 0x73...AB`，沒有人類可讀的說明。ArcSign 在這點上也很坦白：它的 clear-signing 引擎目前同樣尚未針對 EIP-7702 type-4 交易做專門解碼（仍在路線圖上）。ArcSign 今天提供的 — 對常見交易類型的 clear-signing、對目的地的離線黑名單檢查、以及 Pro 交易模擬 — 都在桌面應用程式裡執行，而不是在 USB 上，因為 USB 只是沒有螢幕的加密儲存。
 
 ### Q：USB 冷錢包真的能完全擋住 EIP-7702 釣魚嗎？
 
-「**完全**」是太強的詞。USB 冷錢包擋住「[私鑰外洩攻擊](/blog/private-key-management-best-practices)」是完全的 — 私鑰永遠不離開裝置。但 EIP-7702 攻擊的本質是「**讓你主動簽下授權**」，所以冷錢包能擋住的是「讓你看清楚你在簽什麼」這一層。如果使用者在 ArcSign 跳全螢幕紅色警告時還是手動勾選「我了解風險」、然後按下確認，**沒有任何冷錢包能擋下**。冷錢包的設計目標不是奪走使用者的判斷權，而是把所有資訊以人類可讀的形式攤在你面前，讓你能做出有依據的決定。
+「**完全**」是太強的詞。USB 冷錢包擋住「[私鑰外洩攻擊](/blog/private-key-management-best-practices)」是完全的 — 私鑰永遠不離開裝置。但 EIP-7702 攻擊的本質是「**讓你主動簽下授權**」，所以冷錢包能擋住的是「讓你看清楚你在簽什麼」這一層。如果使用者還是手動勾選「我了解風險仍要簽」、然後按下確認，**沒有任何冷錢包能擋下**。冷錢包的設計目標不是奪走使用者的判斷權，而是把所有資訊以人類可讀的形式攤在你面前，讓你能做出有依據的決定。
 
 ### Q：EIP-7702 跟 ERC-4337（帳戶抽象）有什麼差別？
 

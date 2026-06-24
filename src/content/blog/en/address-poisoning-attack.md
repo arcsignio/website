@@ -1,6 +1,6 @@
 ---
 title: "Address Poisoning Attack: When Your Transaction History Becomes the Trap"
-description: "Address poisoning plants look-alike addresses in your wallet history. See how 0-USDT decoys and vanity collisions cause nine-figure losses — and how ArcSign blocks them."
+description: "Address poisoning plants look-alike addresses in your wallet history. See how 0-USDT decoys and vanity collisions cause nine-figure losses — and how an address book, source-verification, and a blacklist check shut the attack down."
 pubDate: 2026-05-16
 locale: en
 tags: ["Security"]
@@ -105,7 +105,7 @@ There is no silver bullet for address poisoning, but stacking habits and tools d
 | **L3 Full-string compare** | Verify all 40 hex characters before signing, not just first-4-last-4 | Medium | Human last line of defense |
 | **L4 ENS / domain names** | Use ENS (.eth) or equivalent in place of raw 0x addresses | Medium | Domain registry resists spoofing |
 | **L5 Test transactions** | For large transfers, send 0.001 first and wait for counterparty confirmation | Medium | Catches most clones in practice |
-| **L6 Cold-wallet pre-signing check** | Use a cold wallet (e.g. ArcSign) that renders the full destination on sign | Built-in | Final backstop |
+| **L6 Cold-wallet pre-signing check** | Use a cold wallet (e.g. ArcSign) that shows the destination and requires deliberate confirmation before signing | Built-in | Final backstop |
 
 ### L1 Source Discipline: Make "Copy From History" a Taboo
 
@@ -129,25 +129,25 @@ For any transfer above $10,000, always send 0.001 first and wait for the counter
 
 ArcSign's signing flow is designed so that even if your eyes have been deceived, the final signing moment gives you one more chance to catch it:
 
-**1. Full-address preview, no truncation, grouped in 4s**
+**1. The destination is shown — verify it against the source**
 
-The signing confirmation page shows all 42 characters (`0x` + 40 hex) of the destination, broken into groups of 4 separated by spaces (e.g. `0x5754 284f 345a fc66 a98f bB0a 0Afe 71e0 F007 B949`). The middle 32 characters that a `…` would otherwise swallow are **back inside your field of vision**.
+The signing confirmation page shows the destination address (truncated as `0x1234...5678`, the way every wallet renders it). ArcSign can't read your mind about which address you *meant* to send to — so the discipline that matters is yours: before you confirm, verify the full address against the **original source** (the counterparty's message, the exchange's deposit page), character by character, not against a truncated preview. The signing moment is your last checkpoint, but only if you check.
 
 **2. USB-air-gapped confirmation, with your finger on the button**
 
-ArcSign is a USB [cold wallet](/blog/what-is-cold-storage). [Private keys](/blog/private-key-management-best-practices) never leave the device. Even if your browser, your wallet UI, and your block explorer have all been poisoned, the signature only happens inside ArcSign software and only when **you press confirm**. If the address you see does not match the address you intend to send to, refuse the signature.
+ArcSign is a USB [cold wallet](/blog/what-is-cold-storage). [Private keys](/blog/private-key-management-best-practices) never leave the device, and signing requires inserting the USB and entering your password each time. Even if your browser, your wallet UI, and your block explorer have all been poisoned, the signature only happens in the ArcSign desktop app and only when **you press confirm**. If the address you see does not match the address you intend to send to, refuse the signature.
 
-**3. One-click address book and label hints**
+**3. Address book with names and notes**
 
-Every manually entered or externally verified address can be added to the address book with a label. The next transfer, you pick from a list — and ArcSign shows you "You previously labeled this address X." If today's intended recipient is X but the hint does not appear, that is your warning sign.
+Every counterparty you verify can be saved to ArcSign's address book with a name and notes. Once it's there, you select "Binance Deposit" or "Alice (colleague)" from a list on your next transfer instead of copy-pasting from history — which removes the exact step the poisoning attack depends on. This is a manual address book you curate, not an auto-recognition prompt.
 
-**4. Transaction simulation with poisoning-mode detection**
+**4. Blacklist check on known-scam destinations (free)**
 
-For EVM chains, ArcSign simulates the transaction before signing and checks the destination against two heuristics: (a) has this address ever interacted with your wallet via a 0-value or sub-0.0001-ETH transfer? (b) does it share a 4+4 (or 6+6) prefix-and-suffix with an address you have already labeled, but differ in the middle? If either matches, the UI raises a **red warning** and requires you to type the final 8 characters of the address manually before signing.
+Before releasing a signature, ArcSign checks the destination against an offline blacklist (OFAC + ScamSniffer + MetaMask phishing lists). If a poisoning clone has already been reported and tagged on those lists, the backend refuses to sign unless you explicitly acknowledge. This is free for everyone and works offline. (Note: a freshly generated vanity clone may not yet be on any list — which is why the source-verification habit in step 1 remains your primary defense.) For EVM transactions, ArcSign Pro can also simulate the transfer and preview the asset change before you confirm.
 
 **Defense in Depth**
 
-ArcSign extends [zero-trust](/blog/zero-trust-wallet) all the way to the final second before signing — assuming nothing about your machine, your explorer's history view, or your eyes' ability to spot truncated lies. Combined with [XOR three-share key protection](/blog/xor-encryption-explained) and [mlock memory protection](/blog/mlock-memory-protection), even if your OS is fully compromised the private key itself never leaks.
+ArcSign extends [zero-trust](/blog/zero-trust-wallet) into the signing flow — but it's honest about the limit: no wallet can know which address you *intended*. What it can do is keep your [private keys](/blog/private-key-management-best-practices) in [XOR three-share](/blog/xor-encryption-explained) form and [mlocked in memory](/blog/mlock-memory-protection) so the key never leaks even if your OS is compromised, give you an address book so you never copy from history, and block known-scam destinations. The decisive defense against poisoning is still the upstream habit: always re-fetch the address from its original source.
 
 ## Already Poisoned — or Already Lost Funds? Emergency Response
 
@@ -169,7 +169,7 @@ In the US, file with the FBI's IC3 (Internet Crime Complaint Center). In the EU/
 
 **4. Remove the poison from your interface**
 
-The on-chain record is permanent, but you can hide the clone from your day-to-day view. Use the wallet's "Hidden Tokens" and "Blacklisted Addresses" features. ArcSign supports permanently marking an address as `Poisoning` — once tagged, it never appears in your quick-copy or recent-transactions UI again.
+The on-chain record is permanent, but you can hide the clone from your day-to-day view. Many wallets and explorers offer "Hidden Tokens" and zero-value-transfer filters — enable them so dust and 0-value poison transactions stop showing up in your history. The broader fix is to stop using transaction history as an address source at all: rely on your address book and the original source instead.
 
 **Beware the Recovery Scam**
 
@@ -187,7 +187,7 @@ The ERC-20 `transfer` event is fired by the contract and can be triggered by any
 
 ### Q: I use a [cold wallet](/blog/what-is-cold-storage), am I safe?
 
-A cold wallet protects against private-key exfiltration, but it cannot judge whether the destination is correct. If you copied a clone from your history, the cold wallet will dutifully sign a transfer of your funds to the attacker. ArcSign's pre-signing review shows the full destination and flags suspicious activity (e.g. "this address previously touched your wallet with a 0-value transfer") — that is the last and most effective defense. But the best line of defense is upstream: build the habit of always re-fetching addresses from the original source.
+A cold wallet protects against private-key exfiltration, but it cannot judge whether the destination is the one you *meant* to use. If you copied a clone from your history, the cold wallet will dutifully sign a transfer of your funds to the attacker. ArcSign shows the destination at signing time, lets you save verified counterparties to an address book (so you never copy from history), and runs a free blacklist check that catches destinations already reported as scams. But none of that knows your intent — so the best line of defense is upstream: build the habit of always re-fetching addresses from the original source.
 
 ### Q: How do I tell real and poison transactions apart on Etherscan?
 
