@@ -150,9 +150,6 @@ Yes. A compromised private key is permanent, and crypto values can grow signific
 
 Both. Your seed phrase is the ultimate recovery method (compatible with all BIP-39 wallets), while the .arcsign backup is more convenient (one-click import with all wallets and settings). The .arcsign file is encrypted on export (AES-256-GCM + Argon2id). Best practice: store seed phrase on sealed paper + .arcsign backup on a second offline USB. See our [Seed Phrase Backup Guide](/blog/seed-phrase-backup-guide) and [USB Backup Strategy](/blog/usb-backup-strategy) for details.
 
-          🔐
-
-**ArcSign Security Team**
-> **Cryptography & Wallet Security Research**
+> **🔐 ArcSign Security Team — Cryptography & Wallet Security Research**
 >
 > The ArcSign Security Team specializes in HD wallet architecture, private key cryptography, and cold storage security. Our research underpins the XOR three-shard encryption system at the core of ArcSign. Read our [security whitepaper](/blog/../../whitepaper) for full technical details.

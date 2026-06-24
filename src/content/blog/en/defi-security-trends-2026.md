@@ -13,7 +13,7 @@ relatedSlugs: ["cold-vs-hot-wallet", "mpc-vs-hd-wallet", "how-to-revoke-token-ap
 
 Decentralized finance (DeFi) has seen explosive growth over the past few years, but the security incidents that came with it have been equally staggering. Throughout 2025, DeFi security losses hit new records, with data from DeFiLlama and Chainalysis putting the total in the billions.
 
-          **📋 Update (April 2026):** Since this article was published, the Bybit hack ($1.5B, March 2026) has reinforced Trend 3 — exchange-based assets remain vulnerable regardless of exchange reputation. Cold wallet adoption in Asia-Pacific rose 34% in Q1 2026, validating Trend 5.
+> **📋 Update (April 2026):** Since this article was published, the Bybit hack ($1.5B, March 2026) has reinforced Trend 3 — exchange-based assets remain vulnerable regardless of exchange reputation. Cold wallet adoption in Asia-Pacific rose 34% in Q1 2026, validating Trend 5.
 
 | Stat | Detail |
 | :--- | :--- |

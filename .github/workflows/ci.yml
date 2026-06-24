@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+# Cancel superseded runs on the same ref to save minutes.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build & content checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Content lint: blocks the indented-"跑版" code-box regressions and the
+      # frontmatter description generation artifacts this site has shipped before.
+      - name: Content checks
+        run: node scripts/check-content.mjs
+
+      # The real safety net: a clean static build proves the content schema is
+      # valid, all relatedSlugs resolve, and no page is broken.
+      - name: Build
+        run: npm run build
