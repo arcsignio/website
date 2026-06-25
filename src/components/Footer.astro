@@ -30,6 +30,7 @@ const base = isEn ? '/en' : '';
           <h4>{isEn ? 'Product' : '產品'}</h4>
           <a href={`${base}/#features`}>{t('nav.features', locale)}</a>
           <a href={`${base}/#security`}>{t('nav.security', locale)}</a>
+          <a href={`${base}/best-free-cold-wallet`}>{isEn ? 'Best Free Cold Wallet' : '免費冷錢包推薦'}</a>
           <a href={`${base}/pricing`}>{t('nav.pricing', locale)}</a>
           <a href={`${base}/developer`}>{isEn ? 'Developer Mode' : '開發者模式'}</a>
           <a href={`${base}/enterprise`}>{isEn ? 'Enterprise' : '企業方案'}</a>
@@ -48,8 +49,10 @@ const base = isEn ? '/en' : '';
 
         <div class="footer-column">
           <h4>{isEn ? 'Community' : '社群'}</h4>
+          <a href="https://github.com/arcsignio/arcsign" target="_blank" rel="noopener">GitHub</a>
           <a href="https://x.com/ArcSignWallet" target="_blank" rel="noopener">Twitter / X</a>
           <a href="https://t.me/arcsign" target="_blank" rel="noopener">Telegram</a>
+          <a href="/press">{isEn ? 'Press / Media Kit' : '媒體中心'}</a>
         </div>
       </div>
     </div>

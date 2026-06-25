@@ -94,7 +94,7 @@ Beginners / First-Time Crypto Users
 
 After evaluating all five wallets against real-world usage patterns, ArcSign offers the best combination of security, cost, and usability for the majority of crypto holders in 2026. Here is why:
 
-- **Zero cost** — Free to download and use. Core features have no paywall. Pro plan ($X/year via NFT membership) adds batch token approval revoke and priority support.
+- **Zero cost** — Free to download and use. Core features have no paywall. The Pro plan (30 USDT/year via NFT membership) adds batch token approval revoke and priority support.
 
 - **True cold storage without hardware cost** — The same offline-key-storage principle as a $149 Ledger, with a USB drive you likely already own.
 
@@ -102,7 +102,7 @@ After evaluating all five wallets against real-world usage patterns, ArcSign off
 
 - **The best backup system available** — The .arcsign file is AES-256-GCM encrypted immediately on export. You can store it on a second USB, cloud storage, or anywhere you choose. No separate password-setting step needed. This eliminates the biggest real-world failure mode of crypto: losing access due to damaged or illegible paper seed phrases.
 
-- **Multi-chain from day one** — Bitcoin, Ethereum, BSC, Polygon, Arbitrum, Optimism, and Base all from a single wallet and USB. No separate apps or accounts per chain.
+- **Multi-chain from day one** — 7 EVM chains (Ethereum, BSC, Polygon, Arbitrum, Optimism, Base, Avalanche) all from a single wallet and USB. No separate apps or accounts per chain.
 
 - **DeFi-ready via WalletConnect** — Sign transactions from cold storage for any WalletConnect-compatible DApp. Plus built-in DEX Swap for direct in-app trading.
 

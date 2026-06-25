@@ -1,0 +1,124 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'ArcSign',
+  url: 'https://arcsign.io',
+  logo: 'https://arcsign.io/assets/logo.png',
+  description: 'ArcSign is a free, open-source USB cold wallet for 7 EVM chains. Apache 2.0 licensed, reproducible builds.',
+  sameAs: [
+    'https://github.com/arcsignio/arcsign',
+    'https://x.com/ArcSignWallet',
+  ],
+};
+---
+
+<BaseLayout
+  title="Press & Media Kit | ArcSign — Free Open-Source USB Cold Wallet"
+  description="ArcSign press kit: boilerplate, key facts, logos, and contact. ArcSign is a free, open-source (Apache 2.0) USB cold wallet for 7 EVM chains. Reviewers and writers, copy what you need."
+  locale="en"
+  canonical="https://arcsign.io/press"
+  schema={schema}
+>
+
+<article class="press">
+  <div class="press-head">
+    <h1>Press &amp; Media Kit</h1>
+    <p class="lede">Everything a reviewer or writer needs to cover ArcSign accurately. Copy any of it. All facts below are current and verified against the open-source codebase.</p>
+  </div>
+
+  <section>
+    <h2>One-line description</h2>
+    <blockquote class="copyable">ArcSign is a free, open-source USB cold wallet you can audit instead of trust.</blockquote>
+  </section>
+
+  <section>
+    <h2>Boilerplate (2 sentences)</h2>
+    <blockquote class="copyable">ArcSign is a free, open-source (Apache 2.0) USB cold wallet for desktop. It turns any standard USB drive into offline cold storage for 7 EVM chains, with the keys protected by XOR three-shard + AES-256-GCM encryption and reproducible, auditable builds — at $0, versus $79–$249 for a hardware wallet.</blockquote>
+  </section>
+
+  <section>
+    <h2>Key facts</h2>
+    <table class="facts">
+      <tbody>
+        <tr><td>Category</td><td>USB cold wallet (desktop app)</td></tr>
+        <tr><td>Price</td><td><strong>Free</strong> — $0. Optional Pro: 30 USDT/year (NFT membership)</td></tr>
+        <tr><td>License</td><td>Open source, Apache 2.0</td></tr>
+        <tr><td>Source code</td><td><a href="https://github.com/arcsignio/arcsign">github.com/arcsignio/arcsign</a></td></tr>
+        <tr><td>Reproducible builds</td><td>Yes — verify SHA-256 against published SHA256SUMS</td></tr>
+        <tr><td>Platforms</td><td>macOS, Windows, Linux</td></tr>
+        <tr><td>Chains</td><td>7 EVM: Ethereum, BSC, Polygon, Arbitrum, Optimism, Base, Avalanche (no native Bitcoin)</td></tr>
+        <tr><td>Key storage</td><td>XOR three-shard + AES-256-GCM on USB; reconstructed only in mlock-protected memory for 1–5 ms while signing</td></tr>
+        <tr><td>Backup</td><td>AES-256-GCM encrypted <code>.arcsign</code> file (no paper seed phrase) + optional 12/24-word BIP-39 mnemonic</td></tr>
+        <tr><td>Balances</td><td>Key-free on all 7 chains (public RPC + Multicall3 + DefiLlama prices)</td></tr>
+        <tr><td>Notable features</td><td>Clear-signing (local EIP-712/calldata decode), free OFAC/malicious-address blacklist check, WalletConnect v2, DEX swap aggregator, token-approvals manager</td></tr>
+        <tr><td>Downloads</td><td><a href="https://github.com/arcsignio/arcsign/releases">GitHub Releases</a></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>How ArcSign is different</h2>
+    <ul>
+      <li><strong>Free vs $79–$249.</strong> Same offline-key cold storage as a hardware wallet, on a USB you already own.</li>
+      <li><strong>Auditable, not trusted.</strong> Fully open source with reproducible builds — clone, rebuild, and confirm the hash matches.</li>
+      <li><strong>No firmware, no supply chain.</strong> Runs on your OS; no proprietary chip and no firmware update that could change key handling.</li>
+      <li><strong>Encrypted backup.</strong> The <code>.arcsign</code> file is AES-256-GCM encrypted on export, so a stolen backup isn't a stolen wallet — no fragile paper seed.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Logos</h2>
+    <div class="logos">
+      <a class="logo-dl" href="/assets/logo.png" download><img src="/assets/logo.png" alt="ArcSign logo" /><span>logo.png</span></a>
+      <a class="logo-dl" href="/assets/logo-horizontal.png" download><img src="/assets/logo-horizontal.png" alt="ArcSign horizontal logo" /><span>logo-horizontal.png</span></a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Comparison snapshot</h2>
+    <table class="facts">
+      <thead><tr><th>Wallet</th><th>Cost</th><th>Type</th><th>Open source</th></tr></thead>
+      <tbody>
+        <tr><td><strong>ArcSign</strong></td><td><strong>Free</strong></td><td>USB cold wallet</td><td>✓ Apache 2.0</td></tr>
+        <tr><td>Ledger Nano X</td><td>~$149</td><td>Hardware</td><td>✗</td></tr>
+        <tr><td>Trezor Model T</td><td>~$219</td><td>Hardware</td><td>✓</td></tr>
+        <tr><td>Tangem</td><td>~$55</td><td>NFC card</td><td>Partial</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Links &amp; contact</h2>
+    <ul>
+      <li>Website: <a href="https://arcsign.io">arcsign.io</a></li>
+      <li>GitHub: <a href="https://github.com/arcsignio/arcsign">github.com/arcsignio/arcsign</a></li>
+      <li>X / Twitter: <a href="https://x.com/ArcSignWallet">@ArcSignWallet</a></li>
+      <li>Security: <a href="mailto:security@arcsign.io">security@arcsign.io</a></li>
+    </ul>
+  </section>
+</article>
+
+<style>
+  .press { max-width: 820px; margin: 0 auto; padding: 120px 24px 80px; color: rgba(255,255,255,0.78); line-height: 1.8; }
+  .press h1 { font-size: clamp(1.8rem,4vw,2.6rem); font-weight: 800; margin-bottom: 12px; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .press .lede { color: rgba(255,255,255,0.6); margin-bottom: 24px; }
+  .press h2 { font-size: 1.4rem; font-weight: 700; color: var(--text-primary); margin: 2.2rem 0 0.9rem; padding-bottom: 8px; border-bottom: 2px solid var(--border-color); }
+  .press a { color: var(--primary); text-decoration: none; }
+  .press a:hover { text-decoration: underline; }
+  .press ul { padding-left: 1.4rem; }
+  .press li { margin-bottom: 0.5rem; }
+  .press code { background: rgba(45,212,191,0.1); color: var(--primary); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+  .copyable { background: var(--bg-card); border: 1px solid var(--primary); border-left-width: 3px; border-radius: var(--radius-md); padding: 16px 20px; margin: 0; color: var(--text-primary); font-size: 1.02rem; }
+  .facts { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  .facts td, .facts th { padding: 9px 12px; border: 1px solid var(--border-color); text-align: left; vertical-align: top; }
+  .facts td:first-child { color: var(--primary); font-weight: 600; white-space: nowrap; }
+  .facts th { background: rgba(45,212,191,0.1); color: var(--primary); }
+  .logos { display: flex; gap: 20px; flex-wrap: wrap; }
+  .logo-dl { display: flex; flex-direction: column; align-items: center; gap: 8px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 16px; }
+  .logo-dl img { max-width: 200px; max-height: 80px; }
+  .logo-dl span { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+</style>
+</BaseLayout>
