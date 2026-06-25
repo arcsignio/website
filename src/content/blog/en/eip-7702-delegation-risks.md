@@ -2,6 +2,7 @@
 title: "EIP-7702 Delegation Attacks Explained: How Pectra Turned Every EOA Into a Programmable Account"
 description: "Pectra activated EIP-7702 — any EOA can now delegate code to a contract with a single signature. That signature is also the most dangerous new phishing primitive of 2026. We break down SET_CODE attack vectors, cross-chain replay risks, real-world cases, why clear-signing and a blacklist check still matter, and why ArcSign is honest that dedicated type-4 decoding is still on its roadmap."
 pubDate: 2026-05-19
+updatedDate: 2026-06-25
 locale: en
 tags: ["Security"]
 author: "ArcSign Security Team"

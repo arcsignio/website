@@ -2,6 +2,7 @@
 title: "ETH + BSC + Avalanche 一站管理：ArcSign 跨鏈教學"
 description: "完整教學：如何用 ArcSign 同時管理 ETH、BSC、Avalanche 等 7 條 EVM 鏈的加密資產。從新增多鏈錢包、設定 RPC 節點，到跨鏈轉帳和 DEX Swap，一站式搞定所有多鏈操作的完整圖解流程教學。"
 pubDate: 2026-03-20
+updatedDate: 2026-06-25
 locale: zh-TW
 tags: ["產品教學"]
 author: "ArcSign Security Team"

@@ -2,6 +2,7 @@
 title: "Wallet Drainer 全解析：Inferno、Pink、Angel 三大釣魚工具包如何偷走 5 億美元"
 description: "Wallet Drainer 是 2024–2026 最系統化的加密貨幣盜竊工具包 — Inferno、Pink、Angel Drainer 累計造成 5 億美元損失。本文拆解 Drainer 的攻擊流程、SaaS 商業模式、技術指紋與防禦方法，並示範 ArcSign 如何在簽名前攔截 Drainer 的 Permit2 與 setApprovalForAll 釣魚。"
 pubDate: 2026-05-18
+updatedDate: 2026-06-25
 locale: zh-TW
 tags: ["安全教育"]
 author: "ArcSign Security Team"

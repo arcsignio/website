@@ -2,6 +2,7 @@
 title: "ArcSign 新手入門：10 分鐘設定你的 USB 冷錢包"
 description: "完整圖文教學：從下載 ArcSign 到建立你的第一個 USB 冷錢包，只需 10 分鐘。涵蓋安裝步驟、錢包建立、助記詞備份、Alchemy API 設定、基本轉帳操作，新手必看的 USB 冷錢包完整入門指南。"
 pubDate: 2026-03-10
+updatedDate: 2026-06-25
 locale: zh-TW
 tags: ["產品教學", "新手入門"]
 author: "ArcSign Security Team"

@@ -2,6 +2,7 @@
 title: "EIP-7702 委派攻擊全解析：Pectra 升級後 EOA 變成「智能帳戶」的新風險"
 description: "Pectra 升級啟用了 EIP-7702，讓 EOA 能委派代碼給合約 — 等同把錢包權限暫時交給智能帳戶。本文拆解 SetCode 委派的攻擊向量、跨鏈重放風險、實際發生的釣魚案例，以及在簽下委派授權前該檢查的關鍵事項。"
 pubDate: 2026-05-19
+updatedDate: 2026-06-25
 locale: zh-TW
 tags: ["安全教育"]
 author: "ArcSign Security Team"

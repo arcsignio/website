@@ -2,6 +2,7 @@
 title: "Permit2 釣魚簽名全解析：一張 EIP-712 簽名為什麼能在三秒內清空整個錢包"
 description: "Permit2 把 ERC-20 授權搬離鏈上、改用 EIP-712 簽名 — 也讓釣魚成本從一筆鏈上交易降到一張看不懂的訊息。本文拆解 PermitSingle / PermitBatch / PermitTransferFrom 三種攻擊變體、為什麼錢包顯示常常騙過使用者，以及 ArcSign 如何在簽名前解析 Permit2 訊息阻擋濫用。"
 pubDate: 2026-05-20
+updatedDate: 2026-06-25
 locale: zh-TW
 tags: ["安全教育"]
 author: "ArcSign Security Team"

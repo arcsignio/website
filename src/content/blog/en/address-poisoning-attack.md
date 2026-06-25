@@ -2,6 +2,7 @@
 title: "Address Poisoning Attack: When Your Transaction History Becomes the Trap"
 description: "Address poisoning plants look-alike addresses in your wallet history. See how 0-USDT decoys and vanity collisions cause nine-figure losses — and how an address book, source-verification, and a blacklist check shut the attack down."
 pubDate: 2026-05-16
+updatedDate: 2026-06-25
 locale: en
 tags: ["Security"]
 author: "ArcSign Security Team"

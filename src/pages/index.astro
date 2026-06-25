@@ -13,7 +13,9 @@ const schema = [
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     url: 'https://arcsign.io/',
     downloadUrl: 'https://github.com/arcsignio/arcsign/releases/latest',
-    description: '免費 USB 冷錢包 — 私鑰存在 USB，插上任何電腦都能用',
+    description: '免費、開源（Apache 2.0）的 USB 冷錢包，支援 7 條 EVM 鏈。私鑰存在 USB，拔掉就是冷錢包。餘額免 key、clear-signing、WalletConnect。',
+    softwareVersion: '1.5.0',
+    license: 'https://www.apache.org/licenses/LICENSE-2.0',
   },
   {
     '@context': 'https://schema.org',
@@ -21,7 +23,11 @@ const schema = [
     name: 'ArcSign',
     url: 'https://arcsign.io/',
     logo: 'https://arcsign.io/assets/logo.png',
-    sameAs: ['https://x.com/ArcSignWallet'],
+    description: 'ArcSign 是一款免費、開源的 USB 冷錢包，用於安全的多鏈加密貨幣儲存。',
+    sameAs: [
+      'https://github.com/arcsignio/arcsign',
+      'https://x.com/ArcSignWallet',
+    ],
   },
 ];
 ---

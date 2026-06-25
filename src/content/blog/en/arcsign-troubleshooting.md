@@ -2,6 +2,7 @@
 title: "ArcSign Troubleshooting Guide: USB Detection, Connection & Signing Issues"
 description: "Fix 15+ ArcSign issues: USB detection failures, Alchemy Provider connection errors, WalletConnect signing hangs. Platform-specific solutions for all OS."
 pubDate: 2026-04-07
+updatedDate: 2026-06-25
 locale: en
 tags: ["Tutorial"]
 author: "ArcSign Security Team"

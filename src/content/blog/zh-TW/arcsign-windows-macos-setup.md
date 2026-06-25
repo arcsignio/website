@@ -2,6 +2,7 @@
 title: "ArcSign 跨平台安裝教學：Windows / macOS"
 description: "完整的 ArcSign 安裝教學，涵蓋 Windows 10+ 與 macOS 12+ 兩個平台。了解系統需求、逐步安裝指南、Alchemy API 金鑰設定，以及常見問題排解。ArcSign 是免費的 USB 冷錢包，採用 XOR 三分片金鑰保護與 AES-256 加密備份。"
 pubDate: 2026-03-29
+updatedDate: 2026-06-25
 locale: zh-TW
 tags: ["產品教學"]
 author: "ArcSign Security Team"

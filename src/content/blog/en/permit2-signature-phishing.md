@@ -2,6 +2,7 @@
 title: "Permit2 Signature Phishing: How One EIP-712 Signature Empties an Entire Wallet in Seconds"
 description: "Permit2 moved ERC-20 approvals off-chain and into EIP-712 signatures — and dropped the cost of phishing from a real transaction to a single illegible message. We break down PermitSingle, PermitBatch, and PermitTransferFrom attack variants, why most wallet UIs still mislead users, and how ArcSign parses Permit2 messages before you sign to block abuse."
 pubDate: 2026-05-20
+updatedDate: 2026-06-25
 locale: en
 tags: ["Security"]
 author: "ArcSign Security Team"

@@ -2,6 +2,7 @@
 title: "ArcSign Cross-Platform Setup Guide: Windows & macOS"
 description: "Cross-platform ArcSign setup guide for Windows and macOS. Step-by-step installation, SmartScreen/Gatekeeper bypass, Alchemy API key, and first wallet"
 pubDate: 2026-03-29
+updatedDate: 2026-06-25
 locale: en
 tags: ["Tutorial"]
 author: "ArcSign Security Team"

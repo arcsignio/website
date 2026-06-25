@@ -2,6 +2,7 @@
 title: "盲簽（Blind Signing）：為什麼這是冷錢包用戶 2026 年最大的隱形風險"
 description: "盲簽讓你在看不懂的 Hex 上按下確認 — 結果是 NFT 被一鍵抽乾、Permit2 授權被無限提領。本文拆解 EIP-712、Permit、blind signing 漏洞與真實上億美元損失案例，並示範 ArcSign 用 Clear Signing 把每一筆交易翻譯成人話。"
 pubDate: 2026-05-17
+updatedDate: 2026-06-25
 locale: zh-TW
 tags: ["安全教育"]
 author: "ArcSign Security Team"

@@ -2,6 +2,7 @@
 title: "Wallet Drainer Toolkits Explained: How Inferno, Pink, and Angel Stole $500M+"
 description: "Wallet drainer toolkits turned crypto phishing into a SaaS — Inferno, Pink, and Angel Drainer have caused $500M+ in losses. We break down the attack flow, the SaaS economics, the on-chain fingerprints, and how ArcSign Clear Signing intercepts drainer Permit2 and setApprovalForAll signatures before you press confirm."
 pubDate: 2026-05-18
+updatedDate: 2026-06-25
 locale: en
 tags: ["Security"]
 author: "ArcSign Security Team"

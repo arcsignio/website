@@ -2,6 +2,7 @@
 title: "ArcSign Beginner Guide: Set Up Your USB Cold Wallet in 10 Minutes"
 description: "From download to first USB cold wallet in 10 minutes. Step-by-step guide covering installation, wallet creation, seed phrase backup, and basic operations."
 pubDate: 2026-03-10
+updatedDate: 2026-06-25
 locale: en
 tags: ["Tutorial", "Beginner Guide"]
 author: "ArcSign Security Team"

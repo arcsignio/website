@@ -2,6 +2,7 @@
 title: "Cross-Chain Made Easy: Managing 7 EVM Chains with ArcSign"
 description: "Manage 7 major EVM chains from one USB cold wallet. Complete guide to cross-chain operations, DEX swaps, and WalletConnect integration with ArcSign."
 pubDate: 2026-04-12
+updatedDate: 2026-06-25
 locale: en
 tags: ["Tutorial", "Cross-Chain"]
 author: "ArcSign Security Team"

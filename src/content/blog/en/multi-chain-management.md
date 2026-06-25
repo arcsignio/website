@@ -2,6 +2,7 @@
 title: "ETH + BSC + Polygon All-in-One Management: ArcSign Multi-Chain Tutorial"
 description: "Manage ETH, BSC, and Polygon simultaneously with ArcSign across 7 EVM chains. Complete guide to wallet setup, cross-chain transfers, and DEX swaps step by step."
 pubDate: 2026-03-20
+updatedDate: 2026-06-25
 locale: en
 tags: ["Tutorial"]
 author: "ArcSign Security Team"

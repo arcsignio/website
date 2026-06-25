@@ -2,6 +2,7 @@
 title: "2026 最佳加密貨幣錢包：冷錢包 vs 熱錢包 vs 硬體錢包 完整比較"
 description: "2026 年最值得用的加密貨幣錢包大比拼：MetaMask、Ledger、Trezor、Rabby、ArcSign 的安全性、費用、支援鏈、DeFi 整合、備份方式全面對比評分，幫你找出最適合自己的最佳加密錢包方案。"
 pubDate: 2026-04-02
+updatedDate: 2026-06-25
 locale: zh-TW
 tags: ["市場洞察", "錢包比較"]
 author: "ArcSign Security Team"

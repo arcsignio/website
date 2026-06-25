@@ -2,6 +2,7 @@
 title: "冷儲存是什麼？2026 完整入門指南"
 description: "從零開始了解冷儲存概念：認識冷儲存 vs 熱錢包的核心區別、四種主流冷儲存方案的優缺點比較、為什麼你的加密資產需要冷儲存保護，以及 ArcSign 如何把任何 USB 變成冷錢包的新手指南。"
 pubDate: 2026-03-15
+updatedDate: 2026-06-25
 locale: zh-TW
 tags: ["安全教育", "新手入門"]
 author: "ArcSign Security Team"

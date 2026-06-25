@@ -2,6 +2,7 @@
 title: "Global Crypto Regulation Map: 2026 Latest Trends"
 description: "Global crypto regulation guide 2026: EU MiCA, SEC rules, Taiwan VASP requirements, and self-custody compliance across major economies for wallet users."
 pubDate: 2026-04-10
+updatedDate: 2026-06-25
 locale: en
 tags: ["Market Insights"]
 author: "ArcSign Security Team"

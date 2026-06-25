@@ -2,6 +2,7 @@
 title: "ArcSign 安裝全攻略：Windows / macOS / Linux"
 description: "完整的 ArcSign USB 冷錢包跨平台安裝教學：Windows 10+、macOS 12+、Linux（AppImage / deb / rpm）。包含系統需求、SmartScreen 與 Gatekeeper 處理、Alchemy API 設定、常見問題排解。免費下載。"
 pubDate: 2026-04-20
+updatedDate: 2026-06-25
 locale: zh-TW
 tags: ["產品教學"]
 author: "ArcSign Security Team"

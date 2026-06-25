@@ -2,6 +2,7 @@
 title: "Blind Signing: The Invisible Risk That Bypasses Even Your Cold Wallet"
 description: "Blind signing turns unreadable hex into a one-click drainer — Permit2 and setApprovalForAll. See $300M+ in losses and how ArcSign Clear Signing stops it."
 pubDate: 2026-05-17
+updatedDate: 2026-06-25
 locale: en
 tags: ["Security"]
 author: "ArcSign Security Team"

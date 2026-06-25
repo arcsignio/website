@@ -2,6 +2,7 @@
 title: "地址投毒攻擊（Address Poisoning）：當你的交易紀錄變成攻擊跳板"
 description: "地址投毒利用「外觀克隆地址」污染你的交易歷史，誘導你下次轉帳時複製錯誤地址。本文拆解 0 USDT 假交易、Vanity 前後綴比對與真實億美元損失案例，並說明地址簿、來源核對與黑名單檢查如何斷絕這條攻擊路徑。"
 pubDate: 2026-05-16
+updatedDate: 2026-06-25
 locale: zh-TW
 tags: ["安全教育"]
 author: "ArcSign Security Team"

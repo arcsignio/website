@@ -2,6 +2,7 @@
 title: "ArcSign Installation Complete Guide: Windows / macOS / Linux"
 description: "Complete ArcSign install guide for Windows 10+, macOS 12+, and Linux. Covers SmartScreen, Gatekeeper bypass, Alchemy API setup, and first wallet creation."
 pubDate: 2026-04-20
+updatedDate: 2026-06-25
 locale: en
 tags: ["Tutorial"]
 author: "ArcSign Security Team"

@@ -2,6 +2,7 @@
 title: "Bitcoin 冷錢包完整指南：2026 年如何安全保管 BTC | ArcSign 部落格"
 description: "了解 2026 年如何用冷儲存安全保管 Bitcoin。涵蓋交易所駭客事件（FTX $80億、Mt. Gox $4.5億、Bybit 2025年$14億）、冷儲存類型、BIP44 HD 錢包標準、XOR 分片與 AES-256-GCM 加密等安全技術，以及設定 BTC 冷儲存的完整步驟。"
 pubDate: 2026-04-02
+updatedDate: 2026-06-25
 locale: zh-TW
 tags: ["安全教育", "Bitcoin"]
 author: "ArcSign Security Team"
